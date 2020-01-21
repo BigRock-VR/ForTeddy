@@ -6,7 +6,7 @@ using UnityEngine;
 public class Arcade_UIManager : MonoBehaviour
 {
     [Header("Hearth Sprites")]
-    public Sprite fullHearth; 
+    public Sprite fullHearth;
     public Sprite halfHearth;
     public Sprite emptyHearth;
 
@@ -25,12 +25,19 @@ public class Arcade_UIManager : MonoBehaviour
     public Slider waveTime;
 
     [Header("WavePanels")]
-    public Text newWave;
-    public Text endWave;
+    public GameObject newWave;
+    public GameObject endWave;
+
+    public Text newWave_Txt;
+    public Text endWave_Txt;
+
+    [Header("ShopUI")]
+    public Text shopHeader;
+    public GameObject shop;
+
+    public Text shopCoin;
 
     [Header("OverlayText Manager")]
-    public bool newWaveBool;
-    public bool endWaveBool;
     float alpha;
     float counter;
     //HealthManager Update by GameManager Health Value (int 0-6)
@@ -88,60 +95,59 @@ public class Arcade_UIManager : MonoBehaviour
 
     public void NewWave()
     {
-        if (newWaveBool)
-        {
-            newWave.text = "Wave N " + GameManager.gm.wave + " Starts!";
+        newWave_Txt.text = "Wave N " + GameManager.gm.wave + " Starts!";
+        
+        endWave.SetActive(false);
+        shop.GetComponent<Animator>().SetTrigger("closeLerp");
+        StartCoroutine(MenuTimer(1));
 
-            newWave.gameObject.SetActive(true);
-            counter += Time.deltaTime/5;
-            alpha = Mathf.Lerp(1, 0, counter);
-            newWave.color = new Color(newWave.color.r, newWave.color.g, newWave.color.b, alpha);
-            print(alpha);
-            if(alpha <= 0)
-            {
-                newWave.gameObject.SetActive(false);
-                counter = 0;
-                newWaveBool = false;
-            }
-        }
+        GameManager.gm.waveTimeActual = GameManager.gm.waveTime;
+        
     }
     public void EndWave()
     {
-        if (endWaveBool)
-        {
-            endWave.gameObject.SetActive(true);
-            counter += Time.deltaTime / 5;
-            alpha = Mathf.Lerp(1, 0, counter);
-            endWave.color = new Color(newWave.color.r, newWave.color.g, newWave.color.b, alpha);
-            print(alpha);
-            if (alpha <= 0)
-            {
-                endWave.gameObject.SetActive(false);
-                counter = 0;
-                endWaveBool = false;
-            }
-        }
+        newWave.SetActive(false);
+        endWave.SetActive(true);
+        StartCoroutine(MenuTimer(0));
     }
 
     private void Start()
     {
-        newWave.color = new Color(0, 0, 0, 0);
-        endWave.color = new Color(0, 0, 0, 0);
+        endWave.SetActive(false);
+        newWave.SetActive(false);
     }
     void Update()
     {
-
         //Update Ammo/Score GameManager Based
         ammoCount.text = GameManager.gm.ammo.ToString();
         scoreCount.text = GameManager.gm.score.ToString();
-        
+        shopCoin.text = scoreCount.text;
+
         //Call here, Better if called By GameManager when HealthUpdate
         HealthUI();
 
         //Update Slider Value
         WaveTimer();
 
-        NewWave();
-        EndWave();
+    }
+
+    IEnumerator MenuTimer(int i)
+    {
+        if (i == 0)
+        {
+            yield return new WaitForSeconds(2);
+            //Activate the shop screen
+            shopHeader.text = "Next Wave: " + GameManager.gm.wave.ToString();
+            shop.SetActive(true);
+            shop.GetComponent<Animator>().SetTrigger("openLerp");
+        }
+        if(i==1)
+        {
+            yield return new WaitForSeconds(2);
+            GameManager.gm.startTimer = true;
+            newWave.SetActive(true);
+            shop.SetActive(false);
+        }
+             
     }
 }

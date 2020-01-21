@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d01717b597a3fd4e9f279d9435834d7, type: 3}
+  m_Name: Soldier 3
+  m_EditorClassIdentifier: 
+  chrName: Soldier 3
+  baseWeapon: {fileID: 11400000, guid: 9a3bad3092d24cd498c39f903a1d0172, type: 2}
+  altWeapon: {fileID: 11400000, guid: e598b23b0f05dad479c0620c946e5413, type: 2}
+  health: 3
+  armor: 0
+  ChrImg: {fileID: 21300000, guid: c68ce3a902d991d45bee793615604fb4, type: 3}
