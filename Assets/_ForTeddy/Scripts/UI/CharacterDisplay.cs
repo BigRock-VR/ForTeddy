@@ -19,6 +19,7 @@ public class CharacterDisplay : MonoBehaviour
 
     private Weapons altWeapon;
 
+    [Header("References from Hierarchy")]
     public Text altWeapon_Txt;
     public Image altWeapon_Img;
     public Text chrName_Txt;

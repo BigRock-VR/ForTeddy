@@ -38,12 +38,12 @@ public class UIManager : MonoBehaviour
    public void Mute()
     {
         audioEnabled = !audioEnabled;
-        if (audioEnabled) // se audio attivo ci sarà la sprite con l'altoparlante
+        if (audioEnabled) // Audio Enable -- set a sprite
         {
             audioBtn.image.sprite = audioOn;
             audioBtn.GetComponentInChildren<Text>().text = "ON";
         }
-        else         //Audio disattivo = stessa sprite, ma barrata
+        else         //Audio disabled -- change Sprite
         {
             audioBtn.image.sprite = audioOff;
             audioBtn.GetComponentInChildren<Text>().text = "OFF";
