@@ -9,10 +9,16 @@ public class UIManager : MonoBehaviour
     [Header("UI Panels")]
     public GameObject mainMenu;
     public GameObject settings;
+    public GameObject confirmQuit;
+    public GameObject dissing;
 
     
     [Header("Button")]
     public Button audioBtn;
+
+    private Button newGame_Btn;
+    private Button back_Btn;
+    private Button no_Btn;
 
 
     [Header("Sprites")]
@@ -21,17 +27,30 @@ public class UIManager : MonoBehaviour
 
 
     bool audioEnabled = true;
-    bool menuChange = false;
 
     private void Start()
     {
+        StartSettings();
+    }
+
+    void StartSettings()
+    {
         mainMenu.SetActive(true);
         settings.SetActive(false);
+        dissing.SetActive(false);
+        confirmQuit.SetActive(false);
+
+        newGame_Btn = mainMenu.GetComponentInChildren<Button>();
+        back_Btn = settings.GetComponentInChildren<Button>();
+        no_Btn = confirmQuit.GetComponentInChildren<Button>();
+
+        newGame_Btn.Select();
     }
+
     //Avvia la partita della scena in VR 
     public void NewGame()
     {
-        SceneManager.LoadScene("GameVR"); //Controllare Index scena-Nome scena che sia corretto!! 
+        SceneManager.LoadScene(1); 
     }
     
     //Setti i suoni attivi o meno e in base cambia la sprite nel menu
@@ -52,18 +71,28 @@ public class UIManager : MonoBehaviour
 
 
     //Cambio menu tra main e Settings
-    public void ChangeMenu()
+    public void ChangeMenu(int i)
     {
-        menuChange = !menuChange;
-        if (!menuChange)
+        switch (i)
         {
-            mainMenu.SetActive(true);
-            settings.SetActive(false);
-        }
-        else
-        {
-            mainMenu.SetActive(false);
-            settings.SetActive(true);
+            case 0:
+                mainMenu.SetActive(true);
+                settings.SetActive(false);
+                confirmQuit.SetActive(false);
+
+                newGame_Btn.Select();
+                break;
+            case 1:
+                mainMenu.SetActive(false);
+                settings.SetActive(true);
+
+                back_Btn.Select();
+                break;
+            case 2:
+                confirmQuit.SetActive(true);
+
+                no_Btn.Select();
+                break;
         }
     }
 

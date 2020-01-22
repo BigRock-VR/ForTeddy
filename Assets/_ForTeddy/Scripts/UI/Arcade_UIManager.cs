@@ -74,8 +74,8 @@ public class Arcade_UIManager : MonoBehaviour
     void Update()
     {
         //Update Ammo/Score GameManager Based
-        ammoCount.text = GameManager.gm.ammo.ToString();
-        scoreCount.text = GameManager.gm.score.ToString();
+        ammoCount.text = ArcadeManager.gm.ammo.ToString();
+        scoreCount.text = ArcadeManager.gm.score.ToString();
         shopCoin.text = scoreCount.text;
 
         //Call here, Better if called By GameManager when HealthUpdate
@@ -93,7 +93,7 @@ public class Arcade_UIManager : MonoBehaviour
     //HealthManager Update by GameManager Health Value (int 0-6)
     public void HealthUI()
     {
-        switch (GameManager.gm.health)
+        switch (ArcadeManager.gm.health)
         {
             case 0:
                 hearth1.sprite = emptyHearth;
@@ -135,25 +135,25 @@ public class Arcade_UIManager : MonoBehaviour
         }
     }
 
-    //remap from TimeGame for In game slider
+    //remap from TimeGame in GameManager for In game slider
     public void WaveTimer()
     {
         //Remap Timer Value for SliderLerp
-        float newTimer = GameManager.gm.waveTimeActual.Remap(0, GameManager.gm.waveTime, 0, 1);
+        float newTimer = ArcadeManager.gm.waveTimeActual.Remap(0, ArcadeManager.gm.waveTime, 0, 1);
 
         waveTime.value = Mathf.Lerp(10, 0, newTimer);
     }
 
     public void NewWave()
     {
-        newWave_Txt.text = "Wave N " + GameManager.gm.wave + " Starts!";
+        newWave_Txt.text = "Wave N " + ArcadeManager.gm.wave + " Starts!";
 
         endWave.SetActive(false);
         shop.GetComponent<Animator>().SetTrigger("closeLerp");
 
         StartCoroutine(MenuTimer(1));
 
-        GameManager.gm.waveTimeActual = GameManager.gm.waveTime;
+        ArcadeManager.gm.waveTimeActual = ArcadeManager.gm.waveTime;
 
     }
     public void EndWave()
@@ -189,7 +189,7 @@ public class Arcade_UIManager : MonoBehaviour
                 {
                     //gameUI.SetActive(true);
                     pauseMenu.SetActive(false);
-                    GameManager.gm.startTimer = true;
+                    ArcadeManager.gm.startTimer = true;
                 }
             }
             else
@@ -197,7 +197,7 @@ public class Arcade_UIManager : MonoBehaviour
                 //gameUI.SetActive(false);
                 pauseMenu.SetActive(true);
                 resume.Select();
-                GameManager.gm.startTimer = false;
+                ArcadeManager.gm.startTimer = false;
             }
         }
     }
@@ -252,7 +252,7 @@ public class Arcade_UIManager : MonoBehaviour
             yield return new WaitForSeconds(2);
             shop.SetActive(true);
 
-            shopHeader.text = "Next Wave: " + GameManager.gm.wave.ToString();
+            shopHeader.text = "Next Wave: " + ArcadeManager.gm.wave.ToString();
 
             dakkaGun.Select();
             gameUI.SetActive(false);
@@ -269,7 +269,7 @@ public class Arcade_UIManager : MonoBehaviour
             yield return new WaitForSeconds(2);
             changingMenu = false;
             shop.SetActive(false);
-            GameManager.gm.startTimer = true;
+            ArcadeManager.gm.startTimer = true;
             newWave.SetActive(true);
         }
 

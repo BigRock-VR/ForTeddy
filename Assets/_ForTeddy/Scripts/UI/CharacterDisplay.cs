@@ -49,7 +49,7 @@ public class CharacterDisplay : MonoBehaviour
     {
         if(chr.chrName == "Teddy")
         {
-            ammo_Txt.text = GameManager.gm.ammo.ToString();
+            ammo_Txt.text = ArcadeManager.gm.ammo.ToString();
             ammo_Img.enabled = true;
         }
         else
