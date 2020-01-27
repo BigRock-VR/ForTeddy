@@ -1,10 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using UnityEngine;
 
-public class Arcade_UIManager : MonoBehaviour
+public class UI_InGame : MonoBehaviour
 {
     [Header("Hearth Sprites")]
     public Sprite fullHearth;
@@ -44,15 +43,20 @@ public class Arcade_UIManager : MonoBehaviour
 
     public GameObject confirmMenu;
     public GameObject settingsMenu;
+    public GameObject chooseName;
+
+    public GameObject mainMenu;
+    public GameObject gameOver;
 
     private bool pauseGame;
+
     [Header("First Button Selected")]
     public Button dakkaGun;
     private Button back;
     private Button toMainMenu;
     private Button resume;
 
-    private bool changingMenu;
+    private bool canPause;
     private void Start()
     {
         StartSettings();
@@ -60,12 +64,15 @@ public class Arcade_UIManager : MonoBehaviour
 
     void StartSettings()
     {
-        endWave.SetActive(false);
+        gameUI.SetActive(false);
         newWave.SetActive(false);
+        endWave.SetActive(false);
+        shop.SetActive(false);
         pauseMenu.SetActive(false);
-        settingsMenu.SetActive(false);
         confirmMenu.SetActive(false);
-
+        settingsMenu.SetActive(false);
+        chooseName.SetActive(false);
+        gameOver.SetActive(false);
 
         back = settingsMenu.GetComponentInChildren<Button>();
         toMainMenu = confirmMenu.GetComponentInChildren<Button>();
@@ -84,7 +91,7 @@ public class Arcade_UIManager : MonoBehaviour
         //Update Slider Value
         WaveTimer();
 
-        if (Input.GetButtonDown("Cancel") && changingMenu == false)
+        if (Input.GetButtonDown("Cancel") && canPause)
         {
             PauseMenu();
         }
@@ -178,7 +185,7 @@ public class Arcade_UIManager : MonoBehaviour
         else {
             pauseGame = !pauseGame;
 
-            if (!pauseGame)
+            if (pauseGame)
             {
                 if (shop.activeInHierarchy)
                 {
@@ -187,14 +194,12 @@ public class Arcade_UIManager : MonoBehaviour
                 }
                 else
                 {
-                    //gameUI.SetActive(true);
                     pauseMenu.SetActive(false);
                     ArcadeManager.gm.startTimer = true;
                 }
             }
             else
             {
-                //gameUI.SetActive(false);
                 pauseMenu.SetActive(true);
                 resume.Select();
                 ArcadeManager.gm.startTimer = false;
@@ -220,13 +225,19 @@ public class Arcade_UIManager : MonoBehaviour
             //From Back Button in confirmMenu
             case 2:
                 confirmMenu.SetActive(false);
-                resume.Select();
-                break;
-            //From Back Button in SettingsMenu
-            case 3:
                 settingsMenu.SetActive(false);
+
                 resume.Select();
                 break;
+
+            //from GameoverState
+            case 3:
+                gameUI.SetActive(false);
+                gameOver.SetActive(true);
+                Invoke("GameOver", 1.5f);
+                canPause = false;
+                break;
+
             default:
                 print("Unideentified input");
                 break;
@@ -234,18 +245,36 @@ public class Arcade_UIManager : MonoBehaviour
     }
     public void ToMainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        gameUI.SetActive(false);
+        shop.SetActive(false);
+        pauseMenu.SetActive(false);
+        confirmMenu.SetActive(false);
+        chooseName.SetActive(false);
+
+        mainMenu.SetActive(true);
+        mainMenu.GetComponentInParent<UI_MainMenu>().newGame_Btn.Select();
+
+        canPause = false;
+
+        ArcadeManager.gm.startTimer = false;
+        ArcadeManager.gm.wave = 1;
     }
     public void ToDesktop()
     {
-        Application.Quit();
+        //Application.Quit();
+    }
+
+    public void GameOver()
+    {
+        chooseName.SetActive(true);
     }
 
     //Functions for SettingsMenu
 
     IEnumerator MenuTimer(int i)
     {
-        changingMenu = true;
+        canPause = false;
+
         //call at EndWave
         if (i == 0)
         {
@@ -260,18 +289,20 @@ public class Arcade_UIManager : MonoBehaviour
             shop.GetComponent<Animator>().SetTrigger("openLerp");
             yield return new WaitForSeconds(2);
             shop.GetComponent<Animator>().SetTrigger("endAnimation");
-            changingMenu = false;
+
+
+            canPause = true;
         }
+
         //call at NewWave
         if (i == 1)
         {
             gameUI.SetActive(true);
             yield return new WaitForSeconds(2);
-            changingMenu = false;
+            canPause = true;
             shop.SetActive(false);
             ArcadeManager.gm.startTimer = true;
             newWave.SetActive(true);
         }
-
     }
 }

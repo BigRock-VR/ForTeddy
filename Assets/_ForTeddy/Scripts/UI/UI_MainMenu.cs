@@ -4,27 +4,27 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class UIManager : MonoBehaviour
+public class UI_MainMenu : MonoBehaviour
 {
     [Header("UI Panels")]
     public GameObject mainMenu;
     public GameObject settings;
     public GameObject confirmQuit;
-    public GameObject dissing;
+    public GameObject highScore;
 
     
     [Header("Button")]
     public Button audioBtn;
 
-    private Button newGame_Btn;
+    [HideInInspector]
+    public Button newGame_Btn;
     private Button back_Btn;
     private Button no_Btn;
-
+    private Button backScore_Btn;
 
     [Header("Sprites")]
     public Sprite audioOn; 
     public Sprite audioOff;
-
 
     bool audioEnabled = true;
 
@@ -37,20 +37,22 @@ public class UIManager : MonoBehaviour
     {
         mainMenu.SetActive(true);
         settings.SetActive(false);
-        dissing.SetActive(false);
         confirmQuit.SetActive(false);
+        highScore.SetActive(false);
 
         newGame_Btn = mainMenu.GetComponentInChildren<Button>();
         back_Btn = settings.GetComponentInChildren<Button>();
         no_Btn = confirmQuit.GetComponentInChildren<Button>();
+        backScore_Btn = highScore.GetComponentInChildren<Button>();
 
         newGame_Btn.Select();
     }
+    
 
     //Avvia la partita della scena in VR 
     public void NewGame()
     {
-        SceneManager.LoadScene(1); 
+        mainMenu.SetActive(false);
     }
     
     //Setti i suoni attivi o meno e in base cambia la sprite nel menu
@@ -75,23 +77,38 @@ public class UIManager : MonoBehaviour
     {
         switch (i)
         {
+            //BackButton
             case 0:
                 mainMenu.SetActive(true);
                 settings.SetActive(false);
                 confirmQuit.SetActive(false);
+                highScore.SetActive(false);
 
                 newGame_Btn.Select();
                 break;
+
+            //Entry Settings
             case 1:
-                mainMenu.SetActive(false);
                 settings.SetActive(true);
 
                 back_Btn.Select();
                 break;
+
+            //Quit Button
             case 2:
                 confirmQuit.SetActive(true);
 
                 no_Btn.Select();
+                break;
+
+            //LeaderBoard Button
+            case 3:
+                highScore.SetActive(true);
+
+                backScore_Btn.Select();
+                break;
+
+            default:
                 break;
         }
     }

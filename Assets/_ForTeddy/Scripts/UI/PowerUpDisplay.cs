@@ -10,7 +10,6 @@ public class PowerUpDisplay : MonoBehaviour
 
     [Header("TextField")]
     public Text cost_Txt;
-    public Text powerUpName_Txt;
 
     [Header("ImageField")]
     public Image powerUp_Img;
@@ -20,8 +19,9 @@ public class PowerUpDisplay : MonoBehaviour
     void Start()
     {
         cost_Txt.text = powerUp.cost.ToString();
-        powerUpName_Txt.text = powerUp.powerUpName.ToString();
 
         powerUp_Img.sprite = powerUp.powerUpImage;
     }
+
+
 }

@@ -10,18 +10,21 @@ public class ArcadeManager : MonoBehaviour
 
     public GameObject UiMng;
 
+    public Weapons actualWeapon;
+
     public int ammo;
     public int health;
     public int score;
     public int wave;
+    public int ominoCost = 500;
 
     public float waveTime = 180f;
     public float waveTimeActual;
-    public bool startTimer = true;
+    public bool startTimer;
 
     private void Awake()
     {
-        if(gm == null)
+        if (gm == null)
         {
             gm = this;
         }
@@ -44,12 +47,18 @@ public class ArcadeManager : MonoBehaviour
             waveTimeActual = Mathf.Clamp(waveTimeActual, 0, waveTime);
             waveTimeActual -= Time.deltaTime;
 
-            if(waveTimeActual <= 0)
+            if (waveTimeActual <= 0)
             {
-                UiMng.GetComponent<Arcade_UIManager>().EndWave();
+                UiMng.GetComponent<UI_InGame>().EndWave();
                 wave++;
                 startTimer = false;
             }
+            if (health <= 0)
+            {
+                UiMng.GetComponent<UI_InGame>().ChangeMenu(3);
+                startTimer = false;
+            }
         }
+
     }
 }
