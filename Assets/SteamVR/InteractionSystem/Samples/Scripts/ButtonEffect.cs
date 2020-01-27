@@ -9,6 +9,10 @@ namespace Valve.VR.InteractionSystem.Sample
 {
     public class ButtonEffect : MonoBehaviour
     {
+        //Edit to main
+        [SerializeField]
+        GameObject renderTexture;
+
         public void OnButtonDown(Hand fromHand)
         {
             ColorSelf(Color.cyan);
@@ -27,6 +31,12 @@ namespace Valve.VR.InteractionSystem.Sample
             {
                 renderers[rendererIndex].material.color = newColor;
             }
+        }
+
+        // edit to main
+        public void OnButtonPressed()
+        {
+            renderTexture.SetActive(!renderTexture.activeSelf);
         }
     }
 }

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aacf7111c84b1c4894cdf424124e9be, type: 3}
+  m_Name: Impallinator
+  m_EditorClassIdentifier: 
+  name: Impallinator
+  fireRate: 1.3
+  bulletSpeed: 1000
+  damage: 100
+  maxAmmoCount: 2
+  isDefaultWeapon: 0
+  fireType: 0
+  weaponPrefab: {fileID: 7738656361031999446, guid: 9f5a6ddb9c4012e4f98929589a0a7e07,
+    type: 3}

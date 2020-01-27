@@ -81,6 +81,66 @@
       "name": "/actions/mixedreality/in/ExternalCamera",
       "type": "pose",
       "requirement": "optional"
+    },
+    {
+      "name": "/actions/ForTeddyVR/in/Move",
+      "type": "vector2"
+    },
+    {
+      "name": "/actions/ForTeddyVR/in/Grab",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/ForTeddyVR/in/Trigger",
+      "type": "vector1"
+    },
+    {
+      "name": "/actions/ForTeddyVR/in/Look",
+      "type": "vector2"
+    },
+    {
+      "name": "/actions/ForTeddyVR/in/Menu",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/ForTeddyVR/in/Run",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/ForTeddyVR/in/Focus",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/ForTeddyVR/in/LookSwipe",
+      "type": "vector1"
+    },
+    {
+      "name": "/actions/ForTeddyVR/out/VibrationL",
+      "type": "vibration"
+    },
+    {
+      "name": "/actions/ForTeddyVR/out/VibrationR",
+      "type": "vibration"
+    },
+    {
+      "name": "/actions/ForTeddyArcade/in/Move",
+      "type": "vector2"
+    },
+    {
+      "name": "/actions/ForTeddyArcade/in/Look",
+      "type": "vector2"
+    },
+    {
+      "name": "/actions/ForTeddyArcade/in/Exit",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/ForTeddyArcade/out/VibrationL",
+      "type": "vibration"
+    },
+    {
+      "name": "/actions/ForTeddyArcade/out/VibrationR",
+      "type": "vibration"
     }
   ],
   "action_sets": [
@@ -98,6 +158,14 @@
     },
     {
       "name": "/actions/mixedreality",
+      "usage": "single"
+    },
+    {
+      "name": "/actions/ForTeddyVR",
+      "usage": "leftright"
+    },
+    {
+      "name": "/actions/ForTeddyArcade",
       "usage": "single"
     }
   ],

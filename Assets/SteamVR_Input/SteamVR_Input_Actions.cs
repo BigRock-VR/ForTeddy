@@ -55,6 +55,36 @@ namespace Valve.VR
         
         private static SteamVR_Action_Pose p_mixedreality_ExternalCamera;
         
+        private static SteamVR_Action_Vector2 p_forTeddyVR_Move;
+        
+        private static SteamVR_Action_Boolean p_forTeddyVR_Grab;
+        
+        private static SteamVR_Action_Single p_forTeddyVR_Trigger;
+        
+        private static SteamVR_Action_Vector2 p_forTeddyVR_Look;
+        
+        private static SteamVR_Action_Boolean p_forTeddyVR_Menu;
+        
+        private static SteamVR_Action_Boolean p_forTeddyVR_Run;
+        
+        private static SteamVR_Action_Boolean p_forTeddyVR_Focus;
+        
+        private static SteamVR_Action_Single p_forTeddyVR_LookSwipe;
+        
+        private static SteamVR_Action_Vibration p_forTeddyVR_VibrationL;
+        
+        private static SteamVR_Action_Vibration p_forTeddyVR_VibrationR;
+        
+        private static SteamVR_Action_Vector2 p_forTeddyArcade_Move;
+        
+        private static SteamVR_Action_Vector2 p_forTeddyArcade_Look;
+        
+        private static SteamVR_Action_Boolean p_forTeddyArcade_Exit;
+        
+        private static SteamVR_Action_Vibration p_forTeddyArcade_VibrationL;
+        
+        private static SteamVR_Action_Vibration p_forTeddyArcade_VibrationR;
+        
         public static SteamVR_Action_Boolean default_InteractUI
         {
             get
@@ -207,6 +237,126 @@ namespace Valve.VR
             }
         }
         
+        public static SteamVR_Action_Vector2 forTeddyVR_Move
+        {
+            get
+            {
+                return SteamVR_Actions.p_forTeddyVR_Move.GetCopy<SteamVR_Action_Vector2>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean forTeddyVR_Grab
+        {
+            get
+            {
+                return SteamVR_Actions.p_forTeddyVR_Grab.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Single forTeddyVR_Trigger
+        {
+            get
+            {
+                return SteamVR_Actions.p_forTeddyVR_Trigger.GetCopy<SteamVR_Action_Single>();
+            }
+        }
+        
+        public static SteamVR_Action_Vector2 forTeddyVR_Look
+        {
+            get
+            {
+                return SteamVR_Actions.p_forTeddyVR_Look.GetCopy<SteamVR_Action_Vector2>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean forTeddyVR_Menu
+        {
+            get
+            {
+                return SteamVR_Actions.p_forTeddyVR_Menu.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean forTeddyVR_Run
+        {
+            get
+            {
+                return SteamVR_Actions.p_forTeddyVR_Run.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean forTeddyVR_Focus
+        {
+            get
+            {
+                return SteamVR_Actions.p_forTeddyVR_Focus.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Single forTeddyVR_LookSwipe
+        {
+            get
+            {
+                return SteamVR_Actions.p_forTeddyVR_LookSwipe.GetCopy<SteamVR_Action_Single>();
+            }
+        }
+        
+        public static SteamVR_Action_Vibration forTeddyVR_VibrationL
+        {
+            get
+            {
+                return SteamVR_Actions.p_forTeddyVR_VibrationL.GetCopy<SteamVR_Action_Vibration>();
+            }
+        }
+        
+        public static SteamVR_Action_Vibration forTeddyVR_VibrationR
+        {
+            get
+            {
+                return SteamVR_Actions.p_forTeddyVR_VibrationR.GetCopy<SteamVR_Action_Vibration>();
+            }
+        }
+        
+        public static SteamVR_Action_Vector2 forTeddyArcade_Move
+        {
+            get
+            {
+                return SteamVR_Actions.p_forTeddyArcade_Move.GetCopy<SteamVR_Action_Vector2>();
+            }
+        }
+        
+        public static SteamVR_Action_Vector2 forTeddyArcade_Look
+        {
+            get
+            {
+                return SteamVR_Actions.p_forTeddyArcade_Look.GetCopy<SteamVR_Action_Vector2>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean forTeddyArcade_Exit
+        {
+            get
+            {
+                return SteamVR_Actions.p_forTeddyArcade_Exit.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Vibration forTeddyArcade_VibrationL
+        {
+            get
+            {
+                return SteamVR_Actions.p_forTeddyArcade_VibrationL.GetCopy<SteamVR_Action_Vibration>();
+            }
+        }
+        
+        public static SteamVR_Action_Vibration forTeddyArcade_VibrationR
+        {
+            get
+            {
+                return SteamVR_Actions.p_forTeddyArcade_VibrationR.GetCopy<SteamVR_Action_Vibration>();
+            }
+        }
+        
         private static void InitializeActionArrays()
         {
             Valve.VR.SteamVR_Input.actions = new Valve.VR.SteamVR_Action[] {
@@ -228,7 +378,22 @@ namespace Valve.VR
                     SteamVR_Actions.buggy_Throttle,
                     SteamVR_Actions.buggy_Brake,
                     SteamVR_Actions.buggy_Reset,
-                    SteamVR_Actions.mixedreality_ExternalCamera};
+                    SteamVR_Actions.mixedreality_ExternalCamera,
+                    SteamVR_Actions.forTeddyVR_Move,
+                    SteamVR_Actions.forTeddyVR_Grab,
+                    SteamVR_Actions.forTeddyVR_Trigger,
+                    SteamVR_Actions.forTeddyVR_Look,
+                    SteamVR_Actions.forTeddyVR_Menu,
+                    SteamVR_Actions.forTeddyVR_Run,
+                    SteamVR_Actions.forTeddyVR_Focus,
+                    SteamVR_Actions.forTeddyVR_LookSwipe,
+                    SteamVR_Actions.forTeddyVR_VibrationL,
+                    SteamVR_Actions.forTeddyVR_VibrationR,
+                    SteamVR_Actions.forTeddyArcade_Move,
+                    SteamVR_Actions.forTeddyArcade_Look,
+                    SteamVR_Actions.forTeddyArcade_Exit,
+                    SteamVR_Actions.forTeddyArcade_VibrationL,
+                    SteamVR_Actions.forTeddyArcade_VibrationR};
             Valve.VR.SteamVR_Input.actionsIn = new Valve.VR.ISteamVR_Action_In[] {
                     SteamVR_Actions.default_InteractUI,
                     SteamVR_Actions.default_Teleport,
@@ -247,11 +412,30 @@ namespace Valve.VR
                     SteamVR_Actions.buggy_Throttle,
                     SteamVR_Actions.buggy_Brake,
                     SteamVR_Actions.buggy_Reset,
-                    SteamVR_Actions.mixedreality_ExternalCamera};
+                    SteamVR_Actions.mixedreality_ExternalCamera,
+                    SteamVR_Actions.forTeddyVR_Move,
+                    SteamVR_Actions.forTeddyVR_Grab,
+                    SteamVR_Actions.forTeddyVR_Trigger,
+                    SteamVR_Actions.forTeddyVR_Look,
+                    SteamVR_Actions.forTeddyVR_Menu,
+                    SteamVR_Actions.forTeddyVR_Run,
+                    SteamVR_Actions.forTeddyVR_Focus,
+                    SteamVR_Actions.forTeddyVR_LookSwipe,
+                    SteamVR_Actions.forTeddyArcade_Move,
+                    SteamVR_Actions.forTeddyArcade_Look,
+                    SteamVR_Actions.forTeddyArcade_Exit};
             Valve.VR.SteamVR_Input.actionsOut = new Valve.VR.ISteamVR_Action_Out[] {
-                    SteamVR_Actions.default_Haptic};
+                    SteamVR_Actions.default_Haptic,
+                    SteamVR_Actions.forTeddyVR_VibrationL,
+                    SteamVR_Actions.forTeddyVR_VibrationR,
+                    SteamVR_Actions.forTeddyArcade_VibrationL,
+                    SteamVR_Actions.forTeddyArcade_VibrationR};
             Valve.VR.SteamVR_Input.actionsVibration = new Valve.VR.SteamVR_Action_Vibration[] {
-                    SteamVR_Actions.default_Haptic};
+                    SteamVR_Actions.default_Haptic,
+                    SteamVR_Actions.forTeddyVR_VibrationL,
+                    SteamVR_Actions.forTeddyVR_VibrationR,
+                    SteamVR_Actions.forTeddyArcade_VibrationL,
+                    SteamVR_Actions.forTeddyArcade_VibrationR};
             Valve.VR.SteamVR_Input.actionsPose = new Valve.VR.SteamVR_Action_Pose[] {
                     SteamVR_Actions.default_Pose,
                     SteamVR_Actions.mixedreality_ExternalCamera};
@@ -265,13 +449,24 @@ namespace Valve.VR
                     SteamVR_Actions.default_SnapTurnRight,
                     SteamVR_Actions.platformer_Jump,
                     SteamVR_Actions.buggy_Brake,
-                    SteamVR_Actions.buggy_Reset};
+                    SteamVR_Actions.buggy_Reset,
+                    SteamVR_Actions.forTeddyVR_Grab,
+                    SteamVR_Actions.forTeddyVR_Menu,
+                    SteamVR_Actions.forTeddyVR_Run,
+                    SteamVR_Actions.forTeddyVR_Focus,
+                    SteamVR_Actions.forTeddyArcade_Exit};
             Valve.VR.SteamVR_Input.actionsSingle = new Valve.VR.SteamVR_Action_Single[] {
                     SteamVR_Actions.default_Squeeze,
-                    SteamVR_Actions.buggy_Throttle};
+                    SteamVR_Actions.buggy_Throttle,
+                    SteamVR_Actions.forTeddyVR_Trigger,
+                    SteamVR_Actions.forTeddyVR_LookSwipe};
             Valve.VR.SteamVR_Input.actionsVector2 = new Valve.VR.SteamVR_Action_Vector2[] {
                     SteamVR_Actions.platformer_Move,
-                    SteamVR_Actions.buggy_Steering};
+                    SteamVR_Actions.buggy_Steering,
+                    SteamVR_Actions.forTeddyVR_Move,
+                    SteamVR_Actions.forTeddyVR_Look,
+                    SteamVR_Actions.forTeddyArcade_Move,
+                    SteamVR_Actions.forTeddyArcade_Look};
             Valve.VR.SteamVR_Input.actionsVector3 = new Valve.VR.SteamVR_Action_Vector3[0];
             Valve.VR.SteamVR_Input.actionsSkeleton = new Valve.VR.SteamVR_Action_Skeleton[] {
                     SteamVR_Actions.default_SkeletonLeftHand,
@@ -290,7 +485,18 @@ namespace Valve.VR
                     SteamVR_Actions.buggy_Steering,
                     SteamVR_Actions.buggy_Throttle,
                     SteamVR_Actions.buggy_Brake,
-                    SteamVR_Actions.buggy_Reset};
+                    SteamVR_Actions.buggy_Reset,
+                    SteamVR_Actions.forTeddyVR_Move,
+                    SteamVR_Actions.forTeddyVR_Grab,
+                    SteamVR_Actions.forTeddyVR_Trigger,
+                    SteamVR_Actions.forTeddyVR_Look,
+                    SteamVR_Actions.forTeddyVR_Menu,
+                    SteamVR_Actions.forTeddyVR_Run,
+                    SteamVR_Actions.forTeddyVR_Focus,
+                    SteamVR_Actions.forTeddyVR_LookSwipe,
+                    SteamVR_Actions.forTeddyArcade_Move,
+                    SteamVR_Actions.forTeddyArcade_Look,
+                    SteamVR_Actions.forTeddyArcade_Exit};
         }
         
         private static void PreInitActions()
@@ -314,6 +520,21 @@ namespace Valve.VR
             SteamVR_Actions.p_buggy_Brake = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/buggy/in/Brake")));
             SteamVR_Actions.p_buggy_Reset = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/buggy/in/Reset")));
             SteamVR_Actions.p_mixedreality_ExternalCamera = ((SteamVR_Action_Pose)(SteamVR_Action.Create<SteamVR_Action_Pose>("/actions/mixedreality/in/ExternalCamera")));
+            SteamVR_Actions.p_forTeddyVR_Move = ((SteamVR_Action_Vector2)(SteamVR_Action.Create<SteamVR_Action_Vector2>("/actions/ForTeddyVR/in/Move")));
+            SteamVR_Actions.p_forTeddyVR_Grab = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ForTeddyVR/in/Grab")));
+            SteamVR_Actions.p_forTeddyVR_Trigger = ((SteamVR_Action_Single)(SteamVR_Action.Create<SteamVR_Action_Single>("/actions/ForTeddyVR/in/Trigger")));
+            SteamVR_Actions.p_forTeddyVR_Look = ((SteamVR_Action_Vector2)(SteamVR_Action.Create<SteamVR_Action_Vector2>("/actions/ForTeddyVR/in/Look")));
+            SteamVR_Actions.p_forTeddyVR_Menu = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ForTeddyVR/in/Menu")));
+            SteamVR_Actions.p_forTeddyVR_Run = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ForTeddyVR/in/Run")));
+            SteamVR_Actions.p_forTeddyVR_Focus = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ForTeddyVR/in/Focus")));
+            SteamVR_Actions.p_forTeddyVR_LookSwipe = ((SteamVR_Action_Single)(SteamVR_Action.Create<SteamVR_Action_Single>("/actions/ForTeddyVR/in/LookSwipe")));
+            SteamVR_Actions.p_forTeddyVR_VibrationL = ((SteamVR_Action_Vibration)(SteamVR_Action.Create<SteamVR_Action_Vibration>("/actions/ForTeddyVR/out/VibrationL")));
+            SteamVR_Actions.p_forTeddyVR_VibrationR = ((SteamVR_Action_Vibration)(SteamVR_Action.Create<SteamVR_Action_Vibration>("/actions/ForTeddyVR/out/VibrationR")));
+            SteamVR_Actions.p_forTeddyArcade_Move = ((SteamVR_Action_Vector2)(SteamVR_Action.Create<SteamVR_Action_Vector2>("/actions/ForTeddyArcade/in/Move")));
+            SteamVR_Actions.p_forTeddyArcade_Look = ((SteamVR_Action_Vector2)(SteamVR_Action.Create<SteamVR_Action_Vector2>("/actions/ForTeddyArcade/in/Look")));
+            SteamVR_Actions.p_forTeddyArcade_Exit = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ForTeddyArcade/in/Exit")));
+            SteamVR_Actions.p_forTeddyArcade_VibrationL = ((SteamVR_Action_Vibration)(SteamVR_Action.Create<SteamVR_Action_Vibration>("/actions/ForTeddyArcade/out/VibrationL")));
+            SteamVR_Actions.p_forTeddyArcade_VibrationR = ((SteamVR_Action_Vibration)(SteamVR_Action.Create<SteamVR_Action_Vibration>("/actions/ForTeddyArcade/out/VibrationR")));
         }
     }
 }
