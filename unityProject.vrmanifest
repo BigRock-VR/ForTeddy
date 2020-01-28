@@ -5,7 +5,7 @@
       "app_key": "application.generated.unity.forteddy.exe",
       "launch_type": "url",
       "url": "steam://launch/",
-      "action_manifest_path": "C:\\Users\\Master\\Desktop\\ForTeddy\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "action_manifest_path": "C:\\Users\\Master\\Desktop\\Tesi\\ForTeddy\\Assets\\StreamingAssets\\SteamVR\\actions.json",
       "strings": {
         "en_us": {
           "name": "ForTeddy [Testing]"

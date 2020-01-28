@@ -6,25 +6,18 @@ using UnityEngine.Animations;
 public class CameraArm : MonoBehaviour
 {
     [SerializeField]
-    Camera cam;
+    Transform cam;
     [SerializeField]
     bool doesRotate;
     [SerializeField]
     float timer = 0;
 
-    private void Start()
-    {
-        if (GetComponentInChildren<Camera>() != null)
-        {
-            cam = GetComponentInChildren<Camera>();
-        }
-    }
-
     public void doCameraRotation(float rotation, float modifier, bool doingRotation)
     {
         doesRotate = doingRotation;
 
-        cam.transform.localPosition = Vector3.zero;
+
+        //cam.transform.localPosition = Vector3.zero;
 
         if (timer <= 1 && doesRotate)
         {
@@ -39,7 +32,7 @@ public class CameraArm : MonoBehaviour
         }
         else if (!doesRotate)
         {
-            cam.transform.localPosition = Vector3.zero;
+            //cam.transform.localPosition = Vector3.zero;
 
         }
     }

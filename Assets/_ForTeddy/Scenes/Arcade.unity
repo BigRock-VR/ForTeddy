@@ -122,6 +122,165 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 1707bcf143332f84c83b11542d631e9e, type: 2}
+--- !u!1 &48730756
+GameObject:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 48730757}
+  - component: {fileID: 48730759}
+  - component: {fileID: 48730758}
+  m_Layer: 10
+  m_Name: cm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &48730757
+Transform:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48730756}
+  m_LocalRotation: {x: 0.1837852, y: -0.5219547, z: 0.11630922, w: -0.82477784}
+  m_LocalPosition: {x: -31.685415, y: 0.53743076, z: 7.5285587}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1636273691}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &48730758
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48730756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ad980451443d70438faac0bc6c235a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LookaheadTime: 0
+  m_LookaheadSmoothing: 10
+  m_LookaheadIgnoreY: 0
+  m_XDamping: 1
+  m_YDamping: 1
+  m_ZDamping: 1
+  m_ScreenX: 0.219
+  m_ScreenY: 0.679
+  m_CameraDistance: 10
+  m_DeadZoneWidth: 0
+  m_DeadZoneHeight: 0
+  m_DeadZoneDepth: 0
+  m_UnlimitedSoftZone: 0
+  m_SoftZoneWidth: 0.8
+  m_SoftZoneHeight: 0.8
+  m_BiasX: 0
+  m_BiasY: 0
+  m_CenterOnActivate: 1
+  m_GroupFramingMode: 2
+  m_AdjustmentMode: 2
+  m_GroupFramingSize: 0.8
+  m_MaxDollyIn: 5000
+  m_MaxDollyOut: 5000
+  m_MinimumDistance: 1
+  m_MaximumDistance: 5000
+  m_MinimumFOV: 3
+  m_MaximumFOV: 60
+  m_MinimumOrthoSize: 1
+  m_MaximumOrthoSize: 5000
+--- !u!114 &48730759
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48730756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &53976655
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 53976656}
+  - component: {fileID: 53976657}
+  m_Layer: 10
+  m_Name: TopRig
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &53976656
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53976655}
+  m_LocalRotation: {x: 0.1837852, y: -0.5219547, z: 0.11630922, w: -0.82477784}
+  m_LocalPosition: {x: -9.571207, y: -2.0050974, z: 6.1242747}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1748947059}
+  m_Father: {fileID: 1636273691}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &53976657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53976655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ExcludedPropertiesInInspector:
+  - m_Script
+  - Header
+  - Extensions
+  - m_Priority
+  - m_Transitions
+  - m_Follow
+  - m_StandbyUpdate
+  - m_Lens
+  m_LockStageInInspector: 00000000
+  m_StreamingVersion: 20170927
+  m_Priority: 10
+  m_StandbyUpdate: 2
+  m_LookAt: {fileID: 0}
+  m_Follow: {fileID: 0}
+  m_Lens:
+    FieldOfView: 40
+    OrthographicSize: 10
+    NearClipPlane: 0.1
+    FarClipPlane: 5000
+    Dutch: 0
+    LensShift: {x: 0, y: 0}
+  m_Transitions:
+    m_BlendHint: 0
+    m_InheritPosition: 0
+    m_OnCameraLive:
+      m_PersistentCalls:
+        m_Calls: []
+  m_LegacyBlendHint: 0
+  m_ComponentOwner: {fileID: 1748947059}
 --- !u!1 &93753260
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,10 +290,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 93753261}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SpawnPos_3
   m_TagString: Untagged
-  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -146,12 +305,55 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 93753260}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.31, y: 0, z: -0.84}
+  m_LocalPosition: {x: 0.08, y: 1.6, z: -3.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1343577237}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &179571687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8334a49e76cafef4da22976db1613959, type: 3}
+  m_Name: Default Aura Quality Settings
+  m_EditorClassIdentifier: 
+  displayVolumetricLightingBuffer: 0
+  frustumGridResolution: {x: 160, y: 88, z: 128}
+  enableAutomaticStereoResizing: 1
+  farClipPlaneDistance: 128
+  depthBiasCoefficient: 0.35
+  enableVolumes: 1
+  enableVolumesTexture2DMask: 1
+  enableVolumesTexture3DMask: 1
+  enableVolumesNoiseMask: 1
+  enableAmbientLighting: 1
+  enableDirectionalLights: 1
+  enableDirectionalLightsShadows: 1
+  enableSpotLights: 1
+  enableSpotLightsShadows: 1
+  enablePointLights: 1
+  enablePointLightsShadows: 1
+  enableLightsCookies: 1
+  enableDithering: 1
+  texture3DFiltering: 1
+  EXPERIMENTAL_enableDenoisingFilter: 0
+  EXPERIMENTAL_denoisingFilterRange: 0
+  EXPERIMENTAL_enableBlurFilter: 0
+  EXPERIMENTAL_blurFilterRange: 0
+  EXPERIMENTAL_blurFilterType: 0
+  EXPERIMENTAL_blurFilterGaussianDeviation: 0.0025
+  enableTemporalReprojection: 1
+  temporalReprojectionFactor: 0.95
+  enableOcclusionCulling: 1
+  debugOcclusionCulling: 0
+  occlusionCullingAccuracy: 0
+  enableLightProbes: 0
 --- !u!1 &185763133
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,7 +363,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 185763134}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Weapon_SpawnPos
   m_TagString: Untagged
   m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
@@ -191,10 +393,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 231854196}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SpawnPos_0
   m_TagString: Untagged
-  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -206,7 +408,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 231854195}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.91, y: 0, z: 7.53}
+  m_LocalPosition: {x: -6.11, y: 1.6, z: 0.43}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1343577237}
@@ -225,7 +427,7 @@ GameObject:
   - component: {fileID: 244985940}
   - component: {fileID: 244985939}
   - component: {fileID: 244985938}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -240,14 +442,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 244985935}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.9, y: 2.46, z: 29.3}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 18.075, y: 1.471, z: 25.767}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 1987250083}
   - {fileID: 610178566}
   - {fileID: 185763134}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &244985937
 MonoBehaviour:
@@ -285,7 +487,7 @@ CharacterController:
   m_Height: 2
   m_Radius: 0.5
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0.001
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
@@ -325,6 +527,416 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a8ac99020020b654e971a8bdc7d21532, type: 2}
   weaponSpawnPosition: {fileID: 185763134}
   currSelectedWeapon: 0
+--- !u!1 &267910497
+GameObject:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 267910498}
+  - component: {fileID: 267910501}
+  - component: {fileID: 267910500}
+  - component: {fileID: 267910499}
+  m_Layer: 10
+  m_Name: cm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &267910498
+Transform:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 267910497}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 518989101}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &267910499
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 267910497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
+  m_LookaheadTime: 0
+  m_LookaheadSmoothing: 10
+  m_LookaheadIgnoreY: 0
+  m_HorizontalDamping: 0
+  m_VerticalDamping: 0
+  m_ScreenX: 0.5
+  m_ScreenY: 0.6
+  m_DeadZoneWidth: 0
+  m_DeadZoneHeight: 0
+  m_SoftZoneWidth: 0.8
+  m_SoftZoneHeight: 0.8
+  m_BiasX: 0
+  m_BiasY: 0
+  m_CenterOnActivate: 1
+--- !u!114 &267910500
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 267910497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9384ab8608cdc3d479fe89cd51eed48f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BindingMode: 1
+  m_FollowOffset: {x: 0, y: 0, z: -10}
+  m_XDamping: 1
+  m_YDamping: 1
+  m_ZDamping: 1
+  m_AngularDampingMode: 0
+  m_PitchDamping: 0
+  m_YawDamping: 0
+  m_RollDamping: 0
+  m_AngularDamping: 0
+  m_Heading:
+    m_Definition: 2
+    m_VelocityFilterStrength: 4
+    m_Bias: 0
+  m_RecenterToTargetHeading:
+    m_enabled: 0
+    m_WaitTime: 1
+    m_RecenteringTime: 2
+    m_LegacyHeadingDefinition: -1
+    m_LegacyVelocityFilterStrength: -1
+  m_XAxis:
+    Value: 0
+    m_SpeedMode: 0
+    m_MaxSpeed: 300
+    m_AccelTime: 0.1
+    m_DecelTime: 0.1
+    m_InputAxisName: 
+    m_InputAxisValue: 0
+    m_InvertInput: 1
+    m_MinValue: -180
+    m_MaxValue: 180
+    m_Wrap: 1
+    m_Recentering:
+      m_enabled: 0
+      m_WaitTime: 1
+      m_RecenteringTime: 2
+      m_LegacyHeadingDefinition: -1
+      m_LegacyVelocityFilterStrength: -1
+  m_LegacyRadius: 3.4028235e+38
+  m_LegacyHeightOffset: 3.4028235e+38
+  m_LegacyHeadingBias: 3.4028235e+38
+  m_HeadingIsSlave: 1
+--- !u!114 &267910501
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 267910497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &319402492
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 319402501}
+  - component: {fileID: 319402500}
+  - component: {fileID: 319402497}
+  - component: {fileID: 319402496}
+  - component: {fileID: 319402495}
+  - component: {fileID: 319402494}
+  - component: {fileID: 319402493}
+  m_Layer: 0
+  m_Name: _MainCamera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &319402493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319402492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cade6ad8fe012840b5101be31f9a55d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smoothing: 5
+  renderTexture: {fileID: 8400000, guid: 2d5a1cd6969166b42bf37e5bc032b737, type: 2}
+--- !u!114 &319402494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319402492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowDebugText: 0
+  m_ShowCameraFrustum: 1
+  m_IgnoreTimeScale: 0
+  m_WorldUpOverride: {fileID: 0}
+  m_UpdateMethod: 2
+  m_BlendUpdateMethod: 1
+  m_DefaultBlend:
+    m_Style: 1
+    m_Time: 2
+    m_CustomCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  m_CustomBlends: {fileID: 0}
+  m_CameraCutEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_CameraActivatedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &319402495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319402492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdcd06815c47d30489f70df42db56a48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frustumSettings:
+    baseSettings: {fileID: 756423805}
+    qualitySettings: {fileID: 179571687}
+--- !u!114 &319402496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319402492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeTrigger: {fileID: 319402501}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 0
+  antialiasingMode: 3
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 0
+  m_ShowCustomSorter: 0
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
+--- !u!124 &319402497
+Behaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319402492}
+  m_Enabled: 1
+--- !u!20 &319402500
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319402492}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.028762981, g: 0.05902014, b: 0.1397059, a: 1}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.1
+  far clip plane: 5000
+  field of view: 6
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: -1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  m_RenderingPath: 1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 1
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!4 &319402501
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319402492}
+  m_LocalRotation: {x: -0.1837852, y: 0.5219547, z: -0.11630922, w: -0.82477784}
+  m_LocalPosition: {x: 26.413908, y: 5.886674, z: 22.407753}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &518989100
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 518989101}
+  - component: {fileID: 518989102}
+  m_Layer: 10
+  m_Name: BottomRig
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &518989101
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518989100}
+  m_LocalRotation: {x: 0.1837852, y: -0.5219547, z: 0.11630922, w: -0.82477784}
+  m_LocalPosition: {x: -9.621184, y: -2.0050967, z: 6.1242757}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 267910498}
+  m_Father: {fileID: 1636273691}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &518989102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518989100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ExcludedPropertiesInInspector:
+  - m_Script
+  - Header
+  - Extensions
+  - m_Priority
+  - m_Transitions
+  - m_Follow
+  - m_StandbyUpdate
+  - m_Lens
+  m_LockStageInInspector: 00000000
+  m_StreamingVersion: 20170927
+  m_Priority: 10
+  m_StandbyUpdate: 2
+  m_LookAt: {fileID: 0}
+  m_Follow: {fileID: 0}
+  m_Lens:
+    FieldOfView: 40
+    OrthographicSize: 10
+    NearClipPlane: 0.1
+    FarClipPlane: 5000
+    Dutch: 0
+    LensShift: {x: 0, y: 0}
+  m_Transitions:
+    m_BlendHint: 0
+    m_InheritPosition: 0
+    m_OnCameraLive:
+      m_PersistentCalls:
+        m_Calls: []
+  m_LegacyBlendHint: 0
+  m_ComponentOwner: {fileID: 267910498}
 --- !u!1 &610178565
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,7 +949,7 @@ GameObject:
   - component: {fileID: 610178569}
   - component: {fileID: 610178568}
   - component: {fileID: 610178567}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -417,6 +1029,32 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 610178565}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &756423805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59306422a2ca4454aabce3daa79c3334, type: 3}
+  m_Name: New Aura Base Settings
+  m_EditorClassIdentifier: 
+  useDensity: 1
+  density: 0.25
+  useScattering: 1
+  scattering: 0.5
+  useAmbientLighting: 1
+  ambientLightingStrength: 1
+  useColor: 0
+  color: {r: 0, g: 0.5, b: 0.5, a: 0.5}
+  colorStrength: 1
+  useTint: 0
+  tint: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  tintStrength: 1
+  useExtinction: 0
+  extinction: 0.75
 --- !u!1 &919630112
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,10 +1064,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 919630113}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SpawnPos_1
   m_TagString: Untagged
-  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -441,12 +1079,86 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919630112}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.24, y: 0, z: 7.97}
+  m_LocalPosition: {x: -5.79, y: 1.6, z: -2.43}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1343577237}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1062658268
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1062658269}
+  - component: {fileID: 1062658270}
+  m_Layer: 10
+  m_Name: MiddleRig
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1062658269
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1062658268}
+  m_LocalRotation: {x: 0.1837852, y: -0.5219547, z: 0.11630922, w: -0.82477784}
+  m_LocalPosition: {x: -9.621184, y: -2.0050967, z: 6.1242757}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1868715994}
+  m_Father: {fileID: 1636273691}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1062658270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1062658268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ExcludedPropertiesInInspector:
+  - m_Script
+  - Header
+  - Extensions
+  - m_Priority
+  - m_Transitions
+  - m_Follow
+  - m_StandbyUpdate
+  - m_Lens
+  m_LockStageInInspector: 00000000
+  m_StreamingVersion: 20170927
+  m_Priority: 10
+  m_StandbyUpdate: 2
+  m_LookAt: {fileID: 0}
+  m_Follow: {fileID: 0}
+  m_Lens:
+    FieldOfView: 40
+    OrthographicSize: 10
+    NearClipPlane: 0.1
+    FarClipPlane: 5000
+    Dutch: 0
+    LensShift: {x: 0, y: 0}
+  m_Transitions:
+    m_BlendHint: 0
+    m_InheritPosition: 0
+    m_OnCameraLive:
+      m_PersistentCalls:
+        m_Calls: []
+  m_LegacyBlendHint: 0
+  m_ComponentOwner: {fileID: 1868715994}
 --- !u!1 &1343577236
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,7 +1169,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1343577237}
   - component: {fileID: 1343577238}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WaveManager
   m_TagString: WaveManager
   m_Icon: {fileID: 0}
@@ -471,7 +1183,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1343577236}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: 16.9, y: 0, z: 29.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -480,7 +1192,7 @@ Transform:
   - {fileID: 1479690921}
   - {fileID: 93753261}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1343577238
 MonoBehaviour:
@@ -517,10 +1229,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1479690921}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SpawnPos_2
   m_TagString: Untagged
-  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -532,7 +1244,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1479690920}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.41, y: 0, z: 3.27}
+  m_LocalPosition: {x: -0.82, y: 1.6, z: 0.72}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1343577237}
@@ -547,73 +1259,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1636273691}
-  - component: {fileID: 1636273690}
-  - component: {fileID: 1636273692}
-  m_Layer: 0
-  m_Name: Main Camera
+  - component: {fileID: 1636273689}
+  m_Layer: 10
+  m_Name: ArcadeCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!20 &1636273690
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1636273688}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.027634397, g: 0.02789398, b: 0.028301895, a: 0}
-  m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.01
-  far clip plane: 1000
-  field of view: 48
-  orthographic: 0
-  orthographic size: 8
-  m_Depth: -1
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
---- !u!4 &1636273691
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1636273688}
-  m_LocalRotation: {x: 0.22414392, y: -0.48296294, z: 0.12940955, w: 0.8365163}
-  m_LocalPosition: {x: 25.83, y: 5.54, z: 24.13}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 30, y: -60.000004, z: 0}
---- !u!114 &1636273692
+--- !u!114 &1636273689
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -622,11 +1276,302 @@ MonoBehaviour:
   m_GameObject: {fileID: 1636273688}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cade6ad8fe012840b5101be31f9a55d, type: 3}
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smoothing: 5
-  renderTexture: {fileID: 8400000, guid: 2d5a1cd6969166b42bf37e5bc032b737, type: 2}
+  m_ExcludedPropertiesInInspector:
+  - m_Script
+  m_LockStageInInspector: 
+  m_StreamingVersion: 20170927
+  m_Priority: 10
+  m_StandbyUpdate: 2
+  m_LookAt: {fileID: 0}
+  m_Follow: {fileID: 244985936}
+  m_Lens:
+    FieldOfView: 6
+    OrthographicSize: 10
+    NearClipPlane: 0.1
+    FarClipPlane: 5000
+    Dutch: 0
+    LensShift: {x: 0, y: 0}
+  m_Transitions:
+    m_BlendHint: 0
+    m_InheritPosition: 0
+    m_OnCameraLive:
+      m_PersistentCalls:
+        m_Calls: []
+  m_LegacyBlendHint: 0
+  m_ComponentOwner: {fileID: 48730757}
+--- !u!4 &1636273691
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1636273688}
+  m_LocalRotation: {x: -0.1837852, y: 0.5219547, z: -0.11630922, w: -0.82477784}
+  m_LocalPosition: {x: 26.413908, y: 5.886674, z: 22.407753}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 53976656}
+  - {fileID: 1062658269}
+  - {fileID: 518989101}
+  - {fileID: 48730757}
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 45, y: -66, z: 0}
+--- !u!1 &1748947058
+GameObject:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1748947059}
+  - component: {fileID: 1748947062}
+  - component: {fileID: 1748947061}
+  - component: {fileID: 1748947060}
+  m_Layer: 10
+  m_Name: cm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1748947059
+Transform:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748947058}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 53976656}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1748947060
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748947058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
+  m_LookaheadTime: 0
+  m_LookaheadSmoothing: 10
+  m_LookaheadIgnoreY: 0
+  m_HorizontalDamping: 0
+  m_VerticalDamping: 0
+  m_ScreenX: 0.5
+  m_ScreenY: 0.5
+  m_DeadZoneWidth: 0
+  m_DeadZoneHeight: 0
+  m_SoftZoneWidth: 0.8
+  m_SoftZoneHeight: 0.8
+  m_BiasX: 0
+  m_BiasY: 0
+  m_CenterOnActivate: 1
+--- !u!114 &1748947061
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748947058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9384ab8608cdc3d479fe89cd51eed48f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BindingMode: 1
+  m_FollowOffset: {x: 0, y: 0, z: -10}
+  m_XDamping: 1
+  m_YDamping: 1
+  m_ZDamping: 1
+  m_AngularDampingMode: 0
+  m_PitchDamping: 0
+  m_YawDamping: 0
+  m_RollDamping: 0
+  m_AngularDamping: 0
+  m_Heading:
+    m_Definition: 2
+    m_VelocityFilterStrength: 4
+    m_Bias: 0
+  m_RecenterToTargetHeading:
+    m_enabled: 0
+    m_WaitTime: 1
+    m_RecenteringTime: 2
+    m_LegacyHeadingDefinition: -1
+    m_LegacyVelocityFilterStrength: -1
+  m_XAxis:
+    Value: 0
+    m_SpeedMode: 0
+    m_MaxSpeed: 300
+    m_AccelTime: 0.1
+    m_DecelTime: 0.1
+    m_InputAxisName: 
+    m_InputAxisValue: 0
+    m_InvertInput: 1
+    m_MinValue: -180
+    m_MaxValue: 180
+    m_Wrap: 1
+    m_Recentering:
+      m_enabled: 0
+      m_WaitTime: 1
+      m_RecenteringTime: 2
+      m_LegacyHeadingDefinition: -1
+      m_LegacyVelocityFilterStrength: -1
+  m_LegacyRadius: 3.4028235e+38
+  m_LegacyHeightOffset: 3.4028235e+38
+  m_LegacyHeadingBias: 3.4028235e+38
+  m_HeadingIsSlave: 1
+--- !u!114 &1748947062
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748947058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1868715993
+GameObject:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1868715994}
+  - component: {fileID: 1868715997}
+  - component: {fileID: 1868715996}
+  - component: {fileID: 1868715995}
+  m_Layer: 10
+  m_Name: cm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1868715994
+Transform:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868715993}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1062658269}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1868715995
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868715993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
+  m_LookaheadTime: 0
+  m_LookaheadSmoothing: 10
+  m_LookaheadIgnoreY: 0
+  m_HorizontalDamping: 0
+  m_VerticalDamping: 0
+  m_ScreenX: 0.5
+  m_ScreenY: 0.55
+  m_DeadZoneWidth: 0
+  m_DeadZoneHeight: 0
+  m_SoftZoneWidth: 0.8
+  m_SoftZoneHeight: 0.8
+  m_BiasX: 0
+  m_BiasY: 0
+  m_CenterOnActivate: 1
+--- !u!114 &1868715996
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868715993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9384ab8608cdc3d479fe89cd51eed48f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BindingMode: 1
+  m_FollowOffset: {x: 0, y: 0, z: -10}
+  m_XDamping: 1
+  m_YDamping: 1
+  m_ZDamping: 1
+  m_AngularDampingMode: 0
+  m_PitchDamping: 0
+  m_YawDamping: 0
+  m_RollDamping: 0
+  m_AngularDamping: 0
+  m_Heading:
+    m_Definition: 2
+    m_VelocityFilterStrength: 4
+    m_Bias: 0
+  m_RecenterToTargetHeading:
+    m_enabled: 0
+    m_WaitTime: 1
+    m_RecenteringTime: 2
+    m_LegacyHeadingDefinition: -1
+    m_LegacyVelocityFilterStrength: -1
+  m_XAxis:
+    Value: 0
+    m_SpeedMode: 0
+    m_MaxSpeed: 300
+    m_AccelTime: 0.1
+    m_DecelTime: 0.1
+    m_InputAxisName: 
+    m_InputAxisValue: 0
+    m_InvertInput: 1
+    m_MinValue: -180
+    m_MaxValue: 180
+    m_Wrap: 1
+    m_Recentering:
+      m_enabled: 0
+      m_WaitTime: 1
+      m_RecenteringTime: 2
+      m_LegacyHeadingDefinition: -1
+      m_LegacyVelocityFilterStrength: -1
+  m_LegacyRadius: 3.4028235e+38
+  m_LegacyHeightOffset: 3.4028235e+38
+  m_LegacyHeadingBias: 3.4028235e+38
+  m_HeadingIsSlave: 1
+--- !u!114 &1868715997
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868715993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1987250082
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,7 +1584,7 @@ GameObject:
   - component: {fileID: 1987250086}
   - component: {fileID: 1987250085}
   - component: {fileID: 1987250084}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -873,7 +1818,7 @@ GameObject:
   - component: {fileID: 6029431253263445474}
   - component: {fileID: 4565813883490050803}
   - component: {fileID: 1880216834064405870}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Book6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -929,7 +1874,7 @@ GameObject:
   - component: {fileID: 931039015829921963}
   - component: {fileID: 6387997371013393713}
   - component: {fileID: 231814600891499281}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_BasketBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1040,7 +1985,7 @@ GameObject:
   - component: {fileID: 9103561434814549551}
   - component: {fileID: 6764776413522672704}
   - component: {fileID: 2058864718114067780}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Lego8x1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1066,7 +2011,7 @@ GameObject:
   - component: {fileID: 4625703835519893183}
   - component: {fileID: 95321550911225945}
   - component: {fileID: 6168498963136864406}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Book10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1226,7 +2171,7 @@ GameObject:
   - component: {fileID: 1124951484244438474}
   - component: {fileID: 6320497190467134269}
   - component: {fileID: 3944029365095742660}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Skateboard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1244,7 +2189,7 @@ GameObject:
   - component: {fileID: 1259773005853616304}
   - component: {fileID: 8280577151591700640}
   - component: {fileID: 6057134705689972474}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Lego2x6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1308,7 +2253,7 @@ GameObject:
   - component: {fileID: 1669511519716988606}
   - component: {fileID: 5735595416979754121}
   - component: {fileID: 5837310140230664637}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Matita11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1338,7 +2283,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7465929736382478709}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Lego_grp2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1392,7 +2337,7 @@ GameObject:
   - component: {fileID: 2257266468536755277}
   - component: {fileID: 1339206022390244037}
   - component: {fileID: 1115978518920935646}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Matita2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1410,7 +2355,7 @@ GameObject:
   - component: {fileID: 6142764502535341860}
   - component: {fileID: 9217905727633477824}
   - component: {fileID: 8757115827942901412}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Lego8x11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1539,7 +2484,7 @@ GameObject:
   - component: {fileID: 325303295124101096}
   - component: {fileID: 3826723639482678193}
   - component: {fileID: 284055080339559153}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FogEmitter_all
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1557,7 +2502,7 @@ GameObject:
   - component: {fileID: 5199684154868416232}
   - component: {fileID: 1445343879665497424}
   - component: {fileID: 1914074909383869871}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_ShortBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1825,7 +2770,7 @@ GameObject:
   - component: {fileID: 5208587107587555948}
   - component: {fileID: 1607883031536454886}
   - component: {fileID: 4154420068997251749}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Lego8x12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1898,7 +2843,7 @@ Transform:
   - {fileID: 8857238809561442626}
   - {fileID: 1983134130185800776}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!23 &1539116673648358753
 MeshRenderer:
@@ -1955,7 +2900,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5321682462298936220}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Lego_grp4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1973,7 +2918,7 @@ GameObject:
   - component: {fileID: 2108946620163190233}
   - component: {fileID: 6949194320411437765}
   - component: {fileID: 8222531220713241873}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Book1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1997,7 +2942,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 367172581793206270}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Cubes_grp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2105,7 +3050,7 @@ GameObject:
   - component: {fileID: 1034560376622175654}
   - component: {fileID: 1981079051036751551}
   - component: {fileID: 1539116673648358753}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Carpet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2229,7 +3174,7 @@ GameObject:
   - component: {fileID: 2653188457384138364}
   - component: {fileID: 1150272543909336183}
   - component: {fileID: 1640762272573357614}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_LetterCube2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2247,7 +3192,7 @@ GameObject:
   - component: {fileID: 1339432840932949553}
   - component: {fileID: 7239031413310990597}
   - component: {fileID: 753381406738469981}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Matita10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2457,7 +3402,7 @@ GameObject:
   - component: {fileID: 4724376602539156760}
   - component: {fileID: 3259858477902407082}
   - component: {fileID: 3713888202406581968}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Lego2x4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7222,7 +8167,7 @@ GameObject:
   - component: {fileID: 1983134128160030407}
   - component: {fileID: 1983134128160030404}
   - component: {fileID: 1983134128160030405}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fog_grp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7313,7 +8258,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1983134128181644057}
   - component: {fileID: 1983134128181644056}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Lampada spot2 RealTime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11990,7 +12935,7 @@ GameObject:
   - component: {fileID: 1983134128262039503}
   - component: {fileID: 1983134128262039497}
   - component: {fileID: 1983134128262039502}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: _ParticleSystemMiddle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12158,7 +13103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1983134128400308832}
   - component: {fileID: 1983134128400308833}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Area Light (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12235,7 +13180,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1983134128497641763}
   - component: {fileID: 1983134128497641760}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point Light (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12266,7 +13211,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1983134128504382462}
   - component: {fileID: 1983134128504382463}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Lampada spot1 RealTime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12417,7 +13362,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1983134128528305853}
   - component: {fileID: 1983134128528305842}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point Light (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12463,7 +13408,7 @@ GameObject:
   - component: {fileID: 1983134128549040524}
   - component: {fileID: 1983134128549040526}
   - component: {fileID: 1983134128549040527}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: _ParticleSystemBoss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17201,7 +18146,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1983134128550235231}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Lampada1_grp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17309,7 +18254,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1983134128568062081}
   - component: {fileID: 1983134128568062086}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point Light (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17342,7 +18287,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1983134128634803466}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Lampada2_grp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17359,7 +18304,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1983134128730880916}
   - component: {fileID: 1983134128730880917}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17524,7 +18469,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1983134128839798096}
   - component: {fileID: 1983134128839798097}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point Light (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17601,7 +18546,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1983134128852954959}
   - component: {fileID: 1983134128852954956}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Area Light (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17632,7 +18577,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1983134128876108054}
   - component: {fileID: 1983134128876108055}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Directional Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17783,7 +18728,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1983134128909934991}
   - component: {fileID: 1983134128909934988}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point Light (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17846,7 +18791,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1983134129004783633}
   - component: {fileID: 1983134129004783638}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FogManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17937,7 +18882,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1983134129015356768}
   - component: {fileID: 1983134129015356769}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point Light (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17954,7 +18899,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1983134129016688774}
   - component: {fileID: 1983134129016688775}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Area Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18119,7 +19064,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1983134129092805141}
   - component: {fileID: 1983134129092805354}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point Light (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18196,7 +19141,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1983134129185189115}
   - component: {fileID: 1983134129185189112}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point Light (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18227,7 +19172,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1983134129222606797}
   - component: {fileID: 1983134129222606796}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point Light (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18378,7 +19323,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1983134129245915189}
   - component: {fileID: 1983134129245915146}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point Light (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18483,7 +19428,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1983134129272447656}
   - component: {fileID: 1983134129272447657}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point Light (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18574,7 +19519,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1983134129281503688}
   - component: {fileID: 1983134129281503689}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point Light (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18665,7 +19610,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1983134129381731089}
   - component: {fileID: 1983134129381731094}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point Light (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23342,7 +24287,7 @@ GameObject:
   - component: {fileID: 1983134129431200251}
   - component: {fileID: 1983134129431200229}
   - component: {fileID: 1983134129431200250}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: _ParticleSystemAll
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23496,7 +24441,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1983134129441666359}
   - component: {fileID: 1983134129441666356}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point Light (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23527,7 +24472,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1983134129454846108}
   - component: {fileID: 1983134129454846109}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Area Light (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23618,7 +24563,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1983134129509567220}
   - component: {fileID: 1983134129509567221}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Area Light (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23709,7 +24654,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1983134129573041214}
   - component: {fileID: 1983134129573041215}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point Light (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23874,7 +24819,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1983134129576391232}
   - component: {fileID: 1983134129576391233}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Area Light (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23951,7 +24896,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1983134129587937535}
   - component: {fileID: 1983134129587937532}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point Light (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23982,7 +24927,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1983134129710232236}
   - component: {fileID: 1983134129710232237}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point Light (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24073,7 +25018,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1983134129942180598}
   - component: {fileID: 1983134129942180599}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Area Light (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24164,7 +25109,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1983134129962164946}
   - component: {fileID: 1983134129962164947}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point Light (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24329,7 +25274,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1983134130054145592}
   - component: {fileID: 1983134130054145593}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point Light (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24407,7 +25352,7 @@ GameObject:
   - component: {fileID: 1983134130185800776}
   - component: {fileID: 1983134130185800777}
   - component: {fileID: 1983134130185800782}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Height_Fog_Plane (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24934,7 +25879,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1983134130231221779}
   - component: {fileID: 1983134130231221776}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Light Probe Group
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25025,7 +25970,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1983134130240867619}
   - component: {fileID: 1983134130240867616}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Area Light (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25149,7 +26094,7 @@ GameObject:
   - component: {fileID: 1983134130241281443}
   - component: {fileID: 1983134130241281440}
   - component: {fileID: 1983134130241281441}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Lampada2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25208,7 +26153,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1983134130249291190}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Lights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25225,7 +26170,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1983134130258229236}
   - component: {fileID: 1983134130258229237}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point Light (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25315,7 +26260,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7382103778934712505}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: pPlane1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25333,7 +26278,7 @@ GameObject:
   - component: {fileID: 4396235856735926095}
   - component: {fileID: 1229351728406874550}
   - component: {fileID: 3759433953586258428}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FogEmitter_middle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25389,7 +26334,7 @@ GameObject:
   - component: {fileID: 6068410697845458063}
   - component: {fileID: 7228378597049350545}
   - component: {fileID: 8338833453790298583}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Matita6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25475,7 +26420,7 @@ GameObject:
   - component: {fileID: 7399828565396783767}
   - component: {fileID: 4762384118989163530}
   - component: {fileID: 8070648707272643685}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Lego2x8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25493,7 +26438,7 @@ GameObject:
   - component: {fileID: 4187027070895015519}
   - component: {fileID: 2129867325831704137}
   - component: {fileID: 5536345171949411572}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Lego2x10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25583,7 +26528,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9196620926403128840}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: polySurface5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25653,7 +26598,7 @@ GameObject:
   - component: {fileID: 7580318943632720611}
   - component: {fileID: 3026745218440279196}
   - component: {fileID: 4714328842673255896}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Lego8x7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25685,7 +26630,7 @@ GameObject:
   - component: {fileID: 4967212943949848978}
   - component: {fileID: 1762560268973960899}
   - component: {fileID: 8841125789755137931}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Lego8x5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25703,7 +26648,7 @@ GameObject:
   - component: {fileID: 4185024714011795296}
   - component: {fileID: 3094598359748846943}
   - component: {fileID: 5091860380243768084}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_LetterCube1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25721,7 +26666,7 @@ GameObject:
   - component: {fileID: 8838211870865436369}
   - component: {fileID: 8133065752948955160}
   - component: {fileID: 6140007410026983607}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_ShortBox_coperchio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25843,7 +26788,7 @@ GameObject:
   - component: {fileID: 6002805643214698307}
   - component: {fileID: 5752862876590571402}
   - component: {fileID: 7275842808964165263}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Book2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25861,7 +26806,7 @@ GameObject:
   - component: {fileID: 8535515763277457408}
   - component: {fileID: 4663135010640286221}
   - component: {fileID: 4377747003606689508}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Book11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25887,7 +26832,7 @@ GameObject:
   - component: {fileID: 4474671557291231309}
   - component: {fileID: 2633812559540908043}
   - component: {fileID: 3465374789084260983}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Lego8x2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25905,7 +26850,7 @@ GameObject:
   - component: {fileID: 7758438991732956764}
   - component: {fileID: 4944625069866321916}
   - component: {fileID: 1157452075526589984}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Car2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25943,7 +26888,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1054772784772883870}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_AllLegos_grp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26049,7 +26994,7 @@ GameObject:
   - component: {fileID: 809674833400667878}
   - component: {fileID: 5591165261554546304}
   - component: {fileID: 3924723860789950140}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Book5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26081,7 +27026,7 @@ GameObject:
   - component: {fileID: 110495229425345355}
   - component: {fileID: 1408413105824470557}
   - component: {fileID: 562105741432157755}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Matita9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26099,7 +27044,7 @@ GameObject:
   - component: {fileID: 6823659778376549598}
   - component: {fileID: 2091024394794862205}
   - component: {fileID: 668400282934916037}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FogEmitter_boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26125,7 +27070,7 @@ GameObject:
   - component: {fileID: 3866623106270758434}
   - component: {fileID: 3443012587954635096}
   - component: {fileID: 1183849477545516799}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Lego2x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26212,7 +27157,7 @@ GameObject:
   - component: {fileID: 1709409831492068649}
   - component: {fileID: 129655375950315713}
   - component: {fileID: 3794878808669772553}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_TallBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26318,7 +27263,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7953523778102887759}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Matite_grp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26336,7 +27281,7 @@ GameObject:
   - component: {fileID: 631615009100521447}
   - component: {fileID: 5448167182156669794}
   - component: {fileID: 4333914916508844677}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Matita3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26862,7 +27807,7 @@ GameObject:
   - component: {fileID: 5519306093657958426}
   - component: {fileID: 3515018073920903063}
   - component: {fileID: 628379137774333316}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Lego2x2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26880,7 +27825,7 @@ GameObject:
   - component: {fileID: 215842471575734172}
   - component: {fileID: 1153084702515886681}
   - component: {fileID: 5586672781226900157}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Matita7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26898,7 +27843,7 @@ GameObject:
   - component: {fileID: 645444218302039671}
   - component: {fileID: 1601039788454529840}
   - component: {fileID: 8087528838881748718}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Barricade1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26916,7 +27861,7 @@ GameObject:
   - component: {fileID: 837794828829009497}
   - component: {fileID: 8152361072315111617}
   - component: {fileID: 4892670366104167525}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Lego2x1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27022,7 +27967,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1918120023313491593}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ToyRoom_Arena
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27048,7 +27993,7 @@ GameObject:
   - component: {fileID: 7105208940322486418}
   - component: {fileID: 4043188637060585654}
   - component: {fileID: 5271374859451683519}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Bus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27146,13 +28091,28 @@ GameObject:
   - component: {fileID: 9165184438998815253}
   - component: {fileID: 4432319714602995381}
   - component: {fileID: 4963557779506804665}
-  m_Layer: 0
+  - component: {fileID: 4530689006692061075}
+  m_Layer: 10
   m_Name: polySurface6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!64 &4530689006692061075
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4530689006692061074}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: -5546347261141537002, guid: 33883e86f20ef824587a2f4a838b6894, type: 3}
 --- !u!33 &4565813883490050803
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -27276,7 +28236,7 @@ GameObject:
   - component: {fileID: 3995027211285631735}
   - component: {fileID: 227074581467985637}
   - component: {fileID: 6510872465216087822}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Book4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27454,7 +28414,7 @@ GameObject:
   - component: {fileID: 6028909948103523674}
   - component: {fileID: 6356155171716643844}
   - component: {fileID: 7698873658489588472}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Chair2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27532,7 +28492,7 @@ GameObject:
   - component: {fileID: 7485769816297041710}
   - component: {fileID: 3137844070533121914}
   - component: {fileID: 8164534152379182207}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Matita8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27550,7 +28510,7 @@ GameObject:
   - component: {fileID: 7613419020393236458}
   - component: {fileID: 3832533131080374323}
   - component: {fileID: 5052795661741467102}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Mappamondo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27614,7 +28574,7 @@ GameObject:
   - component: {fileID: 3382737386027180545}
   - component: {fileID: 8536510001537910663}
   - component: {fileID: 5160021668378581154}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Lego8x10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27686,7 +28646,7 @@ GameObject:
   - component: {fileID: 9078208477913777148}
   - component: {fileID: 3802165668245450562}
   - component: {fileID: 2267123813085755159}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Lego2x
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28110,7 +29070,7 @@ GameObject:
   - component: {fileID: 2658972218013494024}
   - component: {fileID: 1630064268770377622}
   - component: {fileID: 5382147994247112139}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_LetterCube7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28128,7 +29088,7 @@ GameObject:
   - component: {fileID: 5898395905702784548}
   - component: {fileID: 242144651947504460}
   - component: {fileID: 7799933836741549327}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Lego2x9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28198,7 +29158,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8768389580109173468}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: isometric env blockout_new
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28216,7 +29176,7 @@ GameObject:
   - component: {fileID: 9160570021272883150}
   - component: {fileID: 7450848331866320829}
   - component: {fileID: 1919090542826034826}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Lego8x13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28300,7 +29260,7 @@ GameObject:
   - component: {fileID: 2509720350987469154}
   - component: {fileID: 4197490302216216844}
   - component: {fileID: 5741943042283767368}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Book3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28316,7 +29276,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3330784850880354906}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Books
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28348,7 +29308,7 @@ GameObject:
   - component: {fileID: 3479082675096198609}
   - component: {fileID: 8169228523636633678}
   - component: {fileID: 7429953135876518130}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Matita
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28566,7 +29526,7 @@ GameObject:
   - component: {fileID: 4033904439754753903}
   - component: {fileID: 313734518013530905}
   - component: {fileID: 8690853771042847435}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Bicchiere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28600,7 +29560,7 @@ GameObject:
   - component: {fileID: 5844479010648627413}
   - component: {fileID: 6955383969235314}
   - component: {fileID: 2051098887221893185}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28656,7 +29616,7 @@ GameObject:
   - component: {fileID: 8857238809561442626}
   - component: {fileID: 3454017968908368506}
   - component: {fileID: 4855220090703409737}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Height_Fog_Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28698,7 +29658,7 @@ GameObject:
   - component: {fileID: 8523303295115942794}
   - component: {fileID: 2311218149496674226}
   - component: {fileID: 1232666241801400807}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_AlarmClock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28716,7 +29676,7 @@ GameObject:
   - component: {fileID: 2294265814546975877}
   - component: {fileID: 2690276625670194846}
   - component: {fileID: 4500669571700099866}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Lego2x5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28772,7 +29732,7 @@ GameObject:
   - component: {fileID: 5577033114835413625}
   - component: {fileID: 749164902825079979}
   - component: {fileID: 301781614323663824}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Lego8x
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28828,7 +29788,7 @@ GameObject:
   - component: {fileID: 6338918031456360840}
   - component: {fileID: 6781252295289712479}
   - component: {fileID: 6781252295289712476}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Lampada1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28862,7 +29822,7 @@ GameObject:
   - component: {fileID: 2423898244149679421}
   - component: {fileID: 6414282689130500145}
   - component: {fileID: 1901444247581558999}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Lego2x13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28911,7 +29871,7 @@ GameObject:
   - component: {fileID: 3061530933024546697}
   - component: {fileID: 2641222861021359745}
   - component: {fileID: 1729720029179020113}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_CestoDiVimini
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28965,7 +29925,7 @@ GameObject:
   - component: {fileID: 7102463883995134430}
   - component: {fileID: 2854231544066093818}
   - component: {fileID: 3900971177072134040}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Lego2x12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29141,7 +30101,7 @@ GameObject:
   - component: {fileID: 4522340537133147229}
   - component: {fileID: 1646064933276469543}
   - component: {fileID: 5239959954145173191}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Chair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29194,7 +30154,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9114621408053312101}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Lego_grp1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29258,7 +30218,7 @@ GameObject:
   - component: {fileID: 3170705348561204999}
   - component: {fileID: 4997465613988907422}
   - component: {fileID: 8216362074689669455}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Car1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29293,7 +30253,7 @@ GameObject:
   - component: {fileID: 7268649360302140258}
   - component: {fileID: 7367954408659463525}
   - component: {fileID: 8803710645522949403}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_LetterCube6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29311,7 +30271,7 @@ GameObject:
   - component: {fileID: 3089356087010137679}
   - component: {fileID: 1050333119644486659}
   - component: {fileID: 2647570739792252845}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Matita1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29341,7 +30301,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6845248460695983389}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FogEmitters
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29371,7 +30331,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1462148265953495041}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ArcadeRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29397,7 +30357,7 @@ GameObject:
   - component: {fileID: 2681210946463495518}
   - component: {fileID: 464020927035231403}
   - component: {fileID: 4769396535925367997}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_CamionPompieri
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29415,7 +30375,7 @@ GameObject:
   - component: {fileID: 828852197644693170}
   - component: {fileID: 1818002333180936948}
   - component: {fileID: 9206017953437023245}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Radio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29447,7 +30407,7 @@ GameObject:
   - component: {fileID: 8821425943725966926}
   - component: {fileID: 3320532003864439116}
   - component: {fileID: 1015661487728172631}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Wardrobe1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29555,7 +30515,7 @@ GameObject:
   - component: {fileID: 8931259144820797507}
   - component: {fileID: 5106979805809226093}
   - component: {fileID: 8315505683204277855}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Book
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29573,7 +30533,7 @@ GameObject:
   - component: {fileID: 6671210920682397213}
   - component: {fileID: 820595486113841580}
   - component: {fileID: 3351275002185019900}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Lego8x14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29591,7 +30551,7 @@ GameObject:
   - component: {fileID: 4506350408248425741}
   - component: {fileID: 1401989474469139697}
   - component: {fileID: 1784975521092423719}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Lego2x11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29642,7 +30602,7 @@ GameObject:
   - component: {fileID: 7950052061415747221}
   - component: {fileID: 3719528711681566607}
   - component: {fileID: 3119793419299141705}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Lego2x7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29920,7 +30880,7 @@ GameObject:
   - component: {fileID: 73243074987386035}
   - component: {fileID: 1191562749274784609}
   - component: {fileID: 5517422226974283208}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_TallBox_coperchio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29946,7 +30906,7 @@ GameObject:
   - component: {fileID: 5353741670442055442}
   - component: {fileID: 7599526650010348060}
   - component: {fileID: 7261980350755038834}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Lego8x4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30054,7 +31014,7 @@ GameObject:
   - component: {fileID: 4705662093331413774}
   - component: {fileID: 1640198882111612467}
   - component: {fileID: 5668333757561707748}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_LetterCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30108,7 +31068,7 @@ GameObject:
   - component: {fileID: 3085476200818782137}
   - component: {fileID: 4692826710221725514}
   - component: {fileID: 4242464747905029991}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_PortaPenne
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30126,7 +31086,7 @@ GameObject:
   - component: {fileID: 442777120359076069}
   - component: {fileID: 4633240419285480241}
   - component: {fileID: 2446785933712078780}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Lego8x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30144,7 +31104,7 @@ GameObject:
   - component: {fileID: 170839738101005604}
   - component: {fileID: 4112742455006035892}
   - component: {fileID: 7183715479583401514}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Lego8x6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30162,7 +31122,7 @@ GameObject:
   - component: {fileID: 1816130257032053733}
   - component: {fileID: 5077784844504629369}
   - component: {fileID: 1155033326761252233}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Lego8x8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30218,7 +31178,7 @@ GameObject:
   - component: {fileID: 6085878490602934684}
   - component: {fileID: 8073412573392318512}
   - component: {fileID: 8118013986426573858}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Lampada
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30287,7 +31247,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3635007818376625600}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Lego_grp3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30421,7 +31381,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6028083758629026200}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: isometric_env
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30439,7 +31399,7 @@ GameObject:
   - component: {fileID: 3693611323729106206}
   - component: {fileID: 3827641150696652202}
   - component: {fileID: 4928630080881011905}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Lego8x9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30515,7 +31475,7 @@ GameObject:
   - component: {fileID: 7323438608778560632}
   - component: {fileID: 253426265159770077}
   - component: {fileID: 3752289342519506655}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: placeHolder_Matita4
   m_TagString: Untagged
   m_Icon: {fileID: 0}

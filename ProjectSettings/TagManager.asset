@@ -6,6 +6,8 @@ TagManager:
   tags:
   - projectile
   - FxTemporaire
+  - WaveManager
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -17,7 +19,7 @@ TagManager:
   - 
   - PostProcessing
   - DontCollideOnControllers
-  - 
+  - RenderTexture
   - 
   - 
   - 

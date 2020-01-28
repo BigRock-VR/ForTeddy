@@ -22,12 +22,12 @@ namespace Valve.VR.InteractionSystem
 
         // edit to main
         [SerializeField]
-        private bool isCollider;
+        private bool isCollider, isTrigger;
         [SerializeField]
         float fromHeadDistance;
 
-    //-------------------------------------------------
-    void Awake()
+        //-------------------------------------------------
+        void Awake()
         {
             if (GetComponent<CapsuleCollider>() != null)
             {
@@ -50,13 +50,17 @@ namespace Valve.VR.InteractionSystem
             {
                 var amount = headPos.y - fromHeadDistance;
                 capsuleCollider.height = amount;
-                Vector3 center = capsuleCollider.center;
-                center.y = amount / 1.82f;
+                Vector3 center = transform.InverseTransformPoint(headPos);
+                center.y = 0.6f;
+                
                 capsuleCollider.center = center;
             }
+            if (isTrigger)
+            {
+                headPos.y = 0;
+                transform.position = headPos;
+            }
 
-            headPos.y = 0;
-            transform.position = headPos;
         }
 	}
 }

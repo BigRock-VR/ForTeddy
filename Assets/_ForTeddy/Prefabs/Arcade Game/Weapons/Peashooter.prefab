@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6156383423075483277}
   - component: {fileID: 6283351803830953760}
   - component: {fileID: 6995197913701385673}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Bullet_PS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -285,7 +285,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4778,7 +4778,7 @@ GameObject:
   - component: {fileID: 5807469352483630321}
   - component: {fileID: 6654851883918062273}
   - component: {fileID: 2267652008628535494}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Peashooter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
