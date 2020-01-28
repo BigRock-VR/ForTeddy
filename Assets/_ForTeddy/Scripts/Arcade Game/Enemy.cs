@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        waveManager = GameManager.Instance.waveManager;
+        waveManager = GameManager.Instance.waveManager.GetComponent<WaveManager>();
 
         if (waveManager)
         {

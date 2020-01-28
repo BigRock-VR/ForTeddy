@@ -15,7 +15,7 @@ public class GameManager : Singleton<GameManager>
     public GameObject player; // Reference of the player GameObject
 
     //[Game]
-    public WaveManager waveManager;
+    public GameObject waveManager;
 
     //[Scene]
     private enum SceneIndex { MAIN, VR, ARCADE };
@@ -61,6 +61,7 @@ public class GameManager : Singleton<GameManager>
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        waveManager = GameObject.FindGameObjectWithTag("WaveManager");
     }
 
     private static SceneIndex GetCurrentSceneIndex()
@@ -70,10 +71,7 @@ public class GameManager : Singleton<GameManager>
 
     private void Awake()
     {
-        if (!player)
-        {
-            player = GameObject.FindGameObjectWithTag("Player");
-            waveManager = GameObject.FindGameObjectWithTag("WaveManager").GetComponent<WaveManager>();
-        }
+        player = GameObject.FindGameObjectWithTag("Player");
+        waveManager = GameObject.FindGameObjectWithTag("WaveManager");
     }
 }
