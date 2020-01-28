@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody rb;
     public bool isAiming;
-
+    private Vector3 movementDir, aimDir;
     void Awake()
     {
         //anim = GetComponent<Animator>();
@@ -28,13 +28,21 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Store the input axes.
-        // changed the inputs so that u can use VR pads
-        //Vector3 movementDir = new Vector3(inputL.GetAxis(VRInput).x, 0, inputL.GetAxis(VRInput).y);
-        //Vector3 aimDir = new Vector3(inputR.GetAxis(VRInput).x, 0, inputR.GetAxis(VRInput).y);
-        // Joystick Input
-        Vector3 movementDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-        Vector3 aimDir = new Vector3(Input.GetAxisRaw("AimX"), 0, Input.GetAxisRaw("AimY"));
+
+        if (GameManager.isVREnable)
+        {
+            // Store the input axes.
+            // changed the inputs so that u can use VR pads
+            movementDir = new Vector3(inputL.GetAxis(VRInput).x, 0, inputL.GetAxis(VRInput).y);
+            aimDir = new Vector3(inputR.GetAxis(VRInput).x, 0, inputR.GetAxis(VRInput).y);
+        }
+        else
+        {
+            // Joystick Input
+            movementDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+            aimDir = new Vector3(Input.GetAxisRaw("AimX"), 0, Input.GetAxisRaw("AimY"));
+        }
+
         // Move the player around the scene.
         if (movementDir != Vector3.zero)
         {

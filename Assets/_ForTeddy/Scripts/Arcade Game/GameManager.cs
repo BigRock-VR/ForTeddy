@@ -10,7 +10,6 @@ public class GameManager : Singleton<GameManager>
     [Header("Device Settings")]
     public static bool isVREnable;
     public static string VRDeviceName;
-
     //[Player]
     public GameObject player; // Reference of the player GameObject
 
