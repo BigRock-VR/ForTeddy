@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chrName: Soldier 2
   baseWeapon: {fileID: 11400000, guid: 9a3bad3092d24cd498c39f903a1d0172, type: 2}
-  altWeapon: {fileID: 11400000, guid: 9059b46420592944db6c4596268522eb, type: 2}
-  health: 4
+  altWeapon: {fileID: 0}
+  health: 6
   armor: 0
   ChrImg: {fileID: 21300000, guid: c68ce3a902d991d45bee793615604fb4, type: 3}

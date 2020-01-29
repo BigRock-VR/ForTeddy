@@ -8,19 +8,27 @@ public class ArcadeManager : MonoBehaviour
     public static ArcadeManager gm;
     //GameManager
 
+    [Header("UI Manager")]
     public GameObject UiMng;
 
-    public Weapons actualWeapon;
-
+    [Header("Player Stats")]
     public int ammo;
+    public int maxHealth = 1000;
+    public int maxArmor = 500;
     public int health;
     public int score;
-    public int wave;
-    public int ominoCost = 500;
 
+    [Header("Wave Info")]
+    public int wave;
     public float waveTime = 180f;
     public float waveTimeActual;
+
     public bool startTimer;
+
+    [Header("Costs")]
+    public int ominoCost = 500;
+    public int armorCost = 50;
+    public int healthCost = 150;
 
     private void Awake()
     {

@@ -27,13 +27,13 @@ public class WeaponDisplay : MonoBehaviour
     public Button[] weaponsBtn = new Button[4];
     public Button[] powerUpBtn = new Button[2];
 
-
-    // Start is called before the first frame update
-    void Start()
+    //in Awake method we setting the default values of all buttons
+    void Awake()
     {
         SettingValue();
     }
 
+    //Setting the default values
     public void SettingValue()
     {
         for (int i = 0; i < 4; i++)
@@ -57,5 +57,34 @@ public class WeaponDisplay : MonoBehaviour
 
     }
 
+    //disable the button of the altready bought weapon
+    public void ButtonDisable(Weapons actualWeapon)
+    {
+        for (int i = 0; i < weapon.Length - 1; i++)
+        {
+            if (actualWeapon == weapon[i])
+            {
+                weaponsBtn[i].interactable = false;
+                weaponCost_Txt[i].text = weapon[i].cost.ToString();
+            }
+            else
+            {
+                weaponsBtn[i].interactable = true;
+                weaponCost_Txt[i].text = weapon[i].cost.ToString();
+            }
+        }
+    }
 
+    //reset the costs of the weapon if we set a character != teddy
+    public void SettingCost(int costoAttuale, Weapons actualWeapon)
+    {
+        for (int i = 0; i < weapon.Length; i++)
+        {
+            if (actualWeapon == weapon[i])
+            {
+                weaponCost_Txt[i].text = costoAttuale.ToString();
+                weaponsBtn[i].interactable = true;
+            }
+        }
+    }
 }
