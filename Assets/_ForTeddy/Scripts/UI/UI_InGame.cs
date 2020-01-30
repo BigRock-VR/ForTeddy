@@ -57,6 +57,8 @@ public class UI_InGame : MonoBehaviour
     private Button resume;
 
     private bool canPause;
+    public Button FirstSelectedShop1;
+    public Button FirstSelectedShop2;
     private void Start()
     {
         StartSettings();
@@ -182,7 +184,8 @@ public class UI_InGame : MonoBehaviour
         {
             ChangeMenu(3);
         }
-        else {
+        else
+        {
             pauseGame = !pauseGame;
 
             if (pauseGame)
@@ -281,6 +284,7 @@ public class UI_InGame : MonoBehaviour
             yield return new WaitForSeconds(2);
             shop.SetActive(true);
 
+
             shopHeader.text = "Next Wave: " + ArcadeManager.gm.wave.ToString();
 
             dakkaGun.Select();
@@ -290,8 +294,7 @@ public class UI_InGame : MonoBehaviour
             yield return new WaitForSeconds(2);
             shop.GetComponent<Animator>().SetTrigger("endAnimation");
 
-
-            canPause = true;
+            FirstSelectedShop2.Select();
         }
 
         //call at NewWave

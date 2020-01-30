@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/_ForTeddy/Scenes/MainMenu.unity
     guid: 826439bce8a2864458b1a9c7cf2d7fae
   - enabled: 1

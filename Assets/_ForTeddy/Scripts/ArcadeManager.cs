@@ -9,11 +9,13 @@ public class ArcadeManager : MonoBehaviour
     //GameManager
 
     [Header("UI Manager")]
-    public GameObject UiMng;
+    public UI_InGame UiMng;
 
     [Header("Player Stats")]
     public int ammo;
     public int maxHealth = 1000;
+    public int maxHPrice = 500;
+    public int maxAPrice = 750;
     public int maxArmor = 500;
     public int health;
     public int score;
@@ -57,16 +59,20 @@ public class ArcadeManager : MonoBehaviour
 
             if (waveTimeActual <= 0)
             {
-                UiMng.GetComponent<UI_InGame>().EndWave();
+                UiMng.EndWave();
                 wave++;
                 startTimer = false;
             }
             if (health <= 0)
             {
-                UiMng.GetComponent<UI_InGame>().ChangeMenu(3);
+                UiMng.ChangeMenu(3);
                 startTimer = false;
             }
         }
 
+        if(wave == 4)
+        {
+            UiMng.chooseName.SetActive(true);
+        }
     }
 }
