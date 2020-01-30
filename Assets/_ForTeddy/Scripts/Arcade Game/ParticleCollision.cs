@@ -6,8 +6,8 @@ public class ParticleCollision : MonoBehaviour
 {
     private ParticleSystem pSystem;
     public List<ParticleCollisionEvent> collisionEvents; //Store all the collission events of the particle
-    public delegate void EnemyCollision(Enemy enemy);
-    public event EnemyCollision onCollisionWithEnemy;
+    public int damage;
+
 
     void Start()
     {
@@ -26,7 +26,7 @@ public class ParticleCollision : MonoBehaviour
 
             if (_enemy)
             {
-                onCollisionWithEnemy(_enemy); // SEND COLLISION EVENT
+                _enemy.TakeDamage(damage); // SEND COLLISION EVENT
             }
         }
     }

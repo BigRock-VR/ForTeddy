@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Rektifier
   fireRate: 0.75
   bulletSpeed: 1000
-  damage: 100
+  damage: 1000
   maxAmmoCount: 3
   isDefaultWeapon: 0
   fireType: 0

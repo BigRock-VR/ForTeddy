@@ -11,9 +11,9 @@ public class CameraManager : MonoBehaviour
 
     void Start()
     {
-        target = GameManager.Instance.player.transform;
-        // Calculate the initial offset.
-        offset = transform.position - target.position;
+        //target = GameManager.Instance.player.transform;
+        //Calculate the initial offset.
+        //offset = transform.position - target.position;
         //transform.rotation = Quaternion.Euler(rotation);
 
         if (renderTexture && GameManager.isVREnable)
@@ -23,16 +23,17 @@ public class CameraManager : MonoBehaviour
 
     }
 
-    void FixedUpdate()
-    {
-        if (target)
-        {
-            // Create a postion the camera is aiming for based on the offset from the target.
-            Vector3 targetCamPos = target.position + offset;
+    //void FixedUpdate()
+    //{
+    //    if (target)
+    //    {
+    //        Create a postion the camera is aiming for based on the offset from the target.
 
-            // Smoothly interpolate between the camera's current position and it's target position.
-            //transform.position = Vector3.Lerp(transform.position, targetCamPos, smoothing * Time.deltaTime);
-        }
+    //       Vector3 targetCamPos = target.position + offset;
 
-    }
+    //        Smoothly interpolate between the camera's current position and it's target position.
+    //       transform.position = Vector3.Lerp(transform.position, targetCamPos, smoothing * Time.deltaTime);
+    //    }
+
+    //}
 }

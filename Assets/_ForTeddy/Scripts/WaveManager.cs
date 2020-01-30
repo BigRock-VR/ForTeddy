@@ -6,23 +6,31 @@ using UnityEngine;
 public class WaveManager : MonoBehaviour
 {
     [SerializeField]public Transform[] spawnPositions;
-    [SerializeField] public GameObject[] enemyTypes;
-    public float waveEndTimer = 60.0f;
+    [SerializeField]public GameObject[] enemyTypes;
+    [SerializeField]public Transform[] soldierPositions;
+
+    public uint waveCount = 0;
+    public float waveTimer = 20.0f;
     public bool canSpawnEnemy;
     public float timeBetweenSpawn = 0.0f;
     public float nextTimeToSpawn = 0.0f;
-    public int waveMaxEnemy = 10;
+    public uint waveMaxEnemy = 10;
+
+
     public delegate void EndWave();
     public event EndWave onEndWave;
 
-
+    private float waveEndTimer;
     private GameObject enemyContainer;
 
     void Start()
     {
+        waveEndTimer = waveTimer;
         timeBetweenSpawn = Mathf.Abs(waveEndTimer / waveMaxEnemy);
         enemyContainer = new GameObject("[EnemyContainer]");
         enemyContainer.transform.parent = transform;
+
+        Invoke("StartNextWave", 3.0f);
     }
 
     // Update is called once per frame
@@ -36,16 +44,33 @@ public class WaveManager : MonoBehaviour
         if(waveEndTimer <= 0)
         {
             canSpawnEnemy = false;
-            waveEndTimer = 60.0f;
-            onEndWave();
+
+            if (enemyContainer.transform.childCount > 0)
+            {
+                onEndWave();
+            }
+
+            ++waveCount; // Increase the wave counter
+            waveTimer += waveCount; // Increase the wave timer with the current wave counter
+            waveEndTimer = waveTimer; // Assign the new wave timer to the current wave
+            waveMaxEnemy += waveCount; // Increase the wave enemy to spawn
+            timeBetweenSpawn = Mathf.Abs(waveEndTimer / waveMaxEnemy); // Calculate how many enemy spawn in the next wave base on the max enemy
         }
-        if(Time.time >= nextTimeToSpawn)
+
+        // Set the next time to spawn enemy
+        if(Time.time >= nextTimeToSpawn && canSpawnEnemy)
         {
-            nextTimeToSpawn = Time.time + timeBetweenSpawn;
+            nextTimeToSpawn = Time.time + timeBetweenSpawn; 
             SpawnEnemyAtRandPosition();
         }
-        waveEndTimer -= Time.deltaTime;
 
+        waveEndTimer -= Time.deltaTime; // Decrease the loca WAVE TIMER
+
+    }
+
+    public void StartNextWave()
+    {
+        canSpawnEnemy = true;
     }
 
     private void SpawnEnemyAtRandPosition()
@@ -54,5 +79,7 @@ public class WaveManager : MonoBehaviour
         int randomEnemy = UnityEngine.Random.Range(0, enemyTypes.Length);
         Instantiate(enemyTypes[randomEnemy], spawnPositions[randomSpawnPos].position, Quaternion.identity, enemyContainer.transform);
     }
+
+
 
 }
