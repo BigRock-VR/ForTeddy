@@ -10,21 +10,15 @@ using UnityEngine.Animations;
 
 namespace Valve.VR.InteractionSystem
 {
-	//-------------------------------------------------------------------------
-	//[RequireComponent( typeof( CapsuleCollider ) )]   // edit to main
-	public class BodyCollider : MonoBehaviour
-	{
-		public Transform head;
+    //-------------------------------------------------------------------------
+    //[RequireComponent( typeof( CapsuleCollider ) )]   // edit to main
+    public class BodyCollider : MonoBehaviour
+    {
+        public Transform head;
 
         Vector3 headPos;
 
-		private CapsuleCollider capsuleCollider;
-
-        // edit to main
-        [SerializeField]
-        private bool isCollider, isTrigger;
-        [SerializeField]
-        float fromHeadDistance;
+        private CapsuleCollider capsuleCollider;
 
         //-------------------------------------------------
         void Awake()
@@ -32,10 +26,8 @@ namespace Valve.VR.InteractionSystem
             if (GetComponent<CapsuleCollider>() != null)
             {
                 capsuleCollider = GetComponent<CapsuleCollider>();
-            }
+           }
         }
-
-
         //-------------------------------------------------
         void FixedUpdate()
         {
@@ -43,24 +35,14 @@ namespace Valve.VR.InteractionSystem
             // capsuleCollider.height = Mathf.Max( capsuleCollider.radius, distanceFromFloor );
             // transform.localPosition = head.localPosition - 0.5f * distanceFromFloor * Vector3.up;
 
+
             // edit to main script, the above one doesn't do great
             headPos = head.transform.position;
-
-            if (isCollider)
-            {
-                var amount = headPos.y - fromHeadDistance;
-                capsuleCollider.height = amount;
-                Vector3 center = transform.InverseTransformPoint(headPos);
-                center.y = 0.6f;
-                
-                capsuleCollider.center = center;
-            }
-            if (isTrigger)
-            {
-                headPos.y = 0;
-                transform.position = headPos;
-            }
+            capsuleCollider.height = headPos.y;
+            headPos.y = headPos.y / 2 + 0.5f;
+            capsuleCollider.center = headPos;
 
         }
-	}
+
+    }
 }
