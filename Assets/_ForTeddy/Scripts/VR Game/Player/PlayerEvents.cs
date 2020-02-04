@@ -35,8 +35,6 @@ public class PlayerEvents : MonoBehaviour
     GameObject _vHand;
     Throwable[] allPhysicalItems;
     [SerializeField]
-    Vector3 faceHuggerDir;
-    [SerializeField]
     Transform faceHugger;
     [SerializeField]
     bool isFaceHugging;
@@ -83,9 +81,7 @@ public class PlayerEvents : MonoBehaviour
             }
             if (chance2 <= objectThrowChance && !isFaceHugging)
             {
-                var dir = Player.instance.hmdTransform.position - allPhysicalItems[i].transform.position;
                 _oTimer = objectThrowTimer;
-                faceHuggerDir = dir;
                 faceHugger = allPhysicalItems[i].transform;
                 isFaceHugging = true;
 
@@ -160,7 +156,7 @@ public class PlayerEvents : MonoBehaviour
             }
         }
         
-        if(Random.Range(0f,1f) <= aVolteSiAnimanoChance)
+        if(Random.Range(0f,1f) <= aVolteSiAnimanoChance/100)
         {
             aVolteSiAnimano();
         }
@@ -175,13 +171,14 @@ public class PlayerEvents : MonoBehaviour
                 }
                 else
                 {
-                    faceHugger.GetComponent<Rigidbody>().AddForce(faceHuggerDir * 50, ForceMode.Impulse);
+                    var dir = Player.instance.hmdTransform.position - faceHugger.position;
+                    faceHugger.GetComponent<Rigidbody>().AddForce(dir * 50, ForceMode.Impulse);
                     isFaceHugging = false;
 
                     print("A Volte Si Animano: Triggered, " + faceHugger.name + " is now jumping to player's face");
                     faceHugger = null;
                 }
-            }
+            }   
             else
             {
                 _oTimer = objectThrowTimer;

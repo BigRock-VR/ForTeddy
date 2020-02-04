@@ -69,8 +69,6 @@ namespace Valve.VR
         
         private static SteamVR_Action_Boolean p_forTeddyVR_Focus;
         
-        private static SteamVR_Action_Single p_forTeddyVR_LookSwipe;
-        
         private static SteamVR_Action_Vibration p_forTeddyVR_VibrationL;
         
         private static SteamVR_Action_Vibration p_forTeddyVR_VibrationR;
@@ -293,14 +291,6 @@ namespace Valve.VR
             }
         }
         
-        public static SteamVR_Action_Single forTeddyVR_LookSwipe
-        {
-            get
-            {
-                return SteamVR_Actions.p_forTeddyVR_LookSwipe.GetCopy<SteamVR_Action_Single>();
-            }
-        }
-        
         public static SteamVR_Action_Vibration forTeddyVR_VibrationL
         {
             get
@@ -386,7 +376,6 @@ namespace Valve.VR
                     SteamVR_Actions.forTeddyVR_Menu,
                     SteamVR_Actions.forTeddyVR_Run,
                     SteamVR_Actions.forTeddyVR_Focus,
-                    SteamVR_Actions.forTeddyVR_LookSwipe,
                     SteamVR_Actions.forTeddyVR_VibrationL,
                     SteamVR_Actions.forTeddyVR_VibrationR,
                     SteamVR_Actions.forTeddyArcade_Move,
@@ -420,7 +409,6 @@ namespace Valve.VR
                     SteamVR_Actions.forTeddyVR_Menu,
                     SteamVR_Actions.forTeddyVR_Run,
                     SteamVR_Actions.forTeddyVR_Focus,
-                    SteamVR_Actions.forTeddyVR_LookSwipe,
                     SteamVR_Actions.forTeddyArcade_Move,
                     SteamVR_Actions.forTeddyArcade_Look,
                     SteamVR_Actions.forTeddyArcade_Exit};
@@ -458,8 +446,7 @@ namespace Valve.VR
             Valve.VR.SteamVR_Input.actionsSingle = new Valve.VR.SteamVR_Action_Single[] {
                     SteamVR_Actions.default_Squeeze,
                     SteamVR_Actions.buggy_Throttle,
-                    SteamVR_Actions.forTeddyVR_Trigger,
-                    SteamVR_Actions.forTeddyVR_LookSwipe};
+                    SteamVR_Actions.forTeddyVR_Trigger};
             Valve.VR.SteamVR_Input.actionsVector2 = new Valve.VR.SteamVR_Action_Vector2[] {
                     SteamVR_Actions.platformer_Move,
                     SteamVR_Actions.buggy_Steering,
@@ -493,7 +480,6 @@ namespace Valve.VR
                     SteamVR_Actions.forTeddyVR_Menu,
                     SteamVR_Actions.forTeddyVR_Run,
                     SteamVR_Actions.forTeddyVR_Focus,
-                    SteamVR_Actions.forTeddyVR_LookSwipe,
                     SteamVR_Actions.forTeddyArcade_Move,
                     SteamVR_Actions.forTeddyArcade_Look,
                     SteamVR_Actions.forTeddyArcade_Exit};
@@ -527,7 +513,6 @@ namespace Valve.VR
             SteamVR_Actions.p_forTeddyVR_Menu = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ForTeddyVR/in/Menu")));
             SteamVR_Actions.p_forTeddyVR_Run = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ForTeddyVR/in/Run")));
             SteamVR_Actions.p_forTeddyVR_Focus = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ForTeddyVR/in/Focus")));
-            SteamVR_Actions.p_forTeddyVR_LookSwipe = ((SteamVR_Action_Single)(SteamVR_Action.Create<SteamVR_Action_Single>("/actions/ForTeddyVR/in/LookSwipe")));
             SteamVR_Actions.p_forTeddyVR_VibrationL = ((SteamVR_Action_Vibration)(SteamVR_Action.Create<SteamVR_Action_Vibration>("/actions/ForTeddyVR/out/VibrationL")));
             SteamVR_Actions.p_forTeddyVR_VibrationR = ((SteamVR_Action_Vibration)(SteamVR_Action.Create<SteamVR_Action_Vibration>("/actions/ForTeddyVR/out/VibrationR")));
             SteamVR_Actions.p_forTeddyArcade_Move = ((SteamVR_Action_Vector2)(SteamVR_Action.Create<SteamVR_Action_Vector2>("/actions/ForTeddyArcade/in/Move")));

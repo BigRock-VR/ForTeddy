@@ -18,7 +18,7 @@ public class SnapTargetToObject : MonoBehaviour
     Transform snapPoint;
 
     [SerializeField]
-    Rigidbody possibleTarget;
+    public Rigidbody possibleTarget;
 
     [SerializeField]
     bool isFilled;
@@ -41,13 +41,12 @@ public class SnapTargetToObject : MonoBehaviour
         //print("the target is colliding with : " + other);
         if (possibleTarget == other.attachedRigidbody && possibleTarget.useGravity == true && !isFilled)
         {
-
+            isFilled = true;
             print("this target : " + possibleTarget.gameObject.name + " had been attached");
             possibleTarget.isKinematic = true;
             possibleTarget.transform.parent = snapPoint;
             possibleTarget.transform.localPosition = Vector3.zero;
             var x = possibleTarget.transform.localRotation = Quaternion.Euler(Rotation);
-            isFilled = true;
         }
 
         if (isFilled && possibleTarget.useGravity == true)

@@ -10,13 +10,6 @@ namespace Valve.VR.InteractionSystem.Sample
 {
     public class ButtonEffect : MonoBehaviour
     {
-        //Edit to main
-        [SerializeField]
-        GameObject renderTexture;
-
-        [SerializeField]
-        Animator TVCanvas;
-
         [SerializeField]
         List<Color> tempColor;
 
@@ -50,34 +43,6 @@ namespace Valve.VR.InteractionSystem.Sample
                     tempColor.Add(renderers[rendererIndex].material.color);
                     renderers[rendererIndex].material.color = newColor;
                 }
-            }
-        }
-
-        // edit to main
-        public void OnButtonPressed(string buttonType)
-        {
-            switch (buttonType)
-            {
-                case "PowerTV":
-                    //print("test");
-                    var status = !TVCanvas.GetBool("isPowered");
-                    TVCanvas.SetBool("isPowered", status);
-                    break;
-                case "VolumeUP":
-                    print("logic to raise tv audio");
-                    break;
-                case "VolumeDOWN":
-                    print("logic to lower tv audio");
-                    break;
-                case "ProgramUP":
-                    print("logic to switch renderTexture forward");
-                    break;
-                case "ProgramDOWN":
-                    print("logic to switch renderTexture backward");
-                    break;
-                case "PowerConsole":
-                    renderTexture.SetActive(!renderTexture.activeSelf);
-                    break;
             }
         }
     }

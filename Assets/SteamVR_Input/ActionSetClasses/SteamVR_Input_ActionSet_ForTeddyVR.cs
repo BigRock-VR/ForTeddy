@@ -73,14 +73,6 @@ namespace Valve.VR
             }
         }
         
-        public virtual SteamVR_Action_Single LookSwipe
-        {
-            get
-            {
-                return SteamVR_Actions.forTeddyVR_LookSwipe;
-            }
-        }
-        
         public virtual SteamVR_Action_Vibration VibrationL
         {
             get

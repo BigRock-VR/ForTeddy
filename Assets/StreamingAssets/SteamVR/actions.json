@@ -111,10 +111,6 @@
       "type": "boolean"
     },
     {
-      "name": "/actions/ForTeddyVR/in/LookSwipe",
-      "type": "vector1"
-    },
-    {
       "name": "/actions/ForTeddyVR/out/VibrationL",
       "type": "vibration"
     },
