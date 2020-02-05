@@ -21,7 +21,7 @@ public class SnapTargetToObject : MonoBehaviour
     public Rigidbody possibleTarget;
 
     [SerializeField]
-    bool isFilled;
+    public bool isFilled;
 
 
 
@@ -46,13 +46,12 @@ public class SnapTargetToObject : MonoBehaviour
             possibleTarget.isKinematic = true;
             possibleTarget.transform.parent = snapPoint;
             possibleTarget.transform.localPosition = Vector3.zero;
-            var x = possibleTarget.transform.localRotation = Quaternion.Euler(Rotation);
+            possibleTarget.transform.localRotation = Quaternion.Euler(Rotation);
         }
-
-        if (isFilled && possibleTarget.useGravity == true)
+        if (possibleTarget.useGravity == false && isFilled)
         {
-            isFilled = false;
             possibleTarget.isKinematic = false;
+            isFilled = false;
         }
         
     }
@@ -62,6 +61,8 @@ public class SnapTargetToObject : MonoBehaviour
         if(possibleTarget != null && possibleTarget.transform.parent == transform)
         {
             possibleTarget.transform.parent = oldParent;
+            possibleTarget.isKinematic = false;
+            possibleTarget.useGravity = true;
             possibleTarget = null;
             isFilled = false;
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -43,23 +44,19 @@ public class ButtonExtensions : MonoBehaviour
     [SerializeField]
     TMPro.TextMeshProUGUI channelText;
 
-    [SerializeField]
-    GameObject blackScreen;
-
     bool TVStatus;
-    Sprite x;
+    bool consoleStatus;
 
     public void OnButtonPressed(string buttonType)
     {
-        x = TVChannel.sprite;
-
         switch (buttonType)
         {
             case "PowerTV":
                 //print("test");
                 TVCanvas.SetTrigger("TurnOn");
-                TVStatus = true;
-                
+                TVStatus = !TVStatus;
+                TVCanvas.SetTrigger("ChangeSource");
+                StartCoroutine("ChangeChannel");
                 break;
             case "VolumeUP":
                 print("logic to raise tv audio");
@@ -76,8 +73,7 @@ public class ButtonExtensions : MonoBehaviour
                 print("rising ch " + currentChannel);
                 currentChannel += 1;
                 TVCanvas.SetTrigger("ChangeSource");
-                Invoke("CheckChannels", 1.3f);
-                Invoke("ChangeChannel", 2);
+                StartCoroutine("ChangeChannel");
                 break;
             case "ProgramDOWN":
                 if (currentChannel == -1 || !TVStatus)
@@ -87,74 +83,89 @@ public class ButtonExtensions : MonoBehaviour
                 print("lowering ch " + currentChannel);
                 currentChannel -= 1;
                 TVCanvas.SetTrigger("ChangeSource");
-                Invoke("CheckChannels", 0.3f);
-                Invoke("ChangeChannel", 2);
+                StartCoroutine("ChangeChannel");
                 //print("logic to switch renderTexture backward");
                 break;
             case "PowerConsole":
-                if(console.possibleTarget != null)
-                {
-                    foreach (cassette tape in cassettes)
-                    {
-                        //print("looking for texture " + tape.instance);
-                        if (tape.instance == console.possibleTarget)
-                        {
-                            //print("setting texture " + console.possibleTarget.name);
-                            TVSource.texture = tape.displayedContent;
-                        }
-                    }
-                }
+
+                consoleStatus = !consoleStatus;
                 break;
         }
     }
 
-    void CheckChannel()
+    IEnumerator ChangeChannel()
     {
-        print(currentChannel);
-        foreach (channel ch in channels)
+        print("changing current channel: " + currentChannel);
+        yield return new WaitForSeconds(0.4f);
+
+        if (channels.Any(f => f.chNumber == currentChannel))
         {
-            if (ch.chNumber == currentChannel)
+            foreach (channel ch in channels)
             {
-                TVChannel.sprite = ch.chImage;
-                TVChannel.color = Color.white;
+                if (ch.chNumber == currentChannel)
+                {
+                    if (ch.chImage != null)
+                    {
+                        print("i found a image, now using it");
+                        TVChannel.sprite = ch.chImage;
+                        TVChannel.color = Color.white;
+                    }
+                }
             }
+
         }
-        if (x == TVChannel.sprite)
+        else
         {
+            print("i found NO image");
+            TVChannel.sprite = null;
             TVChannel.color = Color.clear;
         }
-    }
-
-    void ChangeChannel()
-    {
-        channelText.enabled = true;
-        channelText.text = "P " + currentChannel.ToString();
+        yield return new WaitForSeconds(0.3f);
 
         if (currentChannel == -1)
         {
-            if (console.possibleTarget == null)
-            {
-                TVSource.color = Color.black;
-            }
-            else
-            {
-                TVSource.color = Color.white;
-            }
 
-            TVChannel.enabled = false;
-            TVSource.enabled = true;
+            channelText.text = "AV";
+            StartCoroutine("CheckForGame");
         }
-        if (currentChannel == 0)
+
+        if (currentChannel >= 0)
         {
-            TVChannel.enabled = true;
-            TVSource.enabled = false;
+            StopCoroutine("CheckForGame");
+            channelText.text = "P " + currentChannel.ToString();
+        }
+    }
+    IEnumerator CheckForGame()
+    {
+        print("im checking");
+
+        if (!console.isFilled || !consoleStatus)
+        {
+            print("no game in console");
+            TVSource.color = Color.clear;
+            TVSource.texture = null;
+            yield return new WaitForSeconds(1);
+            StartCoroutine("CheckForGame");
         }
 
-        Invoke("RemoveCH", 2);
-    }
+        if (console.isFilled && consoleStatus)
+        {
+            print("found something in console");
+            foreach (cassette tape in cassettes)
+            {
+                //print("looking for texture " + tape.instance);
+                if (tape.instance == console.possibleTarget)
+                {
+                    print("setting texture " + console.possibleTarget.name);
+                    TVSource.texture = tape.displayedContent;
+                }
+            }
+            TVSource.color = Color.white;
+            TVChannel.color = Color.clear;
+            yield return new WaitForSeconds(1);
+            StartCoroutine("CheckForGame");
+        }
 
-    void RemoveCH()
-    {
-        channelText.enabled = false;
+
     }
 }

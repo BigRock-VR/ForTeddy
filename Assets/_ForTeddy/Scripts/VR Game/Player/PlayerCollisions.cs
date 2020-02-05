@@ -47,6 +47,7 @@ public class PlayerCollisions : MonoBehaviour
         }
 
         isColliding = true;
+       // SteamVR_Fade.Start(Color.black, 0.5f);
     }
 
     private void OnCollisionExit(Collision collision)
@@ -57,7 +58,7 @@ public class PlayerCollisions : MonoBehaviour
         }
 
         isColliding = false;
-
+       // SteamVR_Fade.Start(Color.clear, 0.2f);
     }
 }
 
