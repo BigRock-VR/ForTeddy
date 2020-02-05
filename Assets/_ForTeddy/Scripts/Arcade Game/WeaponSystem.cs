@@ -48,11 +48,21 @@ public class WeaponSystem : MonoBehaviour
 
     private void Shoot()
     {
-        if (Time.time >= nextTimeToFire)
+        switch (weapons[(int)currSelectedWeapon].fireType)
         {
-            nextTimeToFire = Time.time + weapons[(int)currSelectedWeapon].fireRate;
-            pSystem.Emit(1);
+            case Weapon.efireType.SHOTGUN:
+            case Weapon.efireType.SINGLE:
+                if (Time.time >= nextTimeToFire)
+                {
+                    nextTimeToFire = Time.time + weapons[(int)currSelectedWeapon].fireRate;
+                    pSystem.Emit(1);
+                }
+                break;
+            case Weapon.efireType.LASER:
+
+                break;
         }
+
     }
 
 

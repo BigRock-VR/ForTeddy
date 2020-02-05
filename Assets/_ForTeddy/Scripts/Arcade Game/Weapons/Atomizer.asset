@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Atomizer
   m_EditorClassIdentifier: 
   name: Atomizer
-  fireRate: 0.02
+  fireRate: 6
   bulletSpeed: 1000
   damage: 100
   maxAmmoCount: 300
   isDefaultWeapon: 0
-  fireType: 0
+  fireType: 2
   weaponPrefab: {fileID: 7738656361031999446, guid: 23d8dcd807c43ac4391e464edd85e3ab,
     type: 3}

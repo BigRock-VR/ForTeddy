@@ -26,7 +26,9 @@ public class ParticleCollision : MonoBehaviour
 
             if (_enemy)
             {
-                _enemy.TakeDamage(damage); // SEND COLLISION EVENT
+                //_enemy.TakeDamage(damage); // SEND COLLISION EVENT
+                Vector4 hitPointLocal = collisionEvents[collisionEventCount-1].normal;
+                _enemy.TakeDamage(damage, hitPointLocal);
             }
         }
     }

@@ -27,7 +27,7 @@ public class SoldierManager : MonoBehaviour
 
     private void Update()
     {
-        if (currTarget)
+        if (currTarget && !currTarget.GetComponent<Enemy>().isDead)
         {
             if (!isAiming)
             {
