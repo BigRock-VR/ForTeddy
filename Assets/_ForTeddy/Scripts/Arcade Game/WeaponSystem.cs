@@ -16,38 +16,55 @@ public class WeaponSystem : MonoBehaviour
 
     private const int MAX_WEAPONS = 5;
     private float nextTimeToFire = 0.0f;
+    public bool isSoldier;
 
     //Particle Bullets
     private ParticleSystem pSystem;
-    private ParticleCollision pSystemCollision;
 
     void Start()
     {
         InitWeapons(); // Instantiate all the possible weapons
-        pSystemCollision.onCollisionWithEnemy += DoDamage; // Doing damage to the enemy when a single particle hit and enemy
     }
 
     private void Update()
     {
-        if (gameObject.GetComponent<PlayerMovement>().isAiming)
+        if (isSoldier)
         {
-            Shoot();
+            if (GetComponent<SoldierManager>().isAiming)
+            {
+                Shoot();
+            }
+            return;
         }
+        else
+        {
+            if (gameObject.GetComponent<PlayerMovement>().isAiming)
+            {
+                Shoot();
+            }
+        }
+
     }
 
     private void Shoot()
     {
-        if (Time.time >= nextTimeToFire)
+        switch (weapons[(int)currSelectedWeapon].fireType)
         {
-            nextTimeToFire = Time.time + weapons[(int)currSelectedWeapon].fireRate;
-            pSystem.Emit(1);
+            case Weapon.efireType.SHOTGUN:
+            case Weapon.efireType.SINGLE:
+                if (Time.time >= nextTimeToFire)
+                {
+                    nextTimeToFire = Time.time + weapons[(int)currSelectedWeapon].fireRate;
+                    pSystem.Emit(1);
+                }
+                break;
+            case Weapon.efireType.LASER:
+
+                break;
         }
+
     }
 
-    public void DoDamage(Enemy enemy)
-    {
-        enemy.TakeDamage(weapons[(int)currSelectedWeapon].damage);
-    }
 
     void InitWeapons()
     {
@@ -69,8 +86,7 @@ public class WeaponSystem : MonoBehaviour
     public void GetBulletParticle()
     {
         pSystem = weaponObjs[(int)currSelectedWeapon].transform.Find("Bullet_PS").GetComponent<ParticleSystem>();
-        pSystemCollision = weaponObjs[(int)currSelectedWeapon].transform.Find("Bullet_PS").GetComponent<ParticleCollision>();
-
+        weaponObjs[(int)currSelectedWeapon].transform.Find("Bullet_PS").GetComponent<ParticleCollision>().damage = weapons[(int)currSelectedWeapon].damage;
     }
 
 
@@ -88,6 +104,11 @@ public class WeaponSystem : MonoBehaviour
 #if DEBUG
     private void OnGUI()
     {
+        if (isSoldier)
+        {
+            return;
+        }
+
         if (GUI.Button(new Rect(10, 10, 100, 50), "Peashooter"))
         {
             SwitchWeapons(eWeapons.DEFAULT);

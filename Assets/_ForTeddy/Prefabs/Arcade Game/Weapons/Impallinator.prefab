@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6156383423075483277}
   - component: {fileID: 6283351803830953760}
   - component: {fileID: 6995197913701385673}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Bullet_PS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -285,7 +285,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.1
+      scalar: 1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -3733,7 +3733,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 311
+      m_Bits: 1335
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -4766,36 +4766,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a2b1f0e571cac8488c8c8272800b8ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &7506977111427404268
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2833216390864286921}
-  m_Layer: 10
-  m_Name: Bullet_SpawnPosition
-  m_TagString: Untagged
-  m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2833216390864286921
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7506977111427404268}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.608}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5884928528182961313}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7738656361031999446
 GameObject:
   m_ObjectHideFlags: 0
@@ -4808,7 +4778,7 @@ GameObject:
   - component: {fileID: 5807469352483630321}
   - component: {fileID: 6654851883918062273}
   - component: {fileID: 2267652008628535494}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Impallinator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4827,7 +4797,6 @@ Transform:
   m_LocalScale: {x: 0.16143249, y: 0.15251297, z: 0.61599}
   m_Children:
   - {fileID: 7820591030494820092}
-  - {fileID: 2833216390864286921}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

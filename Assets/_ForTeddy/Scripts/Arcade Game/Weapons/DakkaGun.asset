@@ -15,7 +15,7 @@ MonoBehaviour:
   name: DakkaGun
   fireRate: 0.15
   bulletSpeed: 1000
-  damage: 100
+  damage: 50
   maxAmmoCount: 200
   isDefaultWeapon: 0
   fireType: 0

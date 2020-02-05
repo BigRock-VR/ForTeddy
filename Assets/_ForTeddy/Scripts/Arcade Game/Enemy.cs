@@ -1,23 +1,35 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] public int Health = 10;
-    [SerializeField] public int Damage = 1;
-    [SerializeField] public float speed = 5.0f;
-    public bool enableWaveMultiply;
-    public WaveManager waveManager;
+    [Header("Enemy Stats:")]
+    [SerializeField] public int MaxHP;
+    [SerializeField] public int AttackDamage;
+    [SerializeField] public float MovementSpeed;
+    [SerializeField] [Range(50.0f, 400.0f)] public float AttackSpeed = 50.0f;
+    [SerializeField] public int attackRange = 2;
+    [SerializeField] public bool isEnableWaveMult; // Enable Wave Multiplyer and increase enemy damage and hp every wave
+    [SerializeField] public bool isDead;
+    private WaveManager waveManager;
 
     [Range(0.5f, 2.0f)]
     public float deathDelay = 0.5f;
 
+    public GameObject pickUpPrefab; // Prefab that can spawn the enemy on death
+
+
+    private enum eState { TARGET_PLAYER, TARGET_SOLDIER, ATTACK_PLAYER, ATTACK_SOLDIER, DEATH };
+    private eState enemyState;
     private int hp;
     private int damage;
+    private double attackSpeed;
+    private double nextTimeToAttack;
     private NavMeshAgent agent;
-    public float distanceFromPlayer;
-    private Vector3 targetPosition;
+    private Transform targetPosition;
 
     void Start()
     {
@@ -25,46 +37,162 @@ public class Enemy : MonoBehaviour
 
         if (waveManager)
         {
-            waveManager.onEndWave += Dead;
+            waveManager.onEndWave += KillAll;
         }
 
-        hp = Health;
-        damage = Damage;
-        agent = GetComponent<NavMeshAgent>();
-        agent.speed = speed;
-        SetTarget(GameManager.Instance.player.transform);
+        InitEnemyStats();
     }
+
 
     private void Update()
     {
-        if (GameManager.Instance.player)
-        {
-            distanceFromPlayer = GetDistanceFromPlayer();
-
-            //if (distanceFromPlayer > 1)
-            //{
-            //    SetTarget(GameManager.Instance.player.transform);
-            //}
-        }
-
+        CheckEnemyState();
     }
 
+
+    private void CheckEnemyState()
+    {
+        float playerDist = GetDistanceFromPlayer();
+        float soldierDist = GetDistanceFromSoldiers();
+
+        if (playerDist < soldierDist)
+        {
+            enemyState = eState.TARGET_PLAYER;
+            targetPosition = GameManager.Instance.player.transform;
+
+            if (playerDist <= attackRange && !GameManager.Instance.player.GetComponent<PlayerManager>().isDead)
+            {
+                if (Time.time >= nextTimeToAttack)
+                {
+                    nextTimeToAttack = Time.time + attackSpeed;
+                    enemyState = eState.ATTACK_PLAYER;
+                }
+            }
+        }
+        else
+        {
+            enemyState = eState.TARGET_SOLDIER;
+
+            if (soldierDist <= attackRange)
+            {
+                if (Time.time >= nextTimeToAttack)
+                {
+                    nextTimeToAttack = Time.time + attackSpeed;
+                    enemyState = eState.ATTACK_SOLDIER;
+                }
+            }
+        }
+
+        EnemyAI();
+    }
+
+    private void EnemyAI()
+    {
+        switch (enemyState)
+        {
+            case eState.TARGET_PLAYER:
+                Debug.DrawLine(transform.position, targetPosition.position, Color.red);
+                agent.SetDestination(targetPosition.position);
+                break;
+            case eState.TARGET_SOLDIER:
+                Debug.DrawLine(transform.position, targetPosition.position, Color.blue);
+                agent.SetDestination(targetPosition.position);
+                break;
+            case eState.ATTACK_PLAYER:
+                GameManager.Instance.player.GetComponent<PlayerManager>().TakeDamage(damage);
+                /* TO DO ANIMATION */
+                break;
+            case eState.ATTACK_SOLDIER:
+                targetPosition.GetComponent<SoldierManager>().TakeDamage(damage);
+                /* TO DO ANIMATION */
+                break;
+            case eState.DEATH:
+                break;
+            default:
+                break;
+        }
+    }
     public void TakeDamage(int damage)
     {
         hp -= damage;
-        
         Debug.Log($"Taking damage: {damage}, HP: {hp}");
         if (hp <= 0)
         {
+            isDead = true;
+            enemyState = eState.DEATH;
+            waveManager.onEndWave -= KillAll;
             Dead();
         }
     }
-
-
-    private void SetTarget(Transform target)
+    // Method Overload for the hit point effect
+    public void TakeDamage(int damage, Vector4 hitPoint)
     {
-        targetPosition = target.position;
-        agent.SetDestination(targetPosition);
+        hp -= damage;
+
+        Material mat = GetComponent<MeshRenderer>().material;
+
+        float currEmissionAmount = mat.GetFloat("_EmissionScale");
+        float nextEmissionAmount = (float)damage / MaxHP;
+        nextEmissionAmount += currEmissionAmount;
+
+        StartCoroutine(EmissionEffect(hitPoint, 0.7f, currEmissionAmount, nextEmissionAmount));
+        Debug.Log($"Taking damage: {damage}, HP: {hp}");
+    }
+
+    IEnumerator EmissionEffect(Vector4 hitPoint, float delay, float currEmission, float nextEmission)
+    {
+        float timer = 0.0f;
+        Material mat = GetComponent<MeshRenderer>().material;
+        Vector4 localHitPoint = mat.GetVector("_DissolveStart");
+
+        if (localHitPoint == Vector4.zero)
+        {
+            mat.SetVector("_DissolveStart", hitPoint);
+            mat.SetVector("_DissolveEnd", hitPoint * -1);
+            mat.SetFloat("_isHitting", 1);
+        }
+
+        if (hp <= 0 && !isDead)
+        {
+            isDead = true;
+            enemyState = eState.DEATH;
+            Vector3 pickUpSpawnPos = transform.position;
+            pickUpSpawnPos.y += 10.0f;
+            Instantiate(pickUpPrefab, pickUpSpawnPos, Quaternion.identity, waveManager.coinsContainer.transform);
+            StartCoroutine(PlayFullDissolveEffect(2.0f));
+        }
+
+        while (timer < 1.0f && !isDead)
+        {
+            timer += Time.deltaTime / delay;
+            mat.SetFloat("_EmissionScale", Mathf.Lerp(currEmission, nextEmission, timer));
+            yield return null;
+        }
+
+    }
+    IEnumerator PlayFullDissolveEffect(float delay)
+    {
+        float timer = 0.0f;
+        Material mat = GetComponent<MeshRenderer>().material;
+        Vector4 localHitPoint = mat.GetVector("_DissolveStart");
+        mat.SetFloat("_isDissolving", 1);
+
+        if (localHitPoint == Vector4.zero)
+        {
+            mat.SetVector("_DissolveStart", new Vector4(0.0f, 0.5f, 0.0f, 0.0f));
+            mat.SetVector("_DissolveEnd", new Vector4(0.0f, -0.5f, 0.0f, 1.0f));
+            mat.SetFloat("_isHitting", 1);
+            mat.SetFloat("_isDissolving", 1);
+        }
+
+        while (timer < 1.0f)
+        {
+            timer += Time.deltaTime / delay;
+            mat.SetFloat("_DissolveScale", Mathf.Lerp(0, 1, timer));
+            yield return null;
+        }
+        waveManager.onEndWave -= KillAll;
+        Destroy(gameObject);
     }
 
     private float GetDistanceFromPlayer()
@@ -72,8 +200,58 @@ public class Enemy : MonoBehaviour
         return Vector3.Distance(transform.position, GameManager.Instance.player.transform.position);
     }
 
+    private float GetDistanceFromSoldiers()
+    {
+        float result = float.MaxValue;
+
+        foreach (var soldier in waveManager.soldierPositions)
+        {
+            if (soldier.gameObject.activeInHierarchy)
+            {
+                float minDistance = Vector3.Distance(transform.position, soldier.position);
+
+                if (minDistance < result)
+                {
+                    result = minDistance;
+                    targetPosition = soldier;
+                }
+            }
+
+        }
+
+        return result;
+    }
+
+    private void InitEnemyStats()
+    {
+        if (isEnableWaveMult)
+        {
+            hp = this.MaxHP + waveManager.waveCount;
+            damage = this.AttackDamage + waveManager.waveCount;
+            attackSpeed = Math.Round(1.0f / (this.AttackSpeed / 100), 2); // Attack Speed in percent value
+            agent = this.GetComponent<NavMeshAgent>();
+            agent.speed = this.MovementSpeed;
+            enemyState = eState.TARGET_PLAYER;
+        }
+        else
+        {
+            hp = this.MaxHP;
+            damage = this.AttackDamage;
+            attackSpeed = Math.Round(1.0f / (this.AttackSpeed / 100), 2); // Attack Speed in percent value
+            agent = this.GetComponent<NavMeshAgent>();
+            agent.speed = this.MovementSpeed;
+            enemyState = eState.TARGET_PLAYER;
+        }
+
+    }
     public void Dead()
     {
         Destroy(gameObject, deathDelay);
     }
+   
+    public void KillAll()
+    {
+        StartCoroutine(PlayFullDissolveEffect(2.0f));
+    }
+
 }
