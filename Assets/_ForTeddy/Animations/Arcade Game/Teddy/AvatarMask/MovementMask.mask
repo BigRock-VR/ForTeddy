@@ -1,0 +1,147 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MovementMask
+  m_Mask: 00000000010000000000000000000000000000000100000001000000010000000100000000000000000000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Pelvis_JTN
+    m_Weight: 1
+  - m_Path: Pelvis_JTN/Left_Hip_JTN
+    m_Weight: 1
+  - m_Path: Pelvis_JTN/Left_Hip_JTN/Left_Knee_JTN
+    m_Weight: 1
+  - m_Path: Pelvis_JTN/Left_Hip_JTN/Left_Knee_JTN/Left_Ankle_JTN
+    m_Weight: 1
+  - m_Path: Pelvis_JTN/Left_Hip_JTN/Left_Knee_JTN/Left_Ankle_JTN/Left_FootBase_JTN
+    m_Weight: 1
+  - m_Path: Pelvis_JTN/Left_Hip_JTN/Left_Knee_JTN/Left_Ankle_JTN/Left_FootBase_JTN/Left_FootToe_JTN
+    m_Weight: 1
+  - m_Path: Pelvis_JTN/Right_Hip_JTN
+    m_Weight: 1
+  - m_Path: Pelvis_JTN/Right_Hip_JTN/Right_Knee_JTN
+    m_Weight: 1
+  - m_Path: Pelvis_JTN/Right_Hip_JTN/Right_Knee_JTN/Right_Ankle_JTN
+    m_Weight: 1
+  - m_Path: Pelvis_JTN/Right_Hip_JTN/Right_Knee_JTN/Right_Ankle_JTN/Right_FootBase_JTN
+    m_Weight: 1
+  - m_Path: Pelvis_JTN/Right_Hip_JTN/Right_Knee_JTN/Right_Ankle_JTN/Right_FootBase_JTN/Right_FootToe_JTN
+    m_Weight: 1
+  - m_Path: Pelvis_JTN/Spine1_JTN
+    m_Weight: 1
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN
+    m_Weight: 1
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN
+    m_Weight: 0
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Left_Shoulder_JTN
+    m_Weight: 0
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Left_Shoulder_JTN/Left_Arm_JTN
+    m_Weight: 0
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Left_Shoulder_JTN/Left_Arm_JTN/Left_Elbow_JTN
+    m_Weight: 0
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Left_Shoulder_JTN/Left_Arm_JTN/Left_Elbow_JTN/Left_Wrist_JTN
+    m_Weight: 0
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Left_Shoulder_JTN/Left_Arm_JTN/Left_Elbow_JTN/Left_Wrist_JTN/Left_CenterHand_JTN
+    m_Weight: 0
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Left_Shoulder_JTN/Left_Arm_JTN/Left_Elbow_JTN/Left_Wrist_JTN/Left_CenterHand_JTN/Left_MidToeBase_JTN
+    m_Weight: 0
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Left_Shoulder_JTN/Left_Arm_JTN/Left_Elbow_JTN/Left_Wrist_JTN/Left_CenterHand_JTN/Left_MidToeBase_JTN/Left_MidToeTop_JTN
+    m_Weight: 0
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Left_Shoulder_JTN/Left_Arm_JTN/Left_Elbow_JTN/Left_Wrist_JTN/Left_ExtHand_JTN
+    m_Weight: 0
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Left_Shoulder_JTN/Left_Arm_JTN/Left_Elbow_JTN/Left_Wrist_JTN/Left_ExtHand_JTN/Left_ExtBaseToe_JTN
+    m_Weight: 0
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Left_Shoulder_JTN/Left_Arm_JTN/Left_Elbow_JTN/Left_Wrist_JTN/Left_ExtHand_JTN/Left_ExtBaseToe_JTN/Left_ExtTopToe_JTN
+    m_Weight: 0
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Left_Shoulder_JTN/Left_Arm_JTN/Left_Elbow_JTN/Left_Wrist_JTN/Left_IntHand_JTN
+    m_Weight: 0
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Left_Shoulder_JTN/Left_Arm_JTN/Left_Elbow_JTN/Left_Wrist_JTN/Left_IntHand_JTN/Left_IntBaseToe_JTN
+    m_Weight: 0
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Left_Shoulder_JTN/Left_Arm_JTN/Left_Elbow_JTN/Left_Wrist_JTN/Left_IntHand_JTN/Left_IntBaseToe_JTN/Left_IntTopToe_JTN
+    m_Weight: 0
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Neck_JTN
+    m_Weight: 1
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Neck_JTN/HeadBase_JTN
+    m_Weight: 1
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Neck_JTN/HeadBase_JTN/Face_JTN
+    m_Weight: 1
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Neck_JTN/HeadBase_JTN/Face_JTN/Left_Eye_JTN
+    m_Weight: 1
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Neck_JTN/HeadBase_JTN/Face_JTN/Left_Eye_JTN/LeftEye_Low0
+    m_Weight: 1
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Neck_JTN/HeadBase_JTN/Face_JTN/Left_Eye_JTN/LeftEye_Low1
+    m_Weight: 1
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Neck_JTN/HeadBase_JTN/Face_JTN/Left_Eye_JTN/LeftEye_Low2
+    m_Weight: 1
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Neck_JTN/HeadBase_JTN/Face_JTN/Left_Eye_JTN/LeftEye_Up0
+    m_Weight: 1
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Neck_JTN/HeadBase_JTN/Face_JTN/Left_Eye_JTN/LeftEye_Up1
+    m_Weight: 1
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Neck_JTN/HeadBase_JTN/Face_JTN/Left_Eye_JTN/LeftEye_Up2
+    m_Weight: 1
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Neck_JTN/HeadBase_JTN/Face_JTN/Mouth_JTN
+    m_Weight: 1
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Neck_JTN/HeadBase_JTN/Face_JTN/Mouth_JTN/Mouth_Left
+    m_Weight: 1
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Neck_JTN/HeadBase_JTN/Face_JTN/Mouth_JTN/Mouth_Low
+    m_Weight: 1
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Neck_JTN/HeadBase_JTN/Face_JTN/Mouth_JTN/Mouth_Right
+    m_Weight: 1
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Neck_JTN/HeadBase_JTN/Face_JTN/Mouth_JTN/Mouth_Up
+    m_Weight: 1
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Neck_JTN/HeadBase_JTN/Face_JTN/Right_Eye_JTN
+    m_Weight: 1
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Neck_JTN/HeadBase_JTN/Face_JTN/Right_Eye_JTN/RightEye_Low0
+    m_Weight: 1
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Neck_JTN/HeadBase_JTN/Face_JTN/Right_Eye_JTN/RightEye_Low1
+    m_Weight: 1
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Neck_JTN/HeadBase_JTN/Face_JTN/Right_Eye_JTN/RightEye_Low2
+    m_Weight: 1
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Neck_JTN/HeadBase_JTN/Face_JTN/Right_Eye_JTN/RightEye_Up0
+    m_Weight: 1
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Neck_JTN/HeadBase_JTN/Face_JTN/Right_Eye_JTN/RightEye_Up1
+    m_Weight: 1
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Neck_JTN/HeadBase_JTN/Face_JTN/Right_Eye_JTN/RightEye_Up2
+    m_Weight: 1
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Neck_JTN/HeadBase_JTN/HeadTop_JTN
+    m_Weight: 1
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Right_Shoulder_JTN
+    m_Weight: 0
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Right_Shoulder_JTN/Right_Arm_JTN
+    m_Weight: 0
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Right_Shoulder_JTN/Right_Arm_JTN/Right_Elbow_JTN
+    m_Weight: 0
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Right_Shoulder_JTN/Right_Arm_JTN/Right_Elbow_JTN/Right_Wrist_JTN
+    m_Weight: 0
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Right_Shoulder_JTN/Right_Arm_JTN/Right_Elbow_JTN/Right_Wrist_JTN/Peashooter_Pos
+    m_Weight: 0
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Right_Shoulder_JTN/Right_Arm_JTN/Right_Elbow_JTN/Right_Wrist_JTN/Right_CenterHand_JTN
+    m_Weight: 0
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Right_Shoulder_JTN/Right_Arm_JTN/Right_Elbow_JTN/Right_Wrist_JTN/Right_CenterHand_JTN/Right_MidToeBase_JTN
+    m_Weight: 0
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Right_Shoulder_JTN/Right_Arm_JTN/Right_Elbow_JTN/Right_Wrist_JTN/Right_CenterHand_JTN/Right_MidToeBase_JTN/Right_MidToeTop_JTN
+    m_Weight: 0
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Right_Shoulder_JTN/Right_Arm_JTN/Right_Elbow_JTN/Right_Wrist_JTN/Right_ExtHand_JTN
+    m_Weight: 0
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Right_Shoulder_JTN/Right_Arm_JTN/Right_Elbow_JTN/Right_Wrist_JTN/Right_ExtHand_JTN/Right_ExtBaseToe_JTN
+    m_Weight: 0
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Right_Shoulder_JTN/Right_Arm_JTN/Right_Elbow_JTN/Right_Wrist_JTN/Right_ExtHand_JTN/Right_ExtBaseToe_JTN/Right_ExtTopToe_JTN
+    m_Weight: 0
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Right_Shoulder_JTN/Right_Arm_JTN/Right_Elbow_JTN/Right_Wrist_JTN/Right_IntHand_JTN
+    m_Weight: 0
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Right_Shoulder_JTN/Right_Arm_JTN/Right_Elbow_JTN/Right_Wrist_JTN/Right_IntHand_JTN/Right_IntBaseToe_JTN
+    m_Weight: 0
+  - m_Path: Pelvis_JTN/Spine1_JTN/Spine2_JTN/Spine3_JTN/Right_Shoulder_JTN/Right_Arm_JTN/Right_Elbow_JTN/Right_Wrist_JTN/Right_IntHand_JTN/Right_IntBaseToe_JTN/Right_IntTopToe_JTN
+    m_Weight: 0
+  - m_Path: Teddy
+    m_Weight: 1
+  - m_Path: Teddy/bandana_low
+    m_Weight: 1
+  - m_Path: Teddy/teddy_low
+    m_Weight: 1

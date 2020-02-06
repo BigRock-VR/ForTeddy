@@ -47,6 +47,11 @@ public class PlayerManager : MonoBehaviour
         hp = PLAYER_MAX_ARMOR;
     }
 
+    public void UpdatePlayerScore(int amount)
+    {
+        score += amount;
+    }
+
     public void TakeDamage(int damage)
     {
 #if DEBUG

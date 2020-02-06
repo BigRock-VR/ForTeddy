@@ -46,7 +46,7 @@ public class PickUp : MonoBehaviour
         PlayerManager player = other.GetComponent<PlayerManager>();
         if (player)
         {
-            player.score += coinAmount;
+            player.UpdatePlayerScore(coinAmount);
             gameObject.SetActive(false);
         }
     }

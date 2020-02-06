@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5871800433234494791}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.60800004}
+  m_LocalPosition: {x: 0, y: 0, z: 0.156}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5884928528182961313}
@@ -285,7 +285,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4766,6 +4766,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a2b1f0e571cac8488c8c8272800b8ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
 --- !u!1 &7738656361031999446
 GameObject:
   m_ObjectHideFlags: 0
@@ -4777,7 +4778,6 @@ GameObject:
   - component: {fileID: 5884928528182961313}
   - component: {fileID: 5807469352483630321}
   - component: {fileID: 6654851883918062273}
-  - component: {fileID: 2267652008628535494}
   m_Layer: 11
   m_Name: Peashooter
   m_TagString: Untagged
@@ -4794,7 +4794,7 @@ Transform:
   m_GameObject: {fileID: 7738656361031999446}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.16143249, y: 0.15251297, z: 0.61599}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7820591030494820092}
   m_Father: {fileID: 0}
@@ -4807,7 +4807,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7738656361031999446}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 1266967971932256324, guid: 9d3e268a1b43bd344b9f6d46bc7076d3, type: 3}
 --- !u!23 &6654851883918062273
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4846,16 +4846,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &2267652008628535494
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7738656361031999446}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}

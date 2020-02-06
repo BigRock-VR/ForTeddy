@@ -14,14 +14,14 @@ public class PlayerMovement : MonoBehaviour
     SteamVR_Input_Sources VRInput;
 
 
-    //private Animator anim;
+    private Animator anim;
 
     private Rigidbody rb;
     public bool isAiming;
     private Vector3 movementDir, aimDir;
     void Awake()
     {
-        //anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
     }
 
@@ -35,12 +35,16 @@ public class PlayerMovement : MonoBehaviour
             // changed the inputs so that u can use VR pads
             movementDir = new Vector3(inputL.GetAxis(VRInput).x, 0, inputL.GetAxis(VRInput).y);
             aimDir = new Vector3(inputR.GetAxis(VRInput).x, 0, inputR.GetAxis(VRInput).y);
+            anim.SetFloat("VelZ", movementDir.z);
+            anim.SetFloat("VelX", movementDir.x);
         }
         else
         {
             // Joystick Input
             movementDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
             aimDir = new Vector3(Input.GetAxisRaw("AimX"), 0, Input.GetAxisRaw("AimY"));
+            anim.SetFloat("VelZ", movementDir.z);
+            anim.SetFloat("VelX", movementDir.x);
         }
 
         // Move the player around the scene.

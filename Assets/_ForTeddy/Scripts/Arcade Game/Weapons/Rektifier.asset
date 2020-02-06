@@ -19,5 +19,5 @@ MonoBehaviour:
   maxAmmoCount: 3
   isDefaultWeapon: 0
   fireType: 0
-  weaponPrefab: {fileID: 7738656361031999446, guid: 6aebbbdf35ceaaf44b6751d4e105461a,
+  weaponPrefab: {fileID: 7738656361031999446, guid: fe578dc8a5345df4395bee97b8f3b1a7,
     type: 3}
