@@ -34,8 +34,11 @@ public class WaveManager : MonoBehaviour
 
         coinsContainer = new GameObject("[CoinsContainer]");
         coinsContainer.transform.parent = transform;
+    }
 
-        Invoke("StartNextWave", 3.0f);
+    public void setCanSpawnEnemy(bool status)
+    {
+        canSpawnEnemy = status;
     }
 
     // Update is called once per frame

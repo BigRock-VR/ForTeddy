@@ -124,7 +124,7 @@ public class GamePadControls : MonoBehaviour
 
             if (!Mathf.Approximately(dirL.magnitude, (float)3e-05) || !Mathf.Approximately(dirL.magnitude, -(float)3e-05))
             {
-                dirL *= 100f;
+                dirL *= 25f;
                 playerGO.Move(dirL);
             }
         }

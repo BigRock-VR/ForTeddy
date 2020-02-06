@@ -30,6 +30,8 @@ public class MovementVR : MonoBehaviour
     [SerializeField]
     Rigidbody playerRigidBody;
     CameraArm cameraArm;
+    [SerializeField]
+    public bool canMove;
 
     private void Start()
     {
@@ -37,49 +39,54 @@ public class MovementVR : MonoBehaviour
     }
     void LateUpdate()
     {
-        inputMovement = movementThumbstick.GetAxis(VR_Input);
-        inputLook = lookThumbstick.GetAxis(VR_Input);
-
-        // check if not exeeded max speed
-        if (playerRigidBody.velocity.magnitude <= maxSpeed)
+        if (canMove)
         {
-            // movement L
-            if (inputMovement.x != 0 || inputMovement.y != 0)
-            {
-                playerRigidBody.AddForce(playerRigidBody.transform.forward * inputMovement.y * speedModifier, ForceMode.VelocityChange);
-                playerRigidBody.AddForce(playerRigidBody.transform.right * inputMovement.x * speedModifier, ForceMode.VelocityChange);
-            }
 
-            // look R
-            if (inputLook.x != 0 || inputLook.y != 0)
+            inputMovement = movementThumbstick.GetAxis(VR_Input);
+            inputLook = lookThumbstick.GetAxis(VR_Input);
+
+            // check if not exeeded max speed
+            if (playerRigidBody.velocity.magnitude <= maxSpeed)
             {
-                cameraArm.doCameraRotation(inputLook.x, turnModifier);
+                // movement L
+                if (inputMovement.x != 0 || inputMovement.y != 0)
+                {
+                    playerRigidBody.AddForce(playerRigidBody.transform.forward * inputMovement.y * speedModifier, ForceMode.VelocityChange);
+                    playerRigidBody.AddForce(playerRigidBody.transform.right * inputMovement.x * speedModifier, ForceMode.VelocityChange);
+                }
+
+                // look R
+                if (inputLook.x != 0 || inputLook.y != 0)
+                {
+                    cameraArm.doCameraRotation(inputLook.x, turnModifier);
+                }
+                else
+                {
+                    cameraArm.doCameraRotation(0, 0);
+                }
             }
             else
             {
-                cameraArm.doCameraRotation(0, 0);
+                print("im exeeding max speed");
             }
-        }
-        else
-        {
-            print("im exeeding max speed");
-        }
-        if (runPressed.GetStateDown(VR_Input))
-        {
-            speedModifier *= 1.82f;
-        }
-        if (runPressed.GetStateUp(VR_Input))
-        {
-            speedModifier /= 1.82f;
+            if (runPressed.GetStateDown(VR_Input))
+            {
+                speedModifier *= 1.82f;
+            }
+            if (runPressed.GetStateUp(VR_Input))
+            {
+                speedModifier /= 1.82f;
 
-        }
-        if (focusPressed.GetStateDown(VR_Input))
-        {
-            turnModifier *= 3.14f;
-        }
-        if (focusPressed.GetStateUp(VR_Input))
-        {
-            turnModifier /= 3.14f;
+            }
+            if (focusPressed.GetStateDown(VR_Input))
+            {
+                turnModifier *= 3.14f;
+            }
+            if (focusPressed.GetStateUp(VR_Input))
+            {
+                turnModifier /= 3.14f;
+            }
+
         }
     }
 }

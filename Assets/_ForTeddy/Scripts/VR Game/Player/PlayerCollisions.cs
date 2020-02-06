@@ -13,6 +13,8 @@ public class PlayerCollisions : MonoBehaviour
     private CapsuleCollider capsuleCollider, capsuleTrigger;
     [SerializeField]
     private BoxCollider boxCollider;
+    [SerializeField]
+    SphereCollider headCollider;
 
     [SerializeField][Range(0.4f, 0.99f)]
     float playerHeigth = 0.5f;
@@ -23,42 +25,43 @@ public class PlayerCollisions : MonoBehaviour
     void FixedUpdate()
     {
 
-        headPos = transform.InverseTransformPoint(head.transform.position);
+        //headPos = transform.InverseTransformPoint(head.transform.position);
 
-        if (!isColliding)
-        {
-            Vector3 center = headPos;
-            center.y = capsuleCollider.height / 2 + playerHeigth;
-            capsuleCollider.center = center;
-        }
+        //if (!isColliding)
+        //{
+        //   Vector3 center = headPos;
+        //    center.y = capsuleCollider.height / 2 + playerHeigth;
+        //    capsuleCollider.center = center;
+        //}
 
-        boxCollider.center = headPos;
+        //boxCollider.center = headPos;
 
-        capsuleTrigger.height = headPos.y - playerHeigth;
-        headPos.y = capsuleTrigger.height / 2 + playerHeigth;
-        capsuleTrigger.center = headPos;
+        //capsuleTrigger.height = headPos.y - playerHeigth;
+        //headPos.y = capsuleTrigger.height / 2 + playerHeigth;
+        //capsuleTrigger.center = headPos;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.name == "Bedroom2")
-        {
-            return;
-        }
+        //if(collision.gameObject.name == "Bedroom2")
+        //{
+        //    return;
+        //}
 
-        isColliding = true;
-       // SteamVR_Fade.Start(Color.black, 0.5f);
+        //if(collision.collider)
+        //isColliding = true;
+        //SteamVR_Fade.Start(Color.black, 0.5f);
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.name == "Bedroom2")
-        {
-            return;
-        }
+        //if (collision.gameObject.name == "Bedroom2")
+        //{
+        //    return;
+        //}
 
-        isColliding = false;
-       // SteamVR_Fade.Start(Color.clear, 0.2f);
+        //isColliding = false;
+        //SteamVR_Fade.Start(Color.clear, 0.2f);
     }
 }
 
