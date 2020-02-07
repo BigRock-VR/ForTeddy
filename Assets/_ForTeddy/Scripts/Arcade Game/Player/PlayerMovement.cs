@@ -61,10 +61,6 @@ public class PlayerMovement : MonoBehaviour
         {
             isAiming = false;
         }
-
-
-        // Animate the player.
-        //Animating(h, v);
     }
 
     public void Move(Vector3 dir)
@@ -89,13 +85,4 @@ public class PlayerMovement : MonoBehaviour
         // Set the player's rotation to this new rotation.
         rb.MoveRotation(newRotatation);
     }
-
-    //void Animating(float h, float v)
-    //{
-    //    // Create a boolean that is true if either of the input axes is non-zero.
-    //    bool walking = h != 0f || v != 0f;
-
-    //    // Tell the animator whether or not the player is walking.
-    //    anim.SetBool("IsWalking", walking);
-    //}
 }

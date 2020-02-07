@@ -15,6 +15,13 @@ public class ParticleCollision : MonoBehaviour
         collisionEvents = new List<ParticleCollisionEvent>();
     }
 
+    public void Update()
+    {
+        // Normalize the forward rotation of the single particle
+        //Vector3 currentRotation = transform.eulerAngles;
+        //currentRotation.z = 0;
+        //transform.eulerAngles = currentRotation;
+    }
     private void OnParticleCollision(GameObject other)
     {
         int collisionEventCount = pSystem.GetCollisionEvents(other, collisionEvents);
@@ -28,7 +35,7 @@ public class ParticleCollision : MonoBehaviour
             {
                 //_enemy.TakeDamage(damage); // SEND COLLISION EVENT
                 Vector4 hitPointLocal = collisionEvents[collisionEventCount-1].normal;
-                _enemy.TakeDamage(damage, hitPointLocal);
+                _enemy.TakeDamage(damage * collisionEventCount, hitPointLocal);
             }
         }
     }

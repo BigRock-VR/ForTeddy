@@ -21,6 +21,9 @@ public class WeaponSystem : MonoBehaviour
     //Particle Bullets
     private ParticleSystem pSystem;
 
+    // Atomizer Laser Logics
+    private float laserTimer;
+
     void Start()
     {
         InitWeapons(); // Instantiate all the possible weapons
@@ -48,18 +51,39 @@ public class WeaponSystem : MonoBehaviour
 
     private void Shoot()
     {
-        switch (weapons[(int)currSelectedWeapon].fireType)
+        switch (weapons[GetCurrSelectedWeapon()].fireType)
         {
             case Weapon.efireType.SHOTGUN:
             case Weapon.efireType.SINGLE:
                 if (Time.time >= nextTimeToFire)
                 {
-                    nextTimeToFire = Time.time + weapons[(int)currSelectedWeapon].fireRate;
-                    pSystem.Emit(1);
+                    nextTimeToFire = Time.time + weapons[GetCurrSelectedWeapon()].fireRate;
+                    //pSystem.Emit(1);
+                    pSystem.Play();
                 }
                 break;
             case Weapon.efireType.LASER:
 
+                if (laserTimer == 0)
+                {
+                    laserTimer = weapons[GetCurrSelectedWeapon()].fireRate;
+                }
+
+                if (laserTimer > 0)
+                {
+                    laserTimer -= Time.deltaTime;
+                    RaycastHit[] hits;
+                    // Draw a Ray with a range that trigger every object in the radius
+                    hits = Physics.RaycastAll(weaponSpawnPositions[GetCurrSelectedWeapon()].position, transform.forward, 10.0f);
+                    Debug.DrawRay(weaponSpawnPositions[GetCurrSelectedWeapon()].position, transform.forward * 10.0f, Color.yellow);
+                    for (int i = 0; i < hits.Length; i++)
+                    {
+                        if (hits[i].transform.CompareTag("Enemy"))
+                        {
+                            hits[i].transform.GetComponent<Enemy>().TakeDamage(weapons[GetCurrSelectedWeapon()].damage);
+                        }
+                    }
+                }
                 break;
         }
 
@@ -72,7 +96,7 @@ public class WeaponSystem : MonoBehaviour
         {
             for (int i = 0; i < weapons.Length; i++)
             {
-                weaponObjs[i] = Instantiate(weapons[i].weaponPrefab, weaponSpawnPositions[i].position, transform.rotation, weaponSpawnPositions[i].transform);
+                weaponObjs[i] = Instantiate(weapons[i].weaponPrefab, weaponSpawnPositions[i].transform);
 
                 if (!weapons[i].isDefaultWeapon)
                 {
@@ -85,15 +109,20 @@ public class WeaponSystem : MonoBehaviour
 
     public void GetBulletParticle()
     {
-        pSystem = weaponObjs[(int)currSelectedWeapon].transform.Find("Bullet_PS").GetComponent<ParticleSystem>();
-        weaponObjs[(int)currSelectedWeapon].transform.Find("Bullet_PS").GetComponent<ParticleCollision>().damage = weapons[(int)currSelectedWeapon].damage;
+        pSystem = weaponObjs[GetCurrSelectedWeapon()].transform.Find("Bullet_PS").GetComponent<ParticleSystem>();
+        // Set Up the weapon damage to the single particle
+        weaponObjs[GetCurrSelectedWeapon()].transform.Find("Bullet_PS").GetComponent<ParticleCollision>().damage = weapons[GetCurrSelectedWeapon()].damage;
     }
 
-
-
+    public int GetCurrSelectedWeapon()
+    {
+        return (int)currSelectedWeapon;
+    }
     public void SwitchWeapons(eWeapons nextWeapon)
     {
-        int oldWeapon = (int)currSelectedWeapon;
+        int oldWeapon = GetCurrSelectedWeapon();
+        nextTimeToFire = 0;
+        laserTimer = 0;
         currSelectedWeapon = nextWeapon;
         weaponObjs[oldWeapon].SetActive(false);
         weaponObjs[(int)nextWeapon].SetActive(true);

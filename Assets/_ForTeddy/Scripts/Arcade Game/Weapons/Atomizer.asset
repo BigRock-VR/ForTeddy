@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Atomizer
   fireRate: 6
   bulletSpeed: 1000
-  damage: 100
+  damage: 10
   maxAmmoCount: 300
   isDefaultWeapon: 0
   fireType: 2
