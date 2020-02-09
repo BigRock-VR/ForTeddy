@@ -43,25 +43,25 @@ public class PlayerCollisions : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        //if(collision.gameObject.name == "Bedroom2")
-        //{
-        //    return;
-        //}
+        if(collision.gameObject.name == "Bedroom2")
+        {
+            return;
+        }
 
         //if(collision.collider)
-        //isColliding = true;
-        //SteamVR_Fade.Start(Color.black, 0.5f);
+        isColliding = true;
+        SteamVR_Fade.Start(Color.black, 0.5f);
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        //if (collision.gameObject.name == "Bedroom2")
-        //{
-        //    return;
-        //}
+        if (collision.gameObject.name == "Bedroom2")
+        {
+            return;
+        }
 
-        //isColliding = false;
-        //SteamVR_Fade.Start(Color.clear, 0.2f);
+        isColliding = false;
+        SteamVR_Fade.Start(Color.clear, 0.2f);
     }
 }
 

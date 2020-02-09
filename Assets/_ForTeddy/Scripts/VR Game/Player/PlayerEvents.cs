@@ -39,6 +39,19 @@ public class PlayerEvents : MonoBehaviour
     [SerializeField]
     bool isFaceHugging;
 
+    private void Start()
+    {
+        Valve.VR.SteamVR_Fade.Start(Color.black, 0);
+        Invoke("WakeUp", 5);
+    }
+
+    private void WakeUp()
+    {
+        Valve.VR.SteamVR_Fade.Start(Color.clear, 3f);
+        Valve.VR.SteamVR_Fade.Start(Color.black, 10);
+        Valve.VR.SteamVR_Fade.Start(Color.clear, 0.1f);
+        eventAnim.SetTrigger("WakeUp");
+    }
     private bool inThisState(string clipName)
     {
         return eventAnim.GetCurrentAnimatorStateInfo(0).IsName(clipName);
