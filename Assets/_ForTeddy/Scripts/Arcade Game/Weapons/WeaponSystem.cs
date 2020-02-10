@@ -154,23 +154,23 @@ public class WeaponSystem : MonoBehaviour
             return;
         }
 
-        if (GUI.Button(new Rect(10, 10, 100, 50), "Peashooter"))
+        if (GUI.Button(new Rect(10, 510, 100, 50), "Peashooter"))
         {
             SwitchWeapons(eWeapons.DEFAULT);
         }
-        if (GUI.Button(new Rect(110, 10, 100, 50), "DakkaGun"))
+        if (GUI.Button(new Rect(110, 510, 100, 50), "DakkaGun"))
         {
             SwitchWeapons(eWeapons.DAKKAGUN);
         }
-        if (GUI.Button(new Rect(210, 10, 100, 50), "Impallinator"))
+        if (GUI.Button(new Rect(210, 510, 100, 50), "Impallinator"))
         {
             SwitchWeapons(eWeapons.IMPALLINATOR);
         }
-        if (GUI.Button(new Rect(310, 10, 100, 50), "Atomizer"))
+        if (GUI.Button(new Rect(310, 510, 100, 50), "Atomizer"))
         {
             SwitchWeapons(eWeapons.ATOMIZER);
         }
-        if (GUI.Button(new Rect(410, 10, 100, 50), "Rektifier"))
+        if (GUI.Button(new Rect(410, 510, 100, 50), "Rektifier"))
         {
             SwitchWeapons(eWeapons.REKTIFIER);
         }

@@ -18,6 +18,9 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
     public bool isAiming;
     private Vector3 movementDir, aimDir;
+    public Material[] lightMat = new Material[2];
+    [Range(0.0f,10.0f)]public float lightRadius;
+    [Range(0.0f, 10.0f)]public float lightSmothness;
     void Awake()
     {
         anim = GetComponent<Animator>();
@@ -38,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
             //anim.SetFloat("VelX", movementDir.x);
 
             AnimationCTRL();
+            UpdatePlayerLight();
         }
         else
         {
@@ -48,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
             //anim.SetFloat("VelX", movementDir.x);
 
             AnimationCTRL();
+            UpdatePlayerLight();
         }
 
         // Move the player around the scene.
@@ -117,6 +122,16 @@ public class PlayerMovement : MonoBehaviour
         {
             anim.SetFloat("VelZ", -movementDir.x);
             anim.SetFloat("VelX", movementDir.z);
+        }
+    }
+
+    public void UpdatePlayerLight()
+    {
+        for (int i = 0; i < lightMat.Length; i++)
+        {
+            lightMat[i].SetVector("PlayerMask_Position", transform.position);
+            lightMat[i].SetFloat("PlayerMask_Radius", lightRadius);
+            lightMat[i].SetFloat("PlayerMask_Softness", lightSmothness);
         }
     }
 }

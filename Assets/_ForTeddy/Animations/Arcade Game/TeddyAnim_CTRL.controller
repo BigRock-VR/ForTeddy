@@ -253,25 +253,25 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: VelZ
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: IdleSet
     m_Type: 1
     m_DefaultFloat: 1
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: x
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base_Movement
@@ -288,7 +288,7 @@ AnimatorController:
   - serializedVersion: 5
     m_Name: Peashooter_Idle
     m_StateMachine: {fileID: -3324906508611127}
-    m_Mask: {fileID: 31900000, guid: 43b527ddd6f80064dbde5bdd2279c9ca, type: 2}
+    m_Mask: {fileID: 31900000, guid: 93d6278eedc93624fbfa5f6879d63544, type: 2}
     m_Motions:
     - serializedVersion: 2
       m_State: {fileID: 0}
@@ -303,7 +303,7 @@ AnimatorController:
   - serializedVersion: 5
     m_Name: DakkaGun_Idle
     m_StateMachine: {fileID: 7193367600675970193}
-    m_Mask: {fileID: 31900000, guid: 43b527ddd6f80064dbde5bdd2279c9ca, type: 2}
+    m_Mask: {fileID: 31900000, guid: 93d6278eedc93624fbfa5f6879d63544, type: 2}
     m_Motions:
     - serializedVersion: 2
       m_State: {fileID: 0}
@@ -319,7 +319,7 @@ AnimatorController:
   - serializedVersion: 5
     m_Name: Atomizer_Idle
     m_StateMachine: {fileID: -7653291933804705239}
-    m_Mask: {fileID: 31900000, guid: 43b527ddd6f80064dbde5bdd2279c9ca, type: 2}
+    m_Mask: {fileID: 31900000, guid: 93d6278eedc93624fbfa5f6879d63544, type: 2}
     m_Motions: []
     m_Behaviours: []
     m_BlendingMode: 0
@@ -331,7 +331,7 @@ AnimatorController:
   - serializedVersion: 5
     m_Name: Rektifier_Idle
     m_StateMachine: {fileID: 3779943070043639019}
-    m_Mask: {fileID: 31900000, guid: 43b527ddd6f80064dbde5bdd2279c9ca, type: 2}
+    m_Mask: {fileID: 31900000, guid: 93d6278eedc93624fbfa5f6879d63544, type: 2}
     m_Motions: []
     m_Behaviours: []
     m_BlendingMode: 0

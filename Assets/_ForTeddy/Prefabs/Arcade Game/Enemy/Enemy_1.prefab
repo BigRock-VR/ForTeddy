@@ -108,8 +108,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHP: 100
-  AttackDamage: 100
-  MovementSpeed: 4
+  AttackDamage: 30
+  MovementSpeed: 3
   AttackSpeed: 50
   attackRange: 4
   isEnableWaveMult: 0

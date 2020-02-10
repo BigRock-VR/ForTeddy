@@ -15,9 +15,10 @@ MonoBehaviour:
   name: Peashooter
   fireRate: 1
   bulletSpeed: 1000
-  damage: 10
+  damage: 20
   maxAmmoCount: 0
   isDefaultWeapon: 1
   fireType: 0
   weaponPrefab: {fileID: 7738656361031999446, guid: 4fe346c2e8d56364589ed97ee48ec0d6,
     type: 3}
+  explosionBullet: {fileID: 0}

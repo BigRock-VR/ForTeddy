@@ -15,9 +15,10 @@ MonoBehaviour:
   name: DakkaGun
   fireRate: 0.15
   bulletSpeed: 1000
-  damage: 50
+  damage: 30
   maxAmmoCount: 200
   isDefaultWeapon: 0
   fireType: 0
   weaponPrefab: {fileID: 7738656361031999446, guid: 550430703692122439e66c3f15db4142,
     type: 3}
+  explosionBullet: {fileID: 0}
