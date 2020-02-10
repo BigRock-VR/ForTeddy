@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Soldier_Mask
+  m_Mask: 01000000010000000100000000000000000000000100000001000000010000000100000000000000000000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Soldier_LP
+    m_Weight: 1
+  - m_Path: Hips_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Spine_001_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Spine_001_jnt/Spine_002_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Spine_001_jnt/Spine_002_jnt/Spine_003_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Spine_001_jnt/Spine_002_jnt/Spine_003_jnt/Neck_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Spine_001_jnt/Spine_002_jnt/Spine_003_jnt/Neck_jnt/Head_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Spine_001_jnt/Spine_002_jnt/Spine_003_jnt/Neck_jnt/Head_jnt/HeadTip_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Spine_001_jnt/Spine_002_jnt/Spine_003_jnt/Right_Shoulder_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Spine_001_jnt/Spine_002_jnt/Spine_003_jnt/Right_Shoulder_jnt/Right_Arm_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Spine_001_jnt/Spine_002_jnt/Spine_003_jnt/Right_Shoulder_jnt/Right_Arm_jnt/Right_Elbow_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Spine_001_jnt/Spine_002_jnt/Spine_003_jnt/Right_Shoulder_jnt/Right_Arm_jnt/Right_Elbow_jnt/Right_Wrist_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Spine_001_jnt/Spine_002_jnt/Spine_003_jnt/Right_Shoulder_jnt/Right_Arm_jnt/Right_Elbow_jnt/Right_Wrist_jnt/Right_Hand_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Spine_001_jnt/Spine_002_jnt/Spine_003_jnt/Right_Shoulder_jnt/Right_Arm_jnt/Right_Elbow_jnt/Right_Wrist_jnt/Right_Hand_jnt/Right_Ring_Base_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Spine_001_jnt/Spine_002_jnt/Spine_003_jnt/Right_Shoulder_jnt/Right_Arm_jnt/Right_Elbow_jnt/Right_Wrist_jnt/Right_Hand_jnt/Right_Ring_Base_jnt/Right_Ring_Middle_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Spine_001_jnt/Spine_002_jnt/Spine_003_jnt/Right_Shoulder_jnt/Right_Arm_jnt/Right_Elbow_jnt/Right_Wrist_jnt/Right_Hand_jnt/Right_Ring_Base_jnt/Right_Ring_Middle_jnt/Right_Ring_End_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Spine_001_jnt/Spine_002_jnt/Spine_003_jnt/Right_Shoulder_jnt/Right_Arm_jnt/Right_Elbow_jnt/Right_Wrist_jnt/Right_Hand_jnt/Right_Middle_Base_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Spine_001_jnt/Spine_002_jnt/Spine_003_jnt/Right_Shoulder_jnt/Right_Arm_jnt/Right_Elbow_jnt/Right_Wrist_jnt/Right_Hand_jnt/Right_Middle_Base_jnt/Right_Middle_Middle_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Spine_001_jnt/Spine_002_jnt/Spine_003_jnt/Right_Shoulder_jnt/Right_Arm_jnt/Right_Elbow_jnt/Right_Wrist_jnt/Right_Hand_jnt/Right_Middle_Base_jnt/Right_Middle_Middle_jnt/Right_Middle_End_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Spine_001_jnt/Spine_002_jnt/Spine_003_jnt/Right_Shoulder_jnt/Right_Arm_jnt/Right_Elbow_jnt/Right_Wrist_jnt/Right_Hand_jnt/Right_Index_Base_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Spine_001_jnt/Spine_002_jnt/Spine_003_jnt/Right_Shoulder_jnt/Right_Arm_jnt/Right_Elbow_jnt/Right_Wrist_jnt/Right_Hand_jnt/Right_Index_Base_jnt/Right_Index_Middle_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Spine_001_jnt/Spine_002_jnt/Spine_003_jnt/Right_Shoulder_jnt/Right_Arm_jnt/Right_Elbow_jnt/Right_Wrist_jnt/Right_Hand_jnt/Right_Index_Base_jnt/Right_Index_Middle_jnt/Right_Index_End_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Spine_001_jnt/Spine_002_jnt/Spine_003_jnt/Right_Shoulder_jnt/Right_Arm_jnt/Right_Elbow_jnt/Right_Wrist_jnt/Right_Hand_jnt/Right_ThumbBase_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Spine_001_jnt/Spine_002_jnt/Spine_003_jnt/Right_Shoulder_jnt/Right_Arm_jnt/Right_Elbow_jnt/Right_Wrist_jnt/Right_Hand_jnt/Right_ThumbBase_jnt/Right_ThumbEnd_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Spine_001_jnt/Spine_002_jnt/Spine_003_jnt/Right_Shoulder_jnt/Right_Arm_jnt/Right_Elbow_jnt/Right_Wrist_jnt/Right_Hand_jnt/DakkaGun_Pos
+    m_Weight: 1
+  - m_Path: Hips_jnt/Spine_001_jnt/Spine_002_jnt/Spine_003_jnt/Left_Shoulder_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Spine_001_jnt/Spine_002_jnt/Spine_003_jnt/Left_Shoulder_jnt/Left_Arm_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Spine_001_jnt/Spine_002_jnt/Spine_003_jnt/Left_Shoulder_jnt/Left_Arm_jnt/Left_Elbow_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Spine_001_jnt/Spine_002_jnt/Spine_003_jnt/Left_Shoulder_jnt/Left_Arm_jnt/Left_Elbow_jnt/Left_Wrist_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Spine_001_jnt/Spine_002_jnt/Spine_003_jnt/Left_Shoulder_jnt/Left_Arm_jnt/Left_Elbow_jnt/Left_Wrist_jnt/Left_Hand_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Spine_001_jnt/Spine_002_jnt/Spine_003_jnt/Left_Shoulder_jnt/Left_Arm_jnt/Left_Elbow_jnt/Left_Wrist_jnt/Left_Hand_jnt/Left_Ring_Base_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Spine_001_jnt/Spine_002_jnt/Spine_003_jnt/Left_Shoulder_jnt/Left_Arm_jnt/Left_Elbow_jnt/Left_Wrist_jnt/Left_Hand_jnt/Left_Ring_Base_jnt/Left_Ring_Middle_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Spine_001_jnt/Spine_002_jnt/Spine_003_jnt/Left_Shoulder_jnt/Left_Arm_jnt/Left_Elbow_jnt/Left_Wrist_jnt/Left_Hand_jnt/Left_Ring_Base_jnt/Left_Ring_Middle_jnt/Left_Ring_End_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Spine_001_jnt/Spine_002_jnt/Spine_003_jnt/Left_Shoulder_jnt/Left_Arm_jnt/Left_Elbow_jnt/Left_Wrist_jnt/Left_Hand_jnt/Left_Middle_Base_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Spine_001_jnt/Spine_002_jnt/Spine_003_jnt/Left_Shoulder_jnt/Left_Arm_jnt/Left_Elbow_jnt/Left_Wrist_jnt/Left_Hand_jnt/Left_Middle_Base_jnt/Left_Middle_Middle_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Spine_001_jnt/Spine_002_jnt/Spine_003_jnt/Left_Shoulder_jnt/Left_Arm_jnt/Left_Elbow_jnt/Left_Wrist_jnt/Left_Hand_jnt/Left_Middle_Base_jnt/Left_Middle_Middle_jnt/Left_Middle_End_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Spine_001_jnt/Spine_002_jnt/Spine_003_jnt/Left_Shoulder_jnt/Left_Arm_jnt/Left_Elbow_jnt/Left_Wrist_jnt/Left_Hand_jnt/Left_Index_Base_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Spine_001_jnt/Spine_002_jnt/Spine_003_jnt/Left_Shoulder_jnt/Left_Arm_jnt/Left_Elbow_jnt/Left_Wrist_jnt/Left_Hand_jnt/Left_Index_Base_jnt/Left_Index_Middle_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Spine_001_jnt/Spine_002_jnt/Spine_003_jnt/Left_Shoulder_jnt/Left_Arm_jnt/Left_Elbow_jnt/Left_Wrist_jnt/Left_Hand_jnt/Left_Index_Base_jnt/Left_Index_Middle_jnt/Left_Index_End_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Spine_001_jnt/Spine_002_jnt/Spine_003_jnt/Left_Shoulder_jnt/Left_Arm_jnt/Left_Elbow_jnt/Left_Wrist_jnt/Left_Hand_jnt/Left_ThumbBase_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Spine_001_jnt/Spine_002_jnt/Spine_003_jnt/Left_Shoulder_jnt/Left_Arm_jnt/Left_Elbow_jnt/Left_Wrist_jnt/Left_Hand_jnt/Left_ThumbBase_jnt/Left_ThumbEnd_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Right_UpLeg_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Right_UpLeg_jnt/Right_Knee_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Right_UpLeg_jnt/Right_Knee_jnt/Right_Ankle_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Right_UpLeg_jnt/Right_Knee_jnt/Right_Ankle_jnt/Right_Heel_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Right_UpLeg_jnt/Right_Knee_jnt/Right_Ankle_jnt/Right_Foot_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Left_UpLeg_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Left_UpLeg_jnt/Left_Knee_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Left_UpLeg_jnt/Left_Knee_jnt/Left_Ankle_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Left_UpLeg_jnt/Left_Knee_jnt/Left_Ankle_jnt/Left_Foot_jnt
+    m_Weight: 1
+  - m_Path: Hips_jnt/Left_UpLeg_jnt/Left_Knee_jnt/Left_Ankle_jnt/Left_Heel_jnt
+    m_Weight: 1

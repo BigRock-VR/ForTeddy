@@ -13,7 +13,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     SteamVR_Input_Sources VRInput;
 
-
     private Animator anim;
 
     private Rigidbody rb;
@@ -35,16 +34,20 @@ public class PlayerMovement : MonoBehaviour
             // changed the inputs so that u can use VR pads
             movementDir = new Vector3(inputL.GetAxis(VRInput).x, 0, inputL.GetAxis(VRInput).y);
             aimDir = new Vector3(inputR.GetAxis(VRInput).x, 0, inputR.GetAxis(VRInput).y);
-            anim.SetFloat("VelZ", movementDir.z);
-            anim.SetFloat("VelX", movementDir.x);
+            //anim.SetFloat("VelZ", movementDir.z);
+            //anim.SetFloat("VelX", movementDir.x);
+
+            AnimationCTRL();
         }
         else
         {
             // Joystick Input
             movementDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
             aimDir = new Vector3(Input.GetAxisRaw("AimX"), 0, Input.GetAxisRaw("AimY"));
-            anim.SetFloat("VelZ", movementDir.z);
-            anim.SetFloat("VelX", movementDir.x);
+            //anim.SetFloat("VelZ", movementDir.z);
+            //anim.SetFloat("VelX", movementDir.x);
+
+            AnimationCTRL();
         }
 
         // Move the player around the scene.
@@ -84,5 +87,36 @@ public class PlayerMovement : MonoBehaviour
 
         // Set the player's rotation to this new rotation.
         rb.MoveRotation(newRotatation);
+    }
+
+    public void AnimationCTRL()
+    {
+        //Player ruotato verso avanti
+        if (transform.rotation.eulerAngles.y >= 315 || transform.rotation.eulerAngles.y <= 45)
+        {
+            anim.SetFloat("VelZ", movementDir.z);
+            anim.SetFloat("VelX", movementDir.x);
+        }
+
+        //Player rivolto a destra
+        if (transform.rotation.eulerAngles.y > 45 && transform.rotation.eulerAngles.y < 135)
+        {
+            anim.SetFloat("VelZ", movementDir.x);
+            anim.SetFloat("VelX", -movementDir.z);
+        }
+
+        //player rivolto in basso
+        if (transform.rotation.eulerAngles.y >= 135 && transform.rotation.eulerAngles.y <= 225)
+        {
+            anim.SetFloat("VelZ", -movementDir.z);
+            anim.SetFloat("VelX", -movementDir.x);
+        }
+
+        //player rivolto a sinistra
+        if (transform.rotation.eulerAngles.y > 225 && transform.rotation.eulerAngles.y < 315)
+        {
+            anim.SetFloat("VelZ", -movementDir.x);
+            anim.SetFloat("VelX", movementDir.z);
+        }
     }
 }

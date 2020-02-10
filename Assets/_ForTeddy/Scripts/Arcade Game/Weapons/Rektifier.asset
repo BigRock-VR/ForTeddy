@@ -16,8 +16,10 @@ MonoBehaviour:
   fireRate: 0.75
   bulletSpeed: 1000
   damage: 1000
-  maxAmmoCount: 3
+  maxAmmoCount: 1
   isDefaultWeapon: 0
-  fireType: 0
+  fireType: 3
   weaponPrefab: {fileID: 7738656361031999446, guid: fe578dc8a5345df4395bee97b8f3b1a7,
+    type: 3}
+  explosionBullet: {fileID: 3297242744889973702, guid: 61960f4dec12b3648954a53cf09bd873,
     type: 3}

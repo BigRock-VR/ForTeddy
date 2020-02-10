@@ -24,6 +24,9 @@ public class WeaponSystem : MonoBehaviour
     // Atomizer Laser Logics
     private float laserTimer;
 
+    //Rektifier Logics
+    private Transform bulletSpawnPosition;
+
     void Start()
     {
         InitWeapons(); // Instantiate all the possible weapons
@@ -62,6 +65,7 @@ public class WeaponSystem : MonoBehaviour
                     pSystem.Play();
                 }
                 break;
+            // ATOMIZER WEAPON
             case Weapon.efireType.LASER:
 
                 if (laserTimer == 0)
@@ -80,9 +84,20 @@ public class WeaponSystem : MonoBehaviour
                     {
                         if (hits[i].transform.CompareTag("Enemy"))
                         {
-                            hits[i].transform.GetComponent<Enemy>().TakeDamage(weapons[GetCurrSelectedWeapon()].damage);
+                            // Return the hit poitin in object space
+                            Vector4 hitPointLocal = hits[i].transform.InverseTransformPoint(hits[i].point);
+                            hits[i].transform.GetComponent<Enemy>().TakeDamage(weapons[GetCurrSelectedWeapon()].damage, hitPointLocal);
                         }
                     }
+                }
+                break;
+            // REKTIFIER WEAPON
+            case Weapon.efireType.EXPLOSION:
+                if (Time.time >= nextTimeToFire)
+                {
+                    nextTimeToFire = Time.time + weapons[GetCurrSelectedWeapon()].fireRate;
+                    var _bullet = Instantiate(weapons[GetCurrSelectedWeapon()].explosionBullet, bulletSpawnPosition.position, Quaternion.identity, null);
+                    _bullet.GetComponent<RektifierExplosion>().direction = transform.forward;
                 }
                 break;
         }
@@ -110,6 +125,7 @@ public class WeaponSystem : MonoBehaviour
     public void GetBulletParticle()
     {
         pSystem = weaponObjs[GetCurrSelectedWeapon()].transform.Find("Bullet_PS").GetComponent<ParticleSystem>();
+        bulletSpawnPosition = weaponObjs[GetCurrSelectedWeapon()].transform.Find("Bullet_PS").transform;
         // Set Up the weapon damage to the single particle
         weaponObjs[GetCurrSelectedWeapon()].transform.Find("Bullet_PS").GetComponent<ParticleCollision>().damage = weapons[GetCurrSelectedWeapon()].damage;
     }

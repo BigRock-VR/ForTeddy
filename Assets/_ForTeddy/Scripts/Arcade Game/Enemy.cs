@@ -54,7 +54,6 @@ public class Enemy : MonoBehaviour
     {
         float playerDist = GetDistanceFromPlayer();
         float soldierDist = GetDistanceFromSoldiers();
-
         if (playerDist < soldierDist)
         {
             enemyState = eState.TARGET_PLAYER;
@@ -107,6 +106,7 @@ public class Enemy : MonoBehaviour
                 /* TO DO ANIMATION */
                 break;
             case eState.DEATH:
+                agent.isStopped = true;
                 break;
             default:
                 break;
@@ -124,6 +124,8 @@ public class Enemy : MonoBehaviour
             Dead();
         }
     }
+
+
     // Method Overload for the hit point effect
     public void TakeDamage(int damage, Vector4 hitPoint)
     {
@@ -253,5 +255,4 @@ public class Enemy : MonoBehaviour
     {
         StartCoroutine(PlayFullDissolveEffect(2.0f));
     }
-
 }

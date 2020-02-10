@@ -10,7 +10,8 @@ public class Weapon : ScriptableObject
     public uint maxAmmoCount;
     public bool isDefaultWeapon;
 
-    public enum efireType { SINGLE, SHOTGUN, LASER};
+    public enum efireType { SINGLE, SHOTGUN, LASER, EXPLOSION};
     public efireType fireType;
     public GameObject weaponPrefab;
+    public GameObject explosionBullet;
 }
