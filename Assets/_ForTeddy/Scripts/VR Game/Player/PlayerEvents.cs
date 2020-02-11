@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Valve.VR.InteractionSystem;
 
 public class PlayerEvents : MonoBehaviour
@@ -17,20 +18,22 @@ public class PlayerEvents : MonoBehaviour
     LampFlicker lampFlicker;
     [SerializeField]
     float incubiInAgguatoTimer, ceQualcunoNelBuioTimer, dontScreamTimer, vendettaStriscianteTimer;
-    
+
     [Space]
-    [SerializeField][Range(0.01f,1f)]
+    [SerializeField]
+    [Range(0.01f, 1f)]
     float vendettaStriscianteChance, aVolteSiAnimanoChance;
 
     [Space]
-    [SerializeField] [Range(0.01f, 1f)]
+    [SerializeField]
+    [Range(0.01f, 1f)]
     float turnAroundChance, swapItemChance, objectThrowChance, objectThrowTimer;
 
     [Header("DEBUG")]
     [SerializeField]
     bool IIA_status, IRDO_status, CQNB_status, DS_status;
     [SerializeField]
-    float timer, _vTimer, _oTimer;
+    float timer, _mTimer, _vTimer, _oTimer;
     bool closeToController;
     GameObject _vHand;
     Throwable[] allPhysicalItems;
@@ -39,6 +42,34 @@ public class PlayerEvents : MonoBehaviour
     [SerializeField]
     bool isFaceHugging;
 
+    [Header("Debug")]
+    [SerializeField]
+    float thunderAnchor;
+    [SerializeField]
+    float gameMenu_VR_FadeDegree, gameMenu_VR_MenuDuration;
+    [SerializeField]
+
+    private void Start()
+    {
+        Valve.VR.SteamVR_Fade.Start(Color.black, 0);
+        StartCoroutine("WakeUp");
+    }
+
+    IEnumerator WakeUp()
+    {
+        // to fix in vr
+        //set all lights very weak
+        yield return new WaitForSeconds(thunderAnchor);
+        thunderScript.DoLighting();
+        Valve.VR.SteamVR_Fade.Start(Color.clear, 2.5f);
+        yield return new WaitForSeconds(2.5f);
+        Valve.VR.SteamVR_Fade.Start(Color.black, 10);
+        yield return new WaitForSeconds(10); // gets everything loaded
+        lampFlicker.DoFlicker();
+        Valve.VR.SteamVR_Fade.Start(Color.clear, 0.1f);
+
+        yield return null;
+    }
     private bool inThisState(string clipName)
     {
         return eventAnim.GetCurrentAnimatorStateInfo(0).IsName(clipName);
@@ -70,11 +101,11 @@ public class PlayerEvents : MonoBehaviour
                 var pos = item.position;
                 var rot = item.rotation;
 
-                if(item2 == item) { print("A Volte Si Animano : NOT Triggered"); return; }
+                if (item2 == item) { print("A Volte Si Animano : NOT Triggered"); return; }
 
                 item.GetComponent<Collider>().enabled = false;
                 item.SetPositionAndRotation(item2.position, item2.rotation);
-                item2.SetPositionAndRotation(pos, rot);              
+                item2.SetPositionAndRotation(pos, rot);
                 item.GetComponent<Collider>().enabled = true;
 
                 print("A Volte Si Animano : Triggered, " + item.name + " is swapped with " + item2.name);
@@ -130,9 +161,9 @@ public class PlayerEvents : MonoBehaviour
 
     private void LateUpdate()
     {
-        if(_vHand == null)
+        if (_vHand == null)
         {
-            if(Random.Range(0f,1f) <= vendettaStriscianteChance/1000)
+            if (Random.Range(0f, 1f) <= vendettaStriscianteChance / 1000)
             {
                 var randomSpawn = Random.Range(0, spawnPointsVendetta.Length);
                 _vHand = Instantiate(vendettaHand, spawnPointsVendetta[randomSpawn]);
@@ -143,10 +174,10 @@ public class PlayerEvents : MonoBehaviour
         }
         else
         {
-            if(RendererExtensions.IsVisibleFrom(_vHand.GetComponent<Renderer>(), Camera.main) && _vTimer >= 0)
+            if (RendererExtensions.IsVisibleFrom(_vHand.GetComponent<Renderer>(), Camera.main) && _vTimer >= 0)
             {
                 _vTimer -= Time.deltaTime;
-                if(_vTimer <= 0)
+                if (_vTimer <= 0)
                 {
                     _vHand = null;
                     _vTimer = vendettaStriscianteTimer;
@@ -155,13 +186,13 @@ public class PlayerEvents : MonoBehaviour
                 }
             }
         }
-        
-        if(Random.Range(0f,1f) <= aVolteSiAnimanoChance/100)
+
+        if (Random.Range(0f, 1f) <= aVolteSiAnimanoChance / 100)
         {
             aVolteSiAnimano();
         }
 
-        if(isFaceHugging && faceHugger != null)
+        if (isFaceHugging && faceHugger != null)
         {
             if (RendererExtensions.IsVisibleFrom(faceHugger.GetComponent<Renderer>(), Camera.main))
             {
@@ -178,18 +209,18 @@ public class PlayerEvents : MonoBehaviour
                     print("A Volte Si Animano: Triggered, " + faceHugger.name + " is now jumping to player's face");
                     faceHugger = null;
                 }
-            }   
+            }
             else
             {
                 _oTimer = objectThrowTimer;
             }
         }
 
-        if(RendererExtensions.IsVisibleFrom(wardrobe.GetComponent<Renderer>(), Camera.main) && incubiInAgguatoTimer >= 0)
+        if (RendererExtensions.IsVisibleFrom(wardrobe.GetComponent<Renderer>(), Camera.main) && incubiInAgguatoTimer >= 0)
         {
             incubiInAgguatoTimer -= Time.deltaTime;
 
-            if(incubiInAgguatoTimer <= 0)
+            if (incubiInAgguatoTimer <= 0)
             {
                 IIA_status = true;
                 eventAnim.SetTrigger("IncubiInAgguato");

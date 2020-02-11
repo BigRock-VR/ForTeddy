@@ -5,10 +5,10 @@ using UnityEngine;
 // added some little randomize on the common thunders + added extension for hard thunder event
 public class Lightning : MonoBehaviour
 {
-    Light outdoorLight;
+    Light thunderLight;
 
     [SerializeField]
-    AudioSource soundplayer;
+    AudioController audioControl;
 
     [SerializeField]
     float minIntensity = 0.6f;
@@ -25,10 +25,15 @@ public class Lightning : MonoBehaviour
     [SerializeField][Range(0.1f,1)]
     float lightningFrequency = 1f;
 
+    [SerializeField]
+    List<Transform> thunderOrigins;
+
+    float volume;
+
     void Start()
     {
-        outdoorLight = gameObject.GetComponent<Light>();
-        outdoorLight.enabled = false;
+        thunderLight = gameObject.GetComponent<Light>();
+        thunderLight.enabled = false;
     }
 
     public void DoLighting()
@@ -38,7 +43,7 @@ public class Lightning : MonoBehaviour
 
     IEnumerator LightningCycle(bool isHardThunder)
     {
-        outdoorLight.enabled = true;
+        thunderLight.enabled = true;
 
         _rWait = randomWait * Random.Range(0.33f, 0.47f);
         _minInt = minIntensity * Random.Range(0.5f, 1.5f);
@@ -49,24 +54,23 @@ public class Lightning : MonoBehaviour
             _rWait *= 0.1f;
             _maxInt *= 2f;
             _minInt *= 0.5f;
-            soundplayer.volume = 0.969f;
+            volume = 0.969f;
         }
         else
         {
-            soundplayer.volume = 0.333f * Random.Range(0.5f,1.5f);
+            volume = 0.333f * Random.Range(0.5f,1.5f);
         }
 
-        outdoorLight.intensity = _maxInt;
+        thunderLight.intensity = _maxInt;
         yield return new WaitForSeconds(_rWait);
-        outdoorLight.intensity = _minInt;
+        thunderLight.intensity = _minInt;
         yield return new WaitForSeconds(_rWait/3);
-        outdoorLight.intensity = _maxInt;
+        thunderLight.intensity = _maxInt;
         yield return new WaitForSeconds(_rWait/2);
-        outdoorLight.intensity = _minInt;
+        thunderLight.intensity = _minInt;
         yield return new WaitForSeconds(_rWait*0.3f);
-        soundplayer.Play();
-        //print("thundering" + isHardThunder);
-        outdoorLight.enabled = false;
+        audioControl.RandomThunder(volume, thunderOrigins[Random.Range(0,thunderOrigins.Count)]);
+        thunderLight.enabled = false;
         yield return null;
     }
 

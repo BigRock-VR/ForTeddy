@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{73d9eb72-93fd-4b75-b65c-12919f02761e}">
+		<property name="assetPath">
+			<value>zapsplat_horror_drone_ambience_dark_ghostly_whispers_002_43210.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>91.680000000000007</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e2251394-dcfe-4aad-b419-407fe920ec60}</destination>
+		</relationship>
+	</object>
+</objects>

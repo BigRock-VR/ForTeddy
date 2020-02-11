@@ -8,7 +8,7 @@ public class LampFlicker : MonoBehaviour
     Light lampLight;
 
     [SerializeField]
-    AudioSource soundplayer;
+    AudioController audioControl;
 
     [SerializeField]
     float minIntensity = 0f;
@@ -26,6 +26,8 @@ public class LampFlicker : MonoBehaviour
     [SerializeField]
     [Range(0.1f, 1)]
     float flickeringFrequency = 1f;
+
+    float volume;
 
     void Start()
     {
@@ -48,25 +50,23 @@ public class LampFlicker : MonoBehaviour
             _rWait *= 3f;
             _maxInt *= 0.7f;
             _minInt = 0.5f;
-            soundplayer.volume = 1f;
-            StartCoroutine(FlickeringCycle(false));
+            volume = 1f;
         }
         else
         {
-            soundplayer.volume = 0.333f * Random.Range(0.5f, 1.5f);
+            volume = 0.333f * Random.Range(0.5f, 1.5f);
         }
 
-        soundplayer.Play();
+        audioControl.RandomFlicker(volume, transform);
         lampLight.intensity = _maxInt;
         yield return new WaitForSeconds(_rWait);
         lampLight.intensity = _minInt;
         yield return new WaitForSeconds(_rWait / Random.Range(1.5f, 2.5f));
         lampLight.intensity = _maxInt;
-        yield return new WaitForSeconds(_rWait * Random.Range(1.5f, 2.5f));
+        yield return new WaitForSeconds(_rWait * Random.Range(0.5f, 2.5f));
         lampLight.intensity = _minInt;
         yield return new WaitForSeconds(_rWait * Random.Range(3f, 7f));
         lampLight.intensity = _maxInt;
-        //print("flickering" + isFlickered);
         yield return null;
     }
 

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{5e4d93a4-faf5-4b92-957c-3ffa4979d3f5}">
+		<property name="assetPath">
+			<value>wood_creak1.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>11.0249996</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>1.731156462585034</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e2251394-dcfe-4aad-b419-407fe920ec60}</destination>
+		</relationship>
+	</object>
+</objects>

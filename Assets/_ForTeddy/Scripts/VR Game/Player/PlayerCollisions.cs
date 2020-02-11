@@ -22,10 +22,31 @@ public class PlayerCollisions : MonoBehaviour
     [SerializeField]
     bool isColliding;
 
+    [SerializeField]
+    bool isTrigger;
+
+    private void Start()
+    {
+        if(GetComponent<CapsuleCollider>())
+        {
+            capsuleCollider = GetComponent<CapsuleCollider>();
+            isTrigger= true;
+        }
+        if (GetComponent<SphereCollider>())
+        {
+            isTrigger = false;
+        }
+    }
     void FixedUpdate()
     {
 
-        //headPos = transform.InverseTransformPoint(head.transform.position);
+        if (isTrigger)
+        {
+            headPos = transform.InverseTransformPoint(head.transform.position);
+            capsuleTrigger.height = headPos.y - playerHeigth;
+            headPos.y = capsuleTrigger.height / 2 + playerHeigth;
+            capsuleTrigger.center = headPos;
+        }
 
         //if (!isColliding)
         //{
@@ -36,9 +57,6 @@ public class PlayerCollisions : MonoBehaviour
 
         //boxCollider.center = headPos;
 
-        //capsuleTrigger.height = headPos.y - playerHeigth;
-        //headPos.y = capsuleTrigger.height / 2 + playerHeigth;
-        //capsuleTrigger.center = headPos;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -47,10 +65,15 @@ public class PlayerCollisions : MonoBehaviour
         //{
         //    return;
         //}
-
+        //
         //if(collision.collider)
-        //isColliding = true;
-        //SteamVR_Fade.Start(Color.black, 0.5f);
+        if(isTrigger)
+        {
+            return;
+        }
+
+        isColliding = true;
+        SteamVR_Fade.Start(Color.black, 0.5f);
     }
 
     private void OnCollisionExit(Collision collision)
@@ -59,9 +82,31 @@ public class PlayerCollisions : MonoBehaviour
         //{
         //    return;
         //}
+        //
+        if (isTrigger)
+        {
+            return;
+        }
 
-        //isColliding = false;
-        //SteamVR_Fade.Start(Color.clear, 0.2f);
+        isColliding = false;
+        SteamVR_Fade.Start(Color.clear, 0.2f);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (isTrigger)
+        {
+            if (other.gameObject.layer == 16) // place all entry that should "hurt" on layer 16
+            {
+                SteamVR_Fade.Start(Color.red, 3f);
+                Invoke("FadeToClean", 1);
+            }
+        }
+    }
+
+    void FadeToClean()
+    {
+        SteamVR_Fade.Start(Color.clear, 0.05f);
     }
 }
 
