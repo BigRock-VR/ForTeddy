@@ -1,7 +1,4 @@
 ﻿#define DEBUG
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponSystem : MonoBehaviour
@@ -14,6 +11,8 @@ public class WeaponSystem : MonoBehaviour
     public enum eWeapons {DEFAULT, DAKKAGUN, IMPALLINATOR, ATOMIZER, REKTIFIER};
     public eWeapons currSelectedWeapon = eWeapons.DEFAULT;
 
+
+    private Animator anim;
     private const int MAX_WEAPONS = 5;
     private float nextTimeToFire = 0.0f;
     public bool isSoldier;
@@ -29,6 +28,7 @@ public class WeaponSystem : MonoBehaviour
 
     void Start()
     {
+        anim = GetComponent<Animator>();
         InitWeapons(); // Instantiate all the possible weapons
     }
 
@@ -57,6 +57,13 @@ public class WeaponSystem : MonoBehaviour
         switch (weapons[GetCurrSelectedWeapon()].fireType)
         {
             case Weapon.efireType.SHOTGUN:
+                if (Time.time >= nextTimeToFire)
+                {
+                    nextTimeToFire = Time.time + weapons[GetCurrSelectedWeapon()].fireRate;
+                    pSystem.Play();
+                    anim.SetTrigger("isShooting");
+                }
+                break;
             case Weapon.efireType.SINGLE:
                 if (Time.time >= nextTimeToFire)
                 {
@@ -95,6 +102,7 @@ public class WeaponSystem : MonoBehaviour
             case Weapon.efireType.EXPLOSION:
                 if (Time.time >= nextTimeToFire)
                 {
+                    pSystem.Play();
                     nextTimeToFire = Time.time + weapons[GetCurrSelectedWeapon()].fireRate;
                     var _bullet = Instantiate(weapons[GetCurrSelectedWeapon()].explosionBullet, bulletSpawnPosition.position, Quaternion.identity, null);
                     _bullet.GetComponent<RektifierExplosion>().direction = transform.forward;
@@ -137,12 +145,41 @@ public class WeaponSystem : MonoBehaviour
     public void SwitchWeapons(eWeapons nextWeapon)
     {
         int oldWeapon = GetCurrSelectedWeapon();
+        SwitchAnimationLayer(nextWeapon);
         nextTimeToFire = 0;
         laserTimer = 0;
         currSelectedWeapon = nextWeapon;
         weaponObjs[oldWeapon].SetActive(false);
         weaponObjs[(int)nextWeapon].SetActive(true);
         GetBulletParticle();
+    }
+
+    private void SwitchAnimationLayer(eWeapons nextWeapon)
+    {
+        int layer = 0;
+
+        switch (nextWeapon)
+        {
+
+            case eWeapons.DEFAULT:
+                layer = 1;
+                break;
+            case eWeapons.DAKKAGUN:
+                layer = 2;
+                break;
+            case eWeapons.IMPALLINATOR:
+                layer = 3;
+                break;
+            case eWeapons.ATOMIZER:
+                layer = 4;
+                break;
+            case eWeapons.REKTIFIER:
+                layer = 5;
+                break;
+        }
+
+        anim.SetLayerWeight(layer, 1);
+        anim.SetLayerWeight(GetCurrSelectedWeapon() + 1, 0);
     }
 
 
@@ -154,23 +191,23 @@ public class WeaponSystem : MonoBehaviour
             return;
         }
 
-        if (GUI.Button(new Rect(10, 510, 100, 50), "Peashooter"))
+        if (GUI.Button(new Rect(10, 210, 70, 25), "Peashooter"))
         {
             SwitchWeapons(eWeapons.DEFAULT);
         }
-        if (GUI.Button(new Rect(110, 510, 100, 50), "DakkaGun"))
+        if (GUI.Button(new Rect(10, 230, 70, 25), "DakkaGun"))
         {
             SwitchWeapons(eWeapons.DAKKAGUN);
         }
-        if (GUI.Button(new Rect(210, 510, 100, 50), "Impallinator"))
+        if (GUI.Button(new Rect(10, 250, 70, 25), "Impallinator"))
         {
             SwitchWeapons(eWeapons.IMPALLINATOR);
         }
-        if (GUI.Button(new Rect(310, 510, 100, 50), "Atomizer"))
+        if (GUI.Button(new Rect(10, 280, 70, 25), "Atomizer"))
         {
             SwitchWeapons(eWeapons.ATOMIZER);
         }
-        if (GUI.Button(new Rect(410, 510, 100, 50), "Rektifier"))
+        if (GUI.Button(new Rect(10, 300, 70, 25), "Rektifier"))
         {
             SwitchWeapons(eWeapons.REKTIFIER);
         }

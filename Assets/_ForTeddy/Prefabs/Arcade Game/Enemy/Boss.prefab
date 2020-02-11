@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4913171580632947843}
   - component: {fileID: 4672721818298632118}
   m_Layer: 10
-  m_Name: Enemy_3
+  m_Name: Boss
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 4913171580632947850}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c2760ca98eb6925498e243a6c5b481f7, type: 2}
+  - {fileID: 2100000, guid: 1dab5fbc356c0b345a6386c11dc7b016, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -107,13 +107,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 991f501d9854e7a4d976afaf61e40c03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHP: 100
+  MaxHP: 500
   AttackDamage: 30
-  MovementSpeed: 3
+  MovementSpeed: 1
   AttackSpeed: 50
-  attackRange: 4
+  attackRange: 5
   isEnableWaveMult: 0
   isDead: 0
+  isBoss: 1
+  targetPriority: 1
   deathDelay: 1
   pickUpPrefab: {fileID: 3517541304905053234, guid: 82f154ff1a8e7cf46affeb43e4d01363,
     type: 3}
@@ -147,7 +149,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4913171580632947850}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 10000
   m_Drag: 1
   m_AngularDrag: Infinity
   m_UseGravity: 1

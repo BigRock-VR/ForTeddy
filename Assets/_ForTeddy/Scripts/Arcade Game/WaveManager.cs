@@ -5,10 +5,18 @@ using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
+    [Header("Enemy Info:")]
     [SerializeField]public Transform[] spawnPositions;
     [SerializeField]public GameObject[] enemyTypes;
     [SerializeField]public Transform[] soldierPositions;
+    [SerializeField]public Transform bedPositions;
+    // BOSS WAVE
+    [Header("Boss Info:")]
+    [SerializeField]public GameObject bossPrefab;
+    private readonly int BOSS_WAVE_INTERVAL = 5; // Spawn the boss every x wave;
+    public bool isBossSpawned;
 
+    [Header("Wave Info:")]
     public int waveCount = 0;
     public float waveTimer = 20.0f;
     public bool canSpawnEnemy;
@@ -16,7 +24,6 @@ public class WaveManager : MonoBehaviour
     public float nextTimeToSpawn = 0.0f;
     public int waveMaxEnemy = 10;
 
-    public bool isBossSpawned;
 
     // GAME EVENTS
     public delegate void EndWave();
@@ -25,10 +32,6 @@ public class WaveManager : MonoBehaviour
     private float waveEndTimer;
     private GameObject enemyContainer;
     [HideInInspector] public GameObject coinsContainer;
-
-    // BOSS WAVE
-    public GameObject bossPrefab;
-    private readonly int BOSS_WAVE_INTERVAL = 5; // Spawn the boss every x wave;
     void Start()
     {
         waveEndTimer = waveTimer;
@@ -62,12 +65,12 @@ public class WaveManager : MonoBehaviour
 
         if (isBossWave() && !isBossSpawned)
         {
-            SpawnBosAtPosition(spawnPositions[spawnPositions.Length].position);
+            SpawnBosAtPosition(spawnPositions[0].position);
+            return;
         }
 
         if(waveEndTimer <= 0)
         {
-            canSpawnEnemy = false;
 
             if (enemyContainer.transform.childCount > 0)
             {
@@ -78,7 +81,7 @@ public class WaveManager : MonoBehaviour
         }
 
         // Set the next time to spawn enemy
-        if(Time.time >= nextTimeToSpawn && canSpawnEnemy)
+        if(Time.time >= nextTimeToSpawn && canSpawnEnemy && !isBossWave())
         {
             nextTimeToSpawn = Time.time + timeBetweenSpawn; 
             SpawnEnemyAtRandPosition();
@@ -90,6 +93,8 @@ public class WaveManager : MonoBehaviour
 
     public void UpdateWave()
     {
+        canSpawnEnemy = false;
+        isBossSpawned = false;
         ++waveCount; // Increase the wave counter
         waveTimer += waveCount; // Increase the wave timer with the current wave counter
         waveEndTimer = waveTimer; // Assign the new wave timer to the current wave
@@ -112,8 +117,8 @@ public class WaveManager : MonoBehaviour
 
     private void SpawnBosAtPosition(Vector3 pos)
     {
-        Instantiate(bossPrefab, pos, Quaternion.identity, enemyContainer.transform);
         isBossSpawned = true;
+        Instantiate(bossPrefab, pos, Quaternion.identity, enemyContainer.transform); 
     }
 
     public bool isBossWave()

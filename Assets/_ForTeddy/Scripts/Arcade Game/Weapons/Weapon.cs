@@ -3,7 +3,7 @@
 [CreateAssetMenu(fileName = "Weapon", menuName = "ScriptableObjects/Weapon")]
 public class Weapon : ScriptableObject
 {
-    public string name;
+    public new string name;
     public float fireRate;
     public float bulletSpeed = 1000;
     public int damage;

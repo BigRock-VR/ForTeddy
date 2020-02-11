@@ -14,7 +14,13 @@ public class Enemy : MonoBehaviour
     [SerializeField] public int attackRange = 2;
     [SerializeField] public bool isEnableWaveMult; // Enable Wave Multiplyer and increase enemy damage and hp every wave
     [SerializeField] public bool isDead;
+
+    // BOSS LOGICS
     [SerializeField] public bool isBoss;
+    private Collider[] hitColliders;
+    private readonly float BOSS_ATT_RANGE = 5.0f;
+    public enum eTargets { PLAYER, BED, SOLDIER };
+    public eTargets targetPriority;
 
     private WaveManager waveManager;
 
@@ -24,7 +30,7 @@ public class Enemy : MonoBehaviour
     public GameObject pickUpPrefab; // Prefab that can spawn the enemy on death
 
 
-    private enum eState { TARGET_PLAYER, TARGET_SOLDIER, TARGET_BARRICADE, ATTACK_PLAYER, ATTACK_SOLDIER, ATTACK_BARRICADE, DEATH };
+    private enum eState { TARGET_PLAYER, TARGET_SOLDIER, ATTACK_PLAYER, ATTACK_SOLDIER, ATTACK_BED, DEATH };
     private eState enemyState;
     private int hp;
     private int damage;
@@ -48,13 +54,64 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        CheckEnemyState();
+        if (isBoss)
+        {
+            CheckBossPriority();
+        }
+        else
+        {
+            CheckEnemyState();
+        }
+
     }
 
+    /*
+     * BOSS LOGICS
+     */
     private void CheckBossState()
     {
-        /* TO DO BOSS AGGRO */
+        hitColliders = Physics.OverlapSphere(transform.position, BOSS_ATT_RANGE);
+
+        for (int i = 0; i < hitColliders.Length; i++)
+        {
+            if (hitColliders[i].transform.CompareTag("Soldier"))
+            {
+                enemyState = eState.TARGET_SOLDIER;
+                targetPosition = hitColliders[i].transform;
+            }
+            else if (hitColliders[i].transform.CompareTag("Player"))
+            {
+                enemyState = eState.TARGET_PLAYER;
+                targetPosition = hitColliders[i].transform;
+            }
+        }
+
+        EnemyAI();
+
     }
+
+    private void CheckBossPriority()
+    {
+        switch (targetPriority)
+        {
+            case eTargets.PLAYER:
+                targetPosition = GameManager.Instance.player?.transform;
+                Debug.DrawLine(transform.position, targetPosition.position, Color.blue);
+                agent.SetDestination(targetPosition.position);
+                break;
+            case eTargets.BED:
+                targetPosition = waveManager.bedPositions;
+                Debug.DrawLine(transform.position, targetPosition.position, Color.yellow);
+                agent.SetDestination(targetPosition.position);
+                break;
+            case eTargets.SOLDIER:
+                float distance = GetDistanceFromSoldiers();
+                Debug.DrawLine(transform.position, targetPosition.position, Color.red);
+                agent.SetDestination(targetPosition.position);
+                break;
+        }
+    }
+
     private void CheckEnemyState()
     {
         float playerDist = GetDistanceFromPlayer();
@@ -98,26 +155,27 @@ public class Enemy : MonoBehaviour
                 Debug.DrawLine(transform.position, targetPosition.position, Color.red);
                 agent.SetDestination(targetPosition.position);
                 break;
+
             case eState.TARGET_SOLDIER:
                 Debug.DrawLine(transform.position, targetPosition.position, Color.blue);
                 agent.SetDestination(targetPosition.position);
                 break;
+
             case eState.ATTACK_PLAYER:
                 GameManager.Instance.player.GetComponent<PlayerManager>().TakeDamage(damage);
                 /* TO DO ANIMATION */
                 break;
+
             case eState.ATTACK_SOLDIER:
                 targetPosition.GetComponent<SoldierManager>().TakeDamage(damage);
                 /* TO DO ANIMATION */
                 break;
-            case eState.DEATH:
 
+            case eState.DEATH:
                 if (isBoss)
                 {
-                    waveManager.isBossSpawned = false;
                     waveManager.UpdateWave();
                 }
-
                 agent.isStopped = true;
                 break;
             default:

@@ -5,7 +5,7 @@ using Valve.VR;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 6f;    // The speed that the player will move at.
-    public float aimSensibility = 200.0f;   // The rotation sensibility of the joypad.
+    [SerializeField]public float aimSensibility = 10.0f;   // The rotation sensibility of the joypad.
 
     [SerializeField]
     SteamVR_Action_Vector2 inputL, inputR;
@@ -37,8 +37,7 @@ public class PlayerMovement : MonoBehaviour
             // changed the inputs so that u can use VR pads
             movementDir = new Vector3(inputL.GetAxis(VRInput).x, 0, inputL.GetAxis(VRInput).y);
             aimDir = new Vector3(inputR.GetAxis(VRInput).x, 0, inputR.GetAxis(VRInput).y);
-            //anim.SetFloat("VelZ", movementDir.z);
-            //anim.SetFloat("VelX", movementDir.x);
+
 
             AnimationCTRL();
             UpdatePlayerLight();
@@ -48,8 +47,6 @@ public class PlayerMovement : MonoBehaviour
             // Joystick Input
             movementDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
             aimDir = new Vector3(Input.GetAxisRaw("AimX"), 0, Input.GetAxisRaw("AimY"));
-            //anim.SetFloat("VelZ", movementDir.z);
-            //anim.SetFloat("VelX", movementDir.x);
 
             AnimationCTRL();
             UpdatePlayerLight();
@@ -89,9 +86,8 @@ public class PlayerMovement : MonoBehaviour
 
         // Create a quaternion (rotation) based on looking down the vector from the player to the joystick.
         Quaternion newRotatation = Quaternion.LookRotation(playerToJoystick);
-
         // Set the player's rotation to this new rotation.
-        rb.MoveRotation(newRotatation);
+        rb.MoveRotation(Quaternion.Lerp(transform.rotation, newRotatation, Time.deltaTime * aimSensibility));
     }
 
     public void AnimationCTRL()

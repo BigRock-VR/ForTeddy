@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3517541304905053244}
   - component: {fileID: 3517541304905053245}
   - component: {fileID: 3517541304905053241}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: PickUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 6775827232396477911}
   - component: {fileID: 6775827232396477908}
   - component: {fileID: 6775827232396477909}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: PickUp_Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}

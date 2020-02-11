@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4913171580632947843}
   - component: {fileID: 7248379076904432606}
   m_Layer: 10
-  m_Name: Enemy_1
+  m_Name: Enemy_Low
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c2760ca98eb6925498e243a6c5b481f7, type: 2}
+  - {fileID: 2100000, guid: 1dab5fbc356c0b345a6386c11dc7b016, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -114,6 +114,7 @@ MonoBehaviour:
   attackRange: 4
   isEnableWaveMult: 0
   isDead: 0
+  isBoss: 0
   deathDelay: 1
   pickUpPrefab: {fileID: 3517541304905053234, guid: 82f154ff1a8e7cf46affeb43e4d01363,
     type: 3}
