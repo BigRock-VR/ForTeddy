@@ -36,9 +36,14 @@ public class WaveManager : MonoBehaviour
         coinsContainer.transform.parent = transform;
     }
 
-    public void StartGame()
+    private void StartWave()
     {
         canSpawnEnemy = true;
+    }
+
+    public void StartGame()
+    {
+        Invoke("StartWave", 3.0f);
     }
 
     // Update is called once per frame
