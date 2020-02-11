@@ -14,6 +14,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] public int attackRange = 2;
     [SerializeField] public bool isEnableWaveMult; // Enable Wave Multiplyer and increase enemy damage and hp every wave
     [SerializeField] public bool isDead;
+    [SerializeField] public bool isBoss;
+
     private WaveManager waveManager;
 
     [Range(0.5f, 2.0f)]
@@ -22,7 +24,7 @@ public class Enemy : MonoBehaviour
     public GameObject pickUpPrefab; // Prefab that can spawn the enemy on death
 
 
-    private enum eState { TARGET_PLAYER, TARGET_SOLDIER, ATTACK_PLAYER, ATTACK_SOLDIER, DEATH };
+    private enum eState { TARGET_PLAYER, TARGET_SOLDIER, TARGET_BARRICADE, ATTACK_PLAYER, ATTACK_SOLDIER, ATTACK_BARRICADE, DEATH };
     private eState enemyState;
     private int hp;
     private int damage;
@@ -49,7 +51,10 @@ public class Enemy : MonoBehaviour
         CheckEnemyState();
     }
 
-
+    private void CheckBossState()
+    {
+        /* TO DO BOSS AGGRO */
+    }
     private void CheckEnemyState()
     {
         float playerDist = GetDistanceFromPlayer();
@@ -106,6 +111,13 @@ public class Enemy : MonoBehaviour
                 /* TO DO ANIMATION */
                 break;
             case eState.DEATH:
+
+                if (isBoss)
+                {
+                    waveManager.isBossSpawned = false;
+                    waveManager.UpdateWave();
+                }
+
                 agent.isStopped = true;
                 break;
             default:

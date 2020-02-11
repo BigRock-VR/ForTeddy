@@ -16,7 +16,9 @@ public class WaveManager : MonoBehaviour
     public float nextTimeToSpawn = 0.0f;
     public int waveMaxEnemy = 10;
 
+    public bool isBossSpawned;
 
+    // GAME EVENTS
     public delegate void EndWave();
     public event EndWave onEndWave;
 
@@ -24,6 +26,9 @@ public class WaveManager : MonoBehaviour
     private GameObject enemyContainer;
     [HideInInspector] public GameObject coinsContainer;
 
+    // BOSS WAVE
+    public GameObject bossPrefab;
+    private readonly int BOSS_WAVE_INTERVAL = 5; // Spawn the boss every x wave;
     void Start()
     {
         waveEndTimer = waveTimer;
@@ -54,6 +59,12 @@ public class WaveManager : MonoBehaviour
             return;
         }
 
+
+        if (isBossWave() && !isBossSpawned)
+        {
+            SpawnBosAtPosition(spawnPositions[spawnPositions.Length].position);
+        }
+
         if(waveEndTimer <= 0)
         {
             canSpawnEnemy = false;
@@ -63,11 +74,7 @@ public class WaveManager : MonoBehaviour
                 onEndWave();
             }
 
-            ++waveCount; // Increase the wave counter
-            waveTimer += waveCount; // Increase the wave timer with the current wave counter
-            waveEndTimer = waveTimer; // Assign the new wave timer to the current wave
-            waveMaxEnemy += waveCount; // Increase the wave enemy to spawn
-            timeBetweenSpawn = Mathf.Abs(waveEndTimer / waveMaxEnemy); // Calculate how many enemy spawn in the next wave base on the max enemy
+            UpdateWave();
         }
 
         // Set the next time to spawn enemy
@@ -79,6 +86,15 @@ public class WaveManager : MonoBehaviour
 
         waveEndTimer -= Time.deltaTime; // Decrease the loca WAVE TIMER
 
+    }
+
+    public void UpdateWave()
+    {
+        ++waveCount; // Increase the wave counter
+        waveTimer += waveCount; // Increase the wave timer with the current wave counter
+        waveEndTimer = waveTimer; // Assign the new wave timer to the current wave
+        waveMaxEnemy += waveCount; // Increase the wave enemy to spawn
+        timeBetweenSpawn = Mathf.Abs(waveEndTimer / waveMaxEnemy); // Calculate how many enemy spawn in the next wave base on the max enemy
     }
 
     public void StartNextWave()
@@ -94,4 +110,14 @@ public class WaveManager : MonoBehaviour
     }
 
 
+    private void SpawnBosAtPosition(Vector3 pos)
+    {
+        Instantiate(bossPrefab, pos, Quaternion.identity, enemyContainer.transform);
+        isBossSpawned = true;
+    }
+
+    public bool isBossWave()
+    {
+        return (waveCount % BOSS_WAVE_INTERVAL) == 0;
+    }
 }
