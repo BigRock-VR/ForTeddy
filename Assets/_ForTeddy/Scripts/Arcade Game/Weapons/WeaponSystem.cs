@@ -1,4 +1,4 @@
-﻿#define DEBUG
+﻿//#define TESTMODE
 using UnityEngine;
 
 public class WeaponSystem : MonoBehaviour
@@ -183,7 +183,7 @@ public class WeaponSystem : MonoBehaviour
     }
 
 
-#if DEBUG
+#if TESTMODE
     private void OnGUI()
     {
         if (isSoldier)

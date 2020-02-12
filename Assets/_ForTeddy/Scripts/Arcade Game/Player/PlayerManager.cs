@@ -1,4 +1,4 @@
-﻿#define DEBUG
+﻿//#define TESTMODE
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
@@ -16,7 +16,7 @@ public class PlayerManager : MonoBehaviour
 
     public bool hasArmor;
     public bool isDead;
-#if DEBUG
+#if TESTMODE
     private bool isGod;
 #endif
 
@@ -54,7 +54,7 @@ public class PlayerManager : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-#if DEBUG
+#if TESTMODE
         if (isGod)
         {
             return;
@@ -96,7 +96,7 @@ public class PlayerManager : MonoBehaviour
         hp -= hpDamage;
     }
 
-#if DEBUG
+#if TESTMODE
     private void OnGUI()
     {
         if (GUI.Button(new Rect(10, 100, 100, 50), "God Mode"))

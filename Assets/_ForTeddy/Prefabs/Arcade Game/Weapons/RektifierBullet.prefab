@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 3297242744889973702}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -48.42, y: 34.87, z: -6.33}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -94,13 +94,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 5
-  explosionTime: 5
+  explosionCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.2
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 3
+      value: 3
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  explosionTimer: 0
   explosionRadius: 8
   isExploded: 0
   attractionForce: 5000
   enemyTargets: []
   direction: {x: 0, y: 0, z: 0}
-  pSystem: {fileID: 0}
+  pSystemExplosion: {fileID: 0}
+  pSystemMissile: {fileID: 0}
 --- !u!199 &3297242744889973759
 ParticleSystemRenderer:
   serializedVersion: 6

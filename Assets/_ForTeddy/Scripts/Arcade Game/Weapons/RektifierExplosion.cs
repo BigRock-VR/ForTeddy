@@ -7,31 +7,40 @@ public class RektifierExplosion : MonoBehaviour
     public float maxSpeed = 6.0f;
     private float minSpeed = 2.0f;
     private float speed;
-    public float explosionTime = 3.0f;
+
+    public AnimationCurve explosionCurve;
+    private float explosionTimer = 0.0f;
+    private float explosionDuration = 3.0f;
+
     public float explosionRadius = 10.0f;
     public bool isExploded;
-    public float attractionForce = 100.0f;
+    public float attractionForce = 500.0f;
     private Collider[] hitColliders;
     public List<Transform> enemyTargets = new List<Transform>();
 
     public Vector3 direction;
-    public ParticleSystem pSystem;
-    public ParticleSystem pSystemMissile;
+
+    public ParticleSystem pSystemExplosion, pSystemMissile;
+    private ParticleSystem pSystem;
     private ParticleSystem.Particle[] particles;
     void Start()
     {
         speed = maxSpeed;
         pSystem = GetComponent<ParticleSystem>();
+        explosionDuration = explosionCurve.keys[explosionCurve.keys.Length - 1].time;
         InitializeIfNeeded();
     }
 
     private void FixedUpdate()
     {
-        if (explosionTime > 0 && !isExploded)
+        if (explosionTimer < explosionDuration && !isExploded)
         {
             speed = Mathf.Clamp(speed, minSpeed, speed - (Time.deltaTime * 3.0f));
+
             transform.position += direction * Time.fixedDeltaTime * speed;
-            explosionTime -= Time.fixedDeltaTime;
+            transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, explosionCurve.Evaluate(explosionTimer));
+
+            explosionTimer += Time.fixedDeltaTime;
             hitColliders = Physics.OverlapSphere(transform.position, explosionRadius);
             for (int i = 0; i < hitColliders.Length; i++)
             {
@@ -42,7 +51,7 @@ public class RektifierExplosion : MonoBehaviour
                         Vector3 forceDirection = transform.position - hitColliders[i].transform.position;
                         Enemy e = hitColliders[i].transform.GetComponent<Enemy>();
                         float distance = Vector3.Distance(transform.position, hitColliders[i].transform.position);
-                        if (distance > 1)
+                        if (distance > 1 && !e.isBoss)
                         {
                             Rigidbody rb = hitColliders[i].attachedRigidbody;
                             rb.AddForce(forceDirection.normalized * (attractionForce * Time.fixedDeltaTime) / distance );
@@ -58,9 +67,9 @@ public class RektifierExplosion : MonoBehaviour
             }
         }
 
-        if (explosionTime <= 0 && !isExploded)
+        if (explosionTimer > explosionDuration && !isExploded)
         {
-            pSystem.Play();
+            pSystemExplosion.Play();
             isExploded = true;
             GetEnemyTargets();
             if (enemyTargets.Count > 0)
@@ -91,7 +100,7 @@ public class RektifierExplosion : MonoBehaviour
         while (timer < 1)
         {
             timer += Time.fixedDeltaTime / 2.0f;
-            int numParticlesAlive = pSystem.GetParticles(particles);
+            int numParticlesAlive = pSystemMissile.GetParticles(particles);
 
             for (int i = 0; i < numParticlesAlive; i++)
             {

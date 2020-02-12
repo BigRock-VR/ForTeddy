@@ -9,6 +9,8 @@ public class Weapon : ScriptableObject
     public int damage;
     public uint maxAmmoCount;
     public bool isDefaultWeapon;
+    public int cost;
+    public Sprite weaponImage;
 
     public enum efireType { SINGLE, SHOTGUN, LASER, EXPLOSION};
     public efireType fireType;
