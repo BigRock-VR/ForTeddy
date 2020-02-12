@@ -16,6 +16,7 @@ public class RektifierExplosion : MonoBehaviour
 
     public Vector3 direction;
     public ParticleSystem pSystem;
+    public ParticleSystem pSystemMissile;
     private ParticleSystem.Particle[] particles;
     void Start()
     {
