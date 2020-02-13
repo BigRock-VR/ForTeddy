@@ -18,6 +18,9 @@ MonoBehaviour:
   damage: 1000
   maxAmmoCount: 1
   isDefaultWeapon: 0
+  cost: 1000
+  weaponImage: {fileID: 2965282808680803116, guid: b2e5db02f6ccdfd48a2fc78d3120f3cb,
+    type: 3}
   fireType: 3
   weaponPrefab: {fileID: 7738656361031999446, guid: fe578dc8a5345df4395bee97b8f3b1a7,
     type: 3}

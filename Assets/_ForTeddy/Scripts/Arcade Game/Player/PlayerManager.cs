@@ -4,8 +4,8 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
 
-    private const int PLAYER_MAX_HP = 1000;
-    private const int PLAYER_MAX_ARMOR = 500;
+    public readonly int PLAYER_MAX_HP = 1000;
+    public readonly int PLAYER_MAX_ARMOR = 500;
     private const int PLAYER_ARMOR_PCT = 70; // Damage taken will be reduced by this percent
 
 

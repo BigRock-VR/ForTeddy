@@ -1,4 +1,4 @@
-﻿//#define TESTMODE
+﻿#define TESTMODE
 using UnityEngine;
 
 public class WeaponSystem : MonoBehaviour
@@ -16,15 +16,12 @@ public class WeaponSystem : MonoBehaviour
     private const int MAX_WEAPONS = 5;
     private float nextTimeToFire = 0.0f;
     public bool isSoldier;
-
+    public float currAmmo = 0.0f;
     //Particle Bullets
     private ParticleSystem pSystem;
-
-    // Atomizer Laser Logics
-    private float laserTimer;
-
     //Rektifier Logics
     private Transform bulletSpawnPosition;
+    private bool isSwitchingWeapon;
 
     void Start()
     {
@@ -60,6 +57,7 @@ public class WeaponSystem : MonoBehaviour
                 if (Time.time >= nextTimeToFire)
                 {
                     nextTimeToFire = Time.time + weapons[GetCurrSelectedWeapon()].fireRate;
+                    CheckCurrentAmmo(); // DECREASE AMMO 
                     pSystem.Play();
                     anim.SetTrigger("isShooting");
                 }
@@ -67,22 +65,21 @@ public class WeaponSystem : MonoBehaviour
             case Weapon.efireType.SINGLE:
                 if (Time.time >= nextTimeToFire)
                 {
+                    if (!weapons[GetCurrSelectedWeapon()].isDefaultWeapon)
+                    {
+                        CheckCurrentAmmo(); // DECREASE AMMO IF IS NOT PEASHOTER
+                    }
+
                     nextTimeToFire = Time.time + weapons[GetCurrSelectedWeapon()].fireRate;
-                    //pSystem.Emit(1);
                     pSystem.Play();
                 }
                 break;
             // ATOMIZER WEAPON
             case Weapon.efireType.LASER:
-
-                if (laserTimer == 0)
+                CheckLaserAmmo();
+                if (currAmmo > 0)
                 {
-                    laserTimer = weapons[GetCurrSelectedWeapon()].fireRate;
-                }
-
-                if (laserTimer > 0)
-                {
-                    laserTimer -= Time.deltaTime;
+                    currAmmo -= Time.deltaTime;
                     RaycastHit[] hits;
                     // Draw a Ray with a range that trigger every object in the radius
                     hits = Physics.RaycastAll(weaponSpawnPositions[GetCurrSelectedWeapon()].position, transform.forward, 10.0f);
@@ -102,12 +99,42 @@ public class WeaponSystem : MonoBehaviour
             case Weapon.efireType.EXPLOSION:
                 if (Time.time >= nextTimeToFire)
                 {
+                    CheckCurrentAmmo();
                     pSystem.Play();
                     nextTimeToFire = Time.time + weapons[GetCurrSelectedWeapon()].fireRate;
                     var _bullet = Instantiate(weapons[GetCurrSelectedWeapon()].explosionBullet, bulletSpawnPosition.position, Quaternion.identity, null);
                     _bullet.GetComponent<RektifierExplosion>().direction = transform.forward;
                 }
                 break;
+        }
+
+    }
+
+
+    private void CheckLaserAmmo()
+    {
+        if(currAmmo > 0)
+        {
+            return;
+        }
+        if (currAmmo < 0 && !isSwitchingWeapon)
+        {
+            isSwitchingWeapon = true;
+            Invoke("SwitchWeapons", 0.5f);
+        }
+    }
+    private void CheckCurrentAmmo()
+    {
+        float tmp = --currAmmo;
+        if (tmp <= 0.0f && !isSwitchingWeapon)
+        {
+            isSwitchingWeapon = true;
+            currAmmo = 0.0f;
+            Invoke("SwitchWeapons", 0.5f);
+        }
+        else
+        {
+            currAmmo = tmp;
         }
 
     }
@@ -142,16 +169,32 @@ public class WeaponSystem : MonoBehaviour
     {
         return (int)currSelectedWeapon;
     }
+
+
+    public void SwitchWeapons()
+    {
+        int oldWeapon = GetCurrSelectedWeapon();
+        SwitchAnimationLayer(eWeapons.DEFAULT);
+        nextTimeToFire = 0;
+        currAmmo = weapons[(int)eWeapons.DEFAULT].maxAmmoCount;
+        currSelectedWeapon = eWeapons.DEFAULT;
+        weaponObjs[oldWeapon].SetActive(false);
+        weaponObjs[(int)eWeapons.DEFAULT].SetActive(true);
+        GetBulletParticle();
+        isSwitchingWeapon = false;
+    }
+
     public void SwitchWeapons(eWeapons nextWeapon)
     {
         int oldWeapon = GetCurrSelectedWeapon();
         SwitchAnimationLayer(nextWeapon);
         nextTimeToFire = 0;
-        laserTimer = 0;
+        currAmmo = weapons[(int)nextWeapon].maxAmmoCount;
         currSelectedWeapon = nextWeapon;
         weaponObjs[oldWeapon].SetActive(false);
         weaponObjs[(int)nextWeapon].SetActive(true);
         GetBulletParticle();
+        isSwitchingWeapon = false;
     }
 
     private void SwitchAnimationLayer(eWeapons nextWeapon)
@@ -176,8 +219,9 @@ public class WeaponSystem : MonoBehaviour
             case eWeapons.REKTIFIER:
                 layer = 5;
                 break;
+            default:
+                break;
         }
-
         anim.SetLayerWeight(layer, 1);
         anim.SetLayerWeight(GetCurrSelectedWeapon() + 1, 0);
     }

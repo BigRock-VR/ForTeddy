@@ -3,8 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public class SoldierManager : MonoBehaviour
 {
-    private const int SOLDIER_MAX_HP = 1000;
-    private const int SOLDIER_MAX_ARMOR = 500;
+    public readonly int SOLDIER_MAX_HP = 1000;
+    public readonly int SOLDIER_MAX_ARMOR = 500;
     private const int SOLDIER_ARMOR_PCT = 70; // Damage taken will be reduced by this percent
 
     public int hp;
@@ -46,6 +46,16 @@ public class SoldierManager : MonoBehaviour
             currTarget = getNextTarget();
             isAiming = false;
         }
+    }
+
+    public void ReloadSoldierHP()
+    {
+        hp = SOLDIER_MAX_HP;
+    }
+
+    public void ReloadSoldierArmor()
+    {
+        hp = SOLDIER_MAX_ARMOR;
     }
 
     private Transform getNextTarget()

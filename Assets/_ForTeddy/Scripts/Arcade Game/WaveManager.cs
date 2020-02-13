@@ -102,11 +102,6 @@ public class WaveManager : MonoBehaviour
         timeBetweenSpawn = Mathf.Abs(waveEndTimer / waveMaxEnemy); // Calculate how many enemy spawn in the next wave base on the max enemy
     }
 
-    public void StartNextWave()
-    {
-        canSpawnEnemy = true;
-    }
-
     private void SpawnEnemyAtRandPosition()
     {
         int randomSpawnPos = UnityEngine.Random.Range(0, spawnPositions.Length);
@@ -125,4 +120,5 @@ public class WaveManager : MonoBehaviour
     {
         return (waveCount % BOSS_WAVE_INTERVAL) == 0;
     }
+
 }

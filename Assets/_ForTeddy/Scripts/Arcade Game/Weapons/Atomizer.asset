@@ -16,8 +16,12 @@ MonoBehaviour:
   fireRate: 6
   bulletSpeed: 1000
   damage: 10
-  maxAmmoCount: 300
+  maxAmmoCount: 6
   isDefaultWeapon: 0
+  cost: 500
+  weaponImage: {fileID: 1667429502347898398, guid: 7899f415e7f74f448bba80db47787b6c,
+    type: 3}
   fireType: 2
   weaponPrefab: {fileID: 7738656361031999446, guid: 894ff70745a4d7a49a98ca45e07ebb33,
     type: 3}
+  explosionBullet: {fileID: 0}
