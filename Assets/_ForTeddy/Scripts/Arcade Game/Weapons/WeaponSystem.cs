@@ -1,6 +1,8 @@
 ﻿#define TESTMODE
 using UnityEngine;
 
+public enum eWeapons { DEFAULT, DAKKAGUN, IMPALLINATOR, ATOMIZER, REKTIFIER };
+
 public class WeaponSystem : MonoBehaviour
 {
     //Scritable Objects
@@ -8,7 +10,6 @@ public class WeaponSystem : MonoBehaviour
     private GameObject[] weaponObjs = new GameObject[MAX_WEAPONS];
 
     public Transform[] weaponSpawnPositions = new Transform[MAX_WEAPONS];
-    public enum eWeapons {DEFAULT, DAKKAGUN, IMPALLINATOR, ATOMIZER, REKTIFIER};
     public eWeapons currSelectedWeapon = eWeapons.DEFAULT;
 
 
@@ -102,18 +103,20 @@ public class WeaponSystem : MonoBehaviour
                     CheckCurrentAmmo();
                     pSystem.Play();
                     nextTimeToFire = Time.time + weapons[GetCurrSelectedWeapon()].fireRate;
-                    var _bullet = Instantiate(weapons[GetCurrSelectedWeapon()].explosionBullet, bulletSpawnPosition.position, Quaternion.identity, null);
-                    _bullet.GetComponent<RektifierExplosion>().direction = transform.forward;
+                    Invoke("SpawnRektifierBullet", 0.4f);
                 }
                 break;
         }
 
     }
-
-
+    public void SpawnRektifierBullet()
+    {
+        var _bullet = Instantiate(weapons[GetCurrSelectedWeapon()].explosionBullet, bulletSpawnPosition.position, Quaternion.Euler(-52f, 217f, 112f));
+        _bullet.GetComponent<RektifierExplosion>().direction = transform.forward;
+    }
     private void CheckLaserAmmo()
     {
-        if(currAmmo > 0)
+        if (currAmmo > 0)
         {
             return;
         }
@@ -196,6 +199,8 @@ public class WeaponSystem : MonoBehaviour
         GetBulletParticle();
         isSwitchingWeapon = false;
     }
+
+
 
     private void SwitchAnimationLayer(eWeapons nextWeapon)
     {

@@ -1,20 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UI_ShopManager : MonoBehaviour
 {
     [SerializeField] public GameObject shopMenu;
+    public bool isOpen;
     public Transform[] soldiers = new Transform[MAX_SOLDIERS]; //SOLDIERS IN GAME
     public Transform player;
     [SerializeField] public GameObject ammoBarCateogry; // Ammo slider 
-    public Weapon[] weapons = new Weapon[MAX_WEAPONS];
+    public Weapon[] weapons = new Weapon[MAX_WEAPONS]; // Weapon Scriptable Object
+    public GameObject dialogMenu;
 
     [Header("Button:")]
-    [SerializeField] public Button[] tabButtons = new Button[MAX_TAB_BUTTONS]; //  TOP MENU SHOP BUTTONS
-    [SerializeField] public Button[] categoryButtons = new Button[MAX_CATEGORY_BUTTONS]; // HP - WEAPON - ARMOR - PLAY GAME
-    [SerializeField] public GameObject leftArrowBtn, rightArrowBtn;
+    [SerializeField] public Button[] tabButtons = new Button[MAX_TAB_BUTTONS]; //  TOP-SIDE MENU SHOP BUTTONS
+    [SerializeField] public Button[] categoryButtons = new Button[MAX_CATEGORY_BUTTONS]; // MID-SIDE MENU BUTTONS HP - WEAPON - ARMOR - PLAY GAME
+    [SerializeField] public Button buyBtn;
+    [SerializeField] public GameObject leftArrowBtn, rightArrowBtn, dialogConfirmBtn, dialogCancelBtn, dialogBackBtn, fireRateBtn, damageBtn, ammoCapacityBtn,buyButton;
 
 
     [Header("Image:")]
@@ -22,15 +24,20 @@ public class UI_ShopManager : MonoBehaviour
     [SerializeField] public Image[] soldierIMG = new Image[MAX_SOLDIERS]; // SOLDIER IMG
     [SerializeField] public Sprite[] bannerImages = new Sprite[MAX_TAB_BUTTONS];
     [SerializeField] public Sprite[] soldierImgBlocked = new Sprite[MAX_SOLDIERS];
-    [SerializeField] public Image armorBar,hpBar,ammoBar, weaponImg,infinityAmmoImg, productImg;
+    [SerializeField] public Sprite[] weaponImgs = new Sprite[MAX_WEAPONS];
+    [SerializeField] public Image armorBar, hpBar, ammoBar, fireRateBar, damageBar, ammoCapacityBar, weaponImg,infinityAmmoImg, productImg;
     [SerializeField] public Sprite hpImg, armorImg;
 
     [Header("Text:")]
     [SerializeField] public Text t_Score;
     [SerializeField] public Text t_Cost;
     [SerializeField] public Text t_Desc;
+    [SerializeField] public Text dialogText;
+    [SerializeField] public Text t_nextWaveCount;
+    [SerializeField] public GameObject nextWaveText;
+    [SerializeField] public GameObject costText;
 
-    public enum eCategory { HP, WEAPON, ARMOR, PLAYGAME }
+    public enum eCategory { HP, WEAPON, ARMOR, PLAY, SOLDIER }
     public eCategory categoryType = eCategory.HP;
 
     public int hpCost = 100;
@@ -38,11 +45,13 @@ public class UI_ShopManager : MonoBehaviour
     public int soldierCost = 500;
 
     public int currSelectedTab = 0;
+    public int currSelectedSoldier = 0;
     public int currSelectedCategory = 0;
-    private enum eWeapons { DEFAULT, DAKKAGUN, IMPALLINATOR, ATOMIZER, REKTIFIER };
+
     private eWeapons currWeaponCategory = eWeapons.DEFAULT;
 
     public bool isPlayer;
+    private const int PLAYER_BUTTON_INDEX = 0;
     private const int MAX_TAB_BUTTONS = 5;
     private const int MAX_CATEGORY_BUTTONS = 4;
     private const int MAX_SOLDIERS = 4;
@@ -54,7 +63,14 @@ public class UI_ShopManager : MonoBehaviour
     private WeaponSystem[] s_WeaponSystem = new WeaponSystem[MAX_SOLDIERS];
     private string hpDesc = "Refill Health to 100%";
     private string armorDesc = "Refill Armor to 100%";
-
+    private string dialogWeapon = "Do you really want to buy {0} for ${1} ?";
+    private string dialogSoldier = "Do you really want to buy Soldier N.{0} for ${1} ?";
+    private string dialogHp = "Do you really want to refill your Health for ${0} ?";
+    private string dialogArmor = "Do you really want to refill your Armor for ${0} ?";
+    private string dialogHpSoldier = "Do you really want to refill Soldier N.{0} Health for ${1} ?";
+    private string dialogArmorSoldier = "Do you really want to refill Soldier N.{0} Armor for ${1} ?";
+    private string dialogNoEnoughtCoin = "You don't have enough coins!";
+    private string dialogNoCoinSoldier = "You need {0} coin to buy a soldier";
 
     public void Start()
     {
@@ -66,12 +82,17 @@ public class UI_ShopManager : MonoBehaviour
             s_SoldierManager[i] = soldiers[i].GetComponent<SoldierManager>();
             s_WeaponSystem[i] = soldiers[i].GetComponent<WeaponSystem>();
         }
-        InitShop();
-        //Close();
+
+        GameManager.Instance.waveManager.GetComponent<WaveManager>().onOpenShop += Open;
     }
 
     private void LateUpdate()
     {
+        if (!isOpen)
+        {
+            return;
+        }
+
         CheckTabButton();
         CheckCategoryButton();
         UpdateProduct();
@@ -87,12 +108,13 @@ public class UI_ShopManager : MonoBehaviour
 
     public void CheckTabButton()
     {
+        isPlayer = currSelectedTab == PLAYER_BUTTON_INDEX;
+
         for (int i = 0; i < tabButtons.Length; i++)
         {
             if (tabButtons[i].GetComponent<ButtonInteract>().isSelected)
             {
                 currSelectedTab = i;
-                isPlayer = i == 0;
                 ChangeBannerImage();
                 break;
             }
@@ -114,7 +136,9 @@ public class UI_ShopManager : MonoBehaviour
 
     public void InitShop()
     {
-        
+        isOpen = true;
+        HideDialog();
+        shopMenu.SetActive(true);
         if (GetAllSoldiersAlive() == 0)
         {
             DisableAllSoldier();
@@ -123,12 +147,12 @@ public class UI_ShopManager : MonoBehaviour
         {
             EnableSoldierImage();
         }
-
+        player.gameObject.GetComponent<PlayerMovement>().enabled = false;
         InitSelection();
     }
     private void InitSelection()
     {
-        tabButtons[0].Select();
+        tabButtons[PLAYER_BUTTON_INDEX].Select();
     }
 
     public void ChangeBannerImage()
@@ -146,12 +170,14 @@ public class UI_ShopManager : MonoBehaviour
 
     public void Close()
     {
+        player.gameObject.GetComponent<PlayerMovement>().enabled = true;
+        isOpen = false;
         shopMenu.SetActive(false);
     }
 
     public void Open()
     {
-        shopMenu.SetActive(true);
+        Invoke("InitShop", 3.0f);
     }
 
     private void UpdatePlayerStats()
@@ -176,13 +202,16 @@ public class UI_ShopManager : MonoBehaviour
 
     private void UpdateSoldierStats()
     {
-        currSelectedTab = Mathf.Clamp(currSelectedTab - 1, 0, MAX_SOLDIERS);
+        currSelectedSoldier = Mathf.Clamp(currSelectedSoldier - 1, 0, MAX_SOLDIERS);
+        // Update player score
         t_Score.text = p_PlayerManager?.score.ToString();
-        armorBar.fillAmount = Map(s_SoldierManager[currSelectedTab].armor, 0, s_SoldierManager[currSelectedTab].SOLDIER_MAX_ARMOR, 0, 1);
-        hpBar.fillAmount = Map(s_SoldierManager[currSelectedTab].hp, 0, s_SoldierManager[currSelectedTab].SOLDIER_MAX_HP, 0, 1);
-        weaponImg.sprite = s_WeaponSystem[currSelectedTab].weapons[s_WeaponSystem[currSelectedTab].GetCurrSelectedWeapon()].weaponImage;
-        Weapon currWeapon = s_WeaponSystem[currSelectedTab].weapons[s_WeaponSystem[currSelectedTab].GetCurrSelectedWeapon()];
+        // Update soldier armor and HP bar
+        armorBar.fillAmount = Map(s_SoldierManager[currSelectedSoldier].armor, 0, s_SoldierManager[currSelectedSoldier].SOLDIER_MAX_ARMOR, 0, 1);
+        hpBar.fillAmount = Map(s_SoldierManager[currSelectedSoldier].hp, 0, s_SoldierManager[currSelectedSoldier].SOLDIER_MAX_HP, 0, 1);
+        weaponImg.sprite = s_WeaponSystem[currSelectedSoldier].weapons[s_WeaponSystem[currSelectedSoldier].GetCurrSelectedWeapon()].weaponImage;
+        Weapon currWeapon = s_WeaponSystem[currSelectedSoldier].weapons[s_WeaponSystem[currSelectedSoldier].GetCurrSelectedWeapon()];
         weaponImg.sprite = currWeapon.weaponImage;
+
         if (currWeapon.isDefaultWeapon)
         {
             ammoBarCateogry.SetActive(false);
@@ -191,7 +220,7 @@ public class UI_ShopManager : MonoBehaviour
         else
         {
             ammoBarCateogry.SetActive(true);
-            ammoBar.fillAmount = Map(s_WeaponSystem[currSelectedTab].currAmmo, 0, currWeapon.maxAmmoCount, 0, 1);
+            ammoBar.fillAmount = Map(s_WeaponSystem[currSelectedSoldier].currAmmo, 0, currWeapon.maxAmmoCount, 0, 1);
             infinityAmmoImg.enabled = false;
         }
     }
@@ -204,24 +233,79 @@ public class UI_ShopManager : MonoBehaviour
                 productImg.sprite = hpImg;
                 t_Cost.text = hpCost.ToString();
                 t_Desc.text = hpDesc;
-                leftArrowBtn.SetActive(false);
-                rightArrowBtn.SetActive(false);
+                EnableProductInfo();
+                DisableWeaponInfo();
                 break;
             case eCategory.WEAPON:
-                productImg.sprite = weapons[(int)currWeaponCategory].weaponImage;
+                fireRateBtn.SetActive(true);
+                damageBtn.SetActive(true);
+                ammoCapacityBtn.SetActive(true);
+                // SET PRODUCT INFORMATION
+                productImg.sprite = weaponImgs[(int)currWeaponCategory];
                 t_Cost.text = weapons[(int)currWeaponCategory].cost.ToString();
                 t_Desc.text = weapons[(int)currWeaponCategory].name;
+                // ACTIVE PRODUCT INFORMATION
+                EnableProductInfo();
                 leftArrowBtn.SetActive(true);
                 rightArrowBtn.SetActive(true);
+                UpdateWeaponStats(currWeaponCategory);
                 break;
             case eCategory.ARMOR:
                 productImg.sprite = armorImg;
                 t_Cost.text = armorCost.ToString();
                 t_Desc.text = armorDesc;
-                leftArrowBtn.SetActive(false);
-                rightArrowBtn.SetActive(false);
+                EnableProductInfo();
+                DisableWeaponInfo();
                 break;
-            case eCategory.PLAYGAME:
+            case eCategory.SOLDIER:
+                break;
+            case eCategory.PLAY:
+                costText.SetActive(false);
+                buyButton.SetActive(false);
+                t_Desc.enabled = false;
+                nextWaveText.SetActive(true);
+                t_nextWaveCount.text = GameManager.Instance.waveManager.GetComponent<WaveManager>().waveCount.ToString();
+                productImg.enabled = false;
+                DisableWeaponInfo();
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void UpdateWeaponStats(eWeapons weapon)
+    {
+        switch (weapon)
+        {
+            case eWeapons.DEFAULT:
+                fireRateBar.fillAmount = 0.4f;
+                damageBar.fillAmount = 0.3f;
+                ammoCapacityBar.fillAmount = 1.0f;
+                buyButton.SetActive(false);
+                break;
+            case eWeapons.DAKKAGUN:
+                fireRateBar.fillAmount = 1.0f;
+                damageBar.fillAmount = 0.4f;
+                ammoCapacityBar.fillAmount = 0.8f;
+                buyButton.SetActive(true);
+                break;
+            case eWeapons.IMPALLINATOR:
+                fireRateBar.fillAmount = 0.2f;
+                damageBar.fillAmount = 0.6f;
+                ammoCapacityBar.fillAmount = 0.3f;
+                buyButton.SetActive(true);
+                break;
+            case eWeapons.ATOMIZER:
+                fireRateBar.fillAmount = 1.0f;
+                damageBar.fillAmount = 0.8f;
+                ammoCapacityBar.fillAmount = 0.4f;
+                buyButton.SetActive(isPlayer);
+                break;
+            case eWeapons.REKTIFIER:
+                fireRateBar.fillAmount = 0.4f;
+                damageBar.fillAmount = 1.0f;
+                ammoCapacityBar.fillAmount = 0.2f;
+                buyButton.SetActive(isPlayer);
                 break;
             default:
                 break;
@@ -251,6 +335,24 @@ public class UI_ShopManager : MonoBehaviour
         {
             currWeaponCategory = (eWeapons)currWeapon;
         }
+    }
+
+
+    private void EnableProductInfo()
+    {
+        t_Desc.enabled = true;
+        costText.SetActive(true);
+        productImg.enabled = true;
+        nextWaveText.SetActive(false);
+        buyButton.SetActive(true);
+    }
+    private void DisableWeaponInfo()
+    {
+        leftArrowBtn.SetActive(false);
+        rightArrowBtn.SetActive(false);
+        fireRateBtn.SetActive(false);
+        damageBtn.SetActive(false);
+        ammoCapacityBtn.SetActive(false);
     }
 
     public void PlayNextWave()
@@ -293,7 +395,56 @@ public class UI_ShopManager : MonoBehaviour
         }
     }
 
+
+    public void BuySoldier()
+    {
+        categoryType = eCategory.SOLDIER;
+        Buy();
+    }
+
     public void Buy()
+    {
+        switch (categoryType)
+        {
+            case eCategory.HP:
+                if (!hasEnoughtCoins(p_PlayerManager.score, hpCost))
+                {
+                    ShowDialog(dialogNoEnoughtCoin, true);
+                    return;
+                }
+                ShowDialog(String.Format(dialogHp, hpCost));
+                break;
+            case eCategory.WEAPON:
+                if (!hasEnoughtCoins(p_PlayerManager.score, weapons[(int)currWeaponCategory].cost))
+                {
+                    ShowDialog(dialogNoEnoughtCoin, true);
+                    return;
+                }
+                ShowDialog(String.Format(dialogWeapon, weapons[(int)currWeaponCategory].name, weapons[(int)currWeaponCategory].cost));
+                break;
+            case eCategory.ARMOR:
+                if (!hasEnoughtCoins(p_PlayerManager.score, armorCost))
+                {
+                    ShowDialog(dialogNoEnoughtCoin, true);
+                    return;
+                }
+                ShowDialog(String.Format(dialogHp, armorCost));
+                break;
+            case eCategory.PLAY:
+                break;
+            case eCategory.SOLDIER:
+                if (!hasEnoughtCoins(p_PlayerManager.score, soldierCost))
+                {
+                    ShowDialog(String.Format(dialogNoCoinSoldier, soldierCost), true);
+                    return;
+                }
+                ShowDialog(String.Format(dialogSoldier,currSelectedSoldier+1, soldierCost));
+                break;
+            default:
+                break;
+        }
+    }
+    public void ConfirmBuy()
     {
         switch (categoryType)
         {
@@ -306,15 +457,33 @@ public class UI_ShopManager : MonoBehaviour
                 {
                     p_PlayerManager.score -= hpCost;
                     p_PlayerManager.ReloadPlayerHP();
+                    Debug.Log("Bought player hp");
                 }
                 else
                 {
                     p_PlayerManager.score -= hpCost;
-                    s_SoldierManager[currSelectedTab].ReloadSoldierHP();
+                    s_SoldierManager[currSelectedSoldier].ReloadSoldierHP();
+                    Debug.Log($"Bought {s_SoldierManager[currSelectedSoldier].transform.name} hp");
                 }
                 break;
             case eCategory.WEAPON:
-                /*TO DO WEAPON SWITCH */
+
+                if (!hasEnoughtCoins(p_PlayerManager.score, weapons[(int)currWeaponCategory].cost))
+                {
+                    return;
+                }
+                if (isPlayer)
+                {
+                    p_PlayerManager.score -= weapons[(int)currWeaponCategory].cost;
+                    p_WeaponSystem.SwitchWeapons(currWeaponCategory);
+                    Debug.Log("Bought player weapon");
+                }
+                else
+                {
+                    p_PlayerManager.score -= weapons[(int)currWeaponCategory].cost;
+                    s_WeaponSystem[currSelectedSoldier].SwitchWeapons(currWeaponCategory);
+                    Debug.Log($"Bought {s_WeaponSystem[currSelectedSoldier].transform.name} weapon");
+                }
                 break;
             case eCategory.ARMOR:
                 if (!hasEnoughtCoins(p_PlayerManager.score, armorCost))
@@ -325,21 +494,64 @@ public class UI_ShopManager : MonoBehaviour
                 {
                     p_PlayerManager.score -= hpCost;
                     p_PlayerManager.ReloadPlayerArmor();
+                    Debug.Log("Bought player armor");
                 }
                 else
                 {
                     p_PlayerManager.score -= armorCost;
-                    s_SoldierManager[currSelectedTab].ReloadSoldierArmor();
+                    s_SoldierManager[currSelectedSoldier].ReloadSoldierArmor();
+                    Debug.Log($"Bought {s_SoldierManager[currSelectedSoldier].transform.name} armor");
                 }
                 break;
-            case eCategory.PLAYGAME:
+            case eCategory.SOLDIER:
+                if (!hasEnoughtCoins(p_PlayerManager.score, soldierCost))
+                {
+                    return;
+                }
+                else
+                {
+                    p_PlayerManager.score -= soldierCost;
+                    soldiers[currSelectedSoldier].gameObject.SetActive(true);
+                    s_SoldierManager[currSelectedSoldier].ReloadSoldierStats();
+                    EnableSoldierImage();
+                }
                 break;
             default:
                 break;
         }
+        HideDialog();
     }
 
-    public bool hasEnoughtCoins(int playerScore, int cost)
+    private void ShowDialog(string text, bool notEnoughCoin = false)
+    {
+        if (notEnoughCoin)
+        {
+            dialogMenu.SetActive(true);
+            dialogText.text = text;
+            dialogConfirmBtn.SetActive(false);
+            dialogCancelBtn.SetActive(false);
+            dialogBackBtn.SetActive(true);
+            dialogBackBtn.GetComponent<Button>().Select();
+        }
+        else
+        {
+            dialogMenu.SetActive(true);
+            dialogText.text = text;
+            dialogConfirmBtn.SetActive(true);
+            dialogCancelBtn.SetActive(true);
+            dialogBackBtn.SetActive(false);
+            dialogConfirmBtn.GetComponent<Button>().Select();
+        }
+
+    }
+    public void HideDialog()
+    {
+        dialogText.text = "";
+        dialogMenu.SetActive(false);
+        InitSelection();
+    }
+
+    private bool hasEnoughtCoins(int playerScore, int cost)
     {
         return playerScore >= cost;
     }

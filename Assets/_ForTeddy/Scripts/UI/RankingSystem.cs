@@ -13,7 +13,7 @@ public class RankingSystem : MonoBehaviour
     private ScoreWrapper playerScores;
 
 
-    private const float SPACE_BETWEEN_LINE = 20.0f;
+    private const float SPACE_BETWEEN_LINE = 35.0f;
     private const int MAX_PLAYER_IN_RANKING = 10;
 
 

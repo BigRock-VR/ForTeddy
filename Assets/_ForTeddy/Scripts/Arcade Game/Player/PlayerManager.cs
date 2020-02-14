@@ -44,7 +44,7 @@ public class PlayerManager : MonoBehaviour
 
     public void ReloadPlayerArmor()
     {
-        hp = PLAYER_MAX_ARMOR;
+        armor = PLAYER_MAX_ARMOR;
     }
 
     public void UpdatePlayerScore(int amount)

@@ -21,12 +21,12 @@ public class RektifierExplosion : MonoBehaviour
     public Vector3 direction;
 
     public ParticleSystem pSystemExplosion, pSystemMissile;
-    private ParticleSystem pSystem;
+    public ParticleSystem pSystem;
     private ParticleSystem.Particle[] particles;
     void Start()
     {
         speed = maxSpeed;
-        pSystem = GetComponent<ParticleSystem>();
+        pSystem.Play();
         explosionDuration = explosionCurve.keys[explosionCurve.keys.Length - 1].time;
         InitializeIfNeeded();
     }
@@ -78,7 +78,7 @@ public class RektifierExplosion : MonoBehaviour
             }
             else
             {
-                Destroy(gameObject);
+                Destroy(gameObject, 5.0f);
             }
         }
 
@@ -86,9 +86,9 @@ public class RektifierExplosion : MonoBehaviour
     // Initialize the particle array
     void InitializeIfNeeded()
     {
-        if (particles == null || particles.Length < pSystem.main.maxParticles)
+        if (particles == null || particles.Length < 50)
         {
-            particles = new ParticleSystem.Particle[pSystem.main.maxParticles];
+            particles = new ParticleSystem.Particle[50];
         }
     }
 

@@ -55,7 +55,13 @@ public class SoldierManager : MonoBehaviour
 
     public void ReloadSoldierArmor()
     {
-        hp = SOLDIER_MAX_ARMOR;
+        armor = SOLDIER_MAX_ARMOR;
+    }
+
+    public void ReloadSoldierStats()
+    {
+        hp = SOLDIER_MAX_HP;
+        armor = SOLDIER_MAX_ARMOR;
     }
 
     private Transform getNextTarget()

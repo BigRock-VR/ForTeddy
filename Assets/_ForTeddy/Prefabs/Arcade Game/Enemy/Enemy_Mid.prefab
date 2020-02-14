@@ -115,6 +115,7 @@ MonoBehaviour:
   isEnableWaveMult: 0
   isDead: 0
   isBoss: 0
+  targetPriority: 0
   deathDelay: 1
   pickUpPrefab: {fileID: 3517541304905053234, guid: 82f154ff1a8e7cf46affeb43e4d01363,
     type: 3}

@@ -80,13 +80,13 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _GradientControl: -0.27
+    - _GradientControl: -0.3
     - _Gradient_Color_Lerp: 0.3912513
     - _Main_Color_Influence: 0.46635422
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _Opacity: 1
+    - _Opacity: 0.285
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -99,6 +99,6 @@ Material:
     - _Color1: {r: 0.9713923, g: 0.990566, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FirstColorGradient: {r: 0.87434554, g: 1, b: 0, a: 0}
-    - _SecondColorGradient: {r: 1, g: 0, b: 0.041884817, a: 0}
+    - _SecondColorGradient: {r: 1, g: 0, b: 0.55372715, a: 0}
     - _Tail_Main_Color: {r: 1, g: 0.037246175, b: 0, a: 0}
     - _Tail_Second_Color: {r: 0.9620397, g: 1, b: 0, a: 0}

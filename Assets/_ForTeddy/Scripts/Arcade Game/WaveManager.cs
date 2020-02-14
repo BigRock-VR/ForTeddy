@@ -29,6 +29,9 @@ public class WaveManager : MonoBehaviour
     public delegate void EndWave();
     public event EndWave onEndWave;
 
+    public delegate void OpenShop();
+    public event EndWave onOpenShop;
+
     private float waveEndTimer;
     private GameObject enemyContainer;
     [HideInInspector] public GameObject coinsContainer;
@@ -93,6 +96,7 @@ public class WaveManager : MonoBehaviour
 
     public void UpdateWave()
     {
+        onOpenShop?.Invoke();
         canSpawnEnemy = false;
         isBossSpawned = false;
         ++waveCount; // Increase the wave counter

@@ -18,14 +18,21 @@
 		_isHitting("isHitting", Range(0.0, 1.0)) = 0.0
 		_isDissolving("isDissolving", Range(0.0, 1.0)) = 0.0
 
+		//MAOS
+			_Maos("MAOS", 2D) = "white" {}
+			_Emission("EmiTex", 2D) = "white" {}
+
     }
     SubShader
     {
         Tags {"Queue" = "Transparent" "RenderType" = "Fade" }
         LOD 200
 
+		Cull Off
+
 		Pass 
 		{
+			
 			ZWrite On
 			ColorMask 0
 		}
@@ -41,6 +48,9 @@
         sampler2D _MainTex;
 		sampler2D _DissolveTex;
 		sampler2D _BumpMap;
+		sampler2D _Maos;
+		
+
 		// Parameter
 		half _DissolveScale;
 		half _EmissionScale;
@@ -74,6 +84,8 @@
 			float2 uv2_MainTex;
 			float2 uv_BumpMap;
 			float3 dGeometry;
+			float2 uv_Maos;
+			
         };
 
         void surf (Input IN, inout SurfaceOutputStandard o)
@@ -109,8 +121,14 @@
 			fixed4 glowCol = dPredict * lerp(_Glow, _GlowEnd, clamp(dPredictCol, 0.0f, 1.0f));
 			glowCol = clamp(glowCol, 0.0f, 1.0f);
 
+			fixed4 M = tex2D(_Maos, IN.uv_Maos);
+
+			
 			o.Albedo = mTex.rgb;
 			o.Normal = UnpackNormal(tex2D(_BumpMap, IN.uv_BumpMap));
+			o.Metallic = M.r;
+			o.Smoothness = M.b;
+			
 
 			if (_isDissolving == 0) 
 			{

@@ -21,6 +21,8 @@ public class PlayerMovement : MonoBehaviour
     public Material[] lightMat = new Material[2];
     [Range(0.0f,10.0f)]public float lightRadius;
     [Range(0.0f, 10.0f)]public float lightSmothness;
+    private float joyPadThreShold = 0.5f;
+    private float joyPadThreSholdN = -0.5f;
     void Awake()
     {
         anim = GetComponent<Animator>();
@@ -57,7 +59,10 @@ public class PlayerMovement : MonoBehaviour
         {
             Move(movementDir);
         }
-        if (aimDir != Vector3.zero)
+        if (aimDir.x >= joyPadThreShold || 
+            aimDir.z >= joyPadThreShold || 
+            aimDir.x <= joyPadThreSholdN|| 
+            aimDir.z <= joyPadThreSholdN )
         {
             isAiming = true;
             Aim(aimDir);
