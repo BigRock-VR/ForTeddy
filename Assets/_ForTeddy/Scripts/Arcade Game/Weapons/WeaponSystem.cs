@@ -20,6 +20,11 @@ public class WeaponSystem : MonoBehaviour
     public float currAmmo = 0.0f;
     //Particle Bullets
     private ParticleSystem pSystem;
+
+    // Atomizer Logics
+    private bool isShooting;
+    private AtomizerLaser atomizerLaser;
+
     //Rektifier Logics
     private Transform bulletSpawnPosition;
     private bool isSwitchingWeapon;
@@ -28,6 +33,7 @@ public class WeaponSystem : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         InitWeapons(); // Instantiate all the possible weapons
+        atomizerLaser = weaponObjs[(int)eWeapons.ATOMIZER].transform.GetComponentInChildren<AtomizerLaser>();
     }
 
     private void Update()
@@ -45,6 +51,16 @@ public class WeaponSystem : MonoBehaviour
             if (gameObject.GetComponent<PlayerMovement>().isAiming)
             {
                 Shoot();
+            }
+            else
+            {
+                isShooting = false;
+
+                if (currSelectedWeapon == eWeapons.ATOMIZER)
+                {
+                    pSystem.Stop();
+                    atomizerLaser.DisableLineRender();
+                }
             }
         }
 
@@ -80,20 +96,33 @@ public class WeaponSystem : MonoBehaviour
                 CheckLaserAmmo();
                 if (currAmmo > 0)
                 {
+                    if (!isShooting)
+                    {
+                        pSystem.Play();
+                        isShooting = true;
+                    }
                     currAmmo -= Time.deltaTime;
                     RaycastHit[] hits;
                     // Draw a Ray with a range that trigger every object in the radius
-                    hits = Physics.RaycastAll(weaponSpawnPositions[GetCurrSelectedWeapon()].position, transform.forward, 10.0f);
-                    Debug.DrawRay(weaponSpawnPositions[GetCurrSelectedWeapon()].position, transform.forward * 10.0f, Color.yellow);
+                    hits = Physics.RaycastAll(bulletSpawnPosition.position, bulletSpawnPosition.forward, atomizerLaser.laserRange);
+                    Debug.DrawRay(bulletSpawnPosition.position, bulletSpawnPosition.forward * atomizerLaser.laserRange, Color.yellow);
+                    atomizerLaser.startPosition = bulletSpawnPosition;
+                    atomizerLaser.EnableLaser();
                     for (int i = 0; i < hits.Length; i++)
                     {
                         if (hits[i].transform.CompareTag("Enemy"))
                         {
-                            // Return the hit poitin in object space
+                            // Return the hit poitin in object space and do damage to the enemy
                             Vector4 hitPointLocal = hits[i].transform.InverseTransformPoint(hits[i].point);
                             hits[i].transform.GetComponent<Enemy>().TakeDamage(weapons[GetCurrSelectedWeapon()].damage, hitPointLocal);
                         }
                     }
+                }
+                else
+                {
+                    isShooting = false;
+                    pSystem.Stop();
+                    atomizerLaser.DisableLineRender();
                 }
                 break;
             // REKTIFIER WEAPON
@@ -123,7 +152,7 @@ public class WeaponSystem : MonoBehaviour
         if (currAmmo < 0 && !isSwitchingWeapon)
         {
             isSwitchingWeapon = true;
-            Invoke("SwitchWeapons", 0.5f);
+            Invoke("SwitchWeapons", 0.7f);
         }
     }
     private void CheckCurrentAmmo()
@@ -133,7 +162,7 @@ public class WeaponSystem : MonoBehaviour
         {
             isSwitchingWeapon = true;
             currAmmo = 0.0f;
-            Invoke("SwitchWeapons", 0.5f);
+            Invoke("SwitchWeapons", 0.7f);
         }
         else
         {
@@ -162,10 +191,22 @@ public class WeaponSystem : MonoBehaviour
 
     public void GetBulletParticle()
     {
-        pSystem = weaponObjs[GetCurrSelectedWeapon()].transform.Find("Bullet_PS").GetComponent<ParticleSystem>();
-        bulletSpawnPosition = weaponObjs[GetCurrSelectedWeapon()].transform.Find("Bullet_PS").transform;
-        // Set Up the weapon damage to the single particle
-        weaponObjs[GetCurrSelectedWeapon()].transform.Find("Bullet_PS").GetComponent<ParticleCollision>().damage = weapons[GetCurrSelectedWeapon()].damage;
+        switch (currSelectedWeapon)
+        {
+            case eWeapons.DEFAULT:
+            case eWeapons.DAKKAGUN:
+            case eWeapons.IMPALLINATOR:
+            case eWeapons.REKTIFIER:
+                pSystem = weaponObjs[GetCurrSelectedWeapon()].transform.Find("Bullet_PS").GetComponent<ParticleSystem>();
+                bulletSpawnPosition = weaponObjs[GetCurrSelectedWeapon()].transform.Find("Bullet_PS").transform;
+                // Set Up the weapon damage to the single particle
+                weaponObjs[GetCurrSelectedWeapon()].transform.Find("Bullet_PS").GetComponent<ParticleCollision>().damage = weapons[GetCurrSelectedWeapon()].damage;
+                break; 
+            case eWeapons.ATOMIZER:
+                pSystem = weaponObjs[GetCurrSelectedWeapon()].transform.Find("Bullet_PS").GetComponent<ParticleSystem>();
+                bulletSpawnPosition = weaponObjs[GetCurrSelectedWeapon()].transform.Find("Bullet_PS").transform;
+                break;
+        }
     }
 
     public int GetCurrSelectedWeapon()
@@ -227,10 +268,9 @@ public class WeaponSystem : MonoBehaviour
             default:
                 break;
         }
-        anim.SetLayerWeight(layer, 1);
         anim.SetLayerWeight(GetCurrSelectedWeapon() + 1, 0);
+        anim.SetLayerWeight(layer, 1);
     }
-
 
 #if TESTMODE
     private void OnGUI()

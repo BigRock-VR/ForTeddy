@@ -1,4 +1,4 @@
-﻿	Shader "Custom/Wall"
+﻿	Shader "Custom/Props"
 	{
 		//questo è lo standard shader che verrà usato per il gioco arcade
 
@@ -32,6 +32,20 @@
 			{
 				//viene renderizzato insieme ai materiali opachi e nella queue della geometry
 				Tags { "RenderType" = "Opaque" "Queue" = "Geometry" }
+
+					Stencil
+			{
+
+				//livello su cui andiamo ad agire, mi sposto di livello dalle altre geometrie, interagisco in maniera diversa
+				// ref 0 = effettivo piano su cui viene renderizzato l'oggetto. Valore del piano su cui andiamo ad interagire
+				Ref 1
+
+				//compile, decide quando lo stencil agisce, solo se altro stencil ha lo stesso ref
+				//if notequal ovviamente il contrario
+
+				Comp NotEqual
+
+			}
 
 				
 

@@ -11,9 +11,9 @@ Material:
   m_Shader: {fileID: 4800000, guid: 6ac02e694676f9c4181f2460024eaa2d, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 1
+  m_CustomRenderQueue: 2001
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -74,7 +74,7 @@ Material:
     - _DissolveBand: 0.25
     - _DissolveScale: 0
     - _DstBlend: 0
-    - _EmissionScale: 0
+    - _EmissionScale: 1
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -91,11 +91,11 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     - _isDissolving: 0
-    - _isHitting: 0
+    - _isHitting: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DissolveEnd: {r: 0, g: 0, b: 0, a: 1}
     - _DissolveStart: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Glow: {r: 1, g: 1, b: 1, a: 1}
-    - _GlowEnd: {r: 1, g: 1, b: 1, a: 1}
+    - _Glow: {r: 1, g: 0, b: 0, a: 1}
+    - _GlowEnd: {r: 1, g: 0, b: 0.069642544, a: 1}

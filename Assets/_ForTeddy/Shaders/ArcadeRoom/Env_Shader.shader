@@ -1,4 +1,4 @@
-﻿Shader "Custom/Wall"
+﻿Shader "Custom/Env"
 {
 	//questo è lo standard shader che verrà usato per il gioco arcade
 
@@ -8,7 +8,6 @@
 	{
 		_Color("Color", Color) = (1,1,1,1)				 //colore nel caso non ci sia una text HSV
 		_MainTex("Albedo (RGB)", 2D) = "white" {}		 //texture da applicare
-		_Normal("Normal", 2D) = "bump" {}
 		[HDR] _Emission("Emission" ,2D) = "white" {}
 		_Bump("Normal", 2D) = "bump" {}
 		_Maos("MAOS", 2D) = "white" {}
@@ -33,19 +32,7 @@
 			//viene renderizzato insieme ai materiali opachi e nella queue della geometry
 			Tags { "RenderType" = "Opaque" "Queue" = "Geometry" }
 
-			Stencil{
-
-			//livello su cui andiamo ad agire, mi sposto di livello dalle altre geometrie, interagisco in maniera diversa
-			// ref 0 = effettivo piano su cui viene renderizzato l'oggetto. Valore del piano su cui andiamo ad interagire
-			Ref 1
-
-			//compile, decide quando lo stencil agisce, solo se altro stencil ha lo stesso ref
-			//if notequal ovviamente il contrario
-
-			Comp NotEqual
-
-		}
-
+		
 
 		CGPROGRAM
 

@@ -228,9 +228,7 @@ public class Enemy : MonoBehaviour
         {
             isDead = true;
             enemyState = eState.DEATH;
-            Vector3 pickUpSpawnPos = transform.position;
-            pickUpSpawnPos.y += 10.0f;
-            Instantiate(pickUpPrefab, pickUpSpawnPos, Quaternion.identity, waveManager.coinsContainer.transform);
+            Instantiate(pickUpPrefab, transform.position, Quaternion.identity, waveManager.coinsContainer.transform);
             StartCoroutine(PlayFullDissolveEffect(2.0f));
         }
 

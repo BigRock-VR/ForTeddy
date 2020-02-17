@@ -117,7 +117,7 @@ MonoBehaviour:
   isBoss: 0
   targetPriority: 0
   deathDelay: 1
-  pickUpPrefab: {fileID: 3517541304905053234, guid: 82f154ff1a8e7cf46affeb43e4d01363,
+  pickUpPrefab: {fileID: 4104111007740378748, guid: 82f154ff1a8e7cf46affeb43e4d01363,
     type: 3}
 --- !u!195 &4913171580632947843
 NavMeshAgent:

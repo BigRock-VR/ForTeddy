@@ -1,26 +1,40 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿//#define ENABLE_ROTATION
+using System.Collections;
 using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
-    [Range(1, 5)] public float rotationSpeed = 1.0f;
+    [SerializeField] public int coinAmount = 10;
+    public MeshRenderer mesh;
+#if ENABLE_ROTATION
+    [Range(0, 5)] public float rotationSpeed = 1.0f;
     public enum eRotationType {X, Y, Z};
-    [SerializeField]public int coinAmount = 10;
     public eRotationType rotationType = eRotationType.Z;
-    public ParticleSystem pickUpParticle;
-
     private Vector3 rotationDir;
+#endif
+    public AnimationCurve animationCurve;
+    public ParticleSystem pickUpParticle;
+    public ParticleSystem collectableParticle, smokeParticle0, smokeParticle1;
+    private bool isPicked;
+    private float time;
+
     void Start()
     {
+
+#if ENABLE_ROTATION
         GetRotationOrient();
+#endif
+        collectableParticle.Play();
+        time = animationCurve.keys[animationCurve.keys.Length - 1].time;
+        StartCoroutine(InitiSize());
     }
 
-    // Update is called once per frame
+#if ENABLE_ROTATION
     void Update()
     {
         transform.Rotate(rotationDir * Time.deltaTime * rotationSpeed);
     }
+
 
     public void GetRotationOrient()
     {
@@ -40,14 +54,37 @@ public class PickUp : MonoBehaviour
                 break;
         }
     }
-
+#endif
+    IEnumerator InitiSize()
+    {
+        float t = 0.0f; // TIME
+        while (t < 1)
+        {
+            t += Time.deltaTime / time;
+            transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, animationCurve.Evaluate(t));
+            yield return null;
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         PlayerManager player = other.GetComponent<PlayerManager>();
         if (player)
         {
+            if (isPicked)
+            {
+                return;
+            }
+
             player.UpdatePlayerScore(coinAmount);
-            gameObject.SetActive(false);
+            isPicked = true;
+            mesh.enabled = false;
+            pickUpParticle.Play();
+            var smokeMain0 = smokeParticle0.main;
+            var smokeMain1 = smokeParticle1.main;
+            smokeMain0.loop = false;
+            smokeMain1.loop = false;
+
+            Destroy(gameObject, 3.0f);
         }
     }
 }
