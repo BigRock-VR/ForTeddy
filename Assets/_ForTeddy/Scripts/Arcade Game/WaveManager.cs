@@ -32,7 +32,10 @@ public class WaveManager : MonoBehaviour
     public delegate void OpenShop();
     public event EndWave onOpenShop;
 
-    private float waveEndTimer;
+    public delegate void GameStart();
+    public event GameStart onStartGame;
+
+    public float waveEndTimer;
     private GameObject enemyContainer;
     [HideInInspector] public GameObject coinsContainer;
     void Start()
@@ -54,6 +57,7 @@ public class WaveManager : MonoBehaviour
 
     public void StartGame()
     {
+        onStartGame?.Invoke();
         Invoke("StartWave", 3.0f);
     }
 
