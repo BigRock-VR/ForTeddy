@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: Rektifier
   m_EditorClassIdentifier: 
   name: Rektifier
-  fireRate: 0.75
-  bulletSpeed: 1000
+  fireRate: 1
   damage: 1000
-  maxAmmoCount: 1
+  maxAmmoCount: 3
   isDefaultWeapon: 0
   cost: 1000
   weaponImage: {fileID: 2965282808680803116, guid: b2e5db02f6ccdfd48a2fc78d3120f3cb,

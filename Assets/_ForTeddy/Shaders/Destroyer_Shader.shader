@@ -5,22 +5,22 @@
 		_MainTex("Albedo (RGB)", 2D) = "white" {}
 		_DissolveTex ("Dissolve Texture", 2D) = "white" {}
 		_BumpMap("Normal Map", 2D) = "bump" {}
+		_Maos("MAOS", 2D) = "white" {}
 		_DissolveScale ("Dissolve Progression", Range(0.0, 1.0)) = 0.0
 		_EmissionScale ("Emission Scale", Range(0.0, 1.0)) = 0.0
 		_GlowIntensity ("Glow Intensity", Range(0.0, 5.0)) = 0.0
 		_GlowScale ("Glow Size", Range(0.0, 5.0)) = 1.0
 		_Glow ("Glow Color", Color) = (1, 1, 1, 1)
 		_GlowEnd ("Glow End Color", Color) = (1, 1, 1, 1)
+		[HDR]_EmissionIntensity("Emission Intensity", Color) = (1, 1, 1, 1)
 		_GlowColFac ("Glow Colorshift", Range(0.01, 2.0)) = 0.75
 		_DissolveStart("Dissolve Start Point", Vector) = (1, 1, 1, 1)
 		_DissolveEnd("Dissolve End Point", Vector) = (0, 0, 0, 1)
 		_DissolveBand("Dissolve Band Size", Float) = 0.25
 		_isHitting("isHitting", Range(0.0, 1.0)) = 0.0
 		_isDissolving("isDissolving", Range(0.0, 1.0)) = 0.0
-
-		//MAOS
-			_Maos("MAOS", 2D) = "white" {}
-			_Emission("EmiTex", 2D) = "white" {}
+		[HDR]_Emicolor("Emission Color", Color) = (1,1,1,1)
+		
 
     }
     SubShader
@@ -38,7 +38,7 @@
 		}
 
         CGPROGRAM
-        #pragma surface surf Standard fullforwardshadows alpha:fade
+        #pragma surface surf Standard fullforwardshadows alpha:fade addshadow
 		#pragma vertex vert
 
         // Use shader model 3.0 target, to get nicer looking lighting
@@ -67,6 +67,9 @@
 		float4 _DissolveEnd;
 		float4 _Glow;
 		float4 _GlowEnd;
+		float4 _Emicolor;
+		float4 _EmissionIntensity;
+		
 
 
 		//Precompute dissolve direction.
@@ -85,7 +88,7 @@
 			float2 uv_BumpMap;
 			float3 dGeometry;
 			float2 uv_Maos;
-			
+
         };
 
         void surf (Input IN, inout SurfaceOutputStandard o)
@@ -119,32 +122,35 @@
 			half dPredictCol = (_GlowScale * _GlowColFac - dEmissionFinal); //* _GlowIntensity;
 			//Calculate and clamp glow colour.
 			fixed4 glowCol = dPredict * lerp(_Glow, _GlowEnd, clamp(dPredictCol, 0.0f, 1.0f));
-			glowCol = clamp(glowCol, 0.0f, 1.0f);
+			glowCol = clamp(glowCol, 0.0f, 1.0f) * _EmissionIntensity;
 
 			fixed4 M = tex2D(_Maos, IN.uv_Maos);
+			fixed4 em = fixed4(mTex.r, mTex.g, 0,1);
 
+			fixed3 EmissionBase = ( em.rgb * _Emicolor);
 			
 			o.Albedo = mTex.rgb;
 			o.Normal = UnpackNormal(tex2D(_BumpMap, IN.uv_BumpMap));
 			o.Metallic = M.r;
 			o.Smoothness = M.b;
 			
+			o.Emission = EmissionBase;
 
 			if (_isDissolving == 0) 
 			{
-				o.Alpha = 1;
+				o.Alpha = mTex.a;
 			}
 			else 
 			{
-				o.Alpha = alpha;
+				o.Alpha = clamp(mTex.a * alpha, 0.0f, 1);
 			}
 
 			if (_isHitting == 0) 
 			{
 				return;
 			}
+			o.Emission = lerp(EmissionBase, glowCol, _EmissionScale);
 
-			o.Emission = glowCol;
         }
 
 		void vert(inout appdata_full v, out Input o)
@@ -166,5 +172,5 @@
 
         ENDCG
     }
-    FallBack "Diffuse"
+    FallBack "Standard"
 }

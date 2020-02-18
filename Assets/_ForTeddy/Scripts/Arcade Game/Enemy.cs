@@ -201,7 +201,7 @@ public class Enemy : MonoBehaviour
     {
         hp -= damage;
 
-        Material mat = GetComponent<MeshRenderer>().material;
+        Material mat = GetComponent<SkinnedMeshRenderer>().material;
 
         float currEmissionAmount = mat.GetFloat("_EmissionScale");
         float nextEmissionAmount = (float)damage / MaxHP;
@@ -214,7 +214,7 @@ public class Enemy : MonoBehaviour
     IEnumerator EmissionEffect(Vector4 hitPoint, float delay, float currEmission, float nextEmission)
     {
         float timer = 0.0f;
-        Material mat = GetComponent<MeshRenderer>().material;
+        Material mat = GetComponent<SkinnedMeshRenderer>().material;
         Vector4 localHitPoint = mat.GetVector("_DissolveStart");
 
         if (localHitPoint == Vector4.zero)
@@ -243,7 +243,7 @@ public class Enemy : MonoBehaviour
     IEnumerator PlayFullDissolveEffect(float delay)
     {
         float timer = 0.0f;
-        Material mat = GetComponent<MeshRenderer>().material;
+        Material mat = GetComponent<SkinnedMeshRenderer>().material;
         Vector4 localHitPoint = mat.GetVector("_DissolveStart");
         mat.SetFloat("_isDissolving", 1);
 

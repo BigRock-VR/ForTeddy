@@ -17,7 +17,7 @@ MonoImporter:
       type: 3}
   - storePointLightCookieMapShader: {fileID: 4800000, guid: 83815c326d7f2514884f3fc7a05b5aef,
       type: 3}
-  executionOrder: 100
+  executionOrder: 101
   icon: {fileID: 2800000, guid: 8f52544825150eb4f97911a138e0f454, type: 3}
   userData: 
   assetBundleName: 

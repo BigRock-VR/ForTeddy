@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Peashooter
   m_EditorClassIdentifier: 
   name: Peashooter
-  fireRate: 1
-  bulletSpeed: 1000
+  fireRate: 0.5
   damage: 20
   maxAmmoCount: 0
   isDefaultWeapon: 1

@@ -100,7 +100,11 @@ public class WaveManager : MonoBehaviour
 
     public void UpdateWave()
     {
-        onOpenShop?.Invoke();
+        if (!GameManager.Instance.player.GetComponent<PlayerManager>().isDead)
+        {
+            onOpenShop?.Invoke();
+        }
+
         canSpawnEnemy = false;
         isBossSpawned = false;
         ++waveCount; // Increase the wave counter

@@ -14,9 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Impallinator
   fireRate: 1.3
-  bulletSpeed: 1000
   damage: 10
-  maxAmmoCount: 2
+  maxAmmoCount: 12
   isDefaultWeapon: 0
   cost: 300
   weaponImage: {fileID: 1322474102175500612, guid: 7899f415e7f74f448bba80db47787b6c,
