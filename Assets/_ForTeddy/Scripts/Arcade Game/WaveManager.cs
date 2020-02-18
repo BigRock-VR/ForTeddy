@@ -10,10 +10,12 @@ public class WaveManager : MonoBehaviour
     [SerializeField]public GameObject[] enemyTypes;
     [SerializeField]public Transform[] soldierPositions;
     [SerializeField]public Transform bedPositions;
+    public PlayerManager playerManager;
     // BOSS WAVE
     [Header("Boss Info:")]
     [SerializeField]public GameObject bossPrefab;
     private readonly int BOSS_WAVE_INTERVAL = 5; // Spawn the boss every x wave;
+    private int midMobPct = 10; // Mid mob percentage of spawn; 
     public bool isBossSpawned;
 
     [Header("Wave Info:")]
@@ -100,7 +102,7 @@ public class WaveManager : MonoBehaviour
 
     public void UpdateWave()
     {
-        if (!GameManager.Instance.player.GetComponent<PlayerManager>().isDead)
+        if (!playerManager.isDead)
         {
             onOpenShop?.Invoke();
         }
@@ -118,7 +120,15 @@ public class WaveManager : MonoBehaviour
     {
         int randomSpawnPos = UnityEngine.Random.Range(0, spawnPositions.Length);
         int randomEnemy = UnityEngine.Random.Range(0, enemyTypes.Length);
-        Instantiate(enemyTypes[randomEnemy], spawnPositions[randomSpawnPos].position, Quaternion.identity, enemyContainer.transform);
+        int percent = UnityEngine.Random.Range(1, 100);
+        if (percent <= midMobPct)
+        {
+            Instantiate(enemyTypes[1], spawnPositions[randomSpawnPos].position, Quaternion.identity, enemyContainer.transform);
+        }
+        else
+        {
+            Instantiate(enemyTypes[0], spawnPositions[randomSpawnPos].position, Quaternion.identity, enemyContainer.transform);
+        }
     }
 
 

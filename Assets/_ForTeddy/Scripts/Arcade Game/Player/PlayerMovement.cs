@@ -23,10 +23,13 @@ public class PlayerMovement : MonoBehaviour
     [Range(0.0f, 10.0f)]public float lightSmothness;
     private float joyPadThreShold = 0.5f;
     private float joyPadThreSholdN = -0.5f;
+    private PlayerManager p_Manager;
     void Awake()
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
+        p_Manager = GetComponent<PlayerManager>();
+        p_Manager.onPlayerDeath += PlayDeathAnimation;
     }
 
 
@@ -95,6 +98,16 @@ public class PlayerMovement : MonoBehaviour
         rb.MoveRotation(Quaternion.Lerp(transform.rotation, newRotatation, Time.deltaTime * aimSensibility));
     }
 
+    public void PlayDeathAnimation()
+    {
+        anim.SetLayerWeight(1, 0);
+        anim.SetLayerWeight(2, 0);
+        anim.SetLayerWeight(3, 0);
+        anim.SetLayerWeight(4, 0);
+        anim.SetLayerWeight(5, 0);
+        anim.SetTrigger("isDead");
+        p_Manager.onPlayerDeath -= PlayDeathAnimation;
+    }
     public void AnimationCTRL()
     {
         //Player ruotato verso avanti

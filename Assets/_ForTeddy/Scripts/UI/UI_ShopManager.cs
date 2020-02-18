@@ -396,8 +396,13 @@ public class UI_ShopManager : MonoBehaviour
     }
 
 
-    public void BuySoldier()
+    public void BuySoldier(int soldierIndex)
     {
+        if (soldiers[soldierIndex].gameObject.activeInHierarchy)
+        {
+            return;
+        }
+
         categoryType = eCategory.SOLDIER;
         Buy();
     }

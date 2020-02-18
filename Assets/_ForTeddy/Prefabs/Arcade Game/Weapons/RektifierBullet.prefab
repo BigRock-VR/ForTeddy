@@ -14724,7 +14724,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   explosionRadius: 10
   isExploded: 0
-  attractionForce: 4000
+  attractionForce: 400000
   enemyTargets: []
   direction: {x: 0, y: 0, z: 0}
   pSystemExplosion: {fileID: 7344595780103827157}

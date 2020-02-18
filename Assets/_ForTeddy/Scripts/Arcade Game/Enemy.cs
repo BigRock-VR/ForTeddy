@@ -229,6 +229,13 @@ public class Enemy : MonoBehaviour
             isDead = true;
             enemyState = eState.DEATH;
             Instantiate(pickUpPrefab, transform.position, Quaternion.identity, waveManager.coinsContainer.transform);
+            CapsuleCollider enemyCollider = GetComponent<CapsuleCollider>();
+
+            if (enemyCollider)
+            {
+                enemyCollider.isTrigger = true;
+            }
+
             StartCoroutine(PlayFullDissolveEffect(2.0f));
         }
 

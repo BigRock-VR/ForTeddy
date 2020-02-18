@@ -16,6 +16,9 @@ public class PlayerManager : MonoBehaviour
 
     public bool hasArmor;
     public bool isDead;
+
+    public delegate void DeathEvent();
+    public event DeathEvent onPlayerDeath;
 #if TESTMODE
     private bool isGod;
 #endif
@@ -32,7 +35,7 @@ public class PlayerManager : MonoBehaviour
     
     private void Dead()
     {
-        /* TODO DEATH ANIMATION AND UI */
+        onPlayerDeath?.Invoke();
         gameObject.GetComponent<PlayerMovement>().enabled = false;
         gameObject.GetComponent<WeaponSystem>().enabled = false;
     }
