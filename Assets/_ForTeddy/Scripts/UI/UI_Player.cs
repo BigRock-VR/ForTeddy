@@ -76,13 +76,7 @@ public class UI_Player : MonoBehaviour
     private string GetMinutes(float timer)
     {
         minutes = (timer / 60);
-
-        if (minutes < 60)
-        {
-            return "0";
-        }
-
-        return String.Format("{0:0}", minutes);
+        return String.Format("{0:0}", Mathf.FloorToInt(minutes));
     }
     private string GetSeconds(float timer)
     {
@@ -93,7 +87,7 @@ public class UI_Player : MonoBehaviour
             return "0";
         }
 
-        return String.Format("{0:0}", seconds);
+        return String.Format("{00:00}", seconds);
     }
     private float Map01(float input, float inputMin, float inputMax)
     {

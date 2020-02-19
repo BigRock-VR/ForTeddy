@@ -11,9 +11,12 @@ public class Enemy : MonoBehaviour
     [SerializeField] public int AttackDamage;
     [SerializeField] public float MovementSpeed;
     [SerializeField] [Range(50.0f, 400.0f)] public float AttackSpeed = 50.0f;
-    [SerializeField] public int attackRange = 2;
+    [SerializeField] public float attackRange = 2;
     [SerializeField] public bool isEnableWaveMult; // Enable Wave Multiplyer and increase enemy damage and hp every wave
     [SerializeField] public bool isDead;
+    public Transform visionAnchorPoint; // ENEMY VISION POSITION TO ATTACKING AND FACING THE PLAYER
+    [Range(0.2f,2)] public float visionRange = 0.5f;
+    public AnimationCurve hitAnimationCurve;
 
     // BOSS LOGICS
     [SerializeField] public bool isBoss;
@@ -38,6 +41,8 @@ public class Enemy : MonoBehaviour
     private double nextTimeToAttack;
     private NavMeshAgent agent;
     private Transform targetPosition;
+    private Animator anim;
+    private const float EMISSION_HIT_INTENSITY = 100.0f;
 
     void Start()
     {
@@ -49,6 +54,7 @@ public class Enemy : MonoBehaviour
         }
 
         InitEnemyStats();
+        anim = GetComponent<Animator>();
     }
 
 
@@ -85,9 +91,7 @@ public class Enemy : MonoBehaviour
                 targetPosition = hitColliders[i].transform;
             }
         }
-
         EnemyAI();
-
     }
 
     private void CheckBossPriority()
@@ -147,6 +151,19 @@ public class Enemy : MonoBehaviour
         EnemyAI();
     }
 
+    public bool CanDoAmination()
+    {
+        bool result = false;
+        hitColliders = Physics.OverlapSphere(visionAnchorPoint.position, visionRange, LayerMask.GetMask("Player"));
+        for (int i = 0; i < hitColliders.Length; i++)
+        {
+            if (hitColliders[i].CompareTag("Player"))
+            {
+                result = true;
+            }
+        }
+        return result;
+    }
     private void EnemyAI()
     {
         switch (enemyState)
@@ -162,13 +179,16 @@ public class Enemy : MonoBehaviour
                 break;
 
             case eState.ATTACK_PLAYER:
-                GameManager.Instance.player.GetComponent<PlayerManager>().TakeDamage(damage);
-                /* TO DO ANIMATION */
+                if (CanDoAmination())
+                {
+                    anim.SetTrigger("Attack");
+                    targetPosition.gameObject.GetComponent<PlayerManager>().TakeDamage(damage);
+                }
                 break;
 
             case eState.ATTACK_SOLDIER:
+                anim.SetTrigger("Attack");
                 targetPosition.GetComponent<SoldierManager>().TakeDamage(damage);
-                /* TO DO ANIMATION */
                 break;
 
             case eState.DEATH:
@@ -195,7 +215,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-
     // Method Overload for the hit point effect
     public void TakeDamage(int damage, Vector4 hitPoint)
     {
@@ -207,7 +226,7 @@ public class Enemy : MonoBehaviour
         float nextEmissionAmount = (float)damage / MaxHP;
         nextEmissionAmount += currEmissionAmount;
 
-        StartCoroutine(EmissionEffect(hitPoint, 0.7f, currEmissionAmount, nextEmissionAmount));
+        StartCoroutine(EmissionEffect(hitPoint, 0.5f, currEmissionAmount, nextEmissionAmount));
         Debug.Log($"Taking damage: {damage}, HP: {hp}");
     }
 
@@ -228,6 +247,7 @@ public class Enemy : MonoBehaviour
         {
             isDead = true;
             enemyState = eState.DEATH;
+            agent.isStopped = true;
             Instantiate(pickUpPrefab, transform.position, Quaternion.identity, waveManager.coinsContainer.transform);
             CapsuleCollider enemyCollider = GetComponent<CapsuleCollider>();
 
@@ -243,6 +263,8 @@ public class Enemy : MonoBehaviour
         {
             timer += Time.deltaTime / delay;
             mat.SetFloat("_EmissionScale", Mathf.Lerp(currEmission, nextEmission, timer));
+            // Hit Effect on the mob;
+            mat.SetColor("_Emicolor",Color.Lerp(Color.white, Color.red * EMISSION_HIT_INTENSITY, hitAnimationCurve.Evaluate(timer*4.0f)));
             yield return null;
         }
 
@@ -253,6 +275,9 @@ public class Enemy : MonoBehaviour
         Material mat = GetComponent<SkinnedMeshRenderer>().material;
         Vector4 localHitPoint = mat.GetVector("_DissolveStart");
         mat.SetFloat("_isDissolving", 1);
+        float emissionScale = mat.GetFloat("_EmissionScale");
+
+
 
         if (localHitPoint == Vector4.zero)
         {
@@ -266,6 +291,11 @@ public class Enemy : MonoBehaviour
         {
             timer += Time.deltaTime / delay;
             mat.SetFloat("_DissolveScale", Mathf.Lerp(0, 1, timer));
+
+            if (emissionScale == 0)
+            {
+                mat.SetFloat("_EmissionScale", Mathf.Lerp(0, 1, timer));
+            }
             yield return null;
         }
         waveManager.onEndWave -= KillAll;
@@ -303,11 +333,13 @@ public class Enemy : MonoBehaviour
     {
         if (isEnableWaveMult)
         {
-            hp = this.MaxHP + waveManager.waveCount;
+            this.MaxHP = this.MaxHP += waveManager.waveCount;
+            hp = this.MaxHP;
             damage = this.AttackDamage + waveManager.waveCount;
             attackSpeed = Math.Round(1.0f / (this.AttackSpeed / 100), 2); // Attack Speed in percent value
             agent = this.GetComponent<NavMeshAgent>();
             agent.speed = this.MovementSpeed;
+            agent.stoppingDistance = attackRange;
             enemyState = eState.TARGET_PLAYER;
         }
         else
@@ -317,6 +349,7 @@ public class Enemy : MonoBehaviour
             attackSpeed = Math.Round(1.0f / (this.AttackSpeed / 100), 2); // Attack Speed in percent value
             agent = this.GetComponent<NavMeshAgent>();
             agent.speed = this.MovementSpeed;
+            agent.stoppingDistance = attackRange;
             enemyState = eState.TARGET_PLAYER;
         }
 
@@ -329,5 +362,14 @@ public class Enemy : MonoBehaviour
     public void KillAll()
     {
         StartCoroutine(PlayFullDissolveEffect(2.0f));
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (gameObject)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(visionAnchorPoint.position,visionRange);
+        }
     }
 }

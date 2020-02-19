@@ -9,7 +9,7 @@ public class PlayerManager : MonoBehaviour
     private const int PLAYER_ARMOR_PCT = 70; // Damage taken will be reduced by this percent
 
 
-    public int hp;
+    public int hp = 1;
     public int armor;
     public int score;
     public int scoreMultiplyer = 1;
@@ -26,7 +26,7 @@ public class PlayerManager : MonoBehaviour
     private void Start()
     {
         hp = PLAYER_MAX_HP;
-        armor = PLAYER_MAX_ARMOR;
+        armor = 0;
         score = 0;
         scoreMultiplyer = 1;
         hasArmor = true;
@@ -67,7 +67,7 @@ public class PlayerManager : MonoBehaviour
         {
             int nextHp = hp - damage;
 
-            if (nextHp <= 0)
+            if (nextHp <= 0 && !isDead)
             {
                 nextHp = 0;
                 isDead = true;

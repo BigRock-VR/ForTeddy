@@ -1,55 +1,63 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class ChoosingName : MonoBehaviour
+public class UI_ChooseName : MonoBehaviour
 {
-    int currSelectedIndx = 0;
-
-    public Slider[] sliders = new Slider[MAX_NAME_CHAR];
     public Text[] charTexts = new Text[MAX_NAME_CHAR];
-
+    public PlayerManager player;
     public RankingSystem ranking;
+    public Text t_Score;
+    public GameObject scoreMenu, gameOverMenu;
+    public AnimationCurve animationCurve;
 
+    private bool isOpen;
     private char[] charValues = new char[MAX_NAME_CHAR];
-
-    public Text scoreValueText;
-
-    public Button confirmBtn;
-
     private float nextChangeTime;
     private int playerScore;
-
     private const int MAX_NAME_CHAR = 3;
-
+    private int currSelectedIndx = 0;
+    private string scoreString = "Score: {0}";
+    private float timer = 0.0f;
+    private float maxTimer;
+    private Color clr_Text;
     private void Start()
     {
-        playerScore = GameManager.Instance.player.GetComponent<PlayerManager>().score;
-        scoreValueText.text = playerScore.ToString();
+        playerScore = player.score;
+        t_Score.text = String.Format(scoreString, playerScore.ToString());
+        maxTimer = animationCurve.keys[animationCurve.keys.Length - 1].time;
+        timer = maxTimer;
+        clr_Text = charTexts[0].color;
+        player.onPlayerDeath += UI_ChooseName_onPlayerDeath;
         InitializeChar();
-        sliders[currSelectedIndx].Select();
     }
+
+    private void UI_ChooseName_onPlayerDeath()
+    {
+        gameOverMenu.SetActive(true);
+        Invoke("Open", 3.0f);
+    }
+
     void LateUpdate()
     {
+        if (!isOpen)
+        {
+            return;
+        }
+
         if (Input.GetAxisRaw("Horizontal") == 1 && Time.time >= nextChangeTime)
         {
             nextChangeTime = Time.time + 0.2f;
-            currSelectedIndx = Mathf.Clamp(++currSelectedIndx, 0, 3);
-            if (currSelectedIndx == 3)
-            {
-                confirmBtn.Select();
-            }
-            else
-            {
-                sliders[currSelectedIndx].Select();
-            }
+            int oldIndex = currSelectedIndx;
+            currSelectedIndx = Mathf.Clamp(++currSelectedIndx, 0, 2);
+            charTexts[oldIndex].color = clr_Text;
         }
         if (Input.GetAxisRaw("Horizontal") == -1 && Time.time >= nextChangeTime)
         {
             nextChangeTime = Time.time + 0.2f;
-            currSelectedIndx = Mathf.Clamp(--currSelectedIndx, 0, 3);
-                sliders[currSelectedIndx].Select();
+            int oldIndex = currSelectedIndx;
+            currSelectedIndx = Mathf.Clamp(--currSelectedIndx, 0, 2);
+            charTexts[oldIndex].color = clr_Text;
         }
 
         if (Input.GetAxisRaw("Vertical") == -1 && Time.time >= nextChangeTime)
@@ -65,6 +73,7 @@ public class ChoosingName : MonoBehaviour
             }
             UpdateCharText();
         }
+
         if (Input.GetAxisRaw("Vertical") == 1 && Time.time >= nextChangeTime)
         {
             nextChangeTime = Time.time + 0.2f;
@@ -78,8 +87,43 @@ public class ChoosingName : MonoBehaviour
             }
             UpdateCharText();
         }
+
+        if (Input.GetButtonDown("Submit"))
+        {
+            Confirm();
+        }
+
+        TextAnimation();
     }
 
+
+    public void Open()
+    {
+        isOpen = true;
+        playerScore = player.score;
+        t_Score.text = String.Format(scoreString, playerScore.ToString());
+        scoreMenu.SetActive(true);
+    }
+
+    public void Close()
+    {
+        isOpen = false;
+        //scoreMenu.SetActive(false);
+        GameManager.Instance.RestartArcadeGame();
+    }
+
+    private void TextAnimation()
+    {
+        Color clr_Text = charTexts[currSelectedIndx].color;
+        timer -= Time.deltaTime;
+        if (timer <= 0)
+        {
+            timer = maxTimer;
+        }
+
+        clr_Text.a = Mathf.Lerp(0, 1, animationCurve.Evaluate(timer));
+        charTexts[currSelectedIndx].color = clr_Text;
+    }
 
     private void SwitchCharToText(int index, int asciText)
     {
@@ -110,6 +154,6 @@ public class ChoosingName : MonoBehaviour
         // Create new score based on the char and the GameManager current score
         Score _score = new Score(charValues, playerScore);
         ranking.GetComponent<RankingSystem>().AddPlayerScore(_score);
-        gameObject.SetActive(false);
+        Close();
     }
 }

@@ -150,9 +150,10 @@ public class UI_ShopManager : MonoBehaviour
         player.gameObject.GetComponent<PlayerMovement>().enabled = false;
         InitSelection();
     }
-    private void InitSelection()
+
+    public void InitSelection()
     {
-        tabButtons[PLAYER_BUTTON_INDEX].Select();
+        tabButtons[0].Select();
     }
 
     public void ChangeBannerImage()
@@ -172,6 +173,10 @@ public class UI_ShopManager : MonoBehaviour
     {
         player.gameObject.GetComponent<PlayerMovement>().enabled = true;
         isOpen = false;
+        currSelectedTab = 0;
+        currSelectedCategory = 0;
+        categoryType = eCategory.HP;
+        InitSelection();
         shopMenu.SetActive(false);
     }
 
@@ -202,7 +207,7 @@ public class UI_ShopManager : MonoBehaviour
 
     private void UpdateSoldierStats()
     {
-        currSelectedSoldier = Mathf.Clamp(currSelectedSoldier - 1, 0, MAX_SOLDIERS);
+        currSelectedSoldier = Mathf.Clamp(currSelectedTab - 1, 0, MAX_SOLDIERS);
         // Update player score
         t_Score.text = p_PlayerManager?.score.ToString();
         // Update soldier armor and HP bar
@@ -553,7 +558,6 @@ public class UI_ShopManager : MonoBehaviour
     {
         dialogText.text = "";
         dialogMenu.SetActive(false);
-        InitSelection();
     }
 
     private bool hasEnoughtCoins(int playerScore, int cost)

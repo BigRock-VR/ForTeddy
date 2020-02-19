@@ -90,7 +90,5 @@
 			o.Normal = UnpackNormal(tex2D(_Bump, i.uv_Bump));
 		}
 		ENDCG
-
-
 		}
 }

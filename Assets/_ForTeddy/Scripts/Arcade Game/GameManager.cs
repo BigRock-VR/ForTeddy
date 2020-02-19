@@ -73,4 +73,9 @@ public class GameManager : Singleton<GameManager>
         player = GameObject.FindGameObjectWithTag("Player");
         waveManager = GameObject.FindGameObjectWithTag("WaveManager");
     }
+
+    public void RestartArcadeGame()
+    {
+        SceneManager.LoadScene((int)SceneIndex.ARCADE);
+    }
 }

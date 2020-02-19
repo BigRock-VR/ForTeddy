@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
@@ -50,6 +47,13 @@ public class WaveManager : MonoBehaviour
 
         coinsContainer = new GameObject("[CoinsContainer]");
         coinsContainer.transform.parent = transform;
+        playerManager.onPlayerDeath += PlayerManager_onPlayerDeath;
+    }
+
+    private void PlayerManager_onPlayerDeath()
+    {
+        playerManager.onPlayerDeath -= PlayerManager_onPlayerDeath;
+        canSpawnEnemy = false;
     }
 
     private void StartWave()

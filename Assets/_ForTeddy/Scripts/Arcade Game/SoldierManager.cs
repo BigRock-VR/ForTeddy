@@ -21,7 +21,7 @@ public class SoldierManager : MonoBehaviour
     private void Start()
     {
         hp = SOLDIER_MAX_HP;
-        armor = SOLDIER_MAX_ARMOR;
+        armor = 0;
         hasArmor = true;
     }
 

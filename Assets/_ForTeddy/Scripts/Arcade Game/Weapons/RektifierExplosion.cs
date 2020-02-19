@@ -59,7 +59,7 @@ public class RektifierExplosion : MonoBehaviour
                         else
                         {
                             //KIll the enemy that are in the center of the explosion radius
-                            e?.KillAll();
+                            e?.TakeDamage(e.MaxHP, new Vector4(1.0f, 0.0f,0.0f,0.0f));
                         }
 
                     }
@@ -104,7 +104,10 @@ public class RektifierExplosion : MonoBehaviour
 
             for (int i = 0; i < numParticlesAlive; i++)
             {
-                particles[i].position = Vector3.Lerp(particles[i].position, enemyTargets[0].position, timer);
+                if (enemyTargets[0] != null)
+                {
+                    particles[i].position = Vector3.Lerp(particles[i].position, enemyTargets[0].position, timer);
+                }
             }
 
             pSystem.SetParticles(particles, numParticlesAlive);

@@ -1210,7 +1210,7 @@ TextureImporter:
         serializedVersion: 2
         x: 1436
         y: 2772
-        width: 502
+        width: 969
         height: 249
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1221,27 +1221,6 @@ TextureImporter:
       bones: []
       spriteID: 7c2292d4d3c606d45966ac7036772ffa
       internalID: 6648865854848162023
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UI_Game_44
-      rect:
-        serializedVersion: 2
-        x: 1984
-        y: 2770
-        width: 420
-        height: 241
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a015a7abe5f5dfe49a6822ee80d37de9
-      internalID: -1861326337857401490
       vertices: []
       indices: 
       edges: []
@@ -1948,7 +1927,7 @@ TextureImporter:
         width: 2249
         height: 875
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1969,7 +1948,7 @@ TextureImporter:
         width: 40
         height: 38
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

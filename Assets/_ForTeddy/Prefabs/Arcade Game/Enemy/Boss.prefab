@@ -95,12 +95,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHP: 500
-  AttackDamage: 30
-  MovementSpeed: 1
+  AttackDamage: 500
+  MovementSpeed: 0.5
   AttackSpeed: 50
   attackRange: 5
   isEnableWaveMult: 0
   isDead: 0
+  visionAnchorPoint: {fileID: 0}
+  visionRange: 0.5
+  hitAnimationCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   isBoss: 1
   targetPriority: 1
   deathDelay: 1
