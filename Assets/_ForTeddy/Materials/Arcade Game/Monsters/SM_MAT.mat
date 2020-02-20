@@ -98,6 +98,6 @@ Material:
     - _DissolveStart: {r: 0, g: 0, b: 0, a: 0}
     - _Emicolor: {r: 2.9960785, g: 2.9960785, b: 2.9960785, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _EmissionIntensity: {r: 47.937256, g: 47.937256, b: 47.937256, a: 1}
+    - _EmissionIntensity: {r: 23.968628, g: 23.968628, b: 23.968628, a: 1}
     - _Glow: {r: 2.34555, g: 0.21155941, b: 0.21155941, a: 1}
     - _GlowEnd: {r: 1.7960784, g: 0.6745098, b: 0.0627451, a: 1}

@@ -12,7 +12,7 @@ public class WaveManager : MonoBehaviour
     [Header("Boss Info:")]
     [SerializeField]public GameObject bossPrefab;
     private readonly int BOSS_WAVE_INTERVAL = 5; // Spawn the boss every x wave;
-    private int midMobPct = 10; // Mid mob percentage of spawn; 
+    private int midMobPct = 100; // Mid mob percentage of spawn; 
     public bool isBossSpawned;
 
     [Header("Wave Info:")]

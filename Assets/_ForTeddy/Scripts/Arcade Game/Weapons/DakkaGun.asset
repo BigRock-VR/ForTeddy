@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: DakkaGun
   fireRate: 0.15
-  bulletSpeed: 1000
-  damage: 30
+  damage: 15
   maxAmmoCount: 200
   isDefaultWeapon: 0
   cost: 200

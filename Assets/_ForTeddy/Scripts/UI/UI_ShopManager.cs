@@ -26,7 +26,7 @@ public class UI_ShopManager : MonoBehaviour
     [SerializeField] public Sprite[] soldierImgBlocked = new Sprite[MAX_SOLDIERS];
     [SerializeField] public Sprite[] weaponImgs = new Sprite[MAX_WEAPONS];
     [SerializeField] public Image armorBar, hpBar, ammoBar, fireRateBar, damageBar, ammoCapacityBar, weaponImg,infinityAmmoImg, productImg;
-    [SerializeField] public Sprite hpImg, armorImg;
+    [SerializeField] public Sprite hpImg, armorImg, soldierUnlocked, soldierLocked;
 
     [Header("Text:")]
     [SerializeField] public Text t_Score;
@@ -56,21 +56,21 @@ public class UI_ShopManager : MonoBehaviour
     private const int MAX_CATEGORY_BUTTONS = 4;
     private const int MAX_SOLDIERS = 4;
     private const int MAX_WEAPONS = 5;
-    private Color clr_SoldierDisable = new Color(1, 1, 1, 0.5f);
     private PlayerManager p_PlayerManager;
     private WeaponSystem p_WeaponSystem;
     private SoldierManager[] s_SoldierManager = new SoldierManager[MAX_SOLDIERS];
     private WeaponSystem[] s_WeaponSystem = new WeaponSystem[MAX_SOLDIERS];
     private string hpDesc = "Refill Health to 100%";
     private string armorDesc = "Refill Armor to 100%";
-    private string dialogWeapon = "Do you really want to buy {0} for ${1} ?";
-    private string dialogSoldier = "Do you really want to buy Soldier N.{0} for ${1} ?";
-    private string dialogHp = "Do you really want to refill your Health for ${0} ?";
-    private string dialogArmor = "Do you really want to refill your Armor for ${0} ?";
-    private string dialogHpSoldier = "Do you really want to refill Soldier N.{0} Health for ${1} ?";
-    private string dialogArmorSoldier = "Do you really want to refill Soldier N.{0} Armor for ${1} ?";
+    private string dialogWeapon = "Do you really want to buy {0} for {1} ?";
+    private string dialogSoldier = "Do you really want to buy Soldier N.{0} for {1} ?";
+    private string dialogHp = "Do you really want to refill your Health for {0} ?";
+    private string dialogArmor = "Do you really want to refill your Armor for {0} ?";
+    private string dialogHpSoldier = "Do you really want to refill Soldier N.{0} Health for {1} ?";
+    private string dialogArmorSoldier = "Do you really want to refill Soldier N.{0} Armor for {1} ?";
     private string dialogNoEnoughtCoin = "You don't have enough coins!";
     private string dialogNoCoinSoldier = "You need {0} coin to buy a soldier";
+    private string dialogNoSoldier = "You need to buy the Soldier N.{0} first";
 
     public void Start()
     {
@@ -370,7 +370,7 @@ public class UI_ShopManager : MonoBehaviour
     {
         for (int i = 0; i < soldierIMG.Length; i++)
         {
-            soldierIMG[i].color = clr_SoldierDisable;
+            soldierIMG[i].sprite = soldierLocked;
         }
     }
 
@@ -395,7 +395,7 @@ public class UI_ShopManager : MonoBehaviour
         {
             if (soldiers[i].gameObject.activeInHierarchy)
             {
-                soldierIMG[i].color = Color.white;
+                soldierIMG[i].sprite = soldierUnlocked;
             }
         }
     }
@@ -422,6 +422,12 @@ public class UI_ShopManager : MonoBehaviour
                     ShowDialog(dialogNoEnoughtCoin, true);
                     return;
                 }
+                // TRY TO BUY SOLDIER THINGS WITHOUT SOLDIER
+                if (!isPlayer && !soldiers[currSelectedSoldier].gameObject.activeInHierarchy)
+                {
+                    ShowDialog(String.Format(dialogNoSoldier, currSelectedSoldier + 1), true);
+                    return;
+                }
                 ShowDialog(String.Format(dialogHp, hpCost));
                 break;
             case eCategory.WEAPON:
@@ -430,12 +436,24 @@ public class UI_ShopManager : MonoBehaviour
                     ShowDialog(dialogNoEnoughtCoin, true);
                     return;
                 }
+                // TRY TO BUY SOLDIER THINGS WITHOUT SOLDIER
+                if (!isPlayer && !soldiers[currSelectedSoldier].gameObject.activeInHierarchy)
+                {
+                    ShowDialog(String.Format(dialogNoSoldier, currSelectedSoldier + 1), true);
+                    return;
+                }
                 ShowDialog(String.Format(dialogWeapon, weapons[(int)currWeaponCategory].name, weapons[(int)currWeaponCategory].cost));
                 break;
             case eCategory.ARMOR:
                 if (!hasEnoughtCoins(p_PlayerManager.score, armorCost))
                 {
                     ShowDialog(dialogNoEnoughtCoin, true);
+                    return;
+                }
+                // TRY TO BUY SOLDIER THINGS WITHOUT SOLDIER
+                if (!isPlayer && !soldiers[currSelectedSoldier].gameObject.activeInHierarchy)
+                {
+                    ShowDialog(String.Format(dialogNoSoldier,currSelectedSoldier+1), true);
                     return;
                 }
                 ShowDialog(String.Format(dialogHp, armorCost));

@@ -573,7 +573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 991f501d9854e7a4d976afaf61e40c03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHP: 100
+  MaxHP: 80
   AttackDamage: 40
   MovementSpeed: 3
   AttackSpeed: 50
@@ -582,6 +582,8 @@ MonoBehaviour:
   isDead: 0
   visionAnchorPoint: {fileID: 5579948931357604038}
   visionRange: 0.7
+  attackAnchorPoint: {fileID: 5579948931357604038}
+  hitPointRange: 0.5
   hitAnimationCurve:
     serializedVersion: 2
     m_Curve:
@@ -615,11 +617,11 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  isBoss: 0
-  targetPriority: 0
-  deathDelay: 1
   pickUpPrefab: {fileID: 4104111007740378748, guid: 82f154ff1a8e7cf46affeb43e4d01363,
     type: 3}
+  maxDropPickUp: 1
+  isBoss: 0
+  targetPriority: 0
 --- !u!195 &4913171580632947843
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -63,20 +63,6 @@ public class UI_ChooseName : MonoBehaviour
         if (Input.GetAxisRaw("Vertical") == -1 && Time.time >= nextChangeTime)
         {
             nextChangeTime = Time.time + 0.2f;
-            if (charValues[currSelectedIndx] == 65)
-            {
-                charValues[currSelectedIndx] = (char)90;
-            }
-            else
-            {
-                charValues[currSelectedIndx] = (char)Mathf.Clamp((int)--charValues[currSelectedIndx], 65, 90);
-            }
-            UpdateCharText();
-        }
-
-        if (Input.GetAxisRaw("Vertical") == 1 && Time.time >= nextChangeTime)
-        {
-            nextChangeTime = Time.time + 0.2f;
             if (charValues[currSelectedIndx] == 90)
             {
                 charValues[currSelectedIndx] = (char)65;
@@ -84,6 +70,20 @@ public class UI_ChooseName : MonoBehaviour
             else
             {
                 charValues[currSelectedIndx] = (char)Mathf.Clamp((int)++charValues[currSelectedIndx], 65, 90);
+            }
+            UpdateCharText();
+        }
+
+        if (Input.GetAxisRaw("Vertical") == 1 && Time.time >= nextChangeTime)
+        {
+            nextChangeTime = Time.time + 0.2f;
+            if (charValues[currSelectedIndx] == 65)
+            {
+                charValues[currSelectedIndx] = (char)90;
+            }
+            else
+            {
+                charValues[currSelectedIndx] = (char)Mathf.Clamp((int)--charValues[currSelectedIndx], 65, 90);
             }
             UpdateCharText();
         }

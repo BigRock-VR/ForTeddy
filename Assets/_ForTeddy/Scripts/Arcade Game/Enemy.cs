@@ -6,7 +6,10 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class Enemy : MonoBehaviour
 {
-    [Header("Enemy Stats:")]
+    /*
+     * Mob Information
+     */
+    [Header("Mob Stats:")]
     [SerializeField] public int MaxHP;
     [SerializeField] public int AttackDamage;
     [SerializeField] public float MovementSpeed;
@@ -16,23 +19,29 @@ public class Enemy : MonoBehaviour
     [SerializeField] public bool isDead;
     public Transform visionAnchorPoint; // ENEMY VISION POSITION TO ATTACKING AND FACING THE PLAYER
     [Range(0.2f,2)] public float visionRange = 0.5f;
+    public Transform[] attackAnchorPoint; // ENEMY HIT POINT
+    [Range(0.1f, 2)] public float hitPointRange = 0.2f;
     public AnimationCurve hitAnimationCurve;
 
-    // BOSS LOGICS
+    /*
+     * DROP INFORMATION
+     */
+    [Header("Drop Info:")]
+    public GameObject pickUpPrefab; // Prefab that can spawn the enemy on death
+    [Range(1, 10)] public int maxDropPickUp = 1; // How many pick up can drop the enemy
+
+    /*
+     * Boss Information
+     */
+    [Header("Boss Stats:")]
     [SerializeField] public bool isBoss;
     private Collider[] hitColliders;
     private readonly float BOSS_ATT_RANGE = 5.0f;
     public enum eTargets { PLAYER, BED, SOLDIER };
     public eTargets targetPriority;
 
+
     private WaveManager waveManager;
-
-    [Range(0.5f, 2.0f)]
-    public float deathDelay = 0.5f;
-
-    public GameObject pickUpPrefab; // Prefab that can spawn the enemy on death
-
-
     private enum eState { TARGET_PLAYER, TARGET_SOLDIER, ATTACK_PLAYER, ATTACK_SOLDIER, ATTACK_BED, DEATH };
     private eState enemyState;
     private int hp;
@@ -42,7 +51,10 @@ public class Enemy : MonoBehaviour
     private NavMeshAgent agent;
     private Transform targetPosition;
     private Animator anim;
-    private const float EMISSION_HIT_INTENSITY = 100.0f;
+    private const float EMISSION_HIT_INTENSITY = 1000.0f;
+    private bool canDoDamage;
+    private bool hasAttack;
+    private Collider[] _hitCollider;
 
     void Start()
     {
@@ -69,6 +81,10 @@ public class Enemy : MonoBehaviour
             CheckEnemyState();
         }
 
+        if (!hasAttack)
+        {
+            CheckCanDoDamage();
+        }
     }
 
     /*
@@ -147,7 +163,6 @@ public class Enemy : MonoBehaviour
                 }
             }
         }
-
         EnemyAI();
     }
 
@@ -157,7 +172,7 @@ public class Enemy : MonoBehaviour
         hitColliders = Physics.OverlapSphere(visionAnchorPoint.position, visionRange, LayerMask.GetMask("Player"));
         for (int i = 0; i < hitColliders.Length; i++)
         {
-            if (hitColliders[i].CompareTag("Player"))
+            if (hitColliders[i].CompareTag("Player") || hitColliders[i].CompareTag("Soldier"))
             {
                 result = true;
             }
@@ -182,13 +197,17 @@ public class Enemy : MonoBehaviour
                 if (CanDoAmination())
                 {
                     anim.SetTrigger("Attack");
-                    targetPosition.gameObject.GetComponent<PlayerManager>().TakeDamage(damage);
                 }
                 break;
-
             case eState.ATTACK_SOLDIER:
-                anim.SetTrigger("Attack");
-                targetPosition.GetComponent<SoldierManager>().TakeDamage(damage);
+                if (CanDoAmination())
+                {
+                    anim.SetTrigger("Attack");
+                    if (canDoDamage)
+                    {
+                        targetPosition.gameObject.GetComponent<SoldierManager>().TakeDamage(damage);
+                    }
+                }
                 break;
 
             case eState.DEATH:
@@ -202,20 +221,34 @@ public class Enemy : MonoBehaviour
                 break;
         }
     }
-    public void TakeDamage(int damage)
+
+    private void CheckCanDoDamage()
     {
-        hp -= damage;
-        Debug.Log($"Taking damage: {damage}, HP: {hp}");
-        if (hp <= 0)
+        if (canDoDamage)
         {
-            isDead = true;
-            enemyState = eState.DEATH;
-            waveManager.onEndWave -= KillAll;
-            Dead();
+            _hitCollider = Physics.OverlapSphere(attackAnchorPoint.position, hitPointRange);
+            for (int i = 0; i < _hitCollider.Length; i++)
+            {
+                if (_hitCollider[i].CompareTag("Player"))
+                {
+                    targetPosition.gameObject.GetComponent<PlayerManager>().TakeDamage(damage);
+                    hasAttack = true;
+                }
+            }
         }
     }
 
-    // Method Overload for the hit point effect
+    public void SetCanDoDamage()
+    {
+        canDoDamage = true;
+    }
+
+    public void UnSetCanDoDamage()
+    {
+        canDoDamage = false;
+        hasAttack = false;
+    }
+
     public void TakeDamage(int damage, Vector4 hitPoint)
     {
         hp -= damage;
@@ -245,16 +278,7 @@ public class Enemy : MonoBehaviour
 
         if (hp <= 0 && !isDead)
         {
-            isDead = true;
-            enemyState = eState.DEATH;
-            agent.isStopped = true;
-            Instantiate(pickUpPrefab, transform.position, Quaternion.identity, waveManager.coinsContainer.transform);
-            CapsuleCollider enemyCollider = GetComponent<CapsuleCollider>();
-
-            if (enemyCollider)
-            {
-                enemyCollider.isTrigger = true;
-            }
+            OnDeath();
 
             StartCoroutine(PlayFullDissolveEffect(2.0f));
         }
@@ -269,6 +293,34 @@ public class Enemy : MonoBehaviour
         }
 
     }
+
+    private void OnDeath()
+    {
+        isDead = true;
+        enemyState = eState.DEATH;
+        agent.isStopped = true;
+        if (maxDropPickUp > 1)
+        {
+            int dropPct = UnityEngine.Random.Range(1, maxDropPickUp);
+            for (int i = 0; i < dropPct; i++)
+            {
+                Vector2 randRadius = UnityEngine.Random.insideUnitCircle;
+                Vector3 randPosition = new Vector3(transform.position.x + randRadius.x, transform.position.y, transform.position.z + randRadius.y);
+                Instantiate(pickUpPrefab, randPosition, Quaternion.identity, waveManager.coinsContainer.transform);
+            }
+        }
+        else
+        {
+            Instantiate(pickUpPrefab, transform.position, Quaternion.identity, waveManager.coinsContainer.transform);
+        }
+        CapsuleCollider enemyCollider = GetComponent<CapsuleCollider>();
+
+        if (enemyCollider)
+        {
+            enemyCollider.isTrigger = true;
+        }
+    }
+
     IEnumerator PlayFullDissolveEffect(float delay)
     {
         float timer = 0.0f;
@@ -354,10 +406,6 @@ public class Enemy : MonoBehaviour
         }
 
     }
-    public void Dead()
-    {
-        Destroy(gameObject, deathDelay);
-    }
    
     public void KillAll()
     {
@@ -368,8 +416,10 @@ public class Enemy : MonoBehaviour
     {
         if (gameObject)
         {
-            Gizmos.color = Color.red;
+            Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(visionAnchorPoint.position,visionRange);
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(attackAnchorPoint.position, hitPointRange);
         }
     }
 }
