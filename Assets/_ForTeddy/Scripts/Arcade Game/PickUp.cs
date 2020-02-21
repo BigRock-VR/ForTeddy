@@ -14,7 +14,8 @@ public class PickUp : MonoBehaviour
 #endif
     public AnimationCurve animationCurve;
     public ParticleSystem pickUpParticle;
-    public ParticleSystem collectableParticle, smokeParticle0, smokeParticle1;
+    public ParticleSystem collectableParticle, smokeParticle0;
+    public ParticleSystem smokeParticle1, smokeParticle2;
     private bool isPicked;
     private float time;
 
@@ -79,10 +80,14 @@ public class PickUp : MonoBehaviour
             isPicked = true;
             mesh.enabled = false;
             pickUpParticle.Play();
+            var collectableMain = collectableParticle.main;
             var smokeMain0 = smokeParticle0.main;
             var smokeMain1 = smokeParticle1.main;
+            var smokeMain2 = smokeParticle2.main;
+            collectableMain.loop = false;
             smokeMain0.loop = false;
             smokeMain1.loop = false;
+            smokeMain2.loop = false;
 
             Destroy(gameObject, 3.0f);
         }

@@ -10,7 +10,7 @@ public class AtomizerLaser : MonoBehaviour
     [HideInInspector] public float laserRange = 0.0f;
     [HideInInspector] public Transform startPosition;
     private const int MAX_LASER_LINE = 4;
-    private bool isLoading;
+    public bool isLoading;
     private const float MAX_LASER_RANGE = 10.0f;
 
 

@@ -1,9 +1,9 @@
 ﻿//#define TESTMODE
+using System.Collections;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-
     public readonly int PLAYER_MAX_HP = 1000;
     public readonly int PLAYER_MAX_ARMOR = 500;
     private const int PLAYER_ARMOR_PCT = 70; // Damage taken will be reduced by this percent
@@ -16,6 +16,9 @@ public class PlayerManager : MonoBehaviour
 
     public bool hasArmor;
     public bool isDead;
+    public Renderer meshRenderer;
+    public AnimationCurve hitAnimationCurve;
+    private Material mat;
 
     public delegate void DeathEvent();
     public event DeathEvent onPlayerDeath;
@@ -29,6 +32,7 @@ public class PlayerManager : MonoBehaviour
         armor = 0;
         score = 0;
         scoreMultiplyer = 1;
+        mat = meshRenderer.material;
     }
 
     
@@ -63,6 +67,7 @@ public class PlayerManager : MonoBehaviour
             return;
         }
 #endif
+        StartCoroutine(PlayHitEffect());
         if (!hasArmor && !isDead)
         {
             int nextHp = hp - damage;
@@ -108,5 +113,27 @@ public class PlayerManager : MonoBehaviour
         }
     }
 #endif
+    IEnumerator PlayHitEffect()
+    {
+        float t = 0.0f; // time
+        mat.SetInt("_fresnelscale0off1on", 1);
 
+        if (hasArmor)
+        {
+            mat.SetInt("_Colorchanger", 1);
+        }
+        else
+        {
+            mat.SetInt("_Colorchanger", 0);
+        }
+
+        while (t < 1)
+        {
+            t += Time.deltaTime * 2;
+            mat.SetFloat("_Fresnel_Power", Mathf.Lerp(0, 1, hitAnimationCurve.Evaluate(t)));
+            yield return null;
+        }
+        mat.SetInt("_fresnelscale0off1on", 0);
+        mat.SetFloat("_Fresnel_Power", 0);
+    }
 }

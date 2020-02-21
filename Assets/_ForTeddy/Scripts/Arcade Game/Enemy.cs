@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] public bool isEnableWaveMult; // Enable Wave Multiplyer and increase enemy damage and hp every wave
     [SerializeField] public bool isDead;
     public Transform visionAnchorPoint; // ENEMY VISION POSITION TO ATTACKING AND FACING THE PLAYER
-    [Range(0.2f,2)] public float visionRange = 0.5f;
+    [Range(0.2f,4)] public float visionRange = 0.5f;
     public Transform[] attackAnchorPoint; // ENEMY HIT POINT
     [Range(0.1f, 2)] public float hitPointRange = 0.2f;
     public AnimationCurve hitAnimationCurve;
@@ -51,7 +51,7 @@ public class Enemy : MonoBehaviour
     private NavMeshAgent agent;
     private Transform targetPosition;
     private Animator anim;
-    private const float EMISSION_HIT_INTENSITY = 1000.0f;
+    private const float EMISSION_HIT_INTENSITY = 50.0f;
     private bool canDoDamage;
     private bool hasAttack;
     private Collider[] _hitCollider;
@@ -123,6 +123,10 @@ public class Enemy : MonoBehaviour
                 targetPosition = waveManager.bedPositions;
                 Debug.DrawLine(transform.position, targetPosition.position, Color.yellow);
                 agent.SetDestination(targetPosition.position);
+                if (CanDoAttackAnimation())
+                {
+                    anim.SetTrigger("Attack");
+                }
                 break;
             case eTargets.SOLDIER:
                 float distance = GetDistanceFromSoldiers();
@@ -166,7 +170,7 @@ public class Enemy : MonoBehaviour
         EnemyAI();
     }
 
-    public bool CanDoAmination()
+    public bool CanDoAttackAnimation()
     {
         bool result = false;
         hitColliders = Physics.OverlapSphere(visionAnchorPoint.position, visionRange, LayerMask.GetMask("Player"));
@@ -194,19 +198,15 @@ public class Enemy : MonoBehaviour
                 break;
 
             case eState.ATTACK_PLAYER:
-                if (CanDoAmination())
+                if (CanDoAttackAnimation())
                 {
                     anim.SetTrigger("Attack");
                 }
                 break;
             case eState.ATTACK_SOLDIER:
-                if (CanDoAmination())
+                if (CanDoAttackAnimation())
                 {
                     anim.SetTrigger("Attack");
-                    if (canDoDamage)
-                    {
-                        targetPosition.gameObject.GetComponent<SoldierManager>().TakeDamage(damage);
-                    }
                 }
                 break;
 
@@ -267,10 +267,33 @@ public class Enemy : MonoBehaviour
         float nextEmissionAmount = (float)damage / MaxHP;
         nextEmissionAmount += currEmissionAmount;
 
-        StartCoroutine(EmissionEffect(hitPoint, 0.5f, currEmissionAmount, nextEmissionAmount));
+        //StartCoroutine(EmissionEffect(hitPoint, 0.5f, currEmissionAmount, nextEmissionAmount));
+        StartCoroutine(EmissionEffect(mat, 0.5f));
         Debug.Log($"Taking damage: {damage}, HP: {hp}");
     }
+    IEnumerator EmissionEffect(Material mat, float delay)
+    {
+        float timer = 0.0f;
+        if (hp <= 0 && !isDead)
+        {
+            OnDeath();
 
+            StartCoroutine(PlayFullDissolveEffect(2.0f));
+        }
+
+        while (timer < 1.0f && !isDead)
+        {
+            timer += Time.deltaTime / delay;
+            // Hit Effect on the mob;
+            mat.SetColor("_Emicolor", Color.Lerp(Color.white, Color.red * EMISSION_HIT_INTENSITY, hitAnimationCurve.Evaluate(timer * 4.0f)));
+            yield return null;
+        }
+
+    }
+
+    /*
+     * EMISSION CORRISION BASE ON THE ENEMY HP
+     */
     IEnumerator EmissionEffect(Vector4 hitPoint, float delay, float currEmission, float nextEmission)
     {
         float timer = 0.0f;
@@ -304,6 +327,10 @@ public class Enemy : MonoBehaviour
 
     private void OnDeath()
     {
+        if (isBoss)
+        {
+            waveManager.UpdateWave();
+        }
         isDead = true;
         enemyState = eState.DEATH;
         agent.isStopped = true;
@@ -393,9 +420,9 @@ public class Enemy : MonoBehaviour
     {
         if (isEnableWaveMult)
         {
-            this.MaxHP = this.MaxHP += waveManager.waveCount;
+            this.MaxHP = this.MaxHP + waveManager.waveCount;
             hp = this.MaxHP;
-            damage = this.AttackDamage + waveManager.waveCount;
+            damage = this.AttackDamage; //+ waveManager.waveCount;
             attackSpeed = Math.Round(1.0f / (this.AttackSpeed / 100), 2); // Attack Speed in percent value
             agent = this.GetComponent<NavMeshAgent>();
             agent.speed = this.MovementSpeed;

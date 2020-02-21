@@ -1,0 +1,463 @@
+fileFormatVersion: 2
+guid: d29141ecd6ce07c4fb888c5f2d5b7f8f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5164525591698563920
+    second: UI_Controls_Arcade_1
+  - first:
+      213: 3513899703555067061
+    second: UI_Controls_Arcade_3
+  - first:
+      213: -7773163432689579001
+    second: UI_Controls_Arcade_4
+  - first:
+      213: -5867643914809517704
+    second: UI_Controls_Arcade_6
+  - first:
+      213: 1419882252956615803
+    second: UI_Controls_Arcade_8
+  - first:
+      213: -6869312694207327177
+    second: UI_Controls_Arcade_9
+  - first:
+      213: -8989919339281229952
+    second: UI_Controls_Arcade_10
+  - first:
+      213: 5404586577971898970
+    second: UI_Controls_Arcade_11
+  - first:
+      213: 3796548394004637597
+    second: UI_Controls_Arcade_12
+  - first:
+      213: 1303265222807162790
+    second: UI_Controls_Arcade_13
+  - first:
+      213: -5923882687896471851
+    second: UI_Controls_Arcade_14
+  - first:
+      213: 4335391799626689370
+    second: UI_Controls_Arcade_15
+  - first:
+      213: -3143383222996284112
+    second: UI_Controls_Arcade_16
+  - first:
+      213: -3749725766326904942
+    second: UI_Controls_Arcade_0
+  - first:
+      213: 1578237684625747984
+    second: UI_Controls_Arcade_2
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: UI_Controls_Arcade_1
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 1379
+        width: 520
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a73c9a934dac5347b6dc6faa040957c
+      internalID: 5164525591698563920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Controls_Arcade_3
+      rect:
+        serializedVersion: 2
+        x: 665
+        y: 1448
+        width: 130
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8893d2abe35c3c54e83f87b1cc86cd5c
+      internalID: 3513899703555067061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Controls_Arcade_4
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 1103
+        width: 157
+        height: 392
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7850eb8b49c99c4cb3d2f1f208b61b6
+      internalID: -7773163432689579001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Controls_Arcade_6
+      rect:
+        serializedVersion: 2
+        x: 664
+        y: 1327
+        width: 146
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90f7e170cb29c904cb6204b85555eb0a
+      internalID: -5867643914809517704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Controls_Arcade_8
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 1163
+        width: 203
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdcbb18db9d15bb40b21dedaf83a46e2
+      internalID: 1419882252956615803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Controls_Arcade_9
+      rect:
+        serializedVersion: 2
+        x: 639
+        y: 1169
+        width: 191
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 043d5e9d8d989fa40ba11b99e978f72d
+      internalID: -6869312694207327177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Controls_Arcade_10
+      rect:
+        serializedVersion: 2
+        x: 831
+        y: 1171
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 228b19ce710c1f649b1389b3c2ae173f
+      internalID: -8989919339281229952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Controls_Arcade_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1040
+        width: 160
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab0657298a4e1a44595c03c31187c6db
+      internalID: 5404586577971898970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Controls_Arcade_12
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 1040
+        width: 111
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7e2d353835a7cc44874a18832b89910
+      internalID: 3796548394004637597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Controls_Arcade_13
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 1038
+        width: 190
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca5d1284bd2e1594c8c53bba9264229a
+      internalID: 1303265222807162790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Controls_Arcade_14
+      rect:
+        serializedVersion: 2
+        x: 831
+        y: 1040
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c86c4fb07dc5664eb499bbbcc4b7e27
+      internalID: -5923882687896471851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Controls_Arcade_15
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 908
+        width: 154
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f29b0a84b021d3a4dbc1447875b47a50
+      internalID: 4335391799626689370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Controls_Arcade_16
+      rect:
+        serializedVersion: 2
+        x: 933
+        y: 786
+        width: 360
+        height: 187
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 543ae23dc481e804c9600ebb9aed7a9e
+      internalID: -3143383222996284112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Controls_Arcade_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1163
+        width: 154
+        height: 103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eef510863baf0aa47a8bb9345de6af06
+      internalID: -3749725766326904942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Controls_Arcade_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 903
+        width: 72
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad3d449da1b9c5347b043af7d8349f88
+      internalID: 1578237684625747984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 80033e250c98b2d4eb3b65622962e0a4
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

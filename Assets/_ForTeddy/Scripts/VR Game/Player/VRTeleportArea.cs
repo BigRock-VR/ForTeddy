@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Aura2API;
+//using Aura2API;
 
 public class VRTeleportArea : MonoBehaviour
 {
@@ -14,8 +14,9 @@ public class VRTeleportArea : MonoBehaviour
 
     [SerializeField]
     Light tpLight;
-    [SerializeField]
-    AuraVolume tpFog;
+
+    //[SerializeField]
+    //AuraVolume tpFog;
 
     [SerializeField]
     float degree;
@@ -47,10 +48,10 @@ public class VRTeleportArea : MonoBehaviour
             {
                 tpLight.intensity += 1 / degree;
             }
-            if (tpFog.densityInjection.strength <= 17)
-            {
-                tpFog.densityInjection.strength += 1 / degree * 7.77f;
-            }
+            //if (tpFog.densityInjection.strength <= 17)
+            //{
+            //    tpFog.densityInjection.strength += 1 / degree * 7.77f;
+            //}
 
         }
         else
@@ -66,17 +67,17 @@ public class VRTeleportArea : MonoBehaviour
             {
                 tpLight.intensity -= 1 / degree;
             }
-            if (isUsingFog)
-            {
-                if (tpFog.densityInjection.strength > 0)
-                {
-                    tpFog.densityInjection.strength -= 1 / degree * 7.77f;
-                }
-                else
-                {
-                    isUsingFog = false;
-                }
-            }
+            //if (isUsingFog)
+            //{
+            //    if (tpFog.densityInjection.strength > 0)
+            //    {
+            //        tpFog.densityInjection.strength -= 1 / degree * 7.77f;
+            //    }
+            //    else
+            //    {
+            //        isUsingFog = false;
+            //    }
+            //}
         }
     }
 

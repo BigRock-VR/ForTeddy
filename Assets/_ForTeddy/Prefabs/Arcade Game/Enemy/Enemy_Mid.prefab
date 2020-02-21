@@ -2735,15 +2735,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHP: 160
   AttackDamage: 100
-  MovementSpeed: 2
+  MovementSpeed: 2.5
   AttackSpeed: 50
   attackRange: 2
-  isEnableWaveMult: 0
+  isEnableWaveMult: 1
   isDead: 0
   visionAnchorPoint: {fileID: 659736470873316530}
   visionRange: 2
-  attackAnchorPoint: {fileID: 3261744018536509236}
-  hitPointRange: 0.5
+  attackAnchorPoint:
+  - {fileID: 8073605051320651601}
+  - {fileID: 5196282421474789108}
+  hitPointRange: 0.6
   hitAnimationCurve:
     serializedVersion: 2
     m_Curve:

@@ -12,7 +12,7 @@ public class WaveManager : MonoBehaviour
     [Header("Boss Info:")]
     [SerializeField]public GameObject bossPrefab;
     private readonly int BOSS_WAVE_INTERVAL = 5; // Spawn the boss every x wave;
-    private int midMobPct = 100; // Mid mob percentage of spawn; 
+    private int midMobPct = 10; // Mid mob percentage of spawn; 
     public bool isBossSpawned;
 
     [Header("Wave Info:")]
@@ -76,9 +76,13 @@ public class WaveManager : MonoBehaviour
         }
 
 
-        if (isBossWave() && !isBossSpawned)
+        if (isBossWave())
         {
-            SpawnBosAtPosition(spawnPositions[0].position);
+            if (!isBossSpawned)
+            {
+                SpawnBosAtPosition(spawnPositions[0].position);
+                return;
+            }
             return;
         }
 
@@ -111,6 +115,7 @@ public class WaveManager : MonoBehaviour
             onOpenShop?.Invoke();
         }
 
+        isBossSpawned = false;
         canSpawnEnemy = false;
         isBossSpawned = false;
         ++waveCount; // Increase the wave counter
@@ -122,9 +127,9 @@ public class WaveManager : MonoBehaviour
 
     private void SpawnEnemyAtRandPosition()
     {
-        int randomSpawnPos = UnityEngine.Random.Range(0, spawnPositions.Length);
-        int randomEnemy = UnityEngine.Random.Range(0, enemyTypes.Length);
-        int percent = UnityEngine.Random.Range(1, 100);
+        int randomSpawnPos = Random.Range(0, spawnPositions.Length);
+        int randomEnemy = Random.Range(0, enemyTypes.Length);
+        int percent = Random.Range(1, 100);
         if (percent <= midMobPct)
         {
             Instantiate(enemyTypes[1], spawnPositions[randomSpawnPos].position, Quaternion.identity, enemyContainer.transform);
@@ -146,5 +151,4 @@ public class WaveManager : MonoBehaviour
     {
         return (waveCount % BOSS_WAVE_INTERVAL) == 0;
     }
-
 }

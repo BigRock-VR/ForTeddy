@@ -121,6 +121,7 @@ public class WeaponSystem : MonoBehaviour
                 else
                 {
                     isShooting = false;
+                    atomizerLaser.isLoading = false;
                     pSystem.Stop();
                     atomizerLaser.DisableLineRender();
                 }

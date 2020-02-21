@@ -4,9 +4,9 @@ Shader "Weapons/WeaponMaterial"
 {
 	Properties
 	{
-		_Texture0("Texture 0", 2D) = "white" {}
-		_Texture1("Texture 1", 2D) = "bump" {}
-		_Texture3("Texture 3", 2D) = "white" {}
+		_Texture0("Albedo", 2D) = "white" {}
+		_Texture1("Normal", 2D) = "bump" {}
+		_Texture3("MS", 2D) = "white" {}
 		_Scale("Scale", Float) = 0.79
 		[HideInInspector] _texcoord( "", 2D ) = "white" {}
 		[HideInInspector] __dirty( "", Int ) = 1
