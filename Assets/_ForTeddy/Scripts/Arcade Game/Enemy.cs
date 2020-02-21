@@ -226,13 +226,21 @@ public class Enemy : MonoBehaviour
     {
         if (canDoDamage)
         {
-            _hitCollider = Physics.OverlapSphere(attackAnchorPoint.position, hitPointRange);
-            for (int i = 0; i < _hitCollider.Length; i++)
+            for (int i = 0; i < attackAnchorPoint.Length; i++)
             {
-                if (_hitCollider[i].CompareTag("Player"))
+                _hitCollider = Physics.OverlapSphere(attackAnchorPoint[i].position, hitPointRange);
+                for (int j = 0; j < _hitCollider.Length; j++)
                 {
-                    targetPosition.gameObject.GetComponent<PlayerManager>().TakeDamage(damage);
-                    hasAttack = true;
+                    if (_hitCollider[j].CompareTag("Player"))
+                    {
+                        targetPosition.gameObject.GetComponent<PlayerManager>().TakeDamage(damage);
+                        hasAttack = true;
+                    }
+                    if (_hitCollider[j].CompareTag("Soldier"))
+                    {
+                        targetPosition.gameObject.GetComponent<SoldierManager>().TakeDamage(damage);
+                        hasAttack = true;
+                    }
                 }
             }
         }
@@ -419,7 +427,10 @@ public class Enemy : MonoBehaviour
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(visionAnchorPoint.position,visionRange);
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(attackAnchorPoint.position, hitPointRange);
+            for (int i = 0; i < attackAnchorPoint.Length; i++)
+            {
+                Gizmos.DrawWireSphere(attackAnchorPoint[i].position, hitPointRange);
+            }
         }
     }
 }

@@ -29,7 +29,6 @@ public class PlayerManager : MonoBehaviour
         armor = 0;
         score = 0;
         scoreMultiplyer = 1;
-        hasArmor = true;
     }
 
     
@@ -48,6 +47,7 @@ public class PlayerManager : MonoBehaviour
     public void ReloadPlayerArmor()
     {
         armor = PLAYER_MAX_ARMOR;
+        hasArmor = true;
     }
 
     public void UpdatePlayerScore(int amount)

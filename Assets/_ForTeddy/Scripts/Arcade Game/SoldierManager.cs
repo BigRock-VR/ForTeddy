@@ -22,7 +22,6 @@ public class SoldierManager : MonoBehaviour
     {
         hp = SOLDIER_MAX_HP;
         armor = 0;
-        hasArmor = true;
     }
 
     private void Update()
@@ -56,6 +55,7 @@ public class SoldierManager : MonoBehaviour
     public void ReloadSoldierArmor()
     {
         armor = SOLDIER_MAX_ARMOR;
+        hasArmor = true;
     }
 
     public void ReloadSoldierStats()
