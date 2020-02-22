@@ -17627,7 +17627,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 1
   armor: 0
-  score: 10000
+  score: 0
   scoreMultiplyer: 1
   hasArmor: 0
   isDead: 0
@@ -19199,6 +19199,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  isOpen: 0
+  isOpenChooseMenu: 0
 --- !u!114 &3350528213003040724
 MonoBehaviour:
   m_ObjectHideFlags: 0

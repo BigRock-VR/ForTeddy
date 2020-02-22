@@ -67,14 +67,10 @@ public class PlayerMovement : MonoBehaviour
         {
             Move(movementDir);
         }
-        //if (aimDir.x >= joyPadThreShold || 
-        //    aimDir.z >= joyPadThreShold || 
-        //    aimDir.x <= joyPadThreSholdN|| 
-        //    aimDir.z <= joyPadThreSholdN )
-        //{
-        //    Aim(aimDir);
-        //}
-        if (aimDir != Vector3.zero)
+        if (aimDir.x >= joyPadThreShold ||
+            aimDir.z >= joyPadThreShold ||
+            aimDir.x <= joyPadThreSholdN ||
+            aimDir.z <= joyPadThreSholdN)
         {
             Aim(aimDir);
         }
@@ -104,10 +100,7 @@ public class PlayerMovement : MonoBehaviour
         Quaternion newRotatation = Quaternion.LookRotation(playerToJoystick);
         // Set the player's rotation to this new rotation.
         rb.MoveRotation(Quaternion.Lerp(transform.rotation, newRotatation, Time.deltaTime * aimSensibility));
-        if (transform.rotation == newRotatation)
-        {
-            isAiming = true;
-        }
+        isAiming = true;
     }
     public void AnimationCTRL()
     {
