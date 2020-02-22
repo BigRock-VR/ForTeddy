@@ -13434,7 +13434,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minKillSpeed: 61
     maxKillSpeed: 10000
-    radiusScale: 0.79
+    radiusScale: 1.6
     collidesWith:
       serializedVersion: 2
       m_Bits: 1335
@@ -14481,6 +14481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
+  pushForce: 0
 --- !u!1 &7669430248469924645
 GameObject:
   m_ObjectHideFlags: 0

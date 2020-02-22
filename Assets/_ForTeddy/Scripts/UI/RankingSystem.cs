@@ -90,6 +90,11 @@ public class RankingSystem : MonoBehaviour
     {
         Score lowerScore = GetLowerScore();
 
+        if (_score.playerScore <= 0)
+        {
+            return;
+        }
+
         // Insufficient score for the ranking
         if (_score.playerScore <= lowerScore.playerScore)
         {

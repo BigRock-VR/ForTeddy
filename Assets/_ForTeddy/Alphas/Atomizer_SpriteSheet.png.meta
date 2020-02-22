@@ -1,0 +1,403 @@
+fileFormatVersion: 2
+guid: b21b0612d338c884187da112434ea7a6
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8827935202779160328
+    second: Atomizer_SpriteSheet_0
+  - first:
+      213: 8966196429239488327
+    second: Atomizer_SpriteSheet_1
+  - first:
+      213: -3251153832627871446
+    second: Atomizer_SpriteSheet_2
+  - first:
+      213: 7143349172705130688
+    second: Atomizer_SpriteSheet_3
+  - first:
+      213: -7333232940000575861
+    second: Atomizer_SpriteSheet_4
+  - first:
+      213: 8932540764005488442
+    second: Atomizer_SpriteSheet_5
+  - first:
+      213: -8819599571776329577
+    second: Atomizer_SpriteSheet_6
+  - first:
+      213: -747187276383360426
+    second: Atomizer_SpriteSheet_7
+  - first:
+      213: 1234231331153027073
+    second: Atomizer_SpriteSheet_8
+  - first:
+      213: 2741159820257423777
+    second: Atomizer_SpriteSheet_9
+  - first:
+      213: 2594558459624849861
+    second: Atomizer_SpriteSheet_10
+  - first:
+      213: 3218036698229548939
+    second: Atomizer_SpriteSheet_11
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Atomizer_SpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 696
+        width: 512
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b04bb320662a404a99620c0e0d1e635
+      internalID: 8827935202779160328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atomizer_SpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 696
+        width: 512
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6c2e255fdce16240ba5b3f77c8afdd3
+      internalID: 8966196429239488327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atomizer_SpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 696
+        width: 512
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3de2388e6163694eb0adef96797451c
+      internalID: -3251153832627871446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atomizer_SpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 696
+        width: 512
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b30400492914b574e8f97264e9de0ce9
+      internalID: 7143349172705130688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atomizer_SpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 696
+        width: 512
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 822da21c958decc45a346e6457e684d0
+      internalID: -7333232940000575861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atomizer_SpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 696
+        width: 512
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9aeb29097eaed95448b70cc522b40c7b
+      internalID: 8932540764005488442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atomizer_SpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 188
+        width: 512
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ada5131e7c59324a9076cda50e256a9
+      internalID: -8819599571776329577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atomizer_SpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 188
+        width: 512
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fd6f6b0d9d902745863b7c4a9eec33a
+      internalID: -747187276383360426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atomizer_SpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 188
+        width: 512
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1b18d857adfc9e44918694ef8a74eeb
+      internalID: 1234231331153027073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atomizer_SpriteSheet_9
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 188
+        width: 512
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05923af440e596d47a41e271a5aeca4d
+      internalID: 2741159820257423777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atomizer_SpriteSheet_10
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 188
+        width: 512
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf80f324bb204514ea34915e4b71c7c1
+      internalID: 2594558459624849861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Atomizer_SpriteSheet_11
+      rect:
+        serializedVersion: 2
+        x: 2561
+        y: 188
+        width: 511
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ced54bd52c8e42044a9dadc1c7bbaf37
+      internalID: 3218036698229548939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5eb20ec224b77a6468a5876047cbbf15
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

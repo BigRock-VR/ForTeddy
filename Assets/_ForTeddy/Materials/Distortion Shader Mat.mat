@@ -127,7 +127,7 @@ Material:
     - __dirty: 0
     - _max: 7.3
     - _min: -0.01
-    - _normalintensity: 0.03
+    - _normalintensity: 0.1
     m_Colors:
     - _AlbedoRGBOpacityA: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}

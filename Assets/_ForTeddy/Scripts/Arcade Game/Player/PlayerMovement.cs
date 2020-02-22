@@ -29,12 +29,17 @@ public class PlayerMovement : MonoBehaviour
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         p_Manager = GetComponent<PlayerManager>();
-        p_Manager.onPlayerDeath += PlayDeathAnimation;
     }
 
 
     void FixedUpdate()
     {
+
+        if (p_Manager.isDead)
+        {
+            isAiming = false;
+            return;
+        }
 
         if (GameManager.isVREnable)
         {
@@ -62,12 +67,15 @@ public class PlayerMovement : MonoBehaviour
         {
             Move(movementDir);
         }
-        if (aimDir.x >= joyPadThreShold || 
-            aimDir.z >= joyPadThreShold || 
-            aimDir.x <= joyPadThreSholdN|| 
-            aimDir.z <= joyPadThreSholdN )
+        //if (aimDir.x >= joyPadThreShold || 
+        //    aimDir.z >= joyPadThreShold || 
+        //    aimDir.x <= joyPadThreSholdN|| 
+        //    aimDir.z <= joyPadThreSholdN )
+        //{
+        //    Aim(aimDir);
+        //}
+        if (aimDir != Vector3.zero)
         {
-            isAiming = true;
             Aim(aimDir);
         }
         else
@@ -96,17 +104,10 @@ public class PlayerMovement : MonoBehaviour
         Quaternion newRotatation = Quaternion.LookRotation(playerToJoystick);
         // Set the player's rotation to this new rotation.
         rb.MoveRotation(Quaternion.Lerp(transform.rotation, newRotatation, Time.deltaTime * aimSensibility));
-    }
-
-    public void PlayDeathAnimation()
-    {
-        anim.SetLayerWeight(1, 0);
-        anim.SetLayerWeight(2, 0);
-        anim.SetLayerWeight(3, 0);
-        anim.SetLayerWeight(4, 0);
-        anim.SetLayerWeight(5, 0);
-        anim.SetTrigger("isDead");
-        p_Manager.onPlayerDeath -= PlayDeathAnimation;
+        if (transform.rotation == newRotatation)
+        {
+            isAiming = true;
+        }
     }
     public void AnimationCTRL()
     {

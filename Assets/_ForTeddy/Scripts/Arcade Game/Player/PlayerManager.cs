@@ -18,6 +18,7 @@ public class PlayerManager : MonoBehaviour
     public bool isDead;
     public Renderer meshRenderer;
     public AnimationCurve hitAnimationCurve;
+    private Animator anim;
     private Material mat;
 
     public delegate void DeathEvent();
@@ -33,14 +34,14 @@ public class PlayerManager : MonoBehaviour
         score = 0;
         scoreMultiplyer = 1;
         mat = meshRenderer.material;
+        anim = GetComponent<Animator>();
     }
 
     
     private void Dead()
     {
         onPlayerDeath?.Invoke();
-        gameObject.GetComponent<PlayerMovement>().enabled = false;
-        gameObject.GetComponent<WeaponSystem>().enabled = false;
+        PlayDeathAnimation();
     }
     
     public void ReloadPlayerHP()
@@ -67,18 +68,22 @@ public class PlayerManager : MonoBehaviour
             return;
         }
 #endif
-        StartCoroutine(PlayHitEffect());
-        if (!hasArmor && !isDead)
+        if (isDead)
+        {
+            return;
+        }
+
+        if (!hasArmor)
         {
             int nextHp = hp - damage;
 
             if (nextHp <= 0 && !isDead)
             {
-                nextHp = 0;
                 isDead = true;
                 Dead();
             }
 
+            StartCoroutine(PlayHitEffect());
             hp = nextHp;
             Debug.Log($"TOTAL DAMAGE: {damage}");
             return;
@@ -99,7 +104,7 @@ public class PlayerManager : MonoBehaviour
             TakeDamage(wastedArmorDamage);
             return;
         }
-
+        StartCoroutine(PlayHitEffect());
         armor -= armorAbsorbedDmg;
         hp -= hpDamage;
     }
@@ -115,25 +120,37 @@ public class PlayerManager : MonoBehaviour
 #endif
     IEnumerator PlayHitEffect()
     {
-        float t = 0.0f; // time
-        mat.SetInt("_fresnelscale0off1on", 1);
+        if (!isDead)
+        {
+            float t = 0.0f; // time
+            mat.SetInt("_fresnelscale0off1on", 1);
 
-        if (hasArmor)
-        {
-            mat.SetInt("_Colorchanger", 1);
-        }
-        else
-        {
-            mat.SetInt("_Colorchanger", 0);
-        }
+            if (hasArmor)
+            {
+                mat.SetInt("_Colorchanger", 1);
+            }
+            else
+            {
+                mat.SetInt("_Colorchanger", 0);
+            }
 
-        while (t < 1)
-        {
-            t += Time.deltaTime * 2;
-            mat.SetFloat("_Fresnel_Power", Mathf.Lerp(0, 1, hitAnimationCurve.Evaluate(t)));
-            yield return null;
+            while (t < 1)
+            {
+                t += Time.deltaTime * 2;
+                mat.SetFloat("_Fresnel_Power", Mathf.Lerp(0, 1, hitAnimationCurve.Evaluate(t)));
+                yield return null;
+            }
+            mat.SetInt("_fresnelscale0off1on", 0);
+            mat.SetFloat("_Fresnel_Power", 0);
         }
-        mat.SetInt("_fresnelscale0off1on", 0);
-        mat.SetFloat("_Fresnel_Power", 0);
+    }
+    public void PlayDeathAnimation()
+    {
+        anim.SetLayerWeight(1, 0);
+        anim.SetLayerWeight(2, 0);
+        anim.SetLayerWeight(3, 0);
+        anim.SetLayerWeight(4, 0);
+        anim.SetLayerWeight(5, 0);
+        anim.SetTrigger("isDead");
     }
 }

@@ -238,13 +238,19 @@ public class Enemy : MonoBehaviour
                 {
                     if (_hitCollider[j].CompareTag("Player"))
                     {
-                        _hitCollider[j].gameObject.GetComponent<PlayerManager>().TakeDamage(damage);
-                        hasAttack = true;
+                        if (!_hitCollider[j].gameObject.GetComponent<PlayerManager>().isDead)
+                        {
+                            _hitCollider[j].gameObject.GetComponent<PlayerManager>().TakeDamage(damage);
+                            hasAttack = true;
+                        }
                     }
                     if (_hitCollider[j].CompareTag("Soldier"))
                     {
-                        _hitCollider[j].gameObject.GetComponent<SoldierManager>().TakeDamage(damage);
-                        hasAttack = true;
+                        if (!_hitCollider[j].gameObject.GetComponent<SoldierManager>().isDead)
+                        {
+                            _hitCollider[j].gameObject.GetComponent<SoldierManager>().TakeDamage(damage);
+                            hasAttack = true;
+                        }
                     }
                 }
             }

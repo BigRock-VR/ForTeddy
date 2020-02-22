@@ -28,7 +28,7 @@ Material:
     - _NoiseSpeed: -3
     - __dirty: 0
     m_Colors:
-    - _Color0: {r: 0, g: 0.3482039, b: 1, a: 0}
-    - _Color1: {r: 0, g: 0.24313726, b: 2, a: 0}
+    - _Color0: {r: 0, g: 1.0509804, b: 2.9960785, a: 0}
+    - _Color1: {r: 0, g: 0.3764706, b: 2.9960785, a: 0}
     - _NoiseDir: {r: 1, g: 0, b: 0, a: 0}
     - _NoiseGenE: {r: 0.3, g: 0.3, b: 0, a: 0}

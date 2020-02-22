@@ -11,7 +11,7 @@ public class UI_ChooseName : MonoBehaviour
     public GameObject scoreMenu, gameOverMenu;
     public AnimationCurve animationCurve;
 
-    private bool isOpen;
+    public bool isOpen, isOpenChooseMenu;
     private char[] charValues = new char[MAX_NAME_CHAR];
     private float nextChangeTime;
     private int playerScore;
@@ -21,6 +21,9 @@ public class UI_ChooseName : MonoBehaviour
     private float timer = 0.0f;
     private float maxTimer;
     private Color clr_Text;
+    private const int TIMER_GAME_OVER = 3;
+    private const int TIMER_CHOOSE_NAME = 7;
+    private float gameOverTimer = 0.0f;
     private void Start()
     {
         playerScore = player.score;
@@ -34,9 +37,9 @@ public class UI_ChooseName : MonoBehaviour
 
     private void UI_ChooseName_onPlayerDeath()
     {
-        gameOverMenu.SetActive(true);
-        Invoke("Open", 3.0f);
+        isOpen = true;
     }
+
 
     void LateUpdate()
     {
@@ -44,15 +47,27 @@ public class UI_ChooseName : MonoBehaviour
         {
             return;
         }
+        gameOverTimer += Time.deltaTime;
 
-        if (Input.GetAxisRaw("Horizontal") == 1 && Time.time >= nextChangeTime)
+        if (gameOverTimer >= TIMER_GAME_OVER && gameOverTimer <= TIMER_CHOOSE_NAME)
+        {
+            gameOverMenu.SetActive(true);
+        }
+
+        if (gameOverTimer >= TIMER_CHOOSE_NAME && !isOpenChooseMenu)
+        {
+            gameOverMenu.SetActive(false);
+            Open();
+        }
+
+        if (Input.GetAxisRaw("Horizontal") == 1 && Time.time >= nextChangeTime && isOpenChooseMenu)
         {
             nextChangeTime = Time.time + 0.2f;
             int oldIndex = currSelectedIndx;
             currSelectedIndx = Mathf.Clamp(++currSelectedIndx, 0, 2);
             charTexts[oldIndex].color = clr_Text;
         }
-        if (Input.GetAxisRaw("Horizontal") == -1 && Time.time >= nextChangeTime)
+        if (Input.GetAxisRaw("Horizontal") == -1 && Time.time >= nextChangeTime && isOpenChooseMenu)
         {
             nextChangeTime = Time.time + 0.2f;
             int oldIndex = currSelectedIndx;
@@ -60,7 +75,7 @@ public class UI_ChooseName : MonoBehaviour
             charTexts[oldIndex].color = clr_Text;
         }
 
-        if (Input.GetAxisRaw("Vertical") == -1 && Time.time >= nextChangeTime)
+        if (Input.GetAxisRaw("Vertical") == -1 && Time.time >= nextChangeTime && isOpenChooseMenu)
         {
             nextChangeTime = Time.time + 0.2f;
             if (charValues[currSelectedIndx] == 90)
@@ -74,7 +89,7 @@ public class UI_ChooseName : MonoBehaviour
             UpdateCharText();
         }
 
-        if (Input.GetAxisRaw("Vertical") == 1 && Time.time >= nextChangeTime)
+        if (Input.GetAxisRaw("Vertical") == 1 && Time.time >= nextChangeTime && isOpenChooseMenu)
         {
             nextChangeTime = Time.time + 0.2f;
             if (charValues[currSelectedIndx] == 65)
@@ -88,7 +103,7 @@ public class UI_ChooseName : MonoBehaviour
             UpdateCharText();
         }
 
-        if (Input.GetButtonDown("Submit"))
+        if (Input.GetButtonDown("Submit") && isOpenChooseMenu)
         {
             Confirm();
         }
@@ -99,10 +114,18 @@ public class UI_ChooseName : MonoBehaviour
 
     public void Open()
     {
-        isOpen = true;
-        playerScore = player.score;
-        t_Score.text = String.Format(scoreString, playerScore.ToString());
-        scoreMenu.SetActive(true);
+        isOpenChooseMenu = true;
+        if (player.score <= 0)
+        {
+            Debug.Log("Close Game score is zero");
+            Close();
+        }
+        else
+        {
+            playerScore = player.score;
+            t_Score.text = String.Format(scoreString, playerScore.ToString());
+            scoreMenu.SetActive(true);
+        }
     }
 
     public void Close()

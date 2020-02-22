@@ -52,8 +52,8 @@ public class WaveManager : MonoBehaviour
 
     private void PlayerManager_onPlayerDeath()
     {
-        playerManager.onPlayerDeath -= PlayerManager_onPlayerDeath;
         canSpawnEnemy = false;
+        playerManager.onPlayerDeath -= PlayerManager_onPlayerDeath;
     }
 
     private void StartWave()
