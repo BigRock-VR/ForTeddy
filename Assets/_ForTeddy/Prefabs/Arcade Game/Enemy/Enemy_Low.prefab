@@ -575,13 +575,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHP: 80
   AttackDamage: 40
-  MovementSpeed: 2.7
+  MovementSpeed: 3
   AttackSpeed: 50
   attackRange: 1
   isEnableWaveMult: 1
   isDead: 0
   visionAnchorPoint: {fileID: 5579948931357604038}
-  visionRange: 0.7
+  visionRange: 0.9
   attackAnchorPoint:
   - {fileID: 5579948931357604038}
   hitPointRange: 0.5

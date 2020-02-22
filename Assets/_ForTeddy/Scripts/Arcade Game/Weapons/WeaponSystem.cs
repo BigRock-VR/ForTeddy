@@ -201,7 +201,9 @@ public class WeaponSystem : MonoBehaviour
                 pSystem = weaponObjs[GetCurrSelectedWeapon()].transform.Find("Bullet_PS").GetComponent<ParticleSystem>();
                 bulletSpawnPosition = weaponObjs[GetCurrSelectedWeapon()].transform.Find("Bullet_PS").transform;
                 // Set Up the weapon damage to the single particle
-                weaponObjs[GetCurrSelectedWeapon()].transform.Find("Bullet_PS").GetComponent<ParticleCollision>().damage = weapons[GetCurrSelectedWeapon()].damage;
+                ParticleCollision p_Collission =  weaponObjs[GetCurrSelectedWeapon()].transform.Find("Bullet_PS").GetComponent<ParticleCollision>();
+                p_Collission.damage = weapons[GetCurrSelectedWeapon()].damage;
+                p_Collission.pushForce = weapons[GetCurrSelectedWeapon()].pushForce;
                 break; 
             case eWeapons.ATOMIZER:
                 pSystem = weaponObjs[GetCurrSelectedWeapon()].transform.Find("Bullet_PS").GetComponent<ParticleSystem>();

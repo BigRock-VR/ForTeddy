@@ -13,14 +13,14 @@ public class Enemy : MonoBehaviour
     [SerializeField] public int MaxHP;
     [SerializeField] public int AttackDamage;
     [SerializeField] public float MovementSpeed;
-    [SerializeField] [Range(50.0f, 400.0f)] public float AttackSpeed = 50.0f;
+    [SerializeField] [Range(20.0f, 200.0f)] public float AttackSpeed = 50.0f;
     [SerializeField] public float attackRange = 2;
     [SerializeField] public bool isEnableWaveMult; // Enable Wave Multiplyer and increase enemy damage and hp every wave
     [SerializeField] public bool isDead;
     public Transform visionAnchorPoint; // ENEMY VISION POSITION TO ATTACKING AND FACING THE PLAYER
-    [Range(0.2f,4)] public float visionRange = 0.5f;
+    [Range(0.2f,10)] public float visionRange = 0.5f;
     public Transform[] attackAnchorPoint; // ENEMY HIT POINT
-    [Range(0.1f, 2)] public float hitPointRange = 0.2f;
+    [Range(0.1f, 5)] public float hitPointRange = 0.2f;
     public AnimationCurve hitAnimationCurve;
 
     /*
@@ -125,7 +125,12 @@ public class Enemy : MonoBehaviour
                 agent.SetDestination(targetPosition.position);
                 if (CanDoAttackAnimation())
                 {
-                    anim.SetTrigger("Attack");
+                    if (Time.time >= nextTimeToAttack)
+                    {
+                        transform.LookAt(targetPosition);
+                        nextTimeToAttack = Time.time + attackSpeed;
+                        anim.SetTrigger("Attack");
+                    }
                 }
                 break;
             case eTargets.SOLDIER:
@@ -198,13 +203,13 @@ public class Enemy : MonoBehaviour
                 break;
 
             case eState.ATTACK_PLAYER:
-                if (CanDoAttackAnimation())
+                if (CanDoAttackAnimation() && !isDead)
                 {
                     anim.SetTrigger("Attack");
                 }
                 break;
             case eState.ATTACK_SOLDIER:
-                if (CanDoAttackAnimation())
+                if (CanDoAttackAnimation() && !isDead)
                 {
                     anim.SetTrigger("Attack");
                 }
@@ -233,12 +238,12 @@ public class Enemy : MonoBehaviour
                 {
                     if (_hitCollider[j].CompareTag("Player"))
                     {
-                        targetPosition.gameObject.GetComponent<PlayerManager>().TakeDamage(damage);
+                        _hitCollider[j].gameObject.GetComponent<PlayerManager>().TakeDamage(damage);
                         hasAttack = true;
                     }
                     if (_hitCollider[j].CompareTag("Soldier"))
                     {
-                        targetPosition.gameObject.GetComponent<SoldierManager>().TakeDamage(damage);
+                        _hitCollider[j].gameObject.GetComponent<SoldierManager>().TakeDamage(damage);
                         hasAttack = true;
                     }
                 }
@@ -325,7 +330,7 @@ public class Enemy : MonoBehaviour
 
     }
 
-    private void OnDeath()
+    private void OnDeath(bool isEndWave = false)
     {
         if (isBoss)
         {
@@ -334,6 +339,22 @@ public class Enemy : MonoBehaviour
         isDead = true;
         enemyState = eState.DEATH;
         agent.isStopped = true;
+
+        if (!isEndWave)
+        {
+            DropPickUp();
+        }
+
+        CapsuleCollider enemyCollider = GetComponent<CapsuleCollider>();
+
+        if (enemyCollider)
+        {
+            enemyCollider.isTrigger = true;
+        }
+    }
+
+    private void DropPickUp()
+    {
         if (maxDropPickUp > 1)
         {
             int dropPct = UnityEngine.Random.Range(1, maxDropPickUp);
@@ -348,12 +369,6 @@ public class Enemy : MonoBehaviour
         {
             Instantiate(pickUpPrefab, transform.position, Quaternion.identity, waveManager.coinsContainer.transform);
         }
-        CapsuleCollider enemyCollider = GetComponent<CapsuleCollider>();
-
-        if (enemyCollider)
-        {
-            enemyCollider.isTrigger = true;
-        }
     }
 
     IEnumerator PlayFullDissolveEffect(float delay)
@@ -363,9 +378,7 @@ public class Enemy : MonoBehaviour
         Vector4 localHitPoint = mat.GetVector("_DissolveStart");
         mat.SetFloat("_isDissolving", 1);
         float emissionScale = mat.GetFloat("_EmissionScale");
-
-
-
+        OnDeath(true);
         if (localHitPoint == Vector4.zero)
         {
             mat.SetVector("_DissolveStart", new Vector4(0.0f, 0.5f, 0.0f, 0.0f));

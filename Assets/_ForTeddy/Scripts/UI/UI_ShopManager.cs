@@ -147,7 +147,9 @@ public class UI_ShopManager : MonoBehaviour
         {
             EnableSoldierImage();
         }
-        player.gameObject.GetComponent<PlayerMovement>().enabled = false;
+        PlayerMovement p_Movement = player.GetComponent<PlayerMovement>();
+        p_Movement.isAiming = false;
+        p_Movement.enabled = false;
         InitSelection();
     }
 

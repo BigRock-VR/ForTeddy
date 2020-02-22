@@ -16,6 +16,7 @@ MonoBehaviour:
   fireRate: 0.5
   damage: 20
   maxAmmoCount: 0
+  pushForce: 4
   isDefaultWeapon: 1
   cost: 0
   weaponImage: {fileID: 8069336815153328489, guid: b2e5db02f6ccdfd48a2fc78d3120f3cb,

@@ -7,6 +7,7 @@ public class Weapon : ScriptableObject
     public float fireRate;
     public int damage;
     public int maxAmmoCount;
+    public float pushForce;
     public bool isDefaultWeapon;
     public int cost;
     public Sprite weaponImage;

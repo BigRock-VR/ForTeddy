@@ -11383,12 +11383,12 @@ MonoBehaviour:
   bossPrefab: {fileID: 4913171580632947850, guid: 55811ba7ba9a8b54f9428141b59f16c3,
     type: 3}
   isBossSpawned: 0
-  waveCount: 5
+  waveCount: 1
   waveTimer: 60
   canSpawnEnemy: 0
   timeBetweenSpawn: 0
   nextTimeToSpawn: 0
-  waveMaxEnemy: 10
+  waveMaxEnemy: 12
   waveEndTimer: 0
   coinsContainer: {fileID: 0}
 --- !u!1 &1352856068 stripped

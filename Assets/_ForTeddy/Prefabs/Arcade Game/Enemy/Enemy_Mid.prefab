@@ -2734,14 +2734,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHP: 160
-  AttackDamage: 100
-  MovementSpeed: 2.5
-  AttackSpeed: 50
+  AttackDamage: 110
+  MovementSpeed: 3
+  AttackSpeed: 70
   attackRange: 2
   isEnableWaveMult: 1
   isDead: 0
   visionAnchorPoint: {fileID: 659736470873316530}
-  visionRange: 2
+  visionRange: 2.3
   attackAnchorPoint:
   - {fileID: 8073605051320651601}
   - {fileID: 5196282421474789108}
