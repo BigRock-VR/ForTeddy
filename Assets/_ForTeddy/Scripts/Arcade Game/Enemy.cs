@@ -55,7 +55,6 @@ public class Enemy : MonoBehaviour
     private bool canDoDamage;
     private bool hasAttack;
     private Collider[] _hitCollider;
-
     void Start()
     {
         waveManager = GameManager.Instance.waveManager.GetComponent<WaveManager>();
@@ -268,15 +267,31 @@ public class Enemy : MonoBehaviour
         hasAttack = false;
     }
 
+
+    public void TakeDamage(int damage)
+    {
+        hp -= damage;
+
+        Material mat = GetComponent<SkinnedMeshRenderer>().material;
+
+        //float currEmissionAmount = mat.GetFloat("_EmissionScale");
+        //float nextEmissionAmount = (float)damage / MaxHP;
+        //nextEmissionAmount += currEmissionAmount;
+
+        //StartCoroutine(EmissionEffect(hitPoint, 0.5f, currEmissionAmount, nextEmissionAmount));
+        StartCoroutine(EmissionEffect(mat, 0.5f));
+        Debug.Log($"Taking damage: {damage}, HP: {hp}");
+    }
+
     public void TakeDamage(int damage, Vector4 hitPoint)
     {
         hp -= damage;
 
         Material mat = GetComponent<SkinnedMeshRenderer>().material;
 
-        float currEmissionAmount = mat.GetFloat("_EmissionScale");
-        float nextEmissionAmount = (float)damage / MaxHP;
-        nextEmissionAmount += currEmissionAmount;
+        //float currEmissionAmount = mat.GetFloat("_EmissionScale");
+        //float nextEmissionAmount = (float)damage / MaxHP;
+        //nextEmissionAmount += currEmissionAmount;
 
         //StartCoroutine(EmissionEffect(hitPoint, 0.5f, currEmissionAmount, nextEmissionAmount));
         StartCoroutine(EmissionEffect(mat, 0.5f));

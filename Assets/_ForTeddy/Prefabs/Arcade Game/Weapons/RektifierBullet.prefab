@@ -14607,6 +14607,7 @@ GameObject:
   - component: {fileID: 3297242744889973753}
   - component: {fileID: 3297242744889973754}
   - component: {fileID: 1138093980006949279}
+  - component: {fileID: 852563294992205804}
   m_Layer: 11
   m_Name: RektifierBullet
   m_TagString: Untagged
@@ -14722,14 +14723,56 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  explosionRadius: 10
+  explosionRadius: 6
   isExploded: 0
   attractionForce: 400000
-  enemyTargets: []
+  explosionForce: 6000
+  explosionDamage: 10
   direction: {x: 0, y: 0, z: 0}
   pSystemExplosion: {fileID: 7344595780103827157}
   pSystemMissile: {fileID: 4482679826822639256}
   pSystem: {fileID: 7574064802972989394}
+--- !u!114 &852563294992205804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3297242744889973702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ImpulseDefinition:
+    m_ImpulseChannel: 1
+    m_RawSignal: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+    m_AmplitudeGain: 0.2
+    m_FrequencyGain: 0.2
+    m_RepeatMode: 0
+    m_Randomize: 1
+    m_TimeEnvelope:
+      m_AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_AttackTime: 0
+      m_SustainTime: 0.2
+      m_DecayTime: 0.7
+      m_ScaleWithImpact: 1
+      m_HoldForever: 0
+    m_ImpactRadius: 100
+    m_DirectionMode: 0
+    m_DissipationMode: 2
+    m_DissipationDistance: 1000
 --- !u!1 &5136341128104036006
 GameObject:
   m_ObjectHideFlags: 0
@@ -29115,3 +29158,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  pushForce: 0

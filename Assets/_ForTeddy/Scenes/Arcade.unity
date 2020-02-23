@@ -2886,7 +2886,6 @@ GameObject:
   - component: {fileID: 319402500}
   - component: {fileID: 319402497}
   - component: {fileID: 319402496}
-  - component: {fileID: 319402495}
   - component: {fileID: 319402494}
   - component: {fileID: 319402493}
   m_Layer: 0
@@ -2944,18 +2943,6 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &319402495
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 319402492}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdcd06815c47d30489f70df42db56a48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &319402496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11388,7 +11375,7 @@ MonoBehaviour:
   canSpawnEnemy: 0
   timeBetweenSpawn: 0
   nextTimeToSpawn: 0
-  waveMaxEnemy: 12
+  waveMaxEnemy: 100
   waveEndTimer: 0
   coinsContainer: {fileID: 0}
 --- !u!1 &1352856068 stripped
@@ -13869,6 +13856,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1636273691}
   - component: {fileID: 1636273689}
+  - component: {fileID: 1636273690}
   m_Layer: 10
   m_Name: ArcadeCamera
   m_TagString: MainCamera
@@ -13911,6 +13899,21 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 48730757}
+--- !u!114 &1636273690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1636273688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ChannelMask: 1
+  m_Gain: 1
+  m_Use2DDistance: 0
 --- !u!4 &1636273691
 Transform:
   m_ObjectHideFlags: 0

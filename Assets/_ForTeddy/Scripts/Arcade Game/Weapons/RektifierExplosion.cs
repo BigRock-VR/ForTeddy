@@ -1,34 +1,34 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class RektifierExplosion : MonoBehaviour
 {
     public float maxSpeed = 6.0f;
-    private float minSpeed = 2.0f;
-    private float speed;
-
     public AnimationCurve explosionCurve;
-    private float explosionTimer = 0.0f;
-    private float explosionDuration = 3.0f;
-
-    public float explosionRadius = 10.0f;
+    public float explosionRadius = 6.0f;
     public bool isExploded;
-    public float attractionForce = 500.0f;
-    private Collider[] hitColliders;
-    public List<Transform> enemyTargets = new List<Transform>();
-
-    public Vector3 direction;
-
+    public float attractionForce = 40000.0f;
+    public float explosionForce = 6000.0f;
+    public int explosionDamage = 10;
+    [HideInInspector] public Vector3 direction;
     public ParticleSystem pSystemExplosion, pSystemMissile;
     public ParticleSystem pSystem;
-    private ParticleSystem.Particle[] particles;
+    //private ParticleSystem.Particle[] particles;
+    private float currExplosionRadius = 0.0f;
+    private float minSpeed = 2.0f;
+    private float speed;
+    private float explosionTimer = 0.0f;
+    private float explosionDuration = 3.0f;
+    private Collider[] hitColliders;
+    private CinemachineImpulseSource cameraImpulse;
     void Start()
     {
         speed = maxSpeed;
         pSystem.Play();
         explosionDuration = explosionCurve.keys[explosionCurve.keys.Length - 1].time;
-        InitializeIfNeeded();
+        cameraImpulse = GetComponent<CinemachineImpulseSource>();
+        //InitializeIfNeeded();
     }
 
     private void FixedUpdate()
@@ -39,9 +39,9 @@ public class RektifierExplosion : MonoBehaviour
 
             transform.position += direction * Time.fixedDeltaTime * speed;
             transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, explosionCurve.Evaluate(explosionTimer));
-
+            currExplosionRadius = Mathf.Lerp(0, explosionRadius, explosionCurve.Evaluate(explosionTimer));
             explosionTimer += Time.fixedDeltaTime;
-            hitColliders = Physics.OverlapSphere(transform.position, explosionRadius);
+            hitColliders = Physics.OverlapSphere(transform.position, currExplosionRadius);
             for (int i = 0; i < hitColliders.Length; i++)
             {
                 if (hitColliders[i])
@@ -54,12 +54,15 @@ public class RektifierExplosion : MonoBehaviour
                         if (distance > 1 && !e.isBoss)
                         {
                             Rigidbody rb = hitColliders[i].attachedRigidbody;
-                            rb.AddForce(forceDirection.normalized * (attractionForce * Time.fixedDeltaTime) / distance );
+                            rb.AddForce(forceDirection.normalized * (attractionForce * Time.fixedDeltaTime) / distance);
                         }
                         else
                         {
-                            //KIll the enemy that are in the center of the explosion radius
-                            e?.TakeDamage(e.MaxHP, new Vector4(1.0f, 0.0f,0.0f,0.0f));
+                            if (!e.isDead)
+                            {
+                                //KIll the enemy that are in the center of the explosion radius
+                                e?.TakeDamage(e.MaxHP, new Vector4(1.0f, 0.0f, 0.0f, 0.0f));
+                            }
                         }
 
                     }
@@ -71,67 +74,77 @@ public class RektifierExplosion : MonoBehaviour
         {
             pSystemExplosion.Play();
             isExploded = true;
-            GetEnemyTargets();
-            if (enemyTargets.Count > 0)
-            {
-                StartCoroutine(ParticlesAiming());
-            }
-            else
-            {
-                Destroy(gameObject, 5.0f);
-            }
+            StartCoroutine(ApplyExplosionDamage());
+            Destroy(gameObject, 5.0f);
         }
 
     }
     // Initialize the particle array
-    void InitializeIfNeeded()
-    {
-        if (particles == null || particles.Length < 50)
-        {
-            particles = new ParticleSystem.Particle[50];
-        }
-    }
+    //void InitializeIfNeeded()
+    //{
+    //    if (particles == null || particles.Length < 50)
+    //    {
+    //        particles = new ParticleSystem.Particle[50];
+    //    }
+    //}
 
 
     // Move the particles to the frist enemy target stille alive in the explosion radius
-    IEnumerator ParticlesAiming()
-    {
-        float timer = 0.0f;
-        while (timer < 1)
-        {
-            timer += Time.fixedDeltaTime / 2.0f;
-            int numParticlesAlive = pSystemMissile.GetParticles(particles);
+    //IEnumerator ParticlesAiming()
+    //{
+    //    float timer = 0.0f;
+    //    while (timer < 1)
+    //    {
+    //        timer += Time.fixedDeltaTime / 2.0f;
+    //        int numParticlesAlive = pSystemMissile.GetParticles(particles);
 
-            for (int i = 0; i < numParticlesAlive; i++)
-            {
-                if (enemyTargets[0] != null)
-                {
-                    particles[i].position = Vector3.Lerp(particles[i].position, enemyTargets[0].position, timer);
-                }
-            }
+    //        for (int i = 0; i < numParticlesAlive; i++)
+    //        {
+    //            if (enemyTargets[0] != null)
+    //            {
+    //                particles[i].position = Vector3.Lerp(particles[i].position, enemyTargets[0].position, timer);
+    //            }
+    //        }
 
-            pSystem.SetParticles(particles, numParticlesAlive);
-            yield return null;
-        }
-        Destroy(gameObject);
-    }
+    //        pSystem.SetParticles(particles, numParticlesAlive);
+    //        yield return null;
+    //    }
+    //    Destroy(gameObject);
+    //}
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, explosionRadius);
+        Gizmos.DrawWireSphere(transform.position, currExplosionRadius);
     }
 
-    private void GetEnemyTargets()
+    IEnumerator ApplyExplosionDamage()
     {
-        for (int i = 0; i < hitColliders.Length; i++)
+        float t = 0.0f; // TIMER
+        currExplosionRadius = 0.0f;
+        while (t < 1)
         {
-            if (hitColliders[i])
+            t += Time.deltaTime / 2.0f; //  2 SECONDS OF EXPLOSION
+
+            if (t  >= 0.5f)
             {
-                if (hitColliders[i].transform.CompareTag("Enemy"))
+                cameraImpulse.GenerateImpulse();
+            }
+
+            hitColliders = Physics.OverlapSphere(transform.position, currExplosionRadius);
+            currExplosionRadius = Mathf.Lerp(0, explosionRadius, t);
+            for (int i = 0; i < hitColliders.Length; i++)
+            {
+                if (hitColliders[i] != null && hitColliders[i].CompareTag("Enemy"))
                 {
-                    enemyTargets.Add(hitColliders[i].transform);
+                    Enemy e = hitColliders[i].gameObject.GetComponent<Enemy>();
+                    if (!e.isDead)
+                    {
+                        e.TakeDamage(explosionDamage);
+                        hitColliders[i].attachedRigidbody.AddForce((-hitColliders[i].transform.forward) * (explosionForce * Time.deltaTime), ForceMode.Impulse);
+                    }
                 }
             }
+            yield return null;
         }
     }
 }
