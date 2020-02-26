@@ -11,8 +11,8 @@ public class WaveManager : MonoBehaviour
     // BOSS WAVE
     [Header("Boss Info:")]
     [SerializeField]public GameObject bossPrefab;
+    public Enemy currentBoss;
     private readonly int BOSS_WAVE_INTERVAL = 5; // Spawn the boss every x wave;
-    private int midMobPct = 10; // Mid mob percentage of spawn; 
     public bool isBossSpawned;
 
     [Header("Wave Info:")]
@@ -23,6 +23,7 @@ public class WaveManager : MonoBehaviour
     public float nextTimeToSpawn = 0.0f;
     public int waveMaxEnemy = 10;
 
+    private int midMobPct = 10; // Mid mob percentage of spawn; 
 
     // GAME EVENTS
     public delegate void EndWave();
@@ -91,7 +92,7 @@ public class WaveManager : MonoBehaviour
 
             if (enemyContainer.transform.childCount > 0)
             {
-                onEndWave();
+                onEndWave?.Invoke();
             }
 
             UpdateWave();
@@ -144,7 +145,8 @@ public class WaveManager : MonoBehaviour
     private void SpawnBosAtPosition(Vector3 pos)
     {
         isBossSpawned = true;
-        Instantiate(bossPrefab, pos, Quaternion.identity, enemyContainer.transform); 
+        GameObject _boss = Instantiate(bossPrefab, pos, Quaternion.identity, enemyContainer.transform);
+        currentBoss = _boss.GetComponent<Enemy>();
     }
 
     public bool isBossWave()

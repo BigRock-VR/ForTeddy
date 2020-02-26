@@ -139,14 +139,7 @@ public class UI_ShopManager : MonoBehaviour
         isOpen = true;
         HideDialog();
         shopMenu.SetActive(true);
-        if (GetAllSoldiersAlive() == 0)
-        {
-            DisableAllSoldier();
-        }
-        else
-        {
-            EnableSoldierImage();
-        }
+        UpdateSoldierImage();
         PlayerMovement p_Movement = player.GetComponent<PlayerMovement>();
         p_Movement.isAiming = false;
         p_Movement.enabled = false;
@@ -391,13 +384,17 @@ public class UI_ShopManager : MonoBehaviour
         return result;
     }
 
-    public void EnableSoldierImage()
+    public void UpdateSoldierImage()
     {
         for (int i = 0; i < MAX_SOLDIERS; i++)
         {
             if (soldiers[i].gameObject.activeInHierarchy)
             {
                 soldierIMG[i].sprite = soldierUnlocked;
+            }
+            else
+            {
+                soldierIMG[i].sprite = soldierLocked;
             }
         }
     }
@@ -543,7 +540,7 @@ public class UI_ShopManager : MonoBehaviour
                     p_PlayerManager.score -= soldierCost;
                     soldiers[currSelectedSoldier].gameObject.SetActive(true);
                     s_SoldierManager[currSelectedSoldier].ReloadSoldierStats();
-                    EnableSoldierImage();
+                    UpdateSoldierImage();
                 }
                 break;
             default:

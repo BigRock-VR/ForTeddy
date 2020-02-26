@@ -2118,7 +2118,7 @@ RectTransform:
   m_Children:
   - {fileID: 773289219}
   m_Father: {fileID: 3350528212996696399}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -5307,6 +5307,80 @@ Transform:
   m_Father: {fileID: 2043054188}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &601081225
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 601081226}
+  - component: {fileID: 601081228}
+  - component: {fileID: 601081227}
+  m_Layer: 5
+  m_Name: Boss_HP_BAR_IMG
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &601081226
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601081225}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 927390570}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 7, y: -56}
+  m_SizeDelta: {x: 195, y: 18}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &601081227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601081225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -9165950889978820871, guid: 58523a0ff4befdf41aac0da2cb284bea,
+    type: 3}
+  m_Type: 3
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 0
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &601081228
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601081225}
+  m_CullTransparentMesh: 0
 --- !u!1 &604332815
 GameObject:
   m_ObjectHideFlags: 0
@@ -7569,6 +7643,81 @@ Transform:
   m_Father: {fileID: 1343577237}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &927390569
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 927390570}
+  - component: {fileID: 927390572}
+  - component: {fileID: 927390571}
+  m_Layer: 5
+  m_Name: Boss_HP_Background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &927390570
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 927390569}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 601081226}
+  m_Father: {fileID: 1308326005}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -275}
+  m_SizeDelta: {x: 334, y: 187}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &927390571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 927390569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -7340915029070444650, guid: 58523a0ff4befdf41aac0da2cb284bea,
+    type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &927390572
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 927390569}
+  m_CullTransparentMesh: 0
 --- !u!1 &935210046
 GameObject:
   m_ObjectHideFlags: 0
@@ -7639,7 +7788,7 @@ RectTransform:
   - {fileID: 1181455260}
   - {fileID: 150002904}
   m_Father: {fileID: 3350528212996696399}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -11027,8 +11176,9 @@ RectTransform:
   m_Children:
   - {fileID: 1526941052}
   - {fileID: 875097790}
+  - {fileID: 927390570}
   m_Father: {fileID: 3350528212996696399}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -11369,13 +11519,14 @@ MonoBehaviour:
   playerManager: {fileID: 1728418974668262240}
   bossPrefab: {fileID: 4913171580632947850, guid: 55811ba7ba9a8b54f9428141b59f16c3,
     type: 3}
+  currentBoss: {fileID: 0}
   isBossSpawned: 0
   waveCount: 1
   waveTimer: 60
   canSpawnEnemy: 0
   timeBetweenSpawn: 0
   nextTimeToSpawn: 0
-  waveMaxEnemy: 100
+  waveMaxEnemy: 15
   waveEndTimer: 0
   coinsContainer: {fileID: 0}
 --- !u!1 &1352856068 stripped
@@ -19079,7 +19230,7 @@ Canvas:
   m_GameObject: {fileID: 3350528212996696395}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 319402500}
   m_PlaneDistance: 10
   m_PixelPerfect: 0
@@ -19106,9 +19257,9 @@ RectTransform:
   - {fileID: 3350528212784291247}
   - {fileID: 1399886655}
   - {fileID: 3350528212455810369}
+  - {fileID: 1308326005}
   - {fileID: 937250208}
   - {fileID: 223337045}
-  - {fileID: 1308326005}
   - {fileID: 1230923356}
   - {fileID: 246771676}
   m_Father: {fileID: 0}
@@ -19135,6 +19286,7 @@ MonoBehaviour:
   p_WeaponSystem: {fileID: 1728418974668262241}
   waveManager: {fileID: 1343577238}
   playerUI: {fileID: 1308326004}
+  bossBarUI: {fileID: 927390569}
   weaponsBackground:
   - {fileID: -2427769939639615258, guid: 58523a0ff4befdf41aac0da2cb284bea, type: 3}
   - {fileID: 249589448297121833, guid: 58523a0ff4befdf41aac0da2cb284bea, type: 3}
@@ -19145,6 +19297,7 @@ MonoBehaviour:
   playerArmorBar: {fileID: 1875362199}
   playerHPBar: {fileID: 824712396}
   weaponAmmoBar: {fileID: 1410870444}
+  bossHPBar: {fileID: 601081227}
   t_timerMinutes: {fileID: 1609059709}
   t_timerSeconds: {fileID: 1945578804}
   t_playerScore: {fileID: 1718324342}

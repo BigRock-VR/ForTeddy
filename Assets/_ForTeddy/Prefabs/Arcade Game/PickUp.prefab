@@ -9914,7 +9914,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 059cdd5f7bbfc29469a770063caa6edb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinAmount: 10
+  coinAmount: 20
   mesh: {fileID: 6209611688814743451}
   animationCurve:
     serializedVersion: 2

@@ -9,11 +9,11 @@ public class UI_Player : MonoBehaviour
     public WeaponSystem p_WeaponSystem;
     public WaveManager waveManager;
 
-    public GameObject playerUI;
+    public GameObject playerUI, bossBarUI;
 
     [Header("UI Elements:")]
     public Sprite[] weaponsBackground = new Sprite[MAX_WEAPONS];
-    public Image weaponImg,playerArmorBar, playerHPBar, weaponAmmoBar;
+    public Image weaponImg,playerArmorBar, playerHPBar, weaponAmmoBar, bossHPBar;
     public Text t_timerMinutes,t_timerSeconds, t_playerScore;
     private const int MAX_WEAPONS = 5;
     private bool isOpen;
@@ -36,6 +36,7 @@ public class UI_Player : MonoBehaviour
 
         UpdateTimer();
         UpdatePlayerStats();
+        UpdateBossStats();
     }
 
     private void Init()
@@ -61,6 +62,7 @@ public class UI_Player : MonoBehaviour
         isOpen = true;
         Init();
         playerUI.SetActive(true);
+        bossBarUI.SetActive(waveManager.isBossWave());
     }
 
     private void UpdatePlayerStats()
@@ -73,6 +75,15 @@ public class UI_Player : MonoBehaviour
         weaponAmmoBar.fillAmount = Map01(p_WeaponSystem.currAmmo, 0, p_WeaponSystem.weapons[p_WeaponSystem.GetCurrSelectedWeapon()].maxAmmoCount);
     }
 
+
+    public void UpdateBossStats()
+    {
+        if (waveManager.currentBoss == null)
+        {
+            return;
+        }
+        bossHPBar.fillAmount = Map01(waveManager.currentBoss.hp, 0, waveManager.currentBoss.MaxHP);
+    }
     private string GetMinutes(float timer)
     {
         minutes = (timer / 60);

@@ -44,7 +44,7 @@ public class Enemy : MonoBehaviour
     private WaveManager waveManager;
     private enum eState { TARGET_PLAYER, TARGET_SOLDIER, ATTACK_PLAYER, ATTACK_SOLDIER, ATTACK_BED, DEATH };
     private eState enemyState;
-    private int hp;
+    public int hp;
     private int damage;
     private double attackSpeed;
     private double nextTimeToAttack;
@@ -122,7 +122,7 @@ public class Enemy : MonoBehaviour
                 targetPosition = waveManager.bedPositions;
                 Debug.DrawLine(transform.position, targetPosition.position, Color.yellow);
                 agent.SetDestination(targetPosition.position);
-                if (CanDoAttackAnimation())
+                if (CanDoAttackAnimation() && !isDead)
                 {
                     if (Time.time >= nextTimeToAttack)
                     {
@@ -336,7 +336,6 @@ public class Enemy : MonoBehaviour
         if (hp <= 0 && !isDead)
         {
             OnDeath();
-
             StartCoroutine(PlayFullDissolveEffect(2.0f));
         }
 
@@ -353,10 +352,14 @@ public class Enemy : MonoBehaviour
 
     private void OnDeath(bool isEndWave = false)
     {
-        if (isBoss)
+        if (isBoss && !isDead)
         {
             waveManager.UpdateWave();
+            isDead = true;
+            enemyState = eState.DEATH;
+            agent.isStopped = true;
         }
+
         isDead = true;
         enemyState = eState.DEATH;
         agent.isStopped = true;

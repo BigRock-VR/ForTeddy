@@ -58,7 +58,7 @@ public class RektifierExplosion : MonoBehaviour
                         }
                         else
                         {
-                            if (!e.isDead)
+                            if (!e.isDead && !e.isBoss)
                             {
                                 //KIll the enemy that are in the center of the explosion radius
                                 e?.TakeDamage(e.MaxHP, new Vector4(1.0f, 0.0f, 0.0f, 0.0f));
