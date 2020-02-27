@@ -56,6 +56,7 @@ public class UI_ShopManager : MonoBehaviour
     private const int MAX_CATEGORY_BUTTONS = 4;
     private const int MAX_SOLDIERS = 4;
     private const int MAX_WEAPONS = 5;
+    private const float SHOP_OPEN_DELAY = 5.0f;
     private PlayerManager p_PlayerManager;
     private WeaponSystem p_WeaponSystem;
     private SoldierManager[] s_SoldierManager = new SoldierManager[MAX_SOLDIERS];
@@ -148,7 +149,7 @@ public class UI_ShopManager : MonoBehaviour
 
     public void InitSelection()
     {
-        tabButtons[0].Select();
+        tabButtons[PLAYER_BUTTON_INDEX].Select();
     }
 
     public void ChangeBannerImage()
@@ -177,7 +178,7 @@ public class UI_ShopManager : MonoBehaviour
 
     public void Open()
     {
-        Invoke("InitShop", 3.0f);
+        Invoke("InitShop", SHOP_OPEN_DELAY);
     }
 
     private void UpdatePlayerStats()
