@@ -17897,7 +17897,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  aimSensibility: 10
+  aimSensibility: 0.4
   inputL:
     actionPath: /actions/ForTeddyArcade/in/Move
     needsReinit: 0

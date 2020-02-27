@@ -1,11 +1,12 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using Valve.VR;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 6f;    // The speed that the player will move at.
-    [SerializeField]public float aimSensibility = 10.0f;   // The rotation sensibility of the joypad.
+    public float speed = 3f;    // The speed that the player will move at.
+    [SerializeField][Range(0.1f, 1.0f)]public float aimSensibility = 0.2f;   // The rotation sensibility of the joypad.
 
     [SerializeField]
     SteamVR_Action_Vector2 inputL, inputR;
@@ -17,12 +18,14 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody rb;
     public bool isAiming;
-    private Vector3 movementDir, aimDir;
     public Material[] lightMat = new Material[2];
     [Range(0.0f,10.0f)]public float lightRadius;
     [Range(0.0f, 10.0f)]public float lightSmothness;
-    private float joyPadThreShold = 0.5f;
-    private float joyPadThreSholdN = -0.5f;
+
+    private float rotateTimer;
+    private Vector3 movementDir, aimDir;
+    private float joyPadThreShold = 0.1f;
+    private float joyPadThreSholdN = -0.1f;
     private PlayerManager p_Manager;
     void Awake()
     {
@@ -32,9 +35,8 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    void FixedUpdate()
+    private void Update()
     {
-
         if (p_Manager.isDead)
         {
             isAiming = false;
@@ -45,8 +47,12 @@ public class PlayerMovement : MonoBehaviour
         {
             // Store the input axes.
             // changed the inputs so that u can use VR pads
-            movementDir = new Vector3(inputL.GetAxis(VRInput).x, 0, inputL.GetAxis(VRInput).y);
-            aimDir = new Vector3(inputR.GetAxis(VRInput).x, 0, inputR.GetAxis(VRInput).y);
+            movementDir.x = inputL.GetAxis(VRInput).x;
+            movementDir.z = inputL.GetAxis(VRInput).y;
+            aimDir.x = inputR.GetAxis(VRInput).x;
+            aimDir.z = inputR.GetAxis(VRInput).y;
+            //movementDir = new Vector3(inputL.GetAxis(VRInput).x, 0, inputL.GetAxis(VRInput).y);
+            //aimDir = new Vector3(inputR.GetAxis(VRInput).x, 0, inputR.GetAxis(VRInput).y);
 
 
             AnimationCTRL();
@@ -55,13 +61,18 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             // Joystick Input
-            movementDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-            aimDir = new Vector3(Input.GetAxisRaw("AimX"), 0, Input.GetAxisRaw("AimY"));
+            movementDir.x = Input.GetAxisRaw("Horizontal");
+            movementDir.z = Input.GetAxisRaw("Vertical");
+            aimDir.x = Input.GetAxisRaw("AimX");
+            aimDir.z = Input.GetAxisRaw("AimY");
 
             AnimationCTRL();
             UpdatePlayerLight();
         }
+    }
 
+    void FixedUpdate()
+    {
         // Move the player around the scene.
         if (movementDir != Vector3.zero)
         {
@@ -92,16 +103,23 @@ public class PlayerMovement : MonoBehaviour
 
     public void Aim(Vector3 dir)
     {
-        Vector3 playerToJoystick = (transform.position + dir) - transform.position;
-
-        playerToJoystick.y = 0f;
+        //Vector3 playerToJoystick = (transform.position + dir) - transform.position;
+        //playerToJoystick.y = 0f;
 
         // Create a quaternion (rotation) based on looking down the vector from the player to the joystick.
-        Quaternion newRotatation = Quaternion.LookRotation(playerToJoystick);
+        Quaternion newRotatation = Quaternion.LookRotation(dir);
         // Set the player's rotation to this new rotation.
-        rb.MoveRotation(Quaternion.Lerp(transform.rotation, newRotatation, Time.deltaTime * aimSensibility));
-        isAiming = true;
+
+        rotateTimer += Time.deltaTime / aimSensibility;
+        rb.MoveRotation(Quaternion.Lerp(transform.rotation, newRotatation, rotateTimer));
+
+        if (rotateTimer > 1)
+        {
+            rotateTimer = 0;
+            isAiming = true;
+        }
     }
+
     public void AnimationCTRL()
     {
         //Player ruotato verso avanti
@@ -142,4 +160,5 @@ public class PlayerMovement : MonoBehaviour
             lightMat[i].SetFloat("PlayerMask_Softness", lightSmothness);
         }
     }
+
 }
