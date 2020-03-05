@@ -31,7 +31,7 @@
 			SubShader
 			{
 				//viene renderizzato insieme ai materiali opachi e nella queue della geometry
-				Tags { "RenderType" = "Opaque" "Queue" = "Geometry" }
+				Tags { "RenderType" = "TransparentCutout" "Queue" = "Transparent" }
 
 					Stencil
 			{
@@ -52,7 +52,7 @@
 
 			CGPROGRAM
 
-			#pragma surface surf Standard fullforwardshadows
+			#pragma surface surf Standard fullforwardshadows addshadow
 			#pragma target 3.0
 
 			sampler2D _MainTex, _EmissionTex, _Maos, _Bump;
@@ -100,7 +100,6 @@
 				fixed4 lerpEmission = lerp(fixed4(0, 0, 0, 0), e, sum);
 
 				o.Albedo = lerpColor.rgb;
-				
 				o.Smoothness = M.b;
 				o.Metallic = M.r;
 				o.Alpha = c.a;

@@ -31,7 +31,7 @@ Shader "Teddy_Mat_Shader"
 		#include "UnityStandardUtils.cginc"
 		#include "UnityShaderVariables.cginc"
 		#pragma target 4.6
-		#pragma surface surf Standard keepalpha noshadow 
+		#pragma surface surf Standard fullforwardshadows keepalpha 
 		struct Input
 		{
 			float2 uv_texcoord;

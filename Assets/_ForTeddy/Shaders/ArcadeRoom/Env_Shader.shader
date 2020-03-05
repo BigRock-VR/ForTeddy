@@ -36,7 +36,7 @@
 
 		CGPROGRAM
 
-		#pragma surface surf Standard fullforwardshadows
+		#pragma surface surf Standard fullforwardshadows addshadow
 		#pragma target 3.0
 
 		sampler2D _MainTex, _EmissionTex, _Maos, _Bump;

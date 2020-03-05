@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Atomizer
   fireRate: 6
-  bulletSpeed: 1000
   damage: 10
   maxAmmoCount: 6
+  pushForce: 0
   isDefaultWeapon: 0
   cost: 500
   weaponImage: {fileID: 1667429502347898398, guid: 7899f415e7f74f448bba80db47787b6c,

@@ -22,13 +22,15 @@ public class Enemy : MonoBehaviour
     public Transform[] attackAnchorPoint; // ENEMY HIT POINT
     [Range(0.1f, 5)] public float hitPointRange = 0.2f;
     public AnimationCurve hitAnimationCurve;
+    public ParticleSystem pSystemAttack; // ENEMY ATTACK VFX
 
     /*
      * DROP INFORMATION
      */
     [Header("Drop Info:")]
     public GameObject pickUpPrefab; // Prefab that can spawn the enemy on death
-    [Range(1, 10)] public int maxDropPickUp = 1; // How many pick up can drop the enemy
+    [Range(1, 20)] public int minDropPickUp = 1; // The min number of pick ups that can drop the enemy
+    [Range(1, 30)] public int maxDropPickUp = 1; // The max number of pick ups that can drop the enemy
 
     /*
      * Boss Information
@@ -205,12 +207,20 @@ public class Enemy : MonoBehaviour
                 if (CanDoAttackAnimation() && !isDead)
                 {
                     anim.SetTrigger("Attack");
+                    if (pSystemAttack)
+                    {
+                        pSystemAttack.Play();
+                    }
                 }
                 break;
             case eState.ATTACK_SOLDIER:
                 if (CanDoAttackAnimation() && !isDead)
                 {
                     anim.SetTrigger("Attack");
+                    if (pSystemAttack)
+                    {
+                        pSystemAttack.Play();
+                    }
                 }
                 break;
 
@@ -318,7 +328,7 @@ public class Enemy : MonoBehaviour
     }
 
     /*
-     * EMISSION CORRISION BASE ON THE ENEMY HP
+     * EMISSION CORROSION BASE ON THE ENEMY HP
      */
     IEnumerator EmissionEffect(Vector4 hitPoint, float delay, float currEmission, float nextEmission)
     {
@@ -363,6 +373,7 @@ public class Enemy : MonoBehaviour
         isDead = true;
         enemyState = eState.DEATH;
         agent.isStopped = true;
+        GetComponent<Renderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
 
         if (!isEndWave)
         {
@@ -381,7 +392,7 @@ public class Enemy : MonoBehaviour
     {
         if (maxDropPickUp > 1)
         {
-            int dropPct = UnityEngine.Random.Range(1, maxDropPickUp);
+            int dropPct = UnityEngine.Random.Range(minDropPickUp, maxDropPickUp);
             for (int i = 0; i < dropPct; i++)
             {
                 Vector2 randRadius = UnityEngine.Random.insideUnitCircle;

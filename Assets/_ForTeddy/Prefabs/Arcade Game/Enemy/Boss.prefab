@@ -457,7 +457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 991f501d9854e7a4d976afaf61e40c03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHP: 1000
+  MaxHP: 3000
   AttackDamage: 150
   MovementSpeed: 1
   AttackSpeed: 20
@@ -503,11 +503,14 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  pSystemAttack: {fileID: 0}
   pickUpPrefab: {fileID: 4104111007740378748, guid: 82f154ff1a8e7cf46affeb43e4d01363,
     type: 3}
-  maxDropPickUp: 10
+  minDropPickUp: 10
+  maxDropPickUp: 30
   isBoss: 1
   targetPriority: 1
+  hp: 0
 --- !u!195 &4913171580632947843
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -517,7 +520,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 4913171580632947850}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1.5
+  m_Radius: 1.2
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -526,7 +529,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 3
+  m_Height: 2.7
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
@@ -556,7 +559,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 2.5
+  m_Radius: 1.4
   m_Height: 4
   m_Direction: 1
   m_Center: {x: 0, y: 2.0778031, z: 0.0372833}
@@ -568,7 +571,7 @@ SkinnedMeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4913171580632947850}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 2
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1

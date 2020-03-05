@@ -557,10 +557,10 @@ TextureImporter:
       name: UI_Game_11
       rect:
         serializedVersion: 2
-        x: 2809
-        y: 2461
-        width: 1846
-        height: 1567
+        x: 2820
+        y: 2467
+        width: 1835
+        height: 1557
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -18,9 +18,9 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody rb;
     public bool isAiming;
-    public Material[] lightMat = new Material[2];
-    [Range(0.0f,10.0f)]public float lightRadius;
-    [Range(0.0f, 10.0f)]public float lightSmothness;
+    //public Material[] lightMat = new Material[2];
+    //[Range(0.0f,10.0f)]public float lightRadius;
+    //[Range(0.0f, 10.0f)]public float lightSmothness;
 
     private float rotateTimer;
     private Vector3 movementDir, aimDir;
@@ -56,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
 
 
             AnimationCTRL();
-            UpdatePlayerLight();
+            //UpdatePlayerLight();
         }
         else
         {
@@ -67,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
             aimDir.z = Input.GetAxisRaw("AimY");
 
             AnimationCTRL();
-            UpdatePlayerLight();
+            //UpdatePlayerLight();
         }
     }
 
@@ -151,14 +151,14 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void UpdatePlayerLight()
-    {
-        for (int i = 0; i < lightMat.Length; i++)
-        {
-            lightMat[i].SetVector("PlayerMask_Position", transform.position);
-            lightMat[i].SetFloat("PlayerMask_Radius", lightRadius);
-            lightMat[i].SetFloat("PlayerMask_Softness", lightSmothness);
-        }
-    }
+    //public void UpdatePlayerLight()
+    //{
+    //    for (int i = 0; i < lightMat.Length; i++)
+    //    {
+    //        lightMat[i].SetVector("PlayerMask_Position", transform.position);
+    //        lightMat[i].SetFloat("PlayerMask_Radius", lightRadius);
+    //        lightMat[i].SetFloat("PlayerMask_Softness", lightSmothness);
+    //    }
+    //}
 
 }

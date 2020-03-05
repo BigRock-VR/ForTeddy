@@ -1,4 +1,4 @@
-﻿#define TESTMODE
+﻿//#define TESTMODE
 using UnityEngine;
 
 public enum eWeapons { DEFAULT, DAKKAGUN, IMPALLINATOR, ATOMIZER, REKTIFIER };
