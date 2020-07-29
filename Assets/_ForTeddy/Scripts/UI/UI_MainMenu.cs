@@ -19,6 +19,8 @@ public class UI_MainMenu : MonoBehaviour
     private void Start()
     {
         StartSettings();
+        FMODBGPlayer.Init();
+        FMODBGPlayer.SetMainMenuMusic();
     }
 
     void StartSettings()
@@ -40,6 +42,7 @@ public class UI_MainMenu : MonoBehaviour
     public void NewGame()
     {
         mainMenu.SetActive(false);
+        FMODBGPlayer.SetGamePlayMusic();
         GameManager.Instance.waveManager.GetComponent<WaveManager>().StartGame();
     }
 

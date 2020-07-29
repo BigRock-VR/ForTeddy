@@ -43,6 +43,7 @@ public class PlayerManager : MonoBehaviour
     private void Dead()
     {
         onPlayerDeath?.Invoke();
+        FMODBGPlayer.SetDeathMusic();
         PlayDeathAnimation();
     }
     
