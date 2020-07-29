@@ -1,6 +1,7 @@
 ﻿//#define TESTMODE
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class PlayerManager : MonoBehaviour
     public AnimationCurve hitAnimationCurve;
     private Animator anim;
     private Material mat;
+    [SerializeField] private PostProcessVolume m_HitPostProcess;
 
     public delegate void DeathEvent();
     public event DeathEvent onPlayerDeath;
@@ -138,10 +140,12 @@ public class PlayerManager : MonoBehaviour
             {
                 t += Time.deltaTime * 2;
                 mat.SetFloat("_Fresnel_Power", Mathf.Lerp(0, 1, hitAnimationCurve.Evaluate(t)));
+                m_HitPostProcess.weight = Mathf.Lerp(0,1, hitAnimationCurve.Evaluate(t));
                 yield return null;
             }
             mat.SetInt("_fresnelscale0off1on", 0);
             mat.SetFloat("_Fresnel_Power", 0);
+            m_HitPostProcess.weight = 0;
         }
     }
     public void PlayDeathAnimation()

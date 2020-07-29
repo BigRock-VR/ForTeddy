@@ -509,7 +509,7 @@ MonoBehaviour:
   minDropPickUp: 10
   maxDropPickUp: 30
   isBoss: 1
-  targetPriority: 1
+  targetPriority: 0
   hp: 0
 --- !u!195 &4913171580632947843
 NavMeshAgent:

@@ -119,6 +119,15 @@ public class Enemy : MonoBehaviour
                 targetPosition = GameManager.Instance.player?.transform;
                 Debug.DrawLine(transform.position, targetPosition.position, Color.blue);
                 agent.SetDestination(targetPosition.position);
+                if (CanDoAttackAnimation() && !isDead)
+                {
+                    if (Time.time >= nextTimeToAttack)
+                    {
+                        transform.LookAt(targetPosition);
+                        nextTimeToAttack = Time.time + attackSpeed;
+                        anim.SetTrigger("Attack");
+                    }
+                }
                 break;
             case eTargets.BED:
                 targetPosition = waveManager.bedPositions;

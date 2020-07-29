@@ -32,12 +32,20 @@ public class UI_MainMenu : MonoBehaviour
         backScore_Btn = rankingMenu.GetComponentInChildren<Button>();
 
         newGame_Btn.Select();
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     public void NewGame()
     {
         mainMenu.SetActive(false);
         GameManager.Instance.waveManager.GetComponent<WaveManager>().StartGame();
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 
     //Cambio menu tra main e Settings

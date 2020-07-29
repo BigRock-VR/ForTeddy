@@ -138,6 +138,8 @@ public class UI_ShopManager : MonoBehaviour
     public void InitShop()
     {
         isOpen = true;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         HideDialog();
         shopMenu.SetActive(true);
         UpdateSoldierImage();
@@ -167,6 +169,8 @@ public class UI_ShopManager : MonoBehaviour
 
     public void Close()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         player.gameObject.GetComponent<PlayerMovement>().enabled = true;
         isOpen = false;
         currSelectedTab = 0;

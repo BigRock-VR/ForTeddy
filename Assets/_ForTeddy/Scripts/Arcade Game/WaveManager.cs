@@ -64,6 +64,8 @@ public class WaveManager : MonoBehaviour
 
     public void StartGame()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         onStartGame?.Invoke();
         Invoke("StartWave", 3.0f);
     }

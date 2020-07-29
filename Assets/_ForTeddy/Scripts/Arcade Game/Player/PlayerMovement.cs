@@ -151,6 +151,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+
     //public void UpdatePlayerLight()
     //{
     //    for (int i = 0; i < lightMat.Length; i++)
