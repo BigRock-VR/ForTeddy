@@ -1,6 +1,7 @@
 ﻿//#define TESTMODE
 using UnityEngine;
-
+using FMOD.Studio;
+using FMODUnity;
 public enum eWeapons { DEFAULT, DAKKAGUN, IMPALLINATOR, ATOMIZER, REKTIFIER };
 
 public class WeaponSystem : MonoBehaviour
@@ -29,11 +30,17 @@ public class WeaponSystem : MonoBehaviour
     private Transform bulletSpawnPosition;
     private bool isSwitchingWeapon;
 
+    //FMOD SOUNDS
+    EventInstance Weapons_sound;
+
     void Start()
     {
         anim = GetComponent<Animator>();
         InitWeapons(); // Instantiate all the possible weapons
         atomizerLaser = weaponObjs[(int)eWeapons.ATOMIZER].transform.GetComponentInChildren<AtomizerLaser>();
+
+        //FMOD
+        Weapons_sound = RuntimeManager.CreateInstance("event:/Weapons");
     }
 
     private void Update()
@@ -77,6 +84,9 @@ public class WeaponSystem : MonoBehaviour
                     CheckCurrentAmmo(); // DECREASE AMMO 
                     pSystem.Play();
                     anim.SetTrigger("isShooting");
+                    //FMOD
+                    Weapons_sound.setParameterByName("Weapon Type", GetCurrSelectedWeapon());
+                    Weapons_sound.start();
                 }
                 break;
             case Weapon.efireType.SINGLE:
@@ -89,6 +99,9 @@ public class WeaponSystem : MonoBehaviour
 
                     nextTimeToFire = Time.time + weapons[GetCurrSelectedWeapon()].fireRate;
                     pSystem.Play();
+                    //FMOD
+                    Weapons_sound.setParameterByName("Weapon Type", GetCurrSelectedWeapon());
+                    Weapons_sound.start();
                 }
                 break;
             // ATOMIZER WEAPON
@@ -100,6 +113,9 @@ public class WeaponSystem : MonoBehaviour
                     {
                         pSystem.Play();
                         isShooting = true;
+                        //FMOD
+                        Weapons_sound.setParameterByName("Weapon Type", GetCurrSelectedWeapon());
+                        Weapons_sound.start();
                     }
                     currAmmo -= Time.deltaTime;
                     RaycastHit[] hits;
@@ -133,6 +149,9 @@ public class WeaponSystem : MonoBehaviour
                     CheckCurrentAmmo();
                     pSystem.Play();
                     nextTimeToFire = Time.time + weapons[GetCurrSelectedWeapon()].fireRate;
+                    //FMOD
+                    Weapons_sound.setParameterByName("Weapon Type", GetCurrSelectedWeapon());
+                    Weapons_sound.start();
                     Invoke("SpawnRektifierBullet", 0.4f);
                 }
                 break;

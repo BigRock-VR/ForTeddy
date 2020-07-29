@@ -248,8 +248,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 13, y: 2, z: 11}
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Size: {x: 20, y: 2, z: 16}
+  m_Center: {x: 0, y: 1, z: 2}
 --- !u!1 &12830495
 GameObject:
   m_ObjectHideFlags: 0
@@ -1620,6 +1620,7 @@ GameObject:
   - component: {fileID: 91866315}
   - component: {fileID: 91866314}
   - component: {fileID: 91866317}
+  - component: {fileID: 91866318}
   m_Layer: 5
   m_Name: Armor_BTN
   m_TagString: Untagged
@@ -1745,6 +1746,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSelected: 0
   bannerImgAnim: {fileID: 0}
+  m_FMODPlaySound: {fileID: 91866318}
+--- !u!114 &91866318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91866312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f46238560748904aa8447466c9be0ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SoundPath: event:/UI/Shop/Hover
 --- !u!1 &93396831
 GameObject:
   m_ObjectHideFlags: 0
@@ -3031,6 +3046,7 @@ GameObject:
   - component: {fileID: 260601770}
   - component: {fileID: 260601769}
   - component: {fileID: 260601768}
+  - component: {fileID: 260601771}
   m_Layer: 5
   m_Name: RightArrow_BTN
   m_TagString: Untagged
@@ -3114,6 +3130,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 260601771}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &260601769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3151,6 +3178,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 260601766}
   m_CullTransparentMesh: 0
+--- !u!114 &260601771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260601766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f46238560748904aa8447466c9be0ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SoundPath: event:/UI/Shop/Click_shop
 --- !u!1 &274865877
 GameObject:
   m_ObjectHideFlags: 0
@@ -4426,6 +4466,7 @@ GameObject:
   - component: {fileID: 431237987}
   - component: {fileID: 431237985}
   - component: {fileID: 431237984}
+  - component: {fileID: 431237988}
   m_Layer: 5
   m_Name: Ranking_BTN
   m_TagString: Untagged
@@ -4490,6 +4531,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 431237988}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &431237985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4546,6 +4598,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 431237983}
   m_CullTransparentMesh: 0
+--- !u!114 &431237988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 431237983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f46238560748904aa8447466c9be0ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SoundPath: "event:/UI/Main men\xF9/Click_Main"
 --- !u!1 &433860868
 GameObject:
   m_ObjectHideFlags: 0
@@ -4559,6 +4624,8 @@ GameObject:
   - component: {fileID: 433860871}
   - component: {fileID: 433860870}
   - component: {fileID: 433860873}
+  - component: {fileID: 433860874}
+  - component: {fileID: 433860875}
   m_Layer: 5
   m_Name: Solider_BTN_0
   m_TagString: Untagged
@@ -4574,7 +4641,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 433860868}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.000000042649653}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.0258017, y: 1.0258017, z: 1.0258017}
   m_Children:
   - {fileID: 472173220}
@@ -4643,6 +4710,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 433860874}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &433860871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4657,7 +4735,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4694,6 +4772,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSelected: 0
   bannerImgAnim: {fileID: 490161603}
+  m_FMODPlaySound: {fileID: 433860874}
+--- !u!114 &433860874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433860868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f46238560748904aa8447466c9be0ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SoundPath: event:/UI/Shop/Hover
+--- !u!114 &433860875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433860868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f46238560748904aa8447466c9be0ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SoundPath: event:/UI/Shop/Click_shop
 --- !u!1 &440388975
 GameObject:
   m_ObjectHideFlags: 0
@@ -4858,6 +4963,7 @@ GameObject:
   - component: {fileID: 457320486}
   - component: {fileID: 457320485}
   - component: {fileID: 457320488}
+  - component: {fileID: 457320489}
   m_Layer: 5
   m_Name: Buy_BTN
   m_TagString: Untagged
@@ -4939,6 +5045,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 457320489}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &457320486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4995,6 +5112,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &457320489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457320483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f46238560748904aa8447466c9be0ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SoundPath: event:/UI/Shop/Click_shop
 --- !u!1 &463946214
 GameObject:
   m_ObjectHideFlags: 0
@@ -8875,8 +9005,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 13, y: 2, z: 11}
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Size: {x: 20, y: 2, z: 13.814331}
+  m_Center: {x: 3, y: 1, z: 1.4071655}
 --- !u!1 &966661863
 GameObject:
   m_ObjectHideFlags: 0
@@ -8890,6 +9020,8 @@ GameObject:
   - component: {fileID: 966661866}
   - component: {fileID: 966661865}
   - component: {fileID: 966661868}
+  - component: {fileID: 966661869}
+  - component: {fileID: 966661870}
   m_Layer: 5
   m_Name: Solider_BTN_1
   m_TagString: Untagged
@@ -8905,7 +9037,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 966661863}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.000000042649653}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.0258017, y: 1.0258017, z: 1.0258017}
   m_Children:
   - {fileID: 1775433165}
@@ -8974,6 +9106,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 966661869}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &966661866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8988,7 +9131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -9025,6 +9168,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSelected: 0
   bannerImgAnim: {fileID: 490161603}
+  m_FMODPlaySound: {fileID: 966661869}
+--- !u!114 &966661869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966661863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f46238560748904aa8447466c9be0ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SoundPath: event:/UI/Shop/Hover
+--- !u!114 &966661870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966661863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f46238560748904aa8447466c9be0ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SoundPath: event:/UI/Shop/Click_shop
 --- !u!1 &967130489
 GameObject:
   m_ObjectHideFlags: 0
@@ -10104,8 +10274,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 13, y: 2, z: 11}
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Size: {x: 20, y: 2, z: 11}
+  m_Center: {x: 2.95747, y: 1, z: 0}
 --- !u!1 &1115371186
 GameObject:
   m_ObjectHideFlags: 0
@@ -11345,6 +11515,7 @@ GameObject:
   - component: {fileID: 1256249001}
   - component: {fileID: 1256249000}
   - component: {fileID: 1256249003}
+  - component: {fileID: 1256249004}
   m_Layer: 5
   m_Name: Play_BTN
   m_TagString: Untagged
@@ -11480,6 +11651,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSelected: 0
   bannerImgAnim: {fileID: 0}
+  m_FMODPlaySound: {fileID: 1256249004}
+--- !u!114 &1256249004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256248998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f46238560748904aa8447466c9be0ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SoundPath: event:/UI/Shop/Hover
 --- !u!1 &1256306068
 GameObject:
   m_ObjectHideFlags: 0
@@ -11788,6 +11973,7 @@ GameObject:
   - component: {fileID: 1290459500}
   - component: {fileID: 1290459499}
   - component: {fileID: 1290459498}
+  - component: {fileID: 1290459502}
   m_Layer: 5
   m_Name: Quit_BTN
   m_TagString: Untagged
@@ -11843,6 +12029,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3350528212996696396}
         m_MethodName: Quit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1290459502}
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11908,6 +12105,19 @@ RectTransform:
   m_AnchoredPosition: {x: 250, y: -179.99}
   m_SizeDelta: {x: 57.5, y: 28}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1290459502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290459497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f46238560748904aa8447466c9be0ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SoundPath: "event:/UI/Main men\xF9/Click_Main"
 --- !u!1 &1297485777
 GameObject:
   m_ObjectHideFlags: 0
@@ -11921,6 +12131,8 @@ GameObject:
   - component: {fileID: 1297485780}
   - component: {fileID: 1297485779}
   - component: {fileID: 1297485782}
+  - component: {fileID: 1297485783}
+  - component: {fileID: 1297485784}
   m_Layer: 5
   m_Name: Solider_BTN_3
   m_TagString: Untagged
@@ -11936,7 +12148,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1297485777}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.000000042649653}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.0258017, y: 1.0258017, z: 1.0258017}
   m_Children:
   - {fileID: 1253308181}
@@ -12005,6 +12217,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1297485783}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1297485780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12019,7 +12242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -12056,6 +12279,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSelected: 0
   bannerImgAnim: {fileID: 490161603}
+  m_FMODPlaySound: {fileID: 1297485783}
+--- !u!114 &1297485783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297485777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f46238560748904aa8447466c9be0ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SoundPath: event:/UI/Shop/Hover
+--- !u!114 &1297485784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297485777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f46238560748904aa8447466c9be0ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SoundPath: event:/UI/Shop/Click_shop
 --- !u!1 &1308326004
 GameObject:
   m_ObjectHideFlags: 0
@@ -12107,6 +12357,8 @@ GameObject:
   - component: {fileID: 1312668502}
   - component: {fileID: 1312668501}
   - component: {fileID: 1312668504}
+  - component: {fileID: 1312668505}
+  - component: {fileID: 1312668506}
   m_Layer: 5
   m_Name: Solider_BTN_2
   m_TagString: Untagged
@@ -12191,6 +12443,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1312668505}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1312668502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12205,7 +12468,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -12242,6 +12505,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSelected: 0
   bannerImgAnim: {fileID: 490161603}
+  m_FMODPlaySound: {fileID: 1312668505}
+--- !u!114 &1312668505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312668499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f46238560748904aa8447466c9be0ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SoundPath: event:/UI/Shop/Hover
+--- !u!114 &1312668506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312668499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f46238560748904aa8447466c9be0ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SoundPath: event:/UI/Shop/Click_shop
 --- !u!1 &1318530788
 GameObject:
   m_ObjectHideFlags: 0
@@ -12647,6 +12937,7 @@ GameObject:
   - component: {fileID: 1399886655}
   - component: {fileID: 1399886654}
   - component: {fileID: 1399886653}
+  - component: {fileID: 1399886656}
   m_Layer: 5
   m_Name: Controls
   m_TagString: Untagged
@@ -12720,6 +13011,29 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1399886656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399886652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: -1
+  OverrideMaxDistance: -1
 --- !u!1 &1400623129
 GameObject:
   m_ObjectHideFlags: 0
@@ -12850,6 +13164,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1404216372}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1404216370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12887,25 +13212,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1404216367}
   m_CullTransparentMesh: 0
---- !u!95 &1404216372
-Animator:
-  serializedVersion: 3
+--- !u!114 &1404216372
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1404216367}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9895ff6b1c14f3e47a25d62cbd643d80, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f46238560748904aa8447466c9be0ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SoundPath: event:/UI/Shop/Click_shop
 --- !u!1 &1409947975
 GameObject:
   m_ObjectHideFlags: 0
@@ -12919,6 +13238,7 @@ GameObject:
   - component: {fileID: 1409947977}
   - component: {fileID: 1409947976}
   - component: {fileID: 1409947980}
+  - component: {fileID: 1409947981}
   m_Layer: 5
   m_Name: Confirm
   m_TagString: Untagged
@@ -12982,6 +13302,17 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 3350528212996696397}
         m_MethodName: InitSelection
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1409947981}
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13067,6 +13398,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1409947981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409947975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f46238560748904aa8447466c9be0ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SoundPath: event:/UI/Shop/Purchase
 --- !u!1 &1410870441
 GameObject:
   m_ObjectHideFlags: 0
@@ -13407,6 +13751,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 193106318}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1476603844
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1476603846}
+  - component: {fileID: 1476603845}
+  m_Layer: 0
+  m_Name: MusicManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1476603845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1476603844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13c804352f68f70438d559938c5dc630, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Shop: {fileID: 937250207}
+  MainMenu: {fileID: 3350528213181282238}
+  m_PlayerManager: {fileID: 1728418974668262240}
+--- !u!4 &1476603846
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1476603844}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -61.630287, y: 36.288754, z: -2.1815464}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1479690920
 GameObject:
@@ -13792,6 +14182,7 @@ GameObject:
   - component: {fileID: 1558144290}
   - component: {fileID: 1558144289}
   - component: {fileID: 1558144292}
+  - component: {fileID: 1558144293}
   m_Layer: 5
   m_Name: HP_BTN
   m_TagString: Untagged
@@ -13917,6 +14308,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSelected: 0
   bannerImgAnim: {fileID: 0}
+  m_FMODPlaySound: {fileID: 1558144293}
+--- !u!114 &1558144293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558144287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f46238560748904aa8447466c9be0ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SoundPath: event:/UI/Shop/Hover
 --- !u!1 &1563427437
 GameObject:
   m_ObjectHideFlags: 0
@@ -14021,6 +14426,7 @@ GameObject:
   - component: {fileID: 1587171334}
   - component: {fileID: 1587171332}
   - component: {fileID: 1587171331}
+  - component: {fileID: 1587171335}
   m_Layer: 5
   m_Name: Controls_BTN
   m_TagString: Untagged
@@ -14085,6 +14491,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1587171335}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1587171332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14141,6 +14558,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1587171330}
   m_CullTransparentMesh: 0
+--- !u!114 &1587171335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1587171330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f46238560748904aa8447466c9be0ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SoundPath: "event:/UI/Main men\xF9/Click_Main"
 --- !u!1 &1588224751
 GameObject:
   m_ObjectHideFlags: 0
@@ -14740,6 +15170,7 @@ GameObject:
   - component: {fileID: 1628605765}
   - component: {fileID: 1628605764}
   - component: {fileID: 1628605763}
+  - component: {fileID: 1628605766}
   m_Layer: 5
   m_Name: Back_Btn
   m_TagString: Untagged
@@ -14823,6 +15254,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1628605766}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1628605764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14860,6 +15302,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1628605761}
   m_CullTransparentMesh: 0
+--- !u!114 &1628605766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628605761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f46238560748904aa8447466c9be0ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SoundPath: "event:/UI/Main men\xF9/Back"
 --- !u!1 &1636273688
 GameObject:
   m_ObjectHideFlags: 0
@@ -15237,6 +15692,7 @@ GameObject:
   - component: {fileID: 1684704578}
   - component: {fileID: 1684704577}
   - component: {fileID: 1684704580}
+  - component: {fileID: 1684704581}
   m_Layer: 5
   m_Name: Player_BTN
   m_TagString: Untagged
@@ -15361,6 +15817,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSelected: 0
   bannerImgAnim: {fileID: 490161603}
+  m_FMODPlaySound: {fileID: 1684704581}
+--- !u!114 &1684704581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684704575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f46238560748904aa8447466c9be0ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SoundPath: event:/UI/Shop/Hover
 --- !u!1 &1691640108
 GameObject:
   m_ObjectHideFlags: 0
@@ -15739,6 +16209,7 @@ GameObject:
   - component: {fileID: 1730718983}
   - component: {fileID: 1730718982}
   - component: {fileID: 1730718985}
+  - component: {fileID: 1730718986}
   m_Layer: 5
   m_Name: Weapon_BTN
   m_TagString: Untagged
@@ -15865,6 +16336,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSelected: 0
   bannerImgAnim: {fileID: 0}
+  m_FMODPlaySound: {fileID: 1730718986}
+--- !u!114 &1730718986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730718980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f46238560748904aa8447466c9be0ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SoundPath: event:/UI/Shop/Hover
 --- !u!1 &1757783126
 GameObject:
   m_ObjectHideFlags: 0
@@ -15985,6 +16470,7 @@ GameObject:
   - component: {fileID: 1777056603}
   - component: {fileID: 1777056602}
   - component: {fileID: 1777056605}
+  - component: {fileID: 1777056606}
   m_Layer: 5
   m_Name: Cancel
   m_TagString: Untagged
@@ -16077,6 +16563,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1777056606}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1777056603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16133,6 +16630,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1777056606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777056600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f46238560748904aa8447466c9be0ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SoundPath: "event:/UI/Main men\xF9/Back"
 --- !u!1 &1778663096
 GameObject:
   m_ObjectHideFlags: 0
@@ -18199,6 +18709,7 @@ GameObject:
   - component: {fileID: 2109645824}
   - component: {fileID: 2109645823}
   - component: {fileID: 2109645826}
+  - component: {fileID: 2109645827}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -18291,6 +18802,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2109645827}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2109645824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18347,6 +18869,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2109645827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2109645821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f46238560748904aa8447466c9be0ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SoundPath: "event:/UI/Main men\xF9/Back"
 --- !u!1 &2116754940
 GameObject:
   m_ObjectHideFlags: 0
@@ -20079,6 +20614,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3350528213096440096}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3350528213096440093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20120,6 +20666,7 @@ GameObject:
   - component: {fileID: 3350528213096440066}
   - component: {fileID: 3350528213096440093}
   - component: {fileID: 3350528213096440092}
+  - component: {fileID: 3350528213096440096}
   m_Layer: 5
   m_Name: StartGame_BTN
   m_TagString: Untagged
@@ -20146,6 +20693,19 @@ RectTransform:
   m_AnchoredPosition: {x: -250, y: -179.99}
   m_SizeDelta: {x: 80.5, y: 24}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3350528213096440096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3350528213096440094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f46238560748904aa8447466c9be0ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SoundPath: "event:/UI/Main men\xF9/Click_Main"
 --- !u!114 &3350528213181282236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20526,8 +21086,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 13, y: 2, z: 11}
-  m_Center: {x: 2.110651, y: 1, z: 0}
+  m_Size: {x: 20, y: 2, z: 11}
+  m_Center: {x: 6, y: 1, z: 0}
 --- !u!114 &4553585953576379690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24014,6 +24574,7 @@ GameObject:
   - component: {fileID: 7829593100849450844}
   - component: {fileID: 7829593100849450845}
   - component: {fileID: 7829593100849450786}
+  - component: {fileID: 7829593100849450785}
   m_Layer: 5
   m_Name: Back_Btn
   m_TagString: Untagged
@@ -24021,6 +24582,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7829593100849450785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7829593100849450784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f46238560748904aa8447466c9be0ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SoundPath: "event:/UI/Main men\xF9/Back"
 --- !u!114 &7829593100849450786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24070,6 +24644,17 @@ MonoBehaviour:
       - m_Target: {fileID: 3350528212996696396}
         m_MethodName: ChangeMenu
         m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1628605766}
+        m_MethodName: Play
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

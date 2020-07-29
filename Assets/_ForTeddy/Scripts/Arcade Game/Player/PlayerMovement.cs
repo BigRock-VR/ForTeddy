@@ -103,6 +103,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void Aim(Vector3 dir)
     {
+        if (p_Manager.isDead)
+        {
+            return;
+        }
         //Vector3 playerToJoystick = (transform.position + dir) - transform.position;
         //playerToJoystick.y = 0f;
 
