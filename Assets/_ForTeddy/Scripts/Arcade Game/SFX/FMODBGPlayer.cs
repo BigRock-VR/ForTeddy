@@ -1,12 +1,12 @@
-﻿using UnityEngine;
-using FMOD;
-using FMODUnity;
-public static class FMODBGPlayer
+﻿using System.Collections;
+using UnityEngine;
+public class FMODBGPlayer : MonoBehaviour
 {
-    public static FMOD.Studio.EventInstance MusicGameplay;
-    public static void Init()
+    private static FMOD.Studio.EventInstance MusicGameplay;
+
+    private void Start()
     {
-        MusicGameplay = RuntimeManager.CreateInstance("event:/Music ARCADE/Music Gameplay");
+        MusicGameplay = FMODUnity.RuntimeManager.CreateInstance("event:/Music ARCADE/Music Gameplay");
         MusicGameplay.start();
     }
 
@@ -16,15 +16,14 @@ public static class FMODBGPlayer
         MusicGameplay.setParameterByName("GameStatus", 2);
     }
 
-    public static void SetMainMenuMusic()
-    {
-        MusicGameplay.setParameterByName("MainMenu", 1);
-        MusicGameplay.setParameterByName("GameStatus", 1);
-    }
-
     public static void SetGamePlayMusic()
     {
         MusicGameplay.setParameterByName("MainMenu", 0);
         MusicGameplay.setParameterByName("GameStatus", 0);
+    }
+
+    public static void SetVolume(float volume)
+    {
+        MusicGameplay.setVolume(volume);
     }
 }

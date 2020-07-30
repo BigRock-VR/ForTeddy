@@ -11,16 +11,12 @@ public class UI_MainMenu : MonoBehaviour
     [HideInInspector]
     public Button newGame_Btn;
     private Button back_Btn;
-    private Button no_Btn;
     private Button backScore_Btn;
-
-    bool audioEnabled = true;
 
     private void Start()
     {
         StartSettings();
-        FMODBGPlayer.Init();
-        FMODBGPlayer.SetMainMenuMusic();
+        FMODBGPlayer.SetGamePlayMusic();
     }
 
     void StartSettings()

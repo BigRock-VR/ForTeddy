@@ -140,7 +140,7 @@ public class UI_ShopManager : MonoBehaviour
         isOpen = true;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        FMODBGPlayer.SetMainMenuMusic();
+        FMODBGPlayer.SetVolume(0.6f);
         HideDialog();
         shopMenu.SetActive(true);
         UpdateSoldierImage();
@@ -172,7 +172,7 @@ public class UI_ShopManager : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        FMODBGPlayer.SetGamePlayMusic();
+        FMODBGPlayer.SetVolume(1.0f);
         player.gameObject.GetComponent<PlayerMovement>().enabled = true;
         isOpen = false;
         currSelectedTab = 0;
