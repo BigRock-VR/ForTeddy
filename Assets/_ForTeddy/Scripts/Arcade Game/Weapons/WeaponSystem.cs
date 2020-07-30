@@ -160,7 +160,7 @@ public class WeaponSystem : MonoBehaviour
     }
     public void SpawnRektifierBullet()
     {
-        var _bullet = Instantiate(weapons[GetCurrSelectedWeapon()].explosionBullet, bulletSpawnPosition.position, Quaternion.Euler(-52f, 217f, 112f));
+        var _bullet = Instantiate(weapons[GetCurrSelectedWeapon()].explosionBullet, bulletSpawnPosition.position, Quaternion.identity);
         _bullet.GetComponent<RektifierExplosion>().direction = transform.forward;
     }
     private void CheckLaserAmmo()

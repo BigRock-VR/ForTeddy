@@ -13,7 +13,7 @@ public class RektifierExplosion : MonoBehaviour
     public int explosionDamage = 10;
     [HideInInspector] public Vector3 direction;
     public ParticleSystem pSystemExplosion, pSystemMissile;
-    public ParticleSystem pSystem;
+    public ParticleSystem pSystemBase;
     //private ParticleSystem.Particle[] particles;
     private float currExplosionRadius = 0.0f;
     private float minSpeed = 2.0f;
@@ -25,7 +25,7 @@ public class RektifierExplosion : MonoBehaviour
     void Start()
     {
         speed = maxSpeed;
-        pSystem.Play();
+        pSystemBase.Play();
         explosionDuration = explosionCurve.keys[explosionCurve.keys.Length - 1].time;
         cameraImpulse = GetComponent<CinemachineImpulseSource>();
         //InitializeIfNeeded();
@@ -72,6 +72,7 @@ public class RektifierExplosion : MonoBehaviour
 
         if (explosionTimer > explosionDuration && !isExploded)
         {
+            DisableBaseParticle();
             pSystemExplosion.Play();
             isExploded = true;
             StartCoroutine(ApplyExplosionDamage());
@@ -79,6 +80,23 @@ public class RektifierExplosion : MonoBehaviour
         }
 
     }
+
+    private void DisableBaseParticle()
+    {
+        var pSystemMain = pSystemBase.main;
+        pSystemMain.loop = false;
+
+        for (int i = 0; i < pSystemBase.transform.childCount; i++)
+        {
+            var childParticle = pSystemBase.transform.GetChild(i).GetComponent<ParticleSystem>();
+            if (childParticle != null)
+            {
+                var particleMain = childParticle.main;
+                particleMain.loop = false;
+            }
+        }
+    }
+
     // Initialize the particle array
     //void InitializeIfNeeded()
     //{
@@ -125,7 +143,7 @@ public class RektifierExplosion : MonoBehaviour
         {
             t += Time.deltaTime / 2.0f; //  2 SECONDS OF EXPLOSION
 
-            if (t  >= 0.5f)
+            if (t >= 0.5f)
             {
                 cameraImpulse.GenerateImpulse();
             }
