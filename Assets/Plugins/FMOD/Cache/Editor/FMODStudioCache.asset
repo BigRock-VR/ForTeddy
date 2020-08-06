@@ -68,6 +68,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 245538
+--- !u!114 &-8394181713240924722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/Shop/Purchase
+  m_EditorClassIdentifier: 
+  Path: event:/UI/Shop/Purchase
+  guid: fb54074ac18cc040a9c5c5213268f127
+  Banks:
+  - {fileID: 51707588992201443}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 680
 --- !u!114 &-8310772930284043336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,6 +148,29 @@ MonoBehaviour:
   Max: 20
   Default: 0
   Exists: 1
+--- !u!114 &-8118824087659331194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: "event:/UI/Main men\xF9/Click_Main"
+  m_EditorClassIdentifier: 
+  Path: "event:/UI/Main men\xF9/Click_Main"
+  guid: 0dda39993cbf414f947e57a2cbadf7de
+  Banks:
+  - {fileID: 51707588992201443}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 90
 --- !u!114 &-7722423405445203189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,6 +188,63 @@ MonoBehaviour:
   Max: 5
   Default: 0
   Exists: 1
+--- !u!114 &-7499990209117798560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Weapons/Volume
+  m_EditorClassIdentifier: 
+  Name: Volume
+  Min: 0
+  Max: 20
+  Default: 0
+  Exists: 1
+--- !u!114 &-6821808275195506246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Music Gameplay/MainMenu
+  m_EditorClassIdentifier: 
+  Name: MainMenu
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
+--- !u!114 &-6776438444576412714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music ARCADE/Music Shop
+  m_EditorClassIdentifier: 
+  Path: event:/Music ARCADE/Music Shop
+  guid: d006655e81941243b5ec4de4e7b45c4d
+  Banks:
+  - {fileID: 6202045935924143968}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 125000
 --- !u!114 &-6754654297212931565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,6 +270,23 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 0
+--- !u!114 &-6363225375449850958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Music Gameplay/GameStatus
+  m_EditorClassIdentifier: 
+  Name: GameStatus
+  Min: 0
+  Max: 4
+  Default: 0
+  Exists: 1
 --- !u!114 &-5679487613459137031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,6 +306,46 @@ MonoBehaviour:
   FileSizes:
   - Name: Desktop
     Value: 3953184
+  Exists: 1
+--- !u!114 &-5286189853529778139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/Shop/Hover
+  m_EditorClassIdentifier: 
+  Path: event:/UI/Shop/Hover
+  guid: 4fe245959b745540816cee1346dc362e
+  Banks:
+  - {fileID: 6202045935924143968}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 300
+--- !u!114 &-5251884484073481931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Music Gameplay/GameStatus
+  m_EditorClassIdentifier: 
+  Name: GameStatus
+  Min: 0
+  Max: 4
+  Default: 0
   Exists: 1
 --- !u!114 &-5043460492319617880
 MonoBehaviour:
@@ -227,6 +387,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 125000
+--- !u!114 &-4339739694652524722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: "event:/Events_VR/C'\xE8 qualcuno nel buio_EventVR"
+  m_EditorClassIdentifier: 
+  Path: "event:/Events_VR/C'\xE8 qualcuno nel buio_EventVR"
+  guid: 5ff0f7bb9fe4104b8afaab85c7e9aa89
+  Banks:
+  - {fileID: 6202045935924143968}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 8.2
+  Length: 18440
 --- !u!114 &-4209792135249463093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,6 +453,29 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 8.2
   Length: 18440
+--- !u!114 &-3839047574057808475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: "event:/UI/Main men\xF9/Back"
+  m_EditorClassIdentifier: 
+  Path: "event:/UI/Main men\xF9/Back"
+  guid: a1681c42242eb94fadd59cfd72f4f2da
+  Banks:
+  - {fileID: 6202045935924143968}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 130
 --- !u!114 &-3634435463565626275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -385,6 +591,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 300
+--- !u!114 &-2432545786402984409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/Shop/Purchase
+  m_EditorClassIdentifier: 
+  Path: event:/UI/Shop/Purchase
+  guid: fb54074ac18cc040a9c5c5213268f127
+  Banks:
+  - {fileID: 6202045935924143968}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 680
 --- !u!114 &-1663848007211440992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -467,6 +696,54 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 680
+--- !u!114 &-228614697126728505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Weapons
+  m_EditorClassIdentifier: 
+  Path: event:/Weapons
+  guid: 9f4acf15e549d14f826d2b48ecfc420d
+  Banks:
+  - {fileID: 51707588992201443}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -7499990209117798560}
+  - {fileID: 6548503877830634906}
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
+--- !u!114 &-198086732696164886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events_VR/Tremate
+  m_EditorClassIdentifier: 
+  Path: event:/Events_VR/Tremate
+  guid: 501f64eda159054fad337d1946b6cca4
+  Banks:
+  - {fileID: 51707588992201443}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 6000
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -480,27 +757,87 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: -4209792135249463093}
-  - {fileID: -8893759847752888569}
+  - {fileID: 4874369403052321120}
+  - {fileID: 6202045935924143968}
   EditorEvents:
-  - {fileID: 7908258549862340898}
-  - {fileID: 9158850628591634633}
-  - {fileID: -9135744487273706527}
-  - {fileID: -2865565839777134836}
-  - {fileID: -8294639467763255884}
-  - {fileID: -8830658913283485040}
-  - {fileID: -2991516266378760222}
-  - {fileID: -6754654297212931565}
-  - {fileID: 3544750757049366673}
-  - {fileID: -4453018123891311424}
-  - {fileID: 4333873112732686227}
+  - {fileID: 6021165986444930368}
+  - {fileID: 7114659272253863051}
+  - {fileID: 8014885920966223763}
+  - {fileID: -5286189853529778139}
+  - {fileID: 240443527821993852}
+  - {fileID: 7505480836875120576}
+  - {fileID: -4339739694652524722}
+  - {fileID: 619861841004515375}
+  - {fileID: -3839047574057808475}
+  - {fileID: -6776438444576412714}
+  - {fileID: -2432545786402984409}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -8893759847752888569}
+  - {fileID: 6202045935924143968}
   StringsBanks:
-  - {fileID: -4209792135249463093}
+  - {fileID: 4874369403052321120}
   stringsBankWriteTime: 637182804020000000
   cacheVersion: 3
+--- !u!114 &51707588992201443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: ../../../../Desktop/Teddy FMOD 20007/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637182804020000000
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 3953184
+  Exists: 1
+--- !u!114 &240443527821993852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events_VR/Tremate
+  m_EditorClassIdentifier: 
+  Path: event:/Events_VR/Tremate
+  guid: 501f64eda159054fad337d1946b6cca4
+  Banks:
+  - {fileID: 6202045935924143968}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 6000
+--- !u!114 &340113818592262204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Weapons/Volume
+  m_EditorClassIdentifier: 
+  Name: Volume
+  Min: 0
+  Max: 20
+  Default: 0
+  Exists: 1
 --- !u!114 &522502523607905500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -524,6 +861,143 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 6000
+--- !u!114 &619861841004515375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Weapons
+  m_EditorClassIdentifier: 
+  Path: event:/Weapons
+  guid: 9f4acf15e549d14f826d2b48ecfc420d
+  Banks:
+  - {fileID: 6202045935924143968}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 340113818592262204}
+  - {fileID: 8652215322159362303}
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
+--- !u!114 &1543869550420193057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: ../../../../Desktop/Teddy FMOD 20007/Build/Desktop/Master.strings.bank
+  SubDir: 
+  lastModified: 637182804020000000
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 1448
+  Exists: 1
+--- !u!114 &1663918435976190431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/Shop/Hover
+  m_EditorClassIdentifier: 
+  Path: event:/UI/Shop/Hover
+  guid: 4fe245959b745540816cee1346dc362e
+  Banks:
+  - {fileID: 51707588992201443}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 300
+--- !u!114 &2042551945438681019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events_VR/Il re dell'orrore
+  m_EditorClassIdentifier: 
+  Path: event:/Events_VR/Il re dell'orrore
+  guid: 280597fbbaac6847a8987b8f390c4ce1
+  Banks:
+  - {fileID: 51707588992201443}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 9869
+--- !u!114 &2201898584856784308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: "event:/UI/Main men\xF9/Back"
+  m_EditorClassIdentifier: 
+  Path: "event:/UI/Main men\xF9/Back"
+  guid: a1681c42242eb94fadd59cfd72f4f2da
+  Banks:
+  - {fileID: 51707588992201443}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 130
+--- !u!114 &2489899670981206583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/Shop/Click_shop
+  m_EditorClassIdentifier: 
+  Path: event:/UI/Shop/Click_shop
+  guid: 3ee0215c848b7644a77e36390b3b7895
+  Banks:
+  - {fileID: 51707588992201443}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 180
 --- !u!114 &2543591187926454121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -547,6 +1021,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 300
+--- !u!114 &2580696496460623028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music ARCADE/Music Shop
+  m_EditorClassIdentifier: 
+  Path: event:/Music ARCADE/Music Shop
+  guid: d006655e81941243b5ec4de4e7b45c4d
+  Banks:
+  - {fileID: 51707588992201443}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 125000
 --- !u!114 &3544750757049366673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -618,6 +1115,49 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 680
+--- !u!114 &4543334010773500175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: "event:/Events_VR/C'\xE8 qualcuno nel buio_EventVR"
+  m_EditorClassIdentifier: 
+  Path: "event:/Events_VR/C'\xE8 qualcuno nel buio_EventVR"
+  guid: 5ff0f7bb9fe4104b8afaab85c7e9aa89
+  Banks:
+  - {fileID: 51707588992201443}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 8.2
+  Length: 18440
+--- !u!114 &4874369403052321120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: ../../../../Desktop/Teddy FMOD 20007/Build/Desktop/Master.strings.bank
+  SubDir: 
+  lastModified: 637182804020000000
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 1448
+  Exists: 1
 --- !u!114 &5433700251851644228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -633,6 +1173,106 @@ MonoBehaviour:
   Name: MainMenu
   Min: 0
   Max: 1
+  Default: 0
+  Exists: 1
+--- !u!114 &5481975749661101580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Music Gameplay/MainMenu
+  m_EditorClassIdentifier: 
+  Name: MainMenu
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
+--- !u!114 &5936205431898287587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music ARCADE/Music Gameplay
+  m_EditorClassIdentifier: 
+  Path: event:/Music ARCADE/Music Gameplay
+  guid: 5ad59df7360a064296621578e8ac3cab
+  Banks:
+  - {fileID: 51707588992201443}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -6363225375449850958}
+  - {fileID: 5481975749661101580}
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 245538
+--- !u!114 &6021165986444930368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: "event:/UI/Main men\xF9/Click_Main"
+  m_EditorClassIdentifier: 
+  Path: "event:/UI/Main men\xF9/Click_Main"
+  guid: 0dda39993cbf414f947e57a2cbadf7de
+  Banks:
+  - {fileID: 6202045935924143968}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 90
+--- !u!114 &6202045935924143968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: ../../../../Desktop/Teddy FMOD 20007/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637182804020000000
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
+--- !u!114 &6548503877830634906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Weapons/Weapon Type
+  m_EditorClassIdentifier: 
+  Name: Weapon Type
+  Min: 0
+  Max: 5
   Default: 0
   Exists: 1
 --- !u!114 &6594114855015029327
@@ -652,6 +1292,54 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 1
+--- !u!114 &7114659272253863051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events_VR/Il re dell'orrore
+  m_EditorClassIdentifier: 
+  Path: event:/Events_VR/Il re dell'orrore
+  guid: 280597fbbaac6847a8987b8f390c4ce1
+  Banks:
+  - {fileID: 6202045935924143968}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 9869
+--- !u!114 &7505480836875120576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music ARCADE/Music Gameplay
+  m_EditorClassIdentifier: 
+  Path: event:/Music ARCADE/Music Gameplay
+  guid: 5ad59df7360a064296621578e8ac3cab
+  Banks:
+  - {fileID: 6202045935924143968}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -5251884484073481931}
+  - {fileID: -6821808275195506246}
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 245538
 --- !u!114 &7671230383717140561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -695,6 +1383,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 90
+--- !u!114 &8014885920966223763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/Shop/Click_shop
+  m_EditorClassIdentifier: 
+  Path: event:/UI/Shop/Click_shop
+  guid: 3ee0215c848b7644a77e36390b3b7895
+  Banks:
+  - {fileID: 6202045935924143968}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 180
 --- !u!114 &8134000407221956049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -718,6 +1429,23 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 130
+--- !u!114 &8652215322159362303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Weapons/Weapon Type
+  m_EditorClassIdentifier: 
+  Name: Weapon Type
+  Min: 0
+  Max: 5
+  Default: 0
+  Exists: 1
 --- !u!114 &8818944313568963784
 MonoBehaviour:
   m_ObjectHideFlags: 0

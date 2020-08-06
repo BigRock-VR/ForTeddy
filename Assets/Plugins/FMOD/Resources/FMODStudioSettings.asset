@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: FMODStudioSettings
   m_EditorClassIdentifier: 
   SwitchSettingsMigration: 1
-  HasSourceProject: 1
-  HasPlatforms: 1
+  HasSourceProject: 0
+  HasPlatforms: 0
   sourceProjectPath: ../../../../Desktop/Teddy FMOD 20007/Teddy FMOD 20007.fspro
-  sourceBankPath: ..\..\..\..\Desktop\Teddy FMOD 20007\Build
+  sourceBankPath: FMOD\Arcade\Desktop
   SourceBankPathUnformatted: 
   AutomaticEventLoading: 1
   BankLoadType: 0
